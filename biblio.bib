@@ -1,0 +1,1082 @@
+
+
+@article{PAN2024104243,
+title = {Multimodal spatiotemporal aggregation for point cloud accumulation},
+journal = {Journal of Visual Communication and Image Representation},
+volume = {103},
+pages = {104243},
+year = {2024},
+issn = {1047-3203},
+doi = {https://doi.org/10.1016/j.jvcir.2024.104243},
+url = {https://www.sciencedirect.com/science/article/pii/S1047320324001998},
+author = {Jie Pan and Chunyu Lin and Lang Nie and Meiqin Liu and Yao Zhao},
+keywords = {Point cloud accumulation, Scene flow estimation, Motion perception, Deep learning},
+abstract = {Point cloud accumulation is a crucial technique in point cloud analysis, facilitating various downstream tasks like surface reconstruction. Current methods merely rely on raw LiDAR points, yielding unsatisfactory performance due to the limited geometric information, particularly in complex scenarios characterized by intricate motions, diverse objects, and an increased number of frames. In this paper, we introduce camera modality data, which is usually acquired alongside LiDAR data at minimal expense. To this end, we present the Multimodal Spatiotemporal Aggregation solution (termed MSA) to thoroughly explore and aggregate these two distinct modalities (sparse 3D points and multi-view 2D images). Concretely, we propose a multimodal spatial aggregation module to bridge the data gap between different modalities in the Bird’s-Eye-View (BEV) space and further fuse them by learnable adaptive channel-wise weights. By assembling their respective strengths, this module generates a reliable and consistent scene representation. Subsequently, we design a temporal aggregation module to capture continuous motion information across consecutive sequences, which is beneficial for identifying the motion state of the foreground scene and enabling the model to extend robustly to longer sequences. Experiments demonstrate MSA outperforms state-of-the-art (SoTA) point cloud accumulation methods across all evaluation metrics in the public benchmark, especially with more frames.}
+}
+
+
+@article{LUO2025104481,
+title = {MDLPCC: Misalignment-aware dynamic LiDAR point cloud compression},
+journal = {Journal of Visual Communication and Image Representation},
+volume = {110},
+pages = {104481},
+year = {2025},
+issn = {1047-3203},
+doi = {https://doi.org/10.1016/j.jvcir.2025.104481},
+url = {https://www.sciencedirect.com/science/article/pii/S1047320325000951},
+author = {Ao Luo and Linxin Song and Keisuke Nonaka and Jinming Liu and Kyohei Unno and Kohei Matsuzaki and Heming Sun and Jiro Katto},
+keywords = {Point cloud compression, Point cloud registration, Motion estimation},
+abstract = {LiDAR point cloud plays an important role in various real-world areas. It is usually generated as sequences by LiDAR on moving vehicles. Regarding the large data size of LiDAR point clouds, Dynamic Point Cloud Compression (DPCC) methods are developed to reduce transmission and storage data costs. However, most existing DPCC methods neglect the intrinsic misalignment in LiDAR point cloud sequences, limiting the rate–distortion (RD) performance. This paper proposes a Misalignment-aware Dynamic LiDAR Point Cloud Compression method (MDLPCC), which alleviates the misalignment problem in both macroscope and microscope. MDLPCC exploits a global transformation (GlobTrans) method to eliminate the macroscopic misalignment problem, which is the obvious gap between two continuous point cloud frames. MDLPCC also uses a spatial–temporal mixed structure to alleviate the microscopic misalignment, which still exists in the detailed parts of two point clouds after GlobTrans. The experiments on our MDLPCC show superior performance over existing point cloud compression methods.}
+}
+
+
+
+@article{LI2022103641,
+title = {VirtualActionNet: A strong two-stream point cloud sequence network for human action recognition},
+journal = {Journal of Visual Communication and Image Representation},
+volume = {89},
+pages = {103641},
+year = {2022},
+issn = {1047-3203},
+doi = {https://doi.org/10.1016/j.jvcir.2022.103641},
+url = {https://www.sciencedirect.com/science/article/pii/S1047320322001614},
+author = {Xing Li and Qian Huang and Zhijian Wang and Tianjin Yang},
+keywords = {Two-stream network, 3D action recognition, Point cloud sequence},
+abstract = {In this paper, we propose a strong two-stream point cloud sequence network VirtualActionNet for 3D human action recognition. In the data preprocessing stage, we transform the depth sequence into a point cloud sequence as the input of our VirtualActionNet. In order to encode intra-frame appearance structures, static point cloud technologies are first employed as a virtual action generation sequence module to abstract the point cloud sequence into a virtual action sequence. Then, a two-stream network framework is presented to model the virtual action sequence. Specifically, we design an appearance stream module for aggregating all the appearance information preserved in each virtual action frame. Moreover, a motion stream module is introduced to capture dynamic changes along the time dimension. Finally, a joint loss strategy is adopted during data training to improve the action prediction accuracy of the two-stream network. Extensive experiments on three publicly available datasets demonstrate the effectiveness of the proposed VirtualActionNet.}
+}
+
+
+@article{WANG2024104110,
+title = {Occupancy map-based low complexity motion prediction for video-based point cloud compression},
+journal = {Journal of Visual Communication and Image Representation},
+volume = {100},
+pages = {104110},
+year = {2024},
+issn = {1047-3203},
+doi = {https://doi.org/10.1016/j.jvcir.2024.104110},
+url = {https://www.sciencedirect.com/science/article/pii/S1047320324000658},
+author = {Yihan Wang and Yongfang Wang and Tengyao Cui and Zhijun Fang},
+keywords = {Dynamic point cloud compression, Occupancy map, Low complexity, Motion prediction},
+abstract = {This paper proposes an occupancy map-based low complexity motion prediction method for video-based point cloud compression (V-PCC). Firstly, we propose to utilize the occupancy map, direction gradient, and regional dispersion to divide the attribute maps into static, complex, and common blocks. Then, we propose an early termination method for static blocks, an adaptive motion search range method for complex blocks, and an early inter prediction mode decision algorithm for affine motion regions in common blocks. Experiment results show that, in comparison to the test model category2 (TMC2) v15.0, called the anchor method, the average bitrate savings of Y, U, and V components of the proposed method achieve 24.27%, 32.64%, and 31.23% on 8i voxelized full bodies version 2 (8iVFBv2) dataset, respectively. Further, the time savings is 41.97% for attribute maps. Similarly, the proposed method also achieves consistent performance on Microsoft voxelized upper bodies (MVUB) dataset.}
+}
+
+
+@article{WANG2024104292,
+title = {Leveraging occupancy map to accelerate video-based point cloud compression},
+journal = {Journal of Visual Communication and Image Representation},
+volume = {104},
+pages = {104292},
+year = {2024},
+issn = {1047-3203},
+doi = {https://doi.org/10.1016/j.jvcir.2024.104292},
+url = {https://www.sciencedirect.com/science/article/pii/S1047320324002487},
+author = {Wenyu Wang and Gongchun Ding and Dandan Ding},
+keywords = {V-PCC, H.266/VVC, Fast CU partition, Occupancy map, Machine learning},
+abstract = {Video-based Point Cloud Compression enables point cloud streaming over the internet by converting dynamic 3D point clouds to 2D geometry and attribute videos, which are then compressed using 2D video codecs like H.266/VVC. However, the complex encoding process of H.266/VVC, such as the quadtree with nested multi-type tree (QTMT) partition, greatly hinders the practical application of V-PCC. To address this issue, we propose a fast CU partition method dedicated to V-PCC to accelerate the coding process. Specifically, we classify coding units (CUs) of projected images into three categories based on the occupancy map of a point cloud: unoccupied, partially occupied, and fully occupied. Subsequently, we employ either statistic-based rules or machine-learning models to manage the partition of each category. For unoccupied CUs, we terminate the partition directly; for partially occupied CUs with explicit directions, we selectively skip certain partition candidates; for the remaining CUs (partially occupied CUs with complex directions and fully occupied CUs), we train an edge-driven LightGBM model to predict the partition probability of each partition candidate automatically. Only partitions with high probabilities are retained for further Rate–Distortion (R–D) decisions. Comprehensive experiments demonstrate the superior performance of our proposed method: under the V-PCC common test conditions, our method reduces encoding time by 52% and 44% in geometry and attribute, respectively, while incurring only 0.68% (0.66%) BD-Rate loss in D1 (D2) measurements and 0.79% (luma) BD-Rate loss in attribute, significantly surpassing state-of-the-art works.}
+}
+
+
+@article{LI2025104503,
+title = {TrDPNet: A transformer-based diffusion model for single-image 3D point cloud reconstruction},
+journal = {Journal of Visual Communication and Image Representation},
+volume = {111},
+pages = {104503},
+year = {2025},
+issn = {1047-3203},
+doi = {https://doi.org/10.1016/j.jvcir.2025.104503},
+url = {https://www.sciencedirect.com/science/article/pii/S1047320325001178},
+author = {Fei Li and Tiansong Li and Ke Xiao and Lin Wang and Li Yu},
+keywords = {3D point cloud reconstruction, Single-view image, Deep learning, Diffusion model, Transformer},
+abstract = {The conditional diffusion model has shown great promise in 3D point cloud reconstruction from single-view image. Nevertheless, it is extremely challenging to effectively utilize the only image information to conditionally control the diffusion model to generate 3D point clouds. Previous methods heavily relied on projecting image information onto 3D point clouds and using PointNet to extract features from them. However, due to the locality of the projection method, PointNet may insufficiently fuse point clouds and image features. In this paper, we present TrDPNet, a novel Transformer-based diffusion model for single-image 3D point cloud reconstruction. TrDPNet integrates image features and point clouds for conditional control using the Transformer to achieve high-quality 3D reconstruction. Firstly, farthest point sampling is applied to identify key points, a sub-point cloud is established within the specified radius, and then the features are mapped to tokens in the high-dimensional space. Secondly, a series of cascaded Transformer blocks is utilized to fuse the image and point cloud information via attention mechanisms, conditionally guiding the diffusion model. This design not only integrates image information across the entire point cloud but also strengthens connections between point clouds. Finally, multi-layer perceptrons and linear interpolation restore the tokens to the original point cloud size, producing the final noisy prediction. The experimental results show that TrDPNet achieves over a 20% improvement on synthetic benchmarks compared to previous state-of-the-art methods. Our code and weights are available at https://github.com/TLab512/TrDPNet.}
+}
+
+
+
+
+
+@article{perkis2020qualinet,
+  title={QUALINET white paper on definitions of immersive media experience (IMEx)},
+  author={Perkis, Andrew and Timmerer, Christian and Barakovi{\'c}, Sabina and Husi{\'c}, Jasmina Barakovi{\'c} and Bech, S{\o}ren and Bosse, Sebastian and Botev, Jean and Brunnstr{\"o}m, Kjell and Cruz, Luis and De Moor, Katrien and others},
+  journal={arXiv preprint arXiv:2007.07032},
+  year={2020}
+}
+
+
+
+@inproceedings{farias2023quality,
+author = {Farias, Mylene C.Q.},
+title = {Quality of Experience of Immersive Media – New Challenges},
+year = {2023},
+isbn = {9798400709081},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3617023.3617025},
+doi = {10.1145/3617023.3617025},
+abstract = {In the past decade, significant progress in imaging and computing technologies has unleashed the creation of more accurate representations of the physical world, enabling immersive and interactive experiences that more closely resemble reality&nbsp;[1]. As a consequence, immersive applications have attracted a lot of interdisciplinary attention, with the development of multimodal human-computer interactions that allow users to fully immerse themselves within realistic or virtual environments or to interact with real/virtual elements seamlessly blended with the physical world&nbsp;[6]. Immersive experiences can be found at different points along the “virtuality continuum,” ranging from photorealistic settings, through mixed reality approaches, to completely virtual environments. In this scenario, high-speed connections and high-quality imaging systems are essential for the development of next-generation immersive experiences and applications in areas such as healthcare, education/training, arts \& entertainment, remote work, marketing, and automotive. But the success of these emerging applications will depend on the quality of experience (QoE) they provide users&nbsp;[5]. As defined by Qualinet&nbsp;[2], QoE refers to the “degree of delight or annoyance of applications or services resulting from the fulfillment of his or her expectations with respect to the utility and/or enjoyment of the application or service in the light of the users personality and current state.” For immersive technologies, immersive media experiences (IMEx) extend the concept of QoE by encompassing elements such as the sense of presence, immersion, and motion sickness, among others [7]. Both QoE and IMEx are shaped by three influencing factors (IF): the system, the context, and the human user. For immersive experiences, the system IF plays an important role, affecting immersion, presence, and interaction itself. This impact has been extensively studied in the literature, with several studies analyzing the effect of the design of the device itself on IMEx&nbsp;[3, 4]. The context IF, which includes the user’s environment, is often studied together with the system IF, since it is difficult to separate these two IFs. Finally, an important IF for immersive media are human factors, which include perceptual characteristics such as visual, audio, and spatial perception that make each user unique. It is well known that impairments may reduce perception and cause imbalances, resulting in uncomfortable symptoms and cybersickness. Subjective and instrumental assessments are commonly used to study human IFs in IMEx. In this context, an open area of research is the design of subjective and instrumental assessment methods to estimate the user immersive media experience. For example, by tracking human behavior and psycho-physiological signals, it is possible to construct models of influential factors that can be employed to identify and potentially forecast phenomena like cybersickness, the user’s perception of immersion and sense of presence, and the overall quality of the experience. In this talk, I discuss several aspects of IMEx, including subjective and instrumental methods, and the several challenges of this area.},
+booktitle = {Proceedings of the 29th Brazilian Symposium on Multimedia and the Web},
+pages = {3–4},
+numpages = {2},
+keywords = {virtual reality, quality of experience, point clouds, machine learning, light lields, immersive media, image processing},
+location = {Ribeir\~{a}o Preto, Brazil},
+series = {WebMedia '23}
+}
+
+
+@inproceedings{neri2023Artificial,
+author = {Neri, Michael and Carli, Marco},
+title = {Artificial Intelligence Techniques for Quality Assessments of Immersive Multimedia},
+year = {2023},
+isbn = {9798400700286},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3573381.3596502},
+doi = {10.1145/3573381.3596502},
+abstract = {Artificial Intelligence techniques are being applied in the quality assessment of immersive multimedia content, such as virtual and augmented reality scenarios. The immersive nature of these applications poses a unique challenge to traditional quality assessment methods. In fact, estimating user acceptance of immersive technologies is complex due to multiple aspects, such as usability, enjoyment, and cyber sickness. Artificial Intelligence-based approaches offer a promising solution to this problem, enabling objective evaluations of immersive multimedia such as spatial audios, point clouds, and light field images. This work presents an overview of different artificial intelligence techniques that have been used for quality assessments of immersive multimedia content, including machine learning algorithms, deep learning, and computer vision. The advantages of these techniques and some examples of practical application are provided. Future works are presented, underlining the possible outcomes of a Ph.D. study in this field.},
+booktitle = {Proceedings of the 2023 ACM International Conference on Interactive Media Experiences},
+pages = {390–393},
+numpages = {4},
+keywords = {Artificial intelligence, Quality-of-Experience, immersive multimedia, quality assessment},
+location = {Nantes, France},
+series = {IMX '23}
+}
+
+
+@INPROCEEDINGS{mpeg2024gpcc,
+  author={Zhang, Wei and Yang, Fuzheng and Xu, Yingzhan and Preda, Marius},
+  booktitle={2024 Picture Coding Symposium (PCS)}, 
+  title={Standardization Status of MPEG Geometry-Based Point Cloud Compression (G-PCC) Edition 2}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1-5},
+  keywords={Point cloud compression;MPEG standards;Geometry;Three-dimensional displays;Ecosystems;Transform coding;Standardization;point cloud;MPEG;G-PCC;geometry coding;attribute coding},
+  doi={10.1109/PCS60826.2024.10566443}
+}
+
+
+@article{LIANG2022103667,
+title = {Efficient graph attentional network for 3D object detection from Frustum-based LiDAR point clouds},
+journal = {Journal of Visual Communication and Image Representation},
+volume = {89},
+pages = {103667},
+year = {2022},
+issn = {1047-3203},
+doi = {https://doi.org/10.1016/j.jvcir.2022.103667},
+url = {https://www.sciencedirect.com/science/article/pii/S1047320322001870},
+author = {Zhenming Liang and Yingping Huang and Zhenwei Liu},
+keywords = {3D object detection, Multi-sensors fusion, Graph convolutional networks, Attention mechanism, Autonomous driving},
+abstract = {LiDAR-based 3D object detection is important for autonomous driving scene perception, but point clouds produced by LiDAR are irregular and unstructured in nature, and cannot be adopted by the conventional Convolutional Neural Networks (CNN). Recently, Graph Convolutional Networks (GCN) has been proved as an ideal way to handle non-Euclidean structure data, as well as for point cloud processing. However, GCN involves massive computation for searching adjacent nodes, and the heavy computational cost limits its applications in processing large-scale LiDAR point cloud in autonomous driving. In this work, we adopt a frustum-based point cloud-image fusion scheme to reduce the amount of LiDAR point clouds, thus making the GCN-based large-scale LiDAR point clouds feature learning feasible. On this basis, we propose an efficient graph attentional network to accomplish the goal of 3D object detection in autonomous driving, which can learn features from raw LiDAR point cloud directly without any conversions. We evaluate the model on the public KITTI benchmark dataset, the 3D detection mAP is 63.72% on KITTI Cars, Pedestrian and Cyclists, and the inference speed achieves 7.9 fps on a single GPU, which is faster than other methods of the same type.}
+}
+
+
+@article{grazy2020,
+	title        = {An overview of ongoing point cloud compression standardization activities: video-based (V-PCC) and geometry-based (G-PCC)},
+	author       = {Graziosi, D. and Nakagami, O. and Kuma, S. and Zaghetto, A. and Suzuki, T. and Tabatabai, A.},
+	year         = 2020,
+	journal      = {APSIPA Transactions on Signal and Information Processing},
+	volume       = 9,
+	pages        = {e13},
+	doi          = {10.1017/ATSIP.2020.12}
+}
+
+
+@inproceedings{perra2020an,
+author = {Cristian Perra and Pedro Garcia Freitas and Ismael Seidel and Peter Schelkens},
+title = {{An overview of the emerging JPEG Pleno standard, conformance testing and reference software}},
+volume = {11353},
+booktitle = {Optics, Photonics and Digital Technologies for Imaging Applications VI},
+editor = {Peter Schelkens and Tomasz Kozacki},
+organization = {International Society for Optics and Photonics},
+publisher = {SPIE},
+pages = {113530Y},
+keywords = {JPEG Pleno, Conformance testing, Reference software, Compression, Standard, Light field, Point cloud, Holography},
+year = {2020},
+doi = {10.1117/12.2555841},
+URL = {https://doi.org/10.1117/12.2555841}
+}
+
+
+@inproceedings{de2022quality,
+  title={Quality-aware compression of point clouds with google draco},
+  author={de Hoog, Jens and Ahmed, Ahmed N and Anwar, Ali and Latr{\'e}, Steven and Hellinckx, Peter},
+  booktitle={Advances on P2P, Parallel, Grid, Cloud and Internet Computing: Proceedings of the 16th International Conference on P2P, Parallel, Grid, Cloud and Internet Computing (3PGCIC-2021)},
+  pages={227--236},
+  year={2022},
+  organization={Springer}
+}
+
+
+@INPROCEEDINGS{alexiou2018pointsubjective,
+  author={Alexiou, Evangelos and Ebrahimi, Touradj and Bernardo, Marco V. and Pereira, Manuela and Pinheiro, Antonio and Da Silva Cruz, Luis A. and Duarte, Carlos and Dmitrovic, Lovorka Gotal and Dumic, Emil and Matkovics, Dragan and Skodras, Athanasios},
+  booktitle={2018 Tenth International Conference on Quality of Multimedia Experience (QoMEX)}, 
+  title={Point Cloud Subjective Evaluation Methodology based on 2D Rendering}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={1-6},
+  keywords={Three-dimensional displays;Octrees;Laboratories;Two dimensional displays;Correlation;Surface reconstruction;Quality Assessment;Point Cloud;Quality Metrics},
+  doi={10.1109/QoMEX.2018.8463406}
+}
+
+@inproceedings{tious2023Physicall,
+author = {Tious, Amar and Vigier, Toinon and Ricordel, Vincent},
+title = {Physically-based Lighting of 3D Point Clouds for Quality Assessment},
+year = {2023},
+isbn = {9798400700286},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3573381.3597231},
+doi = {10.1145/3573381.3597231},
+abstract = {Point clouds are acknowledged as an essential data structure to represent 3D objects in many use cases, notably immersive experience settings such as Virtual, Augmented or Mixed Reality. This work is the first part of a research project on immersive Quality Assessment of point clouds in different lighting. In this report, I focus mainly on the physically-based rendering of such data in Unity 3D, and the impact of point cloud compression when considering various lighting conditions on the objects. These first observations and results will serve in the implementation of a 6DoF immersive experiment setting for subjective quality assessment.},
+booktitle = {Proceedings of the 2023 ACM International Conference on Interactive Media Experiences},
+pages = {423–426},
+numpages = {4},
+keywords = {3D graphics, Physically-Based Render, Point Clouds, Unity Game Engine, Visual Quality Assessment},
+location = {Nantes, France},
+series = {IMX '23}
+}
+
+
+@ARTICLE{Freitas2018noref,
+  author={Freitas, Pedro Garcia and Akamine, Welington Y. L. and Farias, Mylène C. Q.},
+  journal={IEEE Transactions on Multimedia}, 
+  title={No-Reference Image Quality Assessment Using Orthogonal Color Planes Patterns}, 
+  year={2018},
+  volume={20},
+  number={12},
+  pages={3353-3360},
+  keywords={Machine learning;Histograms;Transform coding;Quality assessment;Image quality;Pattern recognition;Image quality assessment;pattern recognition;machine learning;orthogonal color plane binary patterns},
+  doi={10.1109/TMM.2018.2839529}
+}
+
+@inproceedings{Zhou2024NoReference,
+author = {Zhou, Zihan and Xu, Yong and Wan, Xi and Quan, Yuhui and Xu, Ruotao and Li, Jing and Le Callet, Patrick},
+title = {No-Reference Image Quality Assessment Using Local Binary Patterns: A Comprehensive Performance Evaluation},
+year = {2024},
+isbn = {9798400712043},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3689093.3689180},
+
+abstract = {One key in image quality assessment (IQA) is the design of image representations that can capture the changes in image structures caused by distortions. In the last decades, local binary patterns (LBP) have been proven to be a powerful tool as a statistical model for texture and local structure representation. LBP and its variants, as the texture descriptor with low computational complexity, have been applied widely and successfully in several specific applications, such as texture classification, face recognition and IQA. Generally, visible impairments alter the statistics of LBP descriptors, making it possible to measure degradation and then estimate image quality. However, only a few variants of LBP are applied in no-reference (NR) IQA and a few characteristics of LBP descriptors are explored for quality prediction, while some characteristics useful in the rest variants are ignored for IQA. Two previous studies give a review of 16/4 LBP operators and compare the performance with them separately in IQA application only on synthetic distorted data. To extend this work, we provide a review of LBP methodologies to assist the scientific community and new researchers, as well as explore more LBP descriptors in NR-IQA methods under various distortion conditions, particularly real-world cases. Specifically, we comprehensively review 30 widely-used or effective LBP-based operators, including recent variations. We then utilize a common framework for applying LBP descriptors in NR-IQA. The practicality of the reviewed descriptors is demonstrated and analyzed using experimental results under synthetic and authentic cases, indicating suitable LBP descriptors and characteristics for NR-IQA. Codes implementing the reviewed LBP operators is available at https://github.com/csxwan/Local-Binary-Patterns-for-IQA.},
+booktitle = {Proceedings of the 3rd Workshop on Quality of Experience in Visual Multimedia Applications},
+pages = {2–11},
+numpages = {10},
+keywords = {local binary patterns, no-reference image quality assessment, texture descriptors, variants},
+location = {Melbourne VIC, Australia},
+series = {QoEVMA'24}
+}
+
+
+
+
+@mastersthesis{smitskamp2022no,
+  title={{No-Reference Point Cloud Quality Assessment}},
+  author={Smitskamp, Gwennan M.},
+  year={2022},
+  school={Delft University of Technology},
+  type={Master's Thesis},
+  url={http://resolver.tudelft.nl/uuid:c2a40606-0652-4b48-a380-c99be637660c}
+}
+
+@phdthesis{Javaheri-Point-cloud-quality-assessment,
+title = {{Point cloud quality assessment}},
+author = {Javaheri, Alireza},
+month = may,
+school  = {Instituto Técnico de Lisboa},
+year = {2021},
+abstract = {{Hoje em dia, formatos mais ricos de representação visual 3D estão a surgir, nomeadamente campos de luz e nuvens de pontos. Estes formatos tornam possível oferecer novas aplicações em vários domínios, nomeadamente realidade virtual e aumentada, sistemas de informação geográfica, comunicações imersivas e aplicações culturais. Recentemente, no seguimento de vários avanços em termos da aquisição de informação visual 3D, cresceu o interesse em representações visuais que modelam os objectos do mundo real como uma nuvem de pontos amostrados sobre as suas superfícies. As nuvens de pontos são um modelo de representação 3D onde o mundo visual real é representado através de um conjunto de coordenadas 3D sobre os objectos (a geometria) com alguns atributos adicionais tais como cor e normais. Com os avanços nos sistemas de aquisição 3D, é agora possível capturar nuvens de pontos realistas para representar uma cena visual com elevada resolução. Estas nuvens de pontos podem ter até alguns biliões de pontos e logo o seu armazenamento e transmissão no formato original requereria uma quantidade irrazoável de memória e débito de transmissão. Assim sendo, o armazenamento e transmissão de nuvens de pontos exige o desenvolvimento de soluções eficientes de codificação. Neste contexto, de forma a possibilitar a adopção em larga escala deste modelo de representação visual 3D, é também necessário medir de um modo fiável a qualidade de experiência oferecida aos utentes, medindo a qualidade das nuvens de pontos. Enquanto as métricas objectivas de avaliação de qualidade têm como finalidade medir a qualidade das nuvens de pontos de forma matemática, nomeadamente de nuvens de pontos descodificadas, idealmente replicando as classificações que seriam dadas por observadores humanos, a avaliação subjectiva de qualidade permite não só fazer uma avaliação mais fiável da qualidade mas também disponibilizar os dados necessários para avaliar a correlação das classificações objectivas de qualidade com as classificações subjectivas. O desenvolvimento e a identificação das métricas objetivas de qualidade mais fiáveis, especialmente para nuvens de pontos, necessita de dados de avaliação subjetivos obtidos com uma metodologia comprovada. Neste contexto, esta Tese tem dois objectivos principais: primeiro, realizar experiências de avaliação da qualidade subjectiva de nuvens de pontos descodificadas, com diferentes tipos de degradação e factores de impacto como a codificação e a renderização, o que permite avaliar e comparar a fiabilidade das métricas objectivas de avaliação de qualidade já disponíveis para nuvens de pontos; segundo, propor novas métricas objectivas de avaliação de qualidade para nuvens de pontos, nomeadamente com uma melhor correlação com as correspondentes avaliações subjectivas. Para alcançar estes objectivos, foram realizadas três experiências de avaliação subjectiva de qualidade considerando diferentes conteúdos, degradações e factores de impacto. Para além disso, foram propostas quatro métricas objectivas de avaliação de qualidade para nuvens de pontos, todas elas oferecendo um desempenho de correlação superior, às métricas de qualidade disponíveis no momento em que foram desenvolvidas. Devido à importância da geometria na qualidade perceptual das nuvens de pontos, a maioria do trabalho desenvolvido nesta Tese está focado na avaliação da qualidade da geometria, nomeadamente para nuvens de pontos estáticas. Contudo, no último capítulo, é proposta uma métrica objectiva de qualidade que considera conjuntamente a geometria e a cor, apresentando um desempenho superior a todas as métricas objectivas de qualidade disponíveis na literatura para nuvens de pontos.
+
+Nowadays, richer 3D visual representation formats are emerging, notably light fields and point clouds. These formats enable new applications in many usage domains, notably virtual and augmented reality, geographical information systems, immersive communications, and cultural heritage. Recently, following major improvements in 3D visual data acquisition, there is an increasing interest in point-based visual representation, which models real-world objects as a cloud of sampled points on their surfaces. Point cloud is a 3D representation model where the real visual world is represented by a set of 3D coordinates (the geometry) over the objects with some additional attributes such as color and normals. With the advances in 3D acquisition systems, it is now possible to capture a realistic point cloud to represent a visual scene with a very high resolution. These point clouds may have up to billions of points and, thus, storing and transmitting them in a raw format would require an unbearable amount of memory and bandwidth. Therefore, the storage and transmission of large point clouds critically ask for the development of efficient point cloud coding solutions. In this context, to boost a wide adoption of this 3D visual representation model, it is also necessary to reliably measure the quality of experience offered to the end-users by measuring the point cloud quality. While objective quality assessment metrics aim to mathematically measure the quality of point clouds, notably decoded point clouds, ideally replicating the scores that would be given by human beings, the subjective quality assessment allows not only to perform more reliable assessment but also allows to assess the correlation of the available objective quality metrics with the users’ opinion scores. The design and identification of the most reliable objective quality metrics, notably for point clouds, requires subjective evaluation data obtained in meaningful and already proven methodology. In this context, the main objective of this Thesis is twofold: first, to perform appropriately designed subjective quality assessment experiments for decoded point clouds under different degradations and impacting factors like coding and rendering which allows to assess and benchmark the reliability of point cloud objective quality metrics; and second, to propose novel objective quality metrics with a higher correlation with the obtained subjective assessment scores. To achieve these objectives, three subjective quality assessment experiments have been performed considering different contents, degradations, and impact factors. Moreover, four objective quality metrics have been proposed, all outperforming the state-of-the-art objective quality metrics at the time they were developed. Due to the importance of geometry on point cloud perceived quality, and new challenges associated with geometry quality evaluation, most of the efforts in this Thesis were around geometry quality evaluation, notably for static point clouds. However, in the last chapter, a quality metric jointly considering geometry and color is proposed, which outperforms all available quality metrics in the literature for point clouds.}},
+keywords = {Nuvem de Pontos,Avaliação Subjectiva de Qualidade,Avaliação Objectiva de Qualidade,Geometria,Atributos,Codificação,Renderização,Point Cloud,Subjective Quality Assessment,Objective Quality Assessment,Geometry,Attributes,Coding,Rendering},
+language = {eng},
+copyright = {embargoed-access},
+
+}
+
+@ARTICLE{Cui2024Colored,
+  author={Cui, Mao and Zhang, Yun and Fan, Chunling and Hamzaoui, Raouf and Li, Qinglan},
+  journal={IEEE Transactions on Multimedia}, 
+  title={Colored Point Cloud Quality Assessment Using Complementary Features in 3D and 2D Spaces}, 
+  year={2024},
+  volume={26},
+  number={},
+  pages={11111-11125},
+  keywords={Point cloud compression;Feature extraction;Three-dimensional displays;Visualization;Measurement;Distortion;Distortion measurement;Colored point cloud;complementary features;objective quality assessment model;point cloud;visual quality},
+  doi={10.1109/TMM.2024.3443634}
+}
+
+
+@inproceedings{mekuria2017performance,
+  title={Performance assessment of point cloud compression},
+  author={Mekuria, Rufael and Laserre, Sebastien and Tulvan, Christian},
+  booktitle={2017 IEEE Visual Communications and Image Processing (VCIP)},
+  pages={1--4},
+  year={2017},
+  organization={IEEE}
+}
+
+@inproceedings{tian2017geometric,
+  title={Geometric distortion metrics for point cloud compression},
+  author={Tian, Dong and Ochimizu, Hideaki and Feng, Chen and Cohen, Robert and Vetro, Anthony},
+  booktitle={2017 IEEE International Conference on Image Processing (ICIP)},
+  pages={3460--3464},
+  year={2017},
+  organization={IEEE}
+}
+
+@inproceedings{alexiou2018pointangular,
+  title={Point cloud quality assessment metric based on angular similarity},
+  author={Alexiou, Evangelos and Ebrahimi, Touradj},
+  booktitle={2018 IEEE International Conference on Multimedia and Expo (ICME)},
+  pages={1--6},
+  year={2018},
+  organization={IEEE}
+}
+
+@inproceedings{javaheri2020generalized,
+  title={A generalized Hausdorff distance based quality metric for point cloud geometry},
+  author={Javaheri, Alireza and Brites, Catarina and Pereira, Fernando and Ascenso, Jo{\~a}o},
+  booktitle={2020 Twelfth International Conference on Quality of Multimedia Experience (QoMEX)},
+  pages={1--6},
+  year={2020},
+  organization={IEEE}
+}
+
+@inproceedings{javaheri2020improving,
+  title={Improving PSNR-based quality metrics performance for point cloud geometry},
+  author={Javaheri, Alireza and Brites, Catarina and Pereira, Fernando and Ascenso, Jo{\~a}o},
+  booktitle={2020 IEEE International Conference on Image Processing (ICIP)},
+  pages={3438--3442},
+  year={2020},
+  organization={IEEE}
+}
+
+@inproceedings{alexiou2020towards,
+  title={Towards a point cloud structural similarity metric},
+  author={Alexiou, Evangelos and Ebrahimi, Touradj},
+  booktitle={2020 IEEE International Conference on Multimedia \& Expo Workshops (ICMEW)},
+  pages={1--6},
+  year={2020},
+  organization={IEEE}
+}
+
+@inproceedings{viola2020color,
+  title={A color-based objective quality metric for point cloud contents},
+  author={Viola, Irene and Subramanyam, Shishir and Cesar, Pablo},
+  booktitle={2020 Twelfth International Conference on Quality of Multimedia Experience (QoMEX)},
+  pages={1--6},
+  year={2020},
+  organization={IEEE}
+}
+
+
+@inproceedings{diniz2020localluminance,
+  title={Local luminance patterns for point cloud quality assessment},
+  author={Diniz, Rafael and Freitas, Pedro Garcia and Farias, Myl{\`e}ne CQ},
+  booktitle={2020 IEEE 22nd International Workshop on Multimedia Signal Processing (MMSP)},
+  pages={1--6},
+  year={2020},
+  organization={IEEE}
+}
+
+
+
+
+
+
+
+@inproceedings{Torlig2018anovel,
+author = {Eric M. Torlig and Evangelos Alexiou and Tiago A. Fonseca and Ricardo  L. de Queiroz and Touradj Ebrahimi},
+title = {{A novel methodology for quality assessment of voxelized point clouds}},
+volume = {10752},
+booktitle = {Applications of Digital Image Processing XLI},
+editor = {Andrew G. Tescher},
+organization = {International Society for Optics and Photonics},
+publisher = {SPIE},
+pages = {107520I},
+keywords = {point cloud imaging, objective quality metrics, subjective quality assessment, benchmarking, open access database},
+year = {2018},
+doi = {10.1117/12.2322741},
+URL = {https://doi.org/10.1117/12.2322741}
+}
+
+@inproceedings{alexiou2019exploiting,
+  title={Exploiting user interactivity in quality assessment of point cloud imaging},
+  author={Alexiou, Evangelos and Ebrahimi, Touradj},
+  booktitle={2019 Eleventh International Conference on Quality of Multimedia Experience (QoMEX)},
+  pages={1--6},
+  year={2019},
+  organization={IEEE}
+}
+
+@ARTICLE{Bourbia20232,
+  author={Bourbia, Salima and Karine, Ayoub and Chetouani, Aladine and Hassouni, Mohammed El and Jridi, Maher},
+  journal={IEEE Access}, 
+  title={No-Reference 3D Point Cloud Quality Assessment Using Multi-View Projection and Deep Convolutional Neural Network}, 
+  year={2023},
+  volume={11},
+  number={},
+  pages={26759-26772},
+  keywords={Measurement;Feature extraction;Visualization;Point cloud compression;Three-dimensional displays;Image color analysis;Convolutional neural networks;Point cloud;quality assessment;point cloud rendering;convolutional neural network (CNN)},
+  doi={10.1109/ACCESS.2023.3247191}}
+
+
+@inproceedings{Bourbia2023multi,
+author = {Bourbia, Salima and Karine, Ayoub and Chetouani, Aladine and El Hassouni, Mohammed and Jridi, Maher},
+title = {Multi-stream Point-based model for Blind Geometric Point Cloud Quality Assessment},
+year = {2023},
+isbn = {9798400709128},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3617233.3617247},
+doi = {10.1145/3617233.3617247},
+abstract = {The evaluation of 3D point cloud quality is a critical component in the development of immersive multimedia systems for real-world applications. While perceptual quality evaluation technics for 2D images and videos have reached high performances, developing robust and efficient blind metrics for point cloud quality assessment is still challenging. In this paper, we propose a no-reference point cloud quality assessment method that evaluates the quality of degraded 3D objects using an end-to-end point-based multi-stream model. To capture the geometric degradation of the point cloud, we incorporate normals, curvatures and geometric coordinates. Then, we divide the distorted object into sub-objects, which are fed to a multi-stream network to extract significant features of the geometric degradation. Afterward, these features are used to predict the quality of each sub-object, and the perceptual quality score of the point cloud is obtained by averaging the quality scores of all sub-objects. Experimental results demonstrate that the proposed model achieves promising performance compared to state-of-the- art full and reduced methods.},
+booktitle = {Proceedings of the 20th International Conference on Content-Based Multimedia Indexing},
+pages = {224–228},
+numpages = {5},
+keywords = {3D point cloud, Deep learning., Multi-stream, Point-based model, Quality assessment},
+location = {Orleans, France},
+series = {CBMI '23}
+}
+
+@inproceedings{bourbia2022blind,
+  title={Blind Projection-based 3D Point Cloud Quality Assessment Method using a Convolutional Neural Network.},
+  author={Bourbia, Salima and Karine, Ayoub and Chetouani, Aladine and El Hassouni, Mohammed},
+  booktitle={VISIGRAPP (4: VISAPP)},
+  pages={518--525},
+  year={2022}
+}
+
+@inproceedings{behley2015efficient,
+  title={Efficient radius neighbor search in three-dimensional point clouds},
+  author={Behley, Jens and Steinhage, Volker and Cremers, Armin B},
+  booktitle={2015 IEEE international conference on robotics and automation (ICRA)},
+  pages={3625--3630},
+  year={2015},
+  organization={IEEE}
+}
+
+@INPROCEEDINGS{Carvalho2024perception,
+  author={Carvalho, Arthur H.S. and Freitas, Pedro G. and Gonçalves, Mateus and Homonnai, Johann and Farias, Mylène C.Q.},
+  booktitle={2024 IEEE 26th International Workshop on Multimedia Signal Processing (MMSP)}, 
+  title={Perception-Driven Point Cloud Quality Assessment Through Projections and Deep Structure Similarity}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1-6},
+  keywords={Point cloud compression;Measurement;Visualization;Three-dimensional displays;Pipelines;Signal processing;Predictive models;Vectors;Quality assessment;Visual perception;Point Cloud;Quality Assessment;Virtual Reality;Perceptual Index;Learning-Based},
+  doi={10.1109/MMSP61759.2024.10743953}
+}
+
+
+@article{freitas2023point,
+  title={Point cloud quality assessment: unifying projection, geometry, and texture similarity},
+  author={Freitas, XPedro Garcia and Diniz, Rafael and Farias, Mylene CQ},
+  journal={The Visual Computer},
+  volume={39},
+  number={5},
+  pages={1907--1914},
+  year={2023},
+  publisher={Springer}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@article{de2017motion,
+  title={Motion-compensated compression of dynamic voxelized point clouds},
+  author={De Queiroz, Ricardo L and Chou, Philip A},
+  journal={IEEE Transactions on Image Processing},
+  volume={26},
+  number={8},
+  pages={3886--3895},
+  year={2017},
+  publisher={IEEE}
+}
+
+@article{javaheri2022joint,
+  title={Joint geometry and color projection-based point cloud quality metric},
+  author={Javaheri, Alireza and Brites, Catarina and Pereira, Fernando and Ascenso, Jo{\~a}o},
+  journal={IEEE Access},
+  volume={10},
+  pages={90481--90497},
+  year={2024},
+  publisher={IEEE}
+}
+
+
+
+@inproceedings{zhou2023pointpca+,
+  title={PointPCA+: Extending PointPCA objective quality assessment metric},
+  author={Zhou, Xuemei and Alexiou, Evangelos and Viola, Irene and Cesar, Pablo},
+  booktitle={2023 IEEE International Conference on Image Processing Challenges and Workshops (ICIPCW)},
+  pages={1--5},
+  year={2023},
+  organization={IEEE}
+}
+
+@article{zhou2025pointpca+,
+title = {PointPCA+: A full-reference Point Cloud Quality Assessment metric with PCA-based features},
+journal = {Signal Processing: Image Communication},
+pages = {117262},
+year = {2025},
+issn = {0923-5965},
+doi = {https://doi.org/10.1016/j.image.2025.117262},
+url = {https://www.sciencedirect.com/science/article/pii/S0923596525000098},
+author = {Xuemei Zhou and Evangelos Alexiou and Irene Viola and Pablo Cesar},
+keywords = {Point cloud, Perceptual Quality Assessment, PCA, Full-reference, Feature selection, Random forest},
+abstract = {This paper introduces an enhanced Point Cloud Quality Assessment (PCQA) metric, termed PointPCA+, as an extension of PointPCA, with a focus on computational simplicity and feature richness. PointPCA+ refines the original PCA-based descriptors by employing Principal Component Analysis (PCA) solely on geometry data; additionally, the texture descriptors are refined through a direct application of the function on YCbCr values, enhancing the efficiency of computation. The metric combines geometry and texture features, capturing local shape and appearance properties, through a learning-based fusion to generate a total quality score. Prior to fusion, a feature selection module is incorporated to identify the most effective features from a proposed super-set. Experimental results demonstrate the high predictive performance of PointPCA+ against subjective ground truth scores obtained from four publicly available datasets. The metric consistently outperforms state-of-the-art solutions, offering valuable insights into the design of similarity measurements and the effectiveness of handcrafted features across various distortion types. The code of the proposed metric is available at https://github.com/cwi-dis/pointpca_suite/.}
+}
+
+
+
+@article{alexiou2024pointpca,
+  author       = {Evangelos Alexiou and
+                  Xuemei Zhou and
+                  Irene Viola and
+                  Pablo C{\'{e}}sar},
+  title        = {PointPCA: point cloud objective quality assessment using PCA-based
+                  descriptors},
+  journal      = {{EURASIP} J. Image Video Process.},
+  volume       = {2024},
+  number       = {1},
+  pages        = {20},
+  year         = {2024},
+  url          = {https://doi.org/10.1186/s13640-024-00626-3},
+  doi          = {10.1186/S13640-024-00626-3},
+  timestamp    = {Thu, 22 Aug 2024 20:23:44 +0200},
+  biburl       = {https://dblp.org/rec/journals/ejivp/AlexiouZVC24.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+@InProceedings{shiftmap2012,
+    author="He, Kaiming
+    and Sun, Jian",
+    editor="Fitzgibbon, Andrew
+    and Lazebnik, Svetlana
+    and Perona, Pietro
+    and Sato, Yoichi
+    and Schmid, Cordelia",
+    title="Statistics of Patch Offsets for Image Completion",
+    booktitle="Computer Vision -- ECCV 2012",
+    year="2012",
+    publisher="Springer Berlin Heidelberg",
+    address="Berlin, Heidelberg",
+    pages="16--29",
+    abstract="Image completion involves filling missing parts in images. In this paper we address this problem through the statistics of patch offsets. We observe that if we match similar patches in the image and obtain their offsets (relative positions), the statistics of these offsets are sparsely distributed. We further observe that a few dominant offsets provide reliable information for completing the image. With these offsets we fill the missing region by combining a stack of shifted images via optimization. A variety of experiments show that our method yields generally better results and is faster than existing state-of-the-art methods.",
+    isbn="978-3-642-33709-3"
+}
+
+@inproceedings{genser2018signal,
+  title={Signal and loss geometry aware frequency selective extrapolation for error concealment},
+  author={Genser, Nils and Seiler, J{\"u}rgen and Schilling, Franz and Kaup, Andr{\'e}},
+  booktitle={2018 Picture Coding Symposium (PCS)},
+  pages={159--163},
+  year={2018},
+  organization={IEEE}
+}
+
+@article{seiler2015resampling,
+  title={Resampling images to a regular grid from a non-regular subset of pixel positions using frequency selective reconstruction},
+  author={Seiler, J{\"u}rgen and Jonscher, Markus and Sch{\"o}berl, Michael and Kaup, Andr{\'e}},
+  journal={IEEE Transactions on Image Processing},
+  volume={24},
+  number={11},
+  pages={4540--4555},
+  year={2015},
+  publisher={IEEE}
+}
+
+@inproceedings{bertalmio2001navier,
+  title={Navier-stokes, fluid dynamics, and image and video inpainting},
+  author={Bertalmio, Marcelo and Bertozzi, Andrea L and Sapiro, Guillermo},
+  booktitle={Proceedings of the 2001 IEEE Computer Society Conference on Computer Vision and Pattern Recognition. CVPR 2001},
+  volume={1},
+  pages={I--I},
+  year={2001},
+  organization={IEEE}
+}
+
+@ARTICLE{basics_dataset,
+  author={Ak, Ali and Zerman, Emin and Quach, Maurice and Chetouani, Aladine and Smolic, Aljosa and Valenzise, Giuseppe and Le Callet, Patrick},
+  journal={IEEE Transactions on Multimedia}, 
+  title={BASICS: Broad Quality Assessment of Static Point Clouds in a Compression Scenario}, 
+  year={2024},
+  volume={26},
+  number={},
+  pages={6730-6742},
+  keywords={Point cloud compression;Three-dimensional displays;Measurement;Solid modeling;Rendering (computer graphics);Quality assessment;Octrees;Point cloud quality;3D models;point cloud compression;subjective quality assessment;dataset},
+  doi={10.1109/TMM.2024.3355642}
+}
+
+@article{wpc,
+  title={Perceptual quality assessment of colored 3D point clouds},
+  author={Liu, Qi and Su, Honglei and Duanmu, Zhengfang and Liu, Wentao and Wang, Zhou},
+  journal={IEEE Transactions on Visualization and Computer Graphics},
+  year={2022},
+  publisher={IEEE}
+}
+
+@article{apsipa_dataset,
+  title={A comprehensive study of the rate-distortion performance in MPEG point cloud compression},
+  author={Alexiou, Evangelos and Viola, Irene and Borges, Tom{\'a}s M and Fonseca, Tiago A and De Queiroz, Ricardo L and Ebrahimi, Touradj},
+  journal={APSIPA Transactions on Signal and Information Processing},
+  volume={8},
+  year={2019},
+  publisher={Cambridge University Press}
+}
+
+
+@article{telea2004image,
+  title={An image inpainting technique based on the fast marching method},
+  author={Telea, Alexandru},
+  journal={Journal of graphics tools},
+  volume={9},
+  number={1},
+  pages={23--34},
+  year={2004},
+  publisher={Taylor \& Francis}
+}
+
+
+
+@article{jia2021deep,
+  title={Deep learning geometry compression artifacts removal for video-based point cloud compression},
+  author={Jia, Wei and Li, Li and Li, Zhu and Liu, Shan},
+  journal={International Journal of Computer Vision},
+  volume={129},
+  number={11},
+  pages={2947--2964},
+  year={2021},
+  publisher={Springer}
+}
+
+@article{brunnstrom2009vqeg,
+  title={VQEG validation and ITU standardization of objective perceptual video quality metrics [standards in a nutshell]},
+  author={Brunnstrom, Kjell and Hands, David and Speranza, Filippo and Webster, Arthur},
+  journal={IEEE Signal processing magazine},
+  volume={26},
+  number={3},
+  pages={96--101},
+  year={2009},
+  publisher={IEEE}
+}
+
+
+@inproceedings{torlig2018novel,
+  title={A novel methodology for quality assessment of voxelized point clouds},
+  author={Torlig, Eric M and Alexiou, Evangelos and Fonseca, Tiago A and de Queiroz, Ricardo L and Ebrahimi, Touradj},
+  booktitle={Applications of Digital Image Processing XLI},
+  volume={10752},
+  pages={107520I},
+  year={2018},
+  organization={International Society for Optics and Photonics}
+}
+
+
+@article{scikit-learn,
+  title={Scikit-learn: Machine Learning in {P}ython},
+  author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V.
+          and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P.
+          and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and
+          Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
+  journal={Journal of Machine Learning Research},
+  volume={12},
+  pages={2825--2830},
+  year={2011}
+}
+
+@article{alexiou2019comprehensive,
+  title={A comprehensive study of the rate-distortion performance in MPEG point cloud compression},
+  author={Alexiou, Evangelos and Viola, Irene and Borges, Tom{\'a}s M and Fonseca, Tiago A and De Queiroz, Ricardo L and Ebrahimi, Touradj},
+  journal={APSIPA Transactions on Signal and Information Processing},
+  volume={8},
+  year={2019},
+  publisher={Cambridge University Press}
+}
+
+@article{piq,
+  author       = {Sergey Kastryulin and
+                  Jamil Zakirov and
+                  Denis Prokopenko and
+                  Dmitry V. Dylov},
+  title        = {PyTorch Image Quality: Metrics for Image Quality Assessment},
+  journal      = {CoRR},
+  volume       = {abs/2208.14818},
+  year         = {2022},
+  url          = {https://doi.org/10.48550/arXiv.2208.14818},
+  doi          = {10.48550/ARXIV.2208.14818},
+  eprinttype    = {arXiv},
+  eprint       = {2208.14818},
+  timestamp    = {Mon, 03 Mar 2025 21:32:14 +0100},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2208-14818.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@misc{pyiqa,
+  title={{IQA-PyTorch}: PyTorch Toolbox for Image Quality Assessment},
+  author={Chaofeng Chen and Jiadi Mo},
+  year={2022},
+  howpublished = "[Online]. Available: \url{https://github.com/chaofengc/IQA-PyTorch}"
+}
+
+@misc{lazypredict,
+  author={Shankar Rao Pandala},
+  title={Lazy Predict},
+  year={2021},
+  howpublished={\url{https://lazypredict.readthedocs.io/}}
+}
+
+@inproceedings{johnson2024pyo3,
+  title={PyO3: Building Python Extension Modules in Native Rust with Performance and Safety in Mind},
+  author={Johnson, Price D and Hodson, Douglas D},
+  booktitle={World Congress in Computer Science, Computer Engineering \& Applied Computing},
+  pages={23--30},
+  year={2024},
+  organization={Springer}
+}
+
+@inproceedings{perry2020quality,
+  title={Quality evaluation of static point clouds encoded using MPEG codecs},
+  author={Perry, Stuart and Cong, Huy Phi and da Silva Cruz, Lu{\'\i}s A and Prazeres, Jo{\~a}o and Pereira, Manuela and Pinheiro, Antonio and Dumic, Emil and Alexiou, Evangelos and Ebrahimi, Touradj},
+  booktitle={2020 IEEE International Conference on Image Processing (ICIP)},
+  pages={3428--3432},
+  year={2020},
+  organization={IEEE}
+}
+
+
+
+@article{yang2020predicting,
+  title={Predicting the perceptual quality of point cloud: A 3D-to-2D projection-based exploration},
+  author={Yang, Qi and Chen, Hao and Ma, Zhan and Xu, Yiling and Tang, Rongjun and Sun, Jun},
+  journal={IEEE Transactions on Multimedia},
+  volume={23},
+  pages={3877--3891},
+  year={2020},
+  publisher={IEEE}
+}
+
+
+
+
+
+@article{DINIZ202231,
+title = {Point cloud quality assessment based on geometry-aware texture descriptors},
+journal = {Computers \& Graphics},
+volume = {103},
+pages = {31-44},
+year = {2022},
+issn = {0097-8493},
+doi = {https://doi.org/10.1016/j.cag.2022.01.003},
+url = {https://www.sciencedirect.com/science/article/pii/S0097849322000036},
+author = {Rafael Diniz and Pedro {Garcia Freitas} and Mylene C.Q. Farias},
+keywords = {Point cloud, Quality assessment, Local binary pattern},
+abstract = {In recent years, 3D imaging technologies have advanced tremendously, allowing more faithful representations of the physical world. More specifically, imaging technology advancements have driven the production of plenoptic devices that can capture and display visual contents. These devices represent the visual data using an approximation of the plenoptic illumination function, which can describe visible objects in any position and from any point-of-view of the 3D space. Depending on the capturing device, this approximation can correspond to holograms, light fields, or Point Clouds (PCs) imaging formats. Among these formats, PCs have become very popular for a wide range of applications, such as immersive virtual reality scenarios. As a consequence, in the last couple of years, there has been a great effort to develop novel acquisition, representation, compression, and transmission solutions for PC contents in the research community. In particular, the development of objective quality assessment methods that are able to predict the perceptual quality of PCs has attracted a lot of attention. In this paper, we present an effective framework for assessing the quality of PCs, which is based on descriptors that extract geometry-aware texture information of PC contents. In this framework, the statistics of the extracted information are used to model the PC visual quality. We also present the research and experiments carried to evaluate the most appropriate distance metrics and regression methods to be used together with the proposed descriptors. Experimental results show that the proposed framework exhibit good and robust performance when compared with several state-of-the-art Point Cloud Quality Assessment (PCQA) methods. A C++ implementation of the metrics described in this paper can be found at https://gitlab.com/gpds-unb/pc_metric.}
+}
+
+
+
+@article{diniz2021color,
+  title={Color and geometry texture descriptors for point-cloud quality assessment},
+  author={Diniz, Rafael and Freitas, Pedro Garcia and Farias, Mylene CQ},
+  journal={IEEE Signal Processing Letters},
+  volume={28},
+  pages={1150--1154},
+  year={2021},
+  publisher={IEEE}
+}
+
+
+@article{diniz2021novel,
+  title={A novel point cloud quality assessment metric based on perceptual color distance patterns},
+  author={Diniz, Rafael and Freitas, Pedro Garcia and Farias, Myl{\`e}ne},
+  journal={Electronic Imaging},
+  volume={2021},
+  number={9},
+  pages={256--1},
+  year={2021},
+  publisher={Society for Imaging Science and Technology}
+}
+
+
+@inproceedings{diniz2020multi,
+  title={Multi-distance point cloud quality assessment},
+  author={Diniz, Rafael and Freitas, Pedro Garcia and Farias, Myl{\`e}ne CQ},
+  booktitle={2020 IEEE International Conference on Image Processing (ICIP)},
+  pages={3443--3447},
+  year={2020},
+  organization={IEEE}
+}
+
+
+@inproceedings{diniz2020local,
+  title={Local luminance patterns for point cloud quality assessment},
+  author={Diniz, Rafael and Freitas, Pedro Garcia and Farias, Myl{\`e}ne CQ},
+  booktitle={2020 IEEE 22nd International Workshop on Multimedia Signal Processing (MMSP)},
+  pages={1--6},
+  year={2020},
+  organization={IEEE}
+}
+
+
+@inproceedings{diniz2020towards,
+  title={Towards a point cloud quality assessment model using local binary patterns},
+  author={Diniz, Rafael and Freitas, Pedro Garcia and Farias, Mylene CQ},
+  booktitle={2020 Twelfth International Conference on Quality of Multimedia Experience (QoMEX)},
+  pages={1--6},
+  year={2020},
+  organization={IEEE}
+}
+
+
+@inproceedings{javaheri2017subjective,
+  title={Subjective and objective quality evaluation of 3D point cloud denoising algorithms},
+  author={Javaheri, Alireza and Brites, Catarina and Pereira, Fernando and Ascenso, Jo{\~a}o},
+  booktitle={2017 IEEE International Conference on Multimedia \& Expo Workshops (ICMEW)},
+  pages={1--6},
+  year={2017},
+  organization={IEEE}
+}
+
+
+
+
+@inproceedings{da2019point,
+  title={Point cloud quality evaluation: Towards a definition for test conditions},
+  author={da Silva Cruz, Luis A and Dumi{\'c}, Emil and Alexiou, Evangelos and Prazeres, Joao and Duarte, Rafael and Pereira, Manuela and Pinheiro, Antonio and Ebrahimi, Touradj},
+  booktitle={2019 Eleventh International Conference on Quality of Multimedia Experience (QoMEX)},
+  pages={1--6},
+  year={2019},
+  organization={IEEE}
+}
+
+
+
+
+@inproceedings{alexiou2018benchmarking,
+  title={Benchmarking of objective quality metrics for colorless point clouds},
+  author={Alexiou, Evangelos and Ebrahimi, Touradj},
+  booktitle={2018 Picture Coding Symposium (PCS)},
+  pages={51--55},
+  year={2018},
+  organization={IEEE}
+}
+
+
+
+
+
+@inproceedings{alexious2018point,
+  title={Point cloud subjective evaluation methodology based on reconstructed surfaces},
+  author={Alexious, Evangelos and Pinheiro, Antonio MG and Duarte, Carlos and Matkovi{\'c}, Dragan and Dumi{\'c}, Emil and da Silva Cruz, Luis A and Dmitrovi{\'c}, Lovorka Gotal and Bernardo, Marco V and Pereira, Manuela and Ebrahimi, Touradj},
+  booktitle={Applications of Digital Image Processing XLI},
+  volume={10752},
+  pages={107520H},
+  year={2018},
+  organization={International Society for Optics and Photonics}
+}
+
+
+@inproceedings{alexiou2018impact,
+  title={Impact of visualisation strategy for subjective quality assessment of point clouds},
+  author={Alexiou, Evangelos and Ebrahimi, Touradj},
+  booktitle={2018 IEEE International Conference on Multimedia \& Expo Workshops (ICMEW)},
+  pages={1--6},
+  year={2018},
+  organization={IEEE}
+}
+
+
+
+
+
+@inproceedings{alexiou2018point,
+  title={Point cloud subjective evaluation methodology based on 2D rendering},
+  author={Alexiou, Evangelos and Ebrahimi, Touradj and Bernardo, Marco V and Pereira, Manuela and Pinheiro, Antonio and Cruz, Luis A Da Silva and Duarte, Carlos and Dmitrovic, Lovorka Gotal and Dumic, Emil and Matkovics, Dragan and others},
+  booktitle={2018 Tenth International Conference on Quality of Multimedia Experience (QoMEX)},
+  pages={1--6},
+  year={2018},
+  organization={IEEE}
+}
+
+
+
+
+@inproceedings{su2019perceptual,
+  title={Perceptual quality assessment of 3D point clouds},
+  author={Su, Honglei and Duanmu, Zhengfang and Liu, Wentao and Liu, Qi and Wang, Zhou},
+  booktitle={2019 IEEE International Conference on Image Processing (ICIP)},
+  pages={3182--3186},
+  year={2019},
+  organization={IEEE}
+}
+
+
+@inproceedings{alexiou2017subjective,
+  title={On subjective and objective quality evaluation of point cloud geometry},
+  author={Alexiou, Evangelos and Ebrahimi, Touradj},
+  booktitle={2017 Ninth International Conference on Quality of Multimedia Experience (QoMEX)},
+  pages={1--3},
+  year={2017},
+  organization={IEEE}
+}
+
+
+@inproceedings{alexiou2017performance,
+  title={On the performance of metrics to predict quality in point cloud representations},
+  author={Alexiou, Evangelos and Ebrahimi, Touradj},
+  booktitle={Applications of Digital Image Processing XL},
+  volume={10396},
+  pages={103961H},
+  year={2017},
+  organization={International Society for Optics and Photonics}
+}
+
+
+
+@inproceedings{alexiou2017,
+  author={Alexiou, Evangelos and Upenik, Evgeniy and Ebrahimi, Touradj},
+  booktitle={2017 IEEE 19th International Workshop on Multimedia Signal Processing (MMSP)}, 
+  title={Towards subjective quality assessment of point cloud imaging in augmented reality}, 
+  year={2017},
+  volume={},
+  number={},
+  pages={1-6},
+  doi={10.1109/MMSP.2017.8122237}
+}
+
+
+
+
+
+@inproceedings{schutz2021rendering,
+  title={Rendering point clouds with compute shaders and vertex order optimization},
+  author={Sch{\"u}tz, Markus and Kerbl, Bernhard and Wimmer, Michael},
+  booktitle={Computer Graphics Forum},
+  volume={40},
+  number={4},
+  pages={115--126},
+  year={2021},
+  organization={Wiley Online Library}
+}
+
+
+@inproceedings{rosenthal2008image,
+  title={Image-space point cloud rendering},
+  author={Rosenthal, Paul and Linsen, Lars},
+  booktitle={Proceedings of Computer Graphics International},
+  pages={136--143},
+  year={2008},
+  organization={Citeseer}
+}
+
+
+@inproceedings{schutz2015high,
+  title={High-quality point-based rendering using fast single-pass interpolation},
+  author={Sch{\"u}tz, Markus and Wimmer, Michael},
+  booktitle={2015 Digital Heritage},
+  volume={1},
+  pages={369--372},
+  year={2015},
+  organization={IEEE}
+}
+
+
+
+@article{graziosi2020overview,
+  title={An overview of ongoing point cloud compression standardization activities: Video-based (V-PCC) and geometry-based (G-PCC)},
+  author={Graziosi, D and Nakagami, O and Kuma, S and Zaghetto, A and Suzuki, T and Tabatabai, A},
+  journal={APSIPA Transactions on Signal and Information Processing},
+  volume={9},
+  year={2020},
+  publisher={Cambridge University Press}
+}
+
+@inproceedings{matsakis2014rust,
+  title={The rust language},
+  author={Matsakis, Nicholas D and Klock, Felix S},
+  booktitle={Proceedings of the 2014 ACM SIGAda annual conference on High integrity language technology},
+  pages={103--104},
+  year={2014}
+}
+
+@software{MATLAB,
+  author    = {{The MathWorks, Inc.}},
+  title     = {{MATLAB, Version 9.13.0, R2022b}},
+  year      = {2022},
+  publisher = {{The MathWorks, Inc.}},
+  address   = {{Natick, Massachusetts, United States}},
+  url       = {{https://www.mathworks.com/products/matlab/}}
+}
+
+@article{astola2020jpeg,
+  title={JPEG Pleno: Standardizing a coding framework and tools for plenoptic imaging modalities},
+  author={Astola, Pekka and da Silva Cruz, Luis A and da Silva, Eduardo AB and Ebrahimi, Touradj and Freitas, Pedro Garcia and Gilles, Antonin and Oh, Kwan-Jung and Pagliari, Carla and Pereira, Fernando and Perra, Cristian and others},
+  journal={ITU Journal: ICT Discoveries},
+  year={2020}
+}
+
+
+@article{schwarz2018emerging,
+  title={Emerging MPEG standards for point cloud compression},
+  author={Schwarz, Sebastian and Preda, Marius and Baroncini, Vittorio and Budagavi, Madhukar and Cesar, Pablo and Chou, Philip A and Cohen, Robert A and Krivoku{\'c}a, Maja and Lasserre, S{\'e}bastien and Li, Zhu and others},
+  journal={IEEE Journal on Emerging and Selected Topics in Circuits and Systems},
+  volume={9},
+  number={1},
+  pages={133--148},
+  year={2018},
+  publisher={IEEE}
+}
+
+@article{muller2025b,
+  title={B-Trees Are Back: Engineering Fast and Pageable Node Layouts},
+  author={M{\"u}ller, Marcus and Benson, Lawrence and Leis, Viktor},
+  journal={Proceedings of the ACM on Management of Data},
+  volume={3},
+  number={1},
+  pages={1--26},
+  year={2025},
+  publisher={ACM New York, NY, USA}
+}
+
+@techreport{WG11N16763,
+  author = {MPEG 3DG},
+  title = {{ISO/IEC JTC 1/SC29/WG11}: ``“Call for proposals for point cloud compression v2'' {MPEG Meeting, Hobart, Australia}},
+  institution = {International Organization for Standardization},
+  year = {April, 2017}
+}
+
+
+
+@techreport{WG11N16330,
+  author = {Mekuria, Rafael and Tulvan, C and Li, Z},
+  title = {{ISO/IEC JTC 1/SC29/WG11 input}: ``Requirements for point cloud compression'' {MPEG Meeting, Geneva, Switzerland}},
+  institution = {International Organization for Standardization},
+  year = {June, 2016}
+}
+
+
+
+
+
+@article{javaheri2020point,
+  title={Point cloud rendering after coding: Impacts on subjective and objective quality},
+  author={Javaheri, Alireza and Brites, Catarina and Pereira, Fernando and Ascenso, Joao},
+  journal={IEEE Transactions on Multimedia},
+  volume={23},
+  pages={4049--4064},
+  year={2020},
+  publisher={IEEE}
+}
