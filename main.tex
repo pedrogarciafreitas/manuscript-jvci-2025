@@ -50,6 +50,7 @@
 \usepackage{tabularx}
 \usepackage{arydshln}
 \usepackage{subcaption}
+\usepackage{url}
 
 
 %% The lineno packages adds line numbers. Start line numbering with
@@ -264,7 +265,7 @@
 
 %% Abstract
 \begin{abstract}
-\gls{PCQA} plays a fundamental role in 3D spatial data acquisition, compression, transmission, and rendering for human-oriented technologies. In this paper, we propose a computationally efficient enhancement of the PointPCA+ \gls{PCQA} metric, namely PointPCA++. PointPCA+ is a descriptor-based metric that employs \gls{PCA} decomposition on the geometry data and defines a set of texture descriptors to model perceptual features. The proposed PointPCA++ retains these features and also introduces an additional set of complementary features based on 3D-to-2D projections. The quality score is obtained through a learning-based method that fuses high-dimensional features to predict the visual quality of the point cloud. Extensive experimental results show that the proposed method achieves high predictive performance against subjective ground truth scores obtained from the APSIPA, ICIP2023, QoMEX2019, SJTU-PCQA, UnB, and WPC\red{2.0?} benchmark datasets. Moreover, statistical and correlation tests demonstrate that PointPCA++ significantly outperforms \gls{SOTA} \gls{PCQA} methods while demanding considerably fewer computational resources, such as memory and processing time. The code is available at https://gitlab.com/gpds-unb/projected-gats-metric.
+\gls{PCQA} plays a fundamental role in 3D spatial data acquisition, compression, transmission, and rendering for human-oriented technologies. In this paper, we propose a computationally efficient enhancement of the PointPCA+ \gls{PCQA} metric, namely PointPCA++. PointPCA+ is a descriptor-based metric that employs \gls{PCA} decomposition on the geometry data and defines a set of texture descriptors to model perceptual features. The proposed PointPCA++ retains these features and also introduces an additional set of complementary features based on 3D-to-2D projections. The quality score is obtained through a learning-based method that fuses high-dimensional features to predict the visual quality of the point cloud. Extensive experimental results show that the proposed method achieves high predictive performance against subjective ground truth scores obtained from the APSIPA, ICIP2023, QoMEX2019, SJTU-PCQA, UnB, and WPC\red{2.0?} benchmark datasets. Moreover, statistical and correlation tests demonstrate that PointPCA++ significantly outperforms \gls{SOTA} \gls{PCQA} methods while demanding considerably fewer computational resources, such as memory and processing time. The code is available at \url{https://gitlab.com/gpds-unb/pointpcapp}.
 \end{abstract}
 
 %%Graphical abstract
@@ -345,23 +346,23 @@ Building upon these advances, the contributions of this paper are as follows:
 The rest of this paper is organized as follows. In Section~\ref{sec_review}, we discuss the existing work related to PCA-based \gls{PCQA} methods, their advantages and limitations. In Section~\ref{sec_proposed}, we present a detailed description of the proposed PointPCA++ and its main components, namely PointPCA+RS and \gls{CMP}. The experimental setups and the results acquired on public \gls{PC} quality databases are described in Sections~\ref{sec_setup} and \ref{sec_results}, respectively. Finally, Section~\ref{sec_conclusions} concludes the paper.
 
 
-\begin{figure}[t!]
+\begin{figure*}[t!]
     \centering
-    \begin{subfigure}[b]{\textwidth}
+    \begin{subfigure}[b]{0.85\textwidth}
         \centering
         \includegraphics[width=\textwidth]{diagrams/pointpca1.pdf}
         \caption{PointPCA~\cite{alexiou2024pointpca}}
         \label{fig_pointpca_diagram}
     \end{subfigure}
     \\[1em]
-    \begin{subfigure}[b]{\textwidth}
+    \begin{subfigure}[b]{0.85\textwidth}
         \centering
         \includegraphics[width=\textwidth]{diagrams/pointpca2.pdf}
         \caption{PointPCA+~\cite{zhou2023pointpca+, zhou2025pointpca+}}
         \label{fig_pointpca2_diagram}
     \end{subfigure}
     \\[1em]
-    \begin{subfigure}[b]{\textwidth}
+    \begin{subfigure}[b]{0.85\textwidth}
         \centering
         \includegraphics[width=\textwidth]{diagrams/pointpca2_rs.pdf}
         \caption{PointPCA+RS (proposed)}
@@ -369,12 +370,12 @@ The rest of this paper is organized as follows. In Section~\ref{sec_review}, we 
     \end{subfigure}
     \caption{Architectures of PCA-based point cloud quality assessment metrics. These metrics have some steps in common, such as duplicates merging, computation of descriptors, and statistical features. The difference between PointPCA and PointPCA+ is that PointPCA+ performs PCA only on the geometry data of the reference PC, and transforms both the reference and distorted PCs onto the new basis, avoiding costly processing operations on texture data. \gls{PointPCA+RS} is a technique proposed in this paper to generate an approximated feature set of PointPCA+ while using much less computational complexity and consuming significantly fewer computational resources.}
     \label{fig_pointpca_family}
-\end{figure}
+\end{figure*}
 
 
 
 
-\section{A Brief Review of PCA-based Quality Descriptors} \label{sec_review}
+\section{Brief Review of PCA-based Quality Descriptors} \label{sec_review}
 
 
 Let a color \gls{PC} as a set of points in three-dimensional space, where each point is associated not only with spatial coordinates $(x,y,z)$ but also with color information, typically represented in a color space such as RGB. Formally, a \gls{PC} of $N$ points can be described as a set $\mathcal{P}$=$\{ (p_i \in \mathbb{R}^3, c_i \in \mathbb{R}^3) ~|~ i=1,2,\cdots,N \}$, where each point $p_i$=$(x_i,y_i,z_i)$ is associated with a color attribute $c_i=(r_i,g_i,b_i)$. Using this definition, we denote $\mathcal{A}$ as the reference \gls{PC} (depicted as `REF' in Figure~\ref{fig_pointpca_family}) from which we can find its $K$ nearest points corresponding to the distorted \gls{PC} $\mathcal{B}$ (depicted as `TEST' in Figure~\ref{fig_pointpca_family}). 
