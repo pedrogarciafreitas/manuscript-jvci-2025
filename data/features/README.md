@@ -1,6 +1,6 @@
 # Experimental feature inputs
 
-This directory is the canonical, read-only source collection for the JVCI PointPCA++ experimental analysis. It contains 292 CSV files used to audit inputs, construct normalized tables, run grouped validation, and reproduce runtime analyses. Derived artifacts belong under [`analysis/experimental_results/outputs/`](../../analysis/experimental_results/outputs/), never here.
+This directory is the canonical, read-only source collection for the JVCI PointPCA++ experimental analysis. It contains 292 CSV files used to audit inputs, construct normalized tables, run grouped validation, and reproduce runtime analyses. Derived artifacts belong under [`data/analysis/`](../analysis/), never here.
 
 ## Directory map
 

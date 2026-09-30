@@ -1,0 +1,25 @@
+{
+  "apsipa_max_absolute_dists_difference_from_standalone": 6.306171417239104e-05,
+  "complete_files_are_authoritative": true,
+  "datasets_expected": [
+    "APSIPA",
+    "ICIP2023",
+    "LS-PCQA",
+    "SJTU-PCQA",
+    "UnB_PC",
+    "WPC",
+    "WPC2"
+  ],
+  "datasets_found": [
+    "APSIPA",
+    "ICIP2023",
+    "LS-PCQA",
+    "SJTU-PCQA",
+    "UnB_PC",
+    "WPC",
+    "WPC2"
+  ],
+  "errors": [],
+  "total_reference_groups": 189,
+  "total_samples": 3638
+}

@@ -1,0 +1,195 @@
+{
+  "figure_hashes": {
+    "data/analysis/figures/feature_importance.pdf": "179894165a38be382115ea6020f54ea72e29e9eaa4938e2ee53da90055c50699",
+    "data/analysis/figures/feature_set_ablation.pdf": "f7be04cefbc9f7c6bfc1dbbf64fd8da144f646115051874ee62202bfb44a3020",
+    "data/analysis/figures/pointpca3_worker_scaling.pdf": "f8da632e526aacc1b17fd5c70cc4cd5b5822967bc3ab52a3075056d9e36aa94c",
+    "data/analysis/figures/pointpcapp_all_datasets.pdf": "6e251965dede4df2a53787fd8f185ed8f85663b35e8b6890d18866d915ae39ca",
+    "data/analysis/figures/pointpcapp_modality_importance.pdf": "15e6b65fe335d92819255f4e0005fcf4a7077185b48c75a6dc3085dbe1d356ff",
+    "data/analysis/figures/pointpcapp_runtime.pdf": "da2723bec8fde5b4b109096465f103a21d73ac6830ae3267b53fae3e33efff23",
+    "data/analysis/figures/projection_accuracy_runtime.pdf": "74703d51844470dae311dec122db11a486cca774a1a9550e832ffa25c67ac4fe",
+    "data/analysis/figures/projection_srocc_heatmap.pdf": "1097ea34c4f65da906290af34bbdbf71e8d3dfe8ed2fd158ec32573913c32ab9",
+    "data/analysis/figures/regressor_comparison.pdf": "2cde64f270705dbe6d609643c2a5c92f8b81b707f1d902cb564916aac772e79c",
+    "data/analysis/figures/single_iqa_selection.pdf": "36aa45fd0e2b19a642776535b84581cdcb042bf2d8a28dfe47d299a4fad3d92f"
+  },
+  "figure_specific": {
+    "pointpcapp_all_datasets.pdf": {
+      "bootstrap_repeats": 10000,
+      "bootstrap_root_seed": 42,
+      "coordinate_displacement": "x coordinates exact; small fixed y offsets separate SROCC and PLCC",
+      "evaluation_only_target_encoding": "restrained blue background labeled Evaluation target",
+      "interval": "95% bootstrap interval clustered by target REF",
+      "layout": "three-panel paired forest plot, one panel per training dataset",
+      "model_selection_target_encoding": "restrained warm background labeled Modelling target",
+      "plcc_encoding": "secondary-orange diamond",
+      "purpose": "directed source-to-target transfer of the frozen 46-feature PointPCA++ design",
+      "source_row_encoding": "neutral gray band labeled TRAINING SOURCE; no self-test result",
+      "srocc_encoding": "primary-blue circle",
+      "target_preprocessing_or_calibration": false,
+      "test_datasets_per_panel": 6,
+      "training_datasets": [
+        "APSIPA",
+        "WPC",
+        "LS-PCQA"
+      ],
+      "x_limits": [
+        0.45,
+        1.0
+      ]
+    },
+    "pointpcapp_modality_importance.pdf": {
+      "coordinate_displacement": false,
+      "evaluation_only_datasets": [
+        "ICIP2023",
+        "SJTU-PCQA",
+        "UnB_PC",
+        "WPC2"
+      ],
+      "interval": "IQR across the five outer folds",
+      "modalities": [
+        "DISTS (6 views)",
+        "PointPCA3 (40 features)"
+      ],
+      "model_selection_datasets": [
+        "APSIPA",
+        "WPC",
+        "LS-PCQA"
+      ],
+      "permutations": "50 per modality and fold, restricted within held-out REF",
+      "purpose": "cross-dataset grouped modality reliance of the selected fused regressor",
+      "statistic": "median across five fold-level median SROCC decreases"
+    },
+    "pointpcapp_runtime.pdf": {
+      "coordinate_displacement": false,
+      "datasets": [
+        "APSIPA",
+        "ICIP2023",
+        "LS-PCQA",
+        "SJTU-PCQA",
+        "UnB_PC",
+        "WPC",
+        "WPC2"
+      ],
+      "implementation_order": "PointPCA3 followed sequentially by cubemap/DISTS",
+      "interval": "95% multilevel bootstrap CI clustered by REF; 10000 resamples; seed 42",
+      "layout": "4x4 full-width grid; time/speedup rows for four datasets followed by time/speedup rows for three datasets and one unused column",
+      "matlab_encoding": "neutral gray circles",
+      "pointpcapp_encoding": "primary-blue triangles",
+      "purpose": "seven-dataset sample-level measured complete PointPCA++ runtime and paired speedup",
+      "speedup_encoding": "secondary-orange circles",
+      "timing_scope": "artifact-reported complete feature extraction after warm-up; excludes CSV serialization and regression inference",
+      "trend": "second-order polynomial over the observed x range",
+      "x_definition": "(REF_NUM_POINTS + TEST_NUM_POINTS) / 1000000",
+      "x_scale": "linear, beginning at zero",
+      "y_scale": "linear, beginning at zero"
+    },
+    "projection_accuracy_runtime.pdf": {
+      "coordinate_displacement": false,
+      "family_encoding": "color",
+      "height_ratio": [
+        1,
+        2
+      ],
+      "label_connectors": false,
+      "labeling": "direct pipeline names with fixed offsets; no connectors or manuscript ranking table",
+      "layout": "single-column stacked overview and zoom panels",
+      "overview_labeled_pipelines": [
+        "crop_nopad",
+        "nocrop_nopad",
+        "crop_pad_shiftmap",
+        "nocrop_pad_shiftmap"
+      ],
+      "overview_points": "all ten pipelines at source coordinates",
+      "padder_encoding": "marker",
+      "selected_encoding": "red outline in overview and zoom panels",
+      "zoom_labeled_pipelines": [
+        "crop_pad_navier",
+        "crop_pad_fsr",
+        "nocrop_pad_telea",
+        "nocrop_pad_navier",
+        "crop_pad_telea",
+        "nocrop_pad_fsr"
+      ],
+      "zoom_limits": {
+        "median_srocc": [
+          0.815,
+          0.89
+        ],
+        "median_time_seconds": [
+          4.7,
+          16.0
+        ]
+      }
+    },
+    "single_iqa_selection.pdf": {
+      "alternative_encoding": "primary-blue circle",
+      "coordinate_displacement": false,
+      "displayed_cases": "DISTS and the strongest of the remaining 21 IQAs in each partition",
+      "inference": "selection consistency only; no equivalence or significance claim",
+      "layout": "five-row winner-versus-runner-up dumbbell plot",
+      "purpose": "nested evidence for stable single-IQA selection",
+      "runner_ups": [
+        "TOPIQ-FR",
+        "HaarPSI",
+        "GMSD",
+        "DSS",
+        "WADIQAM-FR"
+      ],
+      "selected_encoding": "red diamond",
+      "selection_precedence": [
+        "highest SROCC",
+        "highest PLCC",
+        "lowest RMSE",
+        "lowest median time"
+      ],
+      "statistic": "median inner-validation SROCC within each outer training partition"
+    }
+  },
+  "heatmap_colormap": "crest",
+  "numerical_artifacts_sha256": "963afe3193b9a588d91a0a01b050e485f9700ce43d1fa5d2a210d2005cb44513",
+  "packages": {
+    "matplotlib": "3.10.8",
+    "seaborn": "0.13.2"
+  },
+  "render_mode": "figures-only",
+  "rendered_utc": "2026-09-30T21:48:38Z",
+  "renderer": "analysis/experimental_results/scripts/run_analysis.py",
+  "renderer_sha256": "18d1ebed206258691d2d4bd61f6bb57b365c12411badef70f54c278a929f60e1",
+  "resolved_palette": [
+    "#4c72b0",
+    "#dd8452",
+    "#55a868",
+    "#c44e52",
+    "#8172b3",
+    "#937860",
+    "#da8bc3",
+    "#8c8c8c",
+    "#ccb974",
+    "#64b5cd"
+  ],
+  "semantic_colors": {
+    "neutral": "#8c8c8c",
+    "positive": "#55a868",
+    "primary": "#4c72b0",
+    "secondary": "#dd8452",
+    "selected": "#c44e52"
+  },
+  "source_artifact_hashes": {
+    "data/analysis/predictions/runtime_pointpcapp_integrated_by_sample.csv": "7c898d74c6da2e12d2c9947f6f8ea33ef4a45c2a7d43a407601f70b01b1cbd89",
+    "data/analysis/summaries/core3_feature_set_fold_metrics.csv": "c71912d094ba4d8d8edb85a81d98ebb5e9fc8f0dd09599e88592f158e7250b17",
+    "data/analysis/summaries/core3_regressor_outer_metrics.csv": "2831e541ea322be447d03f681579f619e15d13f8ca64935b3e80ce76498c6fb4",
+    "data/analysis/summaries/cross_dataset_modality_importance_summary.csv": "894d17bc983f35ae47bc4819bb8c240230d5045ec79d4c245302d93f8d33c67a",
+    "data/analysis/summaries/cross_dataset_transfer_summary.csv": "d93a29ca98d48dcd9bdffb95e0773f1e089c9176e9297845fad04fb3940d5feb",
+    "data/analysis/summaries/importance_individual.csv": "5b29b9aa4206023df00972af32a872c9d453c9dcd3142e75ab4adda1983c8131",
+    "data/analysis/summaries/importance_iqa_blocks.csv": "5c22628a44cfd36957aa799612779e36a402cfd2b5fe6defeae0fc08214a47f5",
+    "data/analysis/summaries/projection_case_summary.csv": "cea39a57fd988a84bc78725d993a53a40525afe8033a2894f42be5e075b811ec",
+    "data/analysis/summaries/projection_pipeline_ranks.csv": "6d08b408dfff66685df10b7c3f0d07e975e3dde508c3ddbe2975d194cd8121a6",
+    "data/analysis/summaries/runtime_scaling_summary.csv": "e14d235943e0555ea9583102608933a078a9b8ed98f2d99f13df4f7e55303c7c",
+    "data/analysis/summaries/single_iqa_outer_selection.csv": "b2d3635b60b7d4aa18e05f48743b685b3499e11634793269d914713ac77f0b23"
+  },
+  "source_run_id": "20260928T142733",
+  "theme": {
+    "context": "paper",
+    "palette": "deep",
+    "style": "whitegrid"
+  }
+}
