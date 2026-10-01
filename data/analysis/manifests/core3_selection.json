@@ -1,0 +1,442 @@
+{
+  "dataset_weighting": "equal dataset ranks",
+  "evaluation_only_datasets": [
+    "ICIP2023",
+    "SJTU-PCQA",
+    "UnB_PC",
+    "WPC2"
+  ],
+  "feature_set_details": {
+    "outer_inner_winners": [
+      {
+        "feature_set": "fusion_46",
+        "outer_fold": 0
+      },
+      {
+        "feature_set": "fusion_46",
+        "outer_fold": 1
+      },
+      {
+        "feature_set": "fusion_46",
+        "outer_fold": 2
+      },
+      {
+        "feature_set": "fusion_46",
+        "outer_fold": 3
+      },
+      {
+        "feature_set": "fusion_46",
+        "outer_fold": 4
+      }
+    ],
+    "selection_summary": [
+      {
+        "feature_set": "fusion_46",
+        "median_aggregate_rank": 1.0,
+        "median_ls_srocc": 0.8621848749752816,
+        "median_mean_plcc": 0.9146530168121205,
+        "median_mean_rmse": 3.6671419110360066,
+        "selection_count": 5
+      },
+      {
+        "feature_set": "pointpca3_only",
+        "median_aggregate_rank": 2.0,
+        "median_ls_srocc": 0.8141957351430932,
+        "median_mean_plcc": 0.8911400902928136,
+        "median_mean_rmse": 3.6131992158228066,
+        "selection_count": 0
+      },
+      {
+        "feature_set": "dists_only",
+        "median_aggregate_rank": 3.0,
+        "median_ls_srocc": 0.6539264391096797,
+        "median_mean_plcc": 0.7737489788439736,
+        "median_mean_rmse": 5.8754107418747585,
+        "selection_count": 0
+      }
+    ]
+  },
+  "finished_utc": "2026-09-30T17:52:34Z",
+  "fusion_gate_passed": true,
+  "model_selection_datasets": [
+    "APSIPA",
+    "WPC",
+    "LS-PCQA"
+  ],
+  "packages": {
+    "lazypredict": "0.3.0",
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "python": "3.12.9 (main, Mar 17 2025, 21:01:58) [Clang 20.1.0 ]",
+    "scikit_learn": "1.8.0",
+    "scipy": "1.17.1"
+  },
+  "regressor_details": {
+    "eligible_models": [
+      "AdaBoostRegressor",
+      "BaggingRegressor",
+      "BayesianRidge",
+      "DecisionTreeRegressor",
+      "ElasticNetCV",
+      "ExtraTreeRegressor",
+      "ExtraTreesRegressor",
+      "GammaRegressor",
+      "GaussianProcessRegressor",
+      "GradientBoostingRegressor",
+      "HistGradientBoostingRegressor",
+      "HuberRegressor",
+      "KNeighborsRegressor",
+      "KernelRidge",
+      "LassoCV",
+      "LassoLarsCV",
+      "LassoLarsIC",
+      "LinearRegression",
+      "LinearSVR",
+      "MLPRegressor",
+      "NuSVR",
+      "OrthogonalMatchingPursuit",
+      "OrthogonalMatchingPursuitCV",
+      "PassiveAggressiveRegressor",
+      "PoissonRegressor",
+      "RANSACRegressor",
+      "RandomForestRegressor",
+      "Ridge",
+      "RidgeCV",
+      "SGDRegressor",
+      "SVR",
+      "TransformedTargetRegressor",
+      "TweedieRegressor",
+      "XGBRegressor"
+    ],
+    "ineligible_models": [
+      "DummyRegressor",
+      "ElasticNet",
+      "Lars",
+      "LarsCV",
+      "Lasso",
+      "LassoLars",
+      "QuantileRegressor"
+    ],
+    "outer_inner_winners": [
+      {
+        "model": "GradientBoostingRegressor",
+        "outer_fold": 0
+      },
+      {
+        "model": "RandomForestRegressor",
+        "outer_fold": 1
+      },
+      {
+        "model": "RandomForestRegressor",
+        "outer_fold": 2
+      },
+      {
+        "model": "ExtraTreesRegressor",
+        "outer_fold": 3
+      },
+      {
+        "model": "ExtraTreesRegressor",
+        "outer_fold": 4
+      }
+    ],
+    "selection_summary": [
+      {
+        "median_aggregate_rank": 2.0,
+        "median_ls_srocc": 0.8621848749752816,
+        "median_mean_plcc": 0.9146530168121205,
+        "median_mean_rmse": 3.6671419110360066,
+        "model": "ExtraTreesRegressor",
+        "selection_count": 2
+      },
+      {
+        "median_aggregate_rank": 2.6666666666666665,
+        "median_ls_srocc": 0.8561166847959443,
+        "median_mean_plcc": 0.9121043006645694,
+        "median_mean_rmse": 3.727361538,
+        "model": "RandomForestRegressor",
+        "selection_count": 2
+      },
+      {
+        "median_aggregate_rank": 5.333333333333333,
+        "median_ls_srocc": 0.8625535786173348,
+        "median_mean_plcc": 0.9106364588270116,
+        "median_mean_rmse": 3.809785390626006,
+        "model": "GradientBoostingRegressor",
+        "selection_count": 1
+      },
+      {
+        "median_aggregate_rank": 4.0,
+        "median_ls_srocc": 0.8626090646616339,
+        "median_mean_plcc": 0.9098646067333735,
+        "median_mean_rmse": 3.7864160330901773,
+        "model": "HistGradientBoostingRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 6.0,
+        "median_ls_srocc": 0.85520688124341,
+        "median_mean_plcc": 0.900739335220789,
+        "median_mean_rmse": 4.065763127656061,
+        "model": "PoissonRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 9.333333333333334,
+        "median_ls_srocc": 0.8441274453690326,
+        "median_mean_plcc": 0.9042086735905666,
+        "median_mean_rmse": 3.889442626227071,
+        "model": "BaggingRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 9.666666666666666,
+        "median_ls_srocc": 0.8301458718328975,
+        "median_mean_plcc": 0.8999065862609124,
+        "median_mean_rmse": 3.9707273208210037,
+        "model": "AdaBoostRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 11.666666666666666,
+        "median_ls_srocc": 0.8501798467678511,
+        "median_mean_plcc": 0.8909589365731017,
+        "median_mean_rmse": 4.011140644063967,
+        "model": "XGBRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 11.666666666666666,
+        "median_ls_srocc": 0.8431639693806221,
+        "median_mean_plcc": 0.8876762655211562,
+        "median_mean_rmse": 4.01442696107675,
+        "model": "GammaRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 14.333333333333334,
+        "median_ls_srocc": 0.8439715581877617,
+        "median_mean_plcc": 0.876163630059411,
+        "median_mean_rmse": 4.2649592119085655,
+        "model": "ElasticNetCV",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 15.0,
+        "median_ls_srocc": 0.841022486051641,
+        "median_mean_plcc": 0.8789827687071475,
+        "median_mean_rmse": 4.231119486241993,
+        "model": "SGDRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 15.0,
+        "median_ls_srocc": 0.8248370061433388,
+        "median_mean_plcc": 0.8789303786633974,
+        "median_mean_rmse": 18.549866164637233,
+        "model": "KernelRidge",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 15.0,
+        "median_ls_srocc": 0.8248370061433388,
+        "median_mean_plcc": 0.8789303786632529,
+        "median_mean_rmse": 4.103015091856254,
+        "model": "Ridge",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 15.0,
+        "median_ls_srocc": 0.8223370258004102,
+        "median_mean_plcc": 0.895512220477261,
+        "median_mean_rmse": 3.755551198522858,
+        "model": "KNeighborsRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 15.333333333333334,
+        "median_ls_srocc": 0.85532694840251,
+        "median_mean_plcc": 0.9003200690107075,
+        "median_mean_rmse": 4.855737631034235,
+        "model": "SVR",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 15.333333333333334,
+        "median_ls_srocc": 0.8405558522399507,
+        "median_mean_plcc": 0.8688733186999649,
+        "median_mean_rmse": 4.2082982663712745,
+        "model": "LassoLarsCV",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 15.333333333333334,
+        "median_ls_srocc": 0.8322884597745936,
+        "median_mean_plcc": 0.8784747053570445,
+        "median_mean_rmse": 4.12012061912609,
+        "model": "BayesianRidge",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 15.666666666666666,
+        "median_ls_srocc": 0.8520248862404428,
+        "median_mean_plcc": 0.8999276172010537,
+        "median_mean_rmse": 5.176317883720984,
+        "model": "NuSVR",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 15.666666666666666,
+        "median_ls_srocc": 0.8403727149190257,
+        "median_mean_plcc": 0.871897841468179,
+        "median_mean_rmse": 4.20736626769561,
+        "model": "LassoCV",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 16.0,
+        "median_ls_srocc": 0.8357115214984826,
+        "median_mean_plcc": 0.867166011757274,
+        "median_mean_rmse": 4.478293987544105,
+        "model": "TweedieRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 18.666666666666668,
+        "median_ls_srocc": 0.8391034732434597,
+        "median_mean_plcc": 0.8891821962393017,
+        "median_mean_rmse": 4.197418776687052,
+        "model": "MLPRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 20.666666666666668,
+        "median_ls_srocc": 0.8163450572885967,
+        "median_mean_plcc": 0.8712988526196858,
+        "median_mean_rmse": 4.13113545544845,
+        "model": "RidgeCV",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 21.333333333333332,
+        "median_ls_srocc": 0.813516561963161,
+        "median_mean_plcc": 0.8746510035421032,
+        "median_mean_rmse": 4.212323408206836,
+        "model": "LinearSVR",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 22.333333333333332,
+        "median_ls_srocc": 0.8064443769582929,
+        "median_mean_plcc": 0.8713465886871358,
+        "median_mean_rmse": 4.314780349593795,
+        "model": "HuberRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 23.333333333333332,
+        "median_ls_srocc": 0.8109829403542093,
+        "median_mean_plcc": 0.8621913618683106,
+        "median_mean_rmse": 4.3718125337901474,
+        "model": "LassoLarsIC",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 23.666666666666668,
+        "median_ls_srocc": 0.8176249524347803,
+        "median_mean_plcc": 0.8544680510566888,
+        "median_mean_rmse": 4.689441905728217,
+        "model": "OrthogonalMatchingPursuitCV",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 25.0,
+        "median_ls_srocc": 0.8015205303873031,
+        "median_mean_plcc": 0.8532286987799981,
+        "median_mean_rmse": 4.466255416749605,
+        "model": "LinearRegression",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 26.0,
+        "median_ls_srocc": 0.8015205303873031,
+        "median_mean_plcc": 0.8532286987799981,
+        "median_mean_rmse": 4.466255416749605,
+        "model": "TransformedTargetRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 26.666666666666668,
+        "median_ls_srocc": 0.8116182845475015,
+        "median_mean_plcc": 0.8509985292393073,
+        "median_mean_rmse": 4.830588061250846,
+        "model": "OrthogonalMatchingPursuit",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 29.666666666666668,
+        "median_ls_srocc": 0.7296855238178174,
+        "median_mean_plcc": 0.8211686905518016,
+        "median_mean_rmse": 5.756308927180629,
+        "model": "PassiveAggressiveRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 30.0,
+        "median_ls_srocc": 0.7566084884198382,
+        "median_mean_plcc": 0.8414023988146887,
+        "median_mean_rmse": 5.046998584517544,
+        "model": "DecisionTreeRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 30.333333333333332,
+        "median_ls_srocc": 0.7516387191496545,
+        "median_mean_plcc": 0.838984571480439,
+        "median_mean_rmse": 4.867632015681667,
+        "model": "ExtraTreeRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 33.0,
+        "median_ls_srocc": 0.4832290981757775,
+        "median_mean_plcc": 0.5939625575835361,
+        "median_mean_rmse": 15.38407894641864,
+        "model": "GaussianProcessRegressor",
+        "selection_count": 0
+      },
+      {
+        "median_aggregate_rank": 33.0,
+        "median_ls_srocc": 0.0976474714304558,
+        "median_mean_plcc": 0.4627386770341962,
+        "median_mean_rmse": 16792578.02497034,
+        "model": "RANSACRegressor",
+        "selection_count": 0
+      }
+    ],
+    "stable_shortlist": [
+      "ExtraTreesRegressor",
+      "RandomForestRegressor",
+      "GradientBoostingRegressor",
+      "HistGradientBoostingRegressor",
+      "PoissonRegressor",
+      "BaggingRegressor"
+    ]
+  },
+  "run_id": "20260930T175201",
+  "script_sha256": "e42562afa340dfe1efd12627c3b504b85e7cf148105417eb54b46a4bb4afe1f3",
+  "seed": 42,
+  "selected_feature_set": "fusion_46",
+  "selected_iqa": "DISTSMetric",
+  "selected_projection": "crop_pad_navier",
+  "selected_regressor": "ExtraTreesRegressor",
+  "stable_shortlist": [
+    "ExtraTreesRegressor",
+    "RandomForestRegressor",
+    "GradientBoostingRegressor",
+    "HistGradientBoostingRegressor",
+    "PoissonRegressor",
+    "BaggingRegressor"
+  ],
+  "started_utc": "2026-09-30T17:52:01Z",
+  "tie_break": "LS-PCQA SROCC, aggregate PLCC, aggregate RMSE"
+}
