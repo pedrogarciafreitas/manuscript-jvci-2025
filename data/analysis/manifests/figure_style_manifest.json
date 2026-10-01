@@ -1,17 +1,23 @@
 {
   "figure_hashes": {
     "data/analysis/figures/feature_importance.pdf": "179894165a38be382115ea6020f54ea72e29e9eaa4938e2ee53da90055c50699",
-    "data/analysis/figures/feature_set_ablation.pdf": "f7be04cefbc9f7c6bfc1dbbf64fd8da144f646115051874ee62202bfb44a3020",
+    "data/analysis/figures/feature_set_ablation.pdf": "b1ab3decd282e183eb191b0c8baae27886fd39a9fc88bdc0c362dc88f9456f92",
     "data/analysis/figures/pointpca3_worker_scaling.pdf": "f8da632e526aacc1b17fd5c70cc4cd5b5822967bc3ab52a3075056d9e36aa94c",
     "data/analysis/figures/pointpcapp_all_datasets.pdf": "6e251965dede4df2a53787fd8f185ed8f85663b35e8b6890d18866d915ae39ca",
     "data/analysis/figures/pointpcapp_modality_importance.pdf": "15e6b65fe335d92819255f4e0005fcf4a7077185b48c75a6dc3085dbe1d356ff",
     "data/analysis/figures/pointpcapp_runtime.pdf": "da2723bec8fde5b4b109096465f103a21d73ac6830ae3267b53fae3e33efff23",
     "data/analysis/figures/projection_accuracy_runtime.pdf": "74703d51844470dae311dec122db11a486cca774a1a9550e832ffa25c67ac4fe",
     "data/analysis/figures/projection_srocc_heatmap.pdf": "1097ea34c4f65da906290af34bbdbf71e8d3dfe8ed2fd158ec32573913c32ab9",
-    "data/analysis/figures/regressor_comparison.pdf": "2cde64f270705dbe6d609643c2a5c92f8b81b707f1d902cb564916aac772e79c",
+    "data/analysis/figures/regressor_comparison.pdf": "acf341bf4217596947b76ace542215398ceb4d29a72794808cccd29855c467a6",
     "data/analysis/figures/single_iqa_selection.pdf": "36aa45fd0e2b19a642776535b84581cdcb042bf2d8a28dfe47d299a4fad3d92f"
   },
   "figure_specific": {
+    "feature_set_ablation.pdf": {
+      "correlations": "SROCC blue circles; PLCC orange diamonds",
+      "layout": "two metric rows by three dataset columns",
+      "rmse": "independent dataset scales",
+      "statistics": "outer-fold median and first-to-third-quartile interval"
+    },
     "pointpcapp_all_datasets.pdf": {
       "bootstrap_repeats": 10000,
       "bootstrap_root_seed": 42,
@@ -120,6 +126,12 @@
         ]
       }
     },
+    "regressor_comparison.pdf": {
+      "interval": "first to third quartile, not a confidence interval",
+      "layout": "three inner-validation panels and aggregate-rank panel",
+      "points": "five inner-validation medians per regressor and dataset",
+      "selection": "frequency first, then median aggregate rank"
+    },
     "single_iqa_selection.pdf": {
       "alternative_encoding": "primary-blue circle",
       "coordinate_displacement": false,
@@ -150,10 +162,10 @@
     "matplotlib": "3.10.8",
     "seaborn": "0.13.2"
   },
-  "render_mode": "figures-only",
-  "rendered_utc": "2026-09-30T21:48:38Z",
-  "renderer": "analysis/experimental_results/scripts/run_analysis.py",
-  "renderer_sha256": "18d1ebed206258691d2d4bd61f6bb57b365c12411badef70f54c278a929f60e1",
+  "render_mode": "figures-only:selection",
+  "rendered_utc": "2026-10-01T02:42:04Z",
+  "renderer": "scripts/run_analysis.py",
+  "renderer_sha256": "b7c3f5792c24cd6bacff953b036efdf7e2e4a9d3019feb8647c5946451e1eff0",
   "resolved_palette": [
     "#4c72b0",
     "#dd8452",
@@ -174,9 +186,12 @@
     "selected": "#c44e52"
   },
   "source_artifact_hashes": {
+    "data/analysis/manifests/core3_selection.json": "b262c4ae74143afe7df3ddebf109f2d5a25c384bf0a7509e2db9a6db6dab2ff1",
     "data/analysis/predictions/runtime_pointpcapp_integrated_by_sample.csv": "7c898d74c6da2e12d2c9947f6f8ea33ef4a45c2a7d43a407601f70b01b1cbd89",
     "data/analysis/summaries/core3_feature_set_fold_metrics.csv": "c71912d094ba4d8d8edb85a81d98ebb5e9fc8f0dd09599e88592f158e7250b17",
-    "data/analysis/summaries/core3_regressor_outer_metrics.csv": "2831e541ea322be447d03f681579f619e15d13f8ca64935b3e80ce76498c6fb4",
+    "data/analysis/summaries/core3_regressor_dataset_ranks.csv": "114d0f7fc3d879cf97b535e679c18f62bdac8228f406753bb1ad997e3e0b53fc",
+    "data/analysis/summaries/core3_regressor_inner.csv": "651da52ef860e6c8f8b22b0aec705a2bc787088ae3b6407e57bedcc44595c0f2",
+    "data/analysis/summaries/core3_regressor_selection_summary.csv": "37b6132411d62399a3c20906c4dacd1f39d0bae023c48a766a93021aea2353eb",
     "data/analysis/summaries/cross_dataset_modality_importance_summary.csv": "894d17bc983f35ae47bc4819bb8c240230d5045ec79d4c245302d93f8d33c67a",
     "data/analysis/summaries/cross_dataset_transfer_summary.csv": "d93a29ca98d48dcd9bdffb95e0773f1e089c9176e9297845fad04fb3940d5feb",
     "data/analysis/summaries/importance_individual.csv": "5b29b9aa4206023df00972af32a872c9d453c9dcd3142e75ab4adda1983c8131",
@@ -186,7 +201,7 @@
     "data/analysis/summaries/runtime_scaling_summary.csv": "e14d235943e0555ea9583102608933a078a9b8ed98f2d99f13df4f7e55303c7c",
     "data/analysis/summaries/single_iqa_outer_selection.csv": "b2d3635b60b7d4aa18e05f48743b685b3499e11634793269d914713ac77f0b23"
   },
-  "source_run_id": "20260928T142733",
+  "source_run_id": "20260930T175201",
   "theme": {
     "context": "paper",
     "palette": "deep",

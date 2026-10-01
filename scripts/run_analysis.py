@@ -143,7 +143,7 @@ PIPELINE_FAMILY = {
 }
 
 SCRIPT = Path(__file__).resolve()
-REPO = SCRIPT.parents[3]
+REPO = SCRIPT.parents[1]
 WORKSPACE = REPO.parent
 FEATURES = REPO / "data" / "features"
 MATLAB_FEATURES = FEATURES / "pointpca" / "matlab"
@@ -2396,73 +2396,95 @@ def render_core3_selection_figures() -> None:
     manifest = core3_selection_manifest()
     selected = str(manifest["selected_regressor"])
     order = list(manifest["stable_shortlist"])
-    metrics_frame = pd.read_csv(
-        DIRS["summaries"] / "core3_regressor_outer_metrics.csv"
-    )
-    fig, axes = plt.subplots(1, 3, figsize=(11, 3.8), sharey=True)
-    for ax, dataset in zip(axes, MODEL_SELECTION_DATASETS):
-        data = metrics_frame[metrics_frame["dataset"].eq(dataset)].copy()
-        palette = {
-            model: style["selected"] if model == selected else style["primary"]
-            for model in order
-        }
-        sns.boxplot(
-            data=data,
-            x="model",
-            y="srocc",
-            order=order,
-            palette=palette,
-            width=0.62,
-            fliersize=2.5,
-            linewidth=0.8,
-            ax=ax,
-        )
+    names = {
+        "ExtraTreesRegressor": "Extra Trees", "RandomForestRegressor": "Random Forest",
+        "GradientBoostingRegressor": "Gradient Boosting",
+        "HistGradientBoostingRegressor": "Hist. Gradient Boosting",
+        "PoissonRegressor": "Poisson", "BaggingRegressor": "Bagging",
+    }
+    inner = pd.read_csv(DIRS["summaries"] / "core3_regressor_inner.csv")
+    scores = inner[inner["status"].eq("complete")].groupby(
+        ["dataset", "outer_fold", "model"]
+    )["srocc"].median()
+    ranks = pd.read_csv(DIRS["summaries"] / "core3_regressor_dataset_ranks.csv")
+    selection = pd.read_csv(
+        DIRS["summaries"] / "core3_regressor_selection_summary.csv"
+    ).set_index("model")
+    fig, axes = plt.subplots(1, 4, figsize=(12, 4), sharey=True)
+    for ax, dataset in zip(axes[:3], MODEL_SELECTION_DATASETS):
+        for y, model in enumerate(order):
+            values = scores.loc[dataset].xs(model, level="model").sort_index().to_numpy()
+            assert len(values) == 5 and np.isfinite(values).all()
+            saved = ranks[ranks["dataset"].eq(dataset) & ranks["model"].eq(model)]
+            assert np.allclose(values, saved.sort_values("outer_fold")["median_srocc"])
+            q1, median, q3 = np.quantile(values, [0.25, 0.5, 0.75])
+            color = style["selected"] if model == selected else style["primary"]
+            ax.scatter(values, np.full(5, y), s=19, color=color, alpha=0.35)
+            ax.plot([q1, q3], [y, y], color=color, linewidth=2.5)
+            ax.scatter([median], [y], color=color, marker="D", s=32, zorder=4)
         ax.set_title(dataset)
-        ax.set_xlabel("")
-        ax.set_ylabel("Outer-fold SROCC" if ax is axes[0] else "")
-        ax.tick_params(axis="x", rotation=55, labelsize=7)
-        for label in ax.get_xticklabels():
-            label.set_horizontalalignment("right")
+        ax.set_xlabel("Inner-validation SROCC\nHigher is better")
+        ax.margins(x=0.12)
+    ax = axes[3]
+    for y, model in enumerate(order):
+        row = selection.loc[model]
+        value = float(row["median_aggregate_rank"])
+        color = style["selected"] if model == selected else style["primary"]
+        ax.scatter([value], [y], color=color, marker="D", s=32)
+        ax.annotate(f'{value:.2f}  ({int(row["selection_count"])}/5)',
+                    (value, y), xytext=(7, 0), textcoords="offset points",
+                    va="center", fontsize=8)
+    ax.set_xlim(0, selection.loc[order, "median_aggregate_rank"].max() + 6)
+    ax.set_title("Selection evidence")
+    ax.set_xlabel("Median aggregate rank\nLower is better; wins in parentheses")
+    axes[0].set_yticks(range(len(order)), [names[m] for m in order])
+    axes[0].invert_yaxis()
+    for label, model in zip(axes[0].get_yticklabels(), order):
+        if model == selected:
+            label.set_color(style["selected"])
+            label.set_fontweight("bold")
+    for ax in axes:
         sns.despine(ax=ax)
-    fig.legend(
-        handles=[
-            Line2D([0], [0], color=style["selected"], linewidth=6, label="Selected"),
-            Line2D([0], [0], color=style["primary"], linewidth=6, label="Other shortlist"),
-        ],
-        loc="lower center",
-        ncol=2,
-        frameon=False,
-    )
-    fig.tight_layout(rect=(0, 0.12, 1, 1))
+        ax.grid(axis="y", visible=False)
+    fig.tight_layout()
     save_figure(fig, "regressor_comparison.pdf")
 
     feature = pd.read_csv(DIRS["summaries"] / "core3_feature_set_fold_metrics.csv")
-    display = {
-        "pointpca3_only": "PointPCA$^3$",
-        "dists_only": "DISTS",
-        "fusion_46": "Fusion (46)",
-    }
-    feature["display"] = feature["feature_set"].map(display)
-    fig, axes = plt.subplots(1, 3, figsize=(10, 3.6), sharey=True)
-    for ax, dataset in zip(axes, MODEL_SELECTION_DATASETS):
-        sns.boxplot(
-            data=feature[feature["dataset"].eq(dataset)],
-            x="display",
-            y="srocc",
-            order=list(display.values()),
-            palette=[style["primary"], style["secondary"], style["selected"]],
-            width=0.6,
-            linewidth=0.8,
-            fliersize=2.5,
-            ax=ax,
-        )
-        ax.set_title(dataset)
-        ax.set_xlabel("")
-        ax.set_ylabel("Outer-fold SROCC" if ax is axes[0] else "")
-        sns.despine(ax=ax)
+    designs = ["pointpca3_only", "dists_only", "fusion_46"]
+    labels = ["PointPCA$^3$", "DISTS", "Fusion (46)"]
+    fig, axes = plt.subplots(2, 3, figsize=(10, 5.8))
+    for col, dataset in enumerate(MODEL_SELECTION_DATASETS):
+        data = feature[feature["dataset"].eq(dataset)]
+        for metric, color, marker, offset in [
+            ("srocc", style["primary"], "o", -0.10),
+            ("plcc", style["secondary"], "D", 0.10),
+            ("rmse", style["primary"], "o", 0),
+        ]:
+            ax = axes[1 if metric == "rmse" else 0, col]
+            for x, design in enumerate(designs):
+                values = data[data["feature_set"].eq(design)][metric].to_numpy()
+                assert len(values) == 5 and np.isfinite(values).all()
+                q1, median, q3 = np.quantile(values, [0.25, 0.5, 0.75])
+                ax.errorbar(x + offset, median,
+                            yerr=[[median - q1], [q3 - median]],
+                            fmt=marker, color=color, capsize=3, markersize=5,
+                            label=metric.upper() if x == 0 else None)
+        axes[0, col].set_title(dataset)
+        axes[0, col].set_ylabel("Correlation (higher is better)" if col == 0 else "")
+        axes[1, col].set_ylabel("RMSE (lower is better)" if col == 0 else "")
+        axes[0, col].legend(frameon=False, fontsize=8)
+        for ax in axes[:, col]:
+            ax.set_xticks(range(3), labels)
+            ax.set_xlim(-0.4, 2.4)
+            ax.get_xticklabels()[-1].set_fontweight("bold")
+            ax.grid(axis="x", visible=False)
+            sns.despine(ax=ax)
+    # Correlations share a scale; RMSE remains dataset-specific.
+    limits = [ax.get_ylim() for ax in axes[0]]
+    for ax in axes[0]:
+        ax.set_ylim(min(v[0] for v in limits), max(v[1] for v in limits))
     fig.tight_layout()
     save_figure(fig, "feature_set_ablation.pdf")
-
 
 def run_core_reselection_only() -> None:
     start = time.time()
@@ -4383,7 +4405,7 @@ def write_figure_metadata(
         "pointpca3_worker_scaling.pdf": "summaries/runtime_scaling_summary.csv",
         "projection_srocc_heatmap.pdf": "summaries/projection_case_summary.csv",
         "projection_accuracy_runtime.pdf": "summaries/projection_pipeline_ranks.csv",
-        "regressor_comparison.pdf": "summaries/core3_regressor_outer_metrics.csv",
+        "regressor_comparison.pdf": "summaries/core3_regressor_inner.csv;summaries/core3_regressor_dataset_ranks.csv;summaries/core3_regressor_selection_summary.csv;manifests/core3_selection.json",
         "feature_importance.pdf": "summaries/importance_individual.csv;summaries/importance_iqa_blocks.csv",
         "single_iqa_selection.pdf": "summaries/single_iqa_outer_selection.csv",
         "feature_set_ablation.pdf": "summaries/core3_feature_set_fold_metrics.csv",
@@ -4397,8 +4419,8 @@ def write_figure_metadata(
         "projection_accuracy_runtime.pdf": "fig_projection_accuracy_runtime",
         "regressor_comparison.pdf": "fig_regressor_comparison",
         "feature_importance.pdf": "fig_feature_importance",
-        "single_iqa_selection.pdf": "legacy_fig_single_iqa_selection",
-        "feature_set_ablation.pdf": "supplementary_candidate",
+        "single_iqa_selection.pdf": "fig_single_iqa_selection",
+        "feature_set_ablation.pdf": "fig_feature_set_ablation",
         "pointpcapp_modality_importance.pdf": "fig_pointpcapp_modality_importance",
         "pointpcapp_runtime.pdf": "fig_pointpcapp_runtime",
         "pointpcapp_all_datasets.pdf": "fig_pointpcapp_all_datasets",
@@ -4451,6 +4473,18 @@ def write_figure_metadata(
             "theme": {"context": "paper", "style": "whitegrid", "palette": "deep"},
             "heatmap_colormap": "crest",
             "figure_specific": {
+                "regressor_comparison.pdf": {
+                    "layout": "three inner-validation panels and aggregate-rank panel",
+                    "points": "five inner-validation medians per regressor and dataset",
+                    "interval": "first to third quartile, not a confidence interval",
+                    "selection": "frequency first, then median aggregate rank",
+                },
+                "feature_set_ablation.pdf": {
+                    "layout": "two metric rows by three dataset columns",
+                    "statistics": "outer-fold median and first-to-third-quartile interval",
+                    "correlations": "SROCC blue circles; PLCC orange diamonds",
+                    "rmse": "independent dataset scales",
+                },
                 "projection_accuracy_runtime.pdf": {
                     "layout": "single-column stacked overview and zoom panels",
                     "height_ratio": [1, 2],
@@ -4569,9 +4603,20 @@ def write_figure_metadata(
 
 
 def render_saved_figures(
-    source_run_id: str | None = None, render_mode: str = "figures-only"
+    source_run_id: str | None = None, render_mode: str = "figures-only",
+    selection_only: bool = False,
 ) -> None:
     before_hash = numerical_artifact_hash()
+    if selection_only:
+        render_core3_selection_figures()
+        assert numerical_artifact_hash() == before_hash
+        run = core3_selection_manifest()
+        write_figure_metadata(
+            run["run_id"], "figures-only:selection", before_hash,
+            {"regressor_comparison.pdf", "feature_set_ablation.pdf"},
+        )
+        print(f"Selection figures regenerated; numerical artifacts unchanged ({before_hash})")
+        return
     regressor_selection = json.loads(
         (DIRS["manifests"] / "regressor_selected.json").read_text()
     )
@@ -4930,8 +4975,8 @@ def run_final_evaluation_only() -> None:
                 "commit": "a64ed60788927b15ccf4a653493d8dedea5673c7",
                 "execution_order": "PointPCA3 then cubemap/DISTS (sequential)",
                 "timing_scope": "point counting, point-cloud loading, complete feature extraction; excludes CSV serialization and regression inference; initialization warm-up precedes recorded rows",
-                "worker_count": 16,
-                "worker_count_status": "author_assumed_unverified; public script at recorded commit passes 32",
+                "worker_count": 32,
+                "worker_count_status": "author_confirmed",
                 "hardware": "AMD Ryzen Threadripper 2950X, 128 GB RAM, NVIDIA GeForce RTX 5090",
                 "hardware_status": "author_confirmed",
             },
@@ -5139,6 +5184,8 @@ def main():
 
 def parse_args():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--selection-figures-only", action="store_true",
+                        help="With --figures-only, render only regressor and feature comparisons")
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument(
         "--figures-only",
@@ -5165,14 +5212,17 @@ def parse_args():
         action="store_true",
         help="Fit the three frozen source models and evaluate all 18 directed transfer pairs",
     )
-    return parser.parse_args()
+    args = parser.parse_args()
+    if args.selection_figures_only and not args.figures_only:
+        parser.error("--selection-figures-only requires --figures-only")
+    return args
 
 
 if __name__ == "__main__":
     args = parse_args()
     try:
         if args.figures_only:
-            render_saved_figures()
+            render_saved_figures(selection_only=args.selection_figures_only)
         elif args.iqa_contribution_only:
             run_iqa_contribution_only()
         elif args.final_evaluation_only:

@@ -49,7 +49,7 @@ Predictor blocks are fixed:
 
 ## Frozen complete configuration
 
-The selected complete PointPCA++ input uses PointPCA$^3$, cropping, Navier--Stokes inpainting, and six DISTS view scores. The experimental analysis provisionally associates the complete timing with 16 workers; confirming the recorded 16-versus-32 worker setting remains an author task.
+The selected complete PointPCA++ input uses PointPCA$^3$, cropping, Navier--Stokes inpainting, and six DISTS view scores. Complete extraction used **32 workers**, confirmed by the author. This supersedes the provisional 16-worker attribution in historical run manifests, without changing recorded times. The separate PointPCA³ worker-scaling study retains all six worker settings and its 16-worker baseline comparison. Current timing provenance is recorded in `../analysis/manifests/runtime_provenance_confirmation.json`.
 
 ## Integrity and updates
 
