@@ -1,6 +1,7 @@
 # Custom
 main.pdf
 __pycache__
+tmp/*
 
 doc/
 doc/*
