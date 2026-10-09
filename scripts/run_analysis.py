@@ -147,7 +147,7 @@ REPO = SCRIPT.parents[1]
 WORKSPACE = REPO.parent
 FEATURES = REPO / "data" / "features"
 MATLAB_FEATURES = FEATURES / "pointpca" / "matlab"
-POINTPCA2_FEATURES = MATLAB_FEATURES / "pointpca2"
+POINTPCA2_BENCHMARKS = MATLAB_FEATURES / "pointpca2" / "benchmark"
 POINTPCA3_FEATURES = FEATURES / "pointpca" / "pointpca3"
 COMPLETE_FEATURES = FEATURES / "pointpcapp" / "complete"
 OUT = REPO / "data" / "analysis"
@@ -179,6 +179,27 @@ def sha256(path: Path) -> str:
         for block in iter(lambda: stream.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def resolve_saved_source_path(relative_path: str) -> Path:
+    """Resolve relocated inputs without rewriting historical hash manifests."""
+    path = REPO / relative_path
+    if path.exists():
+        return path
+    recorded = Path(relative_path)
+    relocations = {
+        Path("data/features/pointpca/matlab/pointpca2"): POINTPCA2_BENCHMARKS,
+        Path("pointpcap_features/pointpca2_matlab"): POINTPCA2_BENCHMARKS,
+        Path("pointpcap_features/pointpca3"): POINTPCA3_FEATURES,
+        Path("pointpcap_features/cubemap"): FEATURES / "cubemap",
+        Path("pointpcapp_complete"): COMPLETE_FEATURES,
+    }
+    for original, current in relocations.items():
+        if recorded.is_relative_to(original):
+            candidate = current / recorded.relative_to(original)
+            if candidate.exists():
+                return candidate
+    return path
 
 
 def write_json(path: Path, value) -> None:
@@ -278,7 +299,7 @@ def audit() -> None:
     rows = []
     hashes = []
     errors = []
-    source_files = sorted(POINTPCA2_FEATURES.rglob("*.csv"))
+    source_files = sorted(POINTPCA2_BENCHMARKS.rglob("*.csv"))
     source_files += sorted(POINTPCA3_FEATURES.rglob("*.csv"))
     source_files += sorted(
         {projection_path(pipeline, iqa) for pipeline in PIPELINES for iqa in IQAS}
@@ -309,7 +330,7 @@ def audit() -> None:
 
     for dataset in DATASETS:
         matlab = pd.read_csv(
-            POINTPCA2_FEATURES / dataset / "PointPCA2.csv"
+            POINTPCA2_BENCHMARKS / dataset / "PointPCA2.csv"
         )
         base_raw = pd.read_csv(
             POINTPCA3_FEATURES / dataset / "1" / "PointPCA3-Rust.csv"
@@ -1064,7 +1085,7 @@ def validate_saved_source_hashes() -> None:
         raise FileNotFoundError(f"missing source-hash manifest: {manifest_path}")
     mismatches = []
     for row in pd.read_csv(manifest_path).itertuples(index=False):
-        path = REPO / row.path
+        path = resolve_saved_source_path(row.path)
         if not path.exists():
             mismatches.append(f"missing: {row.path}")
         elif sha256(path) != row.sha256:
@@ -1546,7 +1567,7 @@ def audit_and_normalize_final_pointpcapp() -> pd.DataFrame:
             )
 
         pc3_path = POINTPCA3_FEATURES / dataset / "16" / "PointPCA3-Rust.csv"
-        matlab_path = POINTPCA2_FEATURES / dataset / "PointPCA2.csv"
+        matlab_path = POINTPCA2_BENCHMARKS / dataset / "PointPCA2.csv"
         pc3_raw = pd.read_csv(pc3_path)
         matlab_raw = pd.read_csv(matlab_path)
         try:
@@ -3084,7 +3105,7 @@ def integrated_pointpcapp_runtime(frame: pd.DataFrame) -> tuple[pd.DataFrame, pd
             ]
         ].rename(columns={"TIME_TAKEN_SECONDS": "pointpcapp_time"})
         matlab = pd.read_csv(
-            POINTPCA2_FEATURES / dataset / "PointPCA2.csv"
+            POINTPCA2_BENCHMARKS / dataset / "PointPCA2.csv"
         )[[*KEY_COLUMNS, "TIME_TAKEN_SECONDS"]].rename(
             columns={"TIME_TAKEN_SECONDS": "matlab_time"}
         )
@@ -3133,7 +3154,7 @@ def runtime_analysis(selected_pipeline: str, selected_iqa: str):
     scaling_rows = []
     for dataset in DATASETS:
         matlab = pd.read_csv(
-            POINTPCA2_FEATURES / dataset / "PointPCA2.csv"
+            POINTPCA2_BENCHMARKS / dataset / "PointPCA2.csv"
         ).sort_values(KEY_COLUMNS).reset_index(drop=True)
         worker_frames = {
             worker: pd.read_csv(
@@ -3204,7 +3225,7 @@ def runtime_analysis(selected_pipeline: str, selected_iqa: str):
     )
     scaling_summary.to_csv(DIRS["summaries"] / "runtime_scaling_summary.csv", index=False)
 
-    matlab = pd.read_csv(POINTPCA2_FEATURES / "APSIPA" / "PointPCA2.csv")
+    matlab = pd.read_csv(POINTPCA2_BENCHMARKS / "APSIPA" / "PointPCA2.csv")
     pc3 = pd.read_csv(POINTPCA3_FEATURES / "APSIPA" / "16" / "PointPCA3-Rust.csv")
     proj = pd.read_csv(projection_path(selected_pipeline, selected_iqa))
     merged = matlab[KEY_COLUMNS + ["TIME_TAKEN_SECONDS"]].rename(
