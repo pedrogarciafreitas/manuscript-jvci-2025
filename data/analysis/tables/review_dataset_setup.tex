@@ -1,6 +1,6 @@
 \begin{table*}[t!]
 \centering
-\caption{Dataset properties and populations. Published and analyzed reference/sample counts are distinguished; the MOS column is the observed source-score range, retained without calibration or reversal. Modelling datasets influenced selection; evaluation datasets did not. Family identifies the four-dataset PCA-family study, whose populations equal the main analyzed populations; PointPCA is evaluated only on APSIPA because feature extraction for the other datasets exceeded the available 128 GB RAM. LS-PCQA uses 930 supplied accurate-MOS samples rather than its larger generated-score corpus. $^\ast$QoMEX2019 identifies 12 historical records/four references, excluded from every revised analysis; its original dataset identity remains unverified. WPC2 has unknown distortion-class metadata.}
+\caption{Dataset properties and populations. Published and analyzed reference/sample counts are distinguished; the MOS column is the observed source-score range, retained without calibration or reversal. Modelling datasets influenced selection; evaluation datasets did not. Family identifies the four-dataset PCA-family study, whose populations equal the main analyzed populations; PointPCA is evaluated only on APSIPA because feature extraction for the other datasets exceeded the available 128 GB RAM. LS-PCQA uses 930 supplied accurate-MOS samples rather than its larger generated-score corpus.}
 \label{tab_datasets}
 \scriptsize
 \begin{adjustbox}{max width=\textwidth}
@@ -15,7 +15,6 @@ ID & Dataset & Attributes & Distortions & Pub. refs & Pub. samples & Used refs &
 5 & UnB\_PC \cite{Torlig2018anovel} & Color, normals & Octree, JPEG & 6 & 60 & 6 & 60 & 1.20--5.00 & Evaluation & Yes \\
 6 & WPC \cite{wpc} & Color & Noise, resampling, G/V-PCC & 20 & 740 & 20 & 740 & 1.81--94.30 & Modelling & -- \\
 7 & WPC2 \cite{liu2021wpc2} & Color & V-PCC & 16 & 400 & 16 & 400 & 10.82--93.14 & Evaluation & -- \\
--- & QoMEX2019 & -- & -- & -- & -- & 4$^\ast$ & 12$^\ast$ & -- & Setup only & -- \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}

@@ -181,6 +181,8 @@
 \newacronym{VGG}{VGG}{Very Deep Convolutional Networks for Large-Scale Image Recognition}
 
 
+\newacronym{OOF}{OOF}{out-of-fold}
+
 
 
 
@@ -613,11 +615,11 @@ Figure~\ref{fig_arquitecture_orthographic_only} summarizes the projection branch
 \begin{figure*}[tbp]
     \centering
     \includegraphics[width=\textwidth]{data/analysis/figures/review_orthographic_schematic.pdf}
-    \caption{The implemented projection path uses six perpendicular orthographic views, followed by occupancy-based cropping, inpainting, and paired IQA evaluation. Historical CSV view indices do not establish a camera-order mapping.}
+    \caption{The implemented projection path uses six perpendicular orthographic views, followed by occupancy-based cropping, inpainting, and paired IQA evaluation.}
     \label{fig_subemap}
 \end{figure*}
 
-After shared point-cloud preprocessing, the recorded generator applies an orthographic projector to obtain six color views and occupancy maps, as summarized in Figure~\ref{fig_subemap}. Orthographic projection discards depth along each viewing direction; it does not use a perspective camera or a 90-degree field-of-view model. Occupancy maps distinguish projected samples from unoccupied pixels. The recorded precision is $\rho=10$, corresponding to a nominal side length $2^\rho=1024$ before cropping. The historical CSVs preserve six view indices, but their mapping to named cameras is not independently established; diagnostic subsets therefore use indices without assigning opposing-camera labels.
+After shared point-cloud preprocessing, the recorded generator applies an orthographic projector to obtain six color views and occupancy maps, as summarized in Figure~\ref{fig_subemap}. Orthographic projection discards depth along each viewing direction; it does not use a perspective camera or a 90-degree field-of-view model. Occupancy maps distinguish projected samples from unoccupied pixels. The recorded precision is $\rho=10$, corresponding to a nominal side length $2^\rho=1024$ before cropping.
 
 The \glspl{OcM} are fundamental for subsequent steps, namely cropping and padding steps. These steps are illustrated in Figure~\ref{fig_cropping_and_padding_steps}. The cropping operation uses the \gls{OcM} to select the \gls{ROI} of the projected view. When a \gls{PC} is projected, a significant portion of the resulting image may consist of empty area, creating a background of non-occupied pixels that can interfere with the chosen \gls{IQA} technique. For instance, a pixel-level comparisons become unreliable because the non-degraded background contrasts with the occupied and degraded areas, leading to a poor correlation between objective metrics and subjective scores. To address this issue, \glspl{OcM} are employed to crop the projections, thereby reducing the background area and mitigating these effects.
 
@@ -674,7 +676,7 @@ After generating the feature vector $v$, a standalone projection regressor can m
 
 \section{Experimental Setup} \label{sec_setup}
 
-We evaluate prediction accuracy on the seven datasets listed in Table~\ref{tab_datasets}. The table consolidates published properties, analyzed populations, observed MOS ranges, and experimental roles. Published database sizes and analyzed populations are distinguished. QoMEX2019 is retained only as a historical setup entry and is excluded from accuracy, timing, and scaling analyses because its source identity and complete fusion representation are not established.
+We evaluate prediction accuracy on the seven datasets listed in Table~\ref{tab_datasets}. The table consolidates published properties, analyzed populations, observed MOS ranges, and experimental roles. Published database sizes and analyzed populations are distinguished.
 
 The experimental design separates projection selection, model selection, and evaluation. APSIPA is the reference dataset for the controlled crop, padding, and IQA study. APSIPA, WPC, and LS-PCQA are the modelling datasets used to select the regressor and compare feature designs. ICIP2023, SJTU-PCQA, UnB\_PC, and WPC2 are evaluation datasets: they do not influence those choices, although within-dataset validation trains a separate model in each of their training folds.
 All experiments were conducted on a system equipped with an AMD Ryzen Threadripper\texttrademark~2950X with 128~GB RAM and an NVIDIA GeForce RTX 5090 graphics card.
@@ -684,13 +686,13 @@ The implementation combines Python interfaces with Rust components for point-clo
 
 Prediction performance is measured against the subjective scores using \gls{SROCC} as the primary criterion, \gls{PLCC} as a secondary correlation measure, and \gls{RMSE} as the error measure. Within-dataset experiments use five-fold GroupKFold, grouped by pristine reference content, so all distorted versions of a reference remain in the same fold. Selection uses a nested protocol. Each outer fold reserves reference contents for assessing performance on unseen contents; the remaining samples form its outer training partition. Five inner folds subdivide only that training partition to compare candidate choices. The outer test fold is not used to make that partition's selection, and preprocessing is fitted on training samples only. Randomized procedures use seed 42. The final fixed configuration is evaluated separately within each dataset and by directed transfer, which trains on one dataset and predicts on another without target-domain fitting or calibration.
 
-All controlled comparisons use the same five content-disjoint cross-validation folds and the selected regression pipeline. The pipeline applies mean imputation and standardization fitted only on training samples, followed by Extra Trees with 100 estimators and seed 42. No explicit hyperparameter optimization was performed. LazyPredict screening used class defaults with the recorded seed where supported; built-in CV estimators retain their native internal procedures, which were not supplied reference groups. They are reported transparently but do not replace the selected Extra Trees model. The controlled PCA-family comparison uses four complete matched datasets; original PointPCA uses its audited native 46-feature schema. PointPCA results are reported only for APSIPA; feature extraction for the other datasets could not be completed because memory requirements exceeded the available 128~GB RAM. Historical PointPCA+ and PointPCA+RS supplement timings and memory fields are excluded from current benchmarks.
+All controlled comparisons use the same five content-disjoint cross-validation folds and the selected regression pipeline. The pipeline applies mean imputation and standardization fitted only on training samples, followed by Extra Trees with 100 estimators and seed 42. No explicit hyperparameter optimization was performed. LazyPredict screening used class defaults with the recorded seed where supported; built-in CV estimators retain their native internal procedures, which were not supplied reference groups. They are reported transparently but do not replace the selected Extra Trees model. The controlled PCA-family comparison uses four complete matched datasets; original PointPCA uses its audited native 46-feature schema. PointPCA results are reported only for APSIPA; feature extraction for the other datasets could not be completed because memory requirements exceeded the available 128~GB RAM.
 
 The recorded numerical environment uses Python 3.12.9, NumPy 2.4.4, SciPy 1.17.1, Scikit-learn 1.8.0, and LazyPredict 0.3.0. Candidate defaults can be reconstructed in this environment, but per-fit parameter snapshots and the historical XGBoost version were not recorded. Table~\ref{tab_review_regressors} reports the recorded registry scores.
 
-Paired accuracy differences use the same OOF samples and reference-clustered bootstrap draws. Two-sided reference-level prediction-label swaps use 10,000 draws, seed 42, and plus-one Monte Carlo p-values. Holm correction includes all available method pairs and all three metrics within each family-comparison dataset. The seven diagnostic IQA designs form a separate 63-test correction family on APSIPA. Per-feature agreement is descriptive, with corresponding feature meanings established from the inspected MATLAB and Rust sources; neither correlation nor nonsignificance is interpreted as equivalence.
+Paired accuracy differences use the same \gls{OOF} samples and reference-clustered bootstrap draws. Two-sided reference-level prediction-label swaps use 10,000 draws, seed 42, and plus-one Monte Carlo p-values. Holm correction includes all available method pairs and all three metrics within each family-comparison dataset. The seven diagnostic IQA designs form a separate 63-test correction family on APSIPA. Per-feature agreement is descriptive, with corresponding feature meanings established from the inspected MATLAB and Rust sources; neither correlation nor nonsignificance is interpreted as equivalence.
 
-Fold-level results are summarized as median [IQR], where IQR denotes the third quartile minus the first quartile. Final within-dataset correlations are computed from pooled out-of-fold predictions, with exactly one held-out prediction per sample. Confidence intervals use 10,000 bootstrap resamples clustered by reference content; transfer intervals resample target references only. These intervals describe variation across reference contents, not uncertainty from repeated model training or benchmark trials. RMSE is interpreted only within a dataset because subjective-score scales differ. No test-set calibration or logistic score mapping is applied.
+Fold-level results are summarized as median [IQR], where IQR denotes the third quartile minus the first quartile. Final within-dataset correlations are computed from pooled \gls{OOF} predictions, with exactly one held-out prediction per sample. Confidence intervals use 10,000 bootstrap resamples clustered by reference content; transfer intervals resample target references only. These intervals describe variation across reference contents, not uncertainty from repeated model training or benchmark trials. RMSE is interpreted only within a dataset because subjective-score scales differ. No test-set calibration or logistic score mapping is applied.
 
 
 
@@ -735,7 +737,7 @@ Figure~\ref{fig_projection_accuracy_runtime} compares predictive accuracy with r
 
 Cropping followed by Navier--Stokes padding obtains the best aggregate rank. It reaches a median \gls{SROCC}/\gls{PLCC} of 0.881/0.825 across IQAs with a median processing time of 4.98~s. It is also selected in two of the five outer training partitions; the remaining folds select crop with FSRFast, no crop with Telea, or no crop with Navier--Stokes. This variation indicates sensitivity to the composition of the training references. We retain crop plus Navier--Stokes as the fixed projection pipeline for the subsequent multi-dataset study, without claiming that it is optimal for every dataset.
 
-The complete fixed-pipeline results for all 22 IQAs are reported in Table~\ref{tab_review_projection_iqas}. Their fold summaries characterize the historical projection study; the seven-dataset DISTS baseline in Section~\ref{sec_results_pointpcapp_sota} uses the final extraction and pooled OOF metrics.
+The complete fixed-pipeline results for all 22 IQAs are reported in Table~\ref{tab_review_projection_iqas}. Their fold summaries characterize the historical projection study; the seven-dataset DISTS baseline in Section~\ref{sec_results_pointpcapp_sota} uses the final extraction and pooled \gls{OOF} metrics.
 
 \FloatBarrier
 \subsection{IQA, Regressor, and Fusion Selection} \label{sec_results_regression_features}
@@ -802,7 +804,7 @@ Table~\ref{tab_pointpcapp_all_datasets} evaluates the fixed configuration when t
 
 \begin{table*}[tbp]
     \centering
-    \caption{Within-dataset performance of the frozen 46-feature PointPCA++ configuration with the selected Extra Trees regressor. Values are pooled out-of-fold metrics with reference-clustered 95\% confidence intervals in brackets. RMSE values are reported within each dataset and must not be compared across subjective-score scales. $^{\dagger}$APSIPA, WPC, and LS-PCQA are modelling datasets; the remaining four are evaluation datasets.}
+    \caption{Within-dataset performance of the frozen 46-feature PointPCA++ configuration with the selected Extra Trees regressor. Values are pooled \gls{OOF} metrics with reference-clustered 95\% confidence intervals in brackets. RMSE values are reported within each dataset and must not be compared across subjective-score scales. $^{\dagger}$APSIPA, WPC, and LS-PCQA are modelling datasets; the remaining four are evaluation datasets.}
     \label{tab_pointpcapp_all_datasets}
     \scriptsize
     \begin{adjustbox}{max width=0.95\textwidth}
@@ -851,12 +853,12 @@ Figure~\ref{fig_pointpcapp_modality_importance} extends the reliance analysis to
     \label{fig_pointpcapp_modality_importance}
 \end{figure*}
 
-To assess where predictions depart from subjective scores, we examine the same within-dataset OOF predictions used in Table~\ref{tab_pointpcapp_all_datasets}. Figure~\ref{fig_review_mos_scatter} shows absolute agreement with MOS; Figure~\ref{fig_review_residuals} makes the direction and score dependence of errors visible.
+To assess where predictions depart from subjective scores, we examine the same within-dataset \gls{OOF} predictions used in Table~\ref{tab_pointpcapp_all_datasets}. Figure~\ref{fig_review_mos_scatter} shows absolute agreement with MOS; Figure~\ref{fig_review_residuals} makes the direction and score dependence of errors visible.
 
 \begin{figure*}[tbp]
     \centering
     \includegraphics[width=0.97\textwidth]{data/analysis/figures/review_mos_scatter.pdf}
-    \caption{All frozen PointPCA++ OOF predictions versus source MOS on the seven datasets, using the fixed 46-feature Extra Trees pipeline and persisted reference-disjoint folds. Dashed lines show identity. Axes follow each dataset\textquotesingle s source scale; no held-out calibration is applied. Populations and roles are in Table~\ref{tab_datasets}.}
+    \caption{All frozen PointPCA++ \gls{OOF} predictions versus source MOS on the seven datasets, using the fixed 46-feature Extra Trees pipeline and persisted reference-disjoint folds. Dashed lines show identity. Axes follow each dataset\textquotesingle s source scale; no held-out calibration is applied. Populations and roles are in Table~\ref{tab_datasets}.}
     \label{fig_review_mos_scatter}
 \end{figure*}
 \begin{figure*}[tbp]
