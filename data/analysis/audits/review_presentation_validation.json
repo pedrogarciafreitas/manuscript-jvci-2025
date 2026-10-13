@@ -6,11 +6,11 @@
     "shared_RS_predictors": "804f88fd2f0a2eddf22473523b8ebe77745e5cc926e2d2398067ebfceb8ee0b5",
     "verification": "Inspected pinned PointPCA3 lib.rs delegates to the audited pointpca2-rs compute_predictors; v1.5.1 Cargo.lock resolves the same commit."
   },
-  "manuscript_sha256": "f8b41d4d9e7817fa6ce35f4f47dfd58d3889ff8d49c1558513fef6cfd89231ba",
+  "manuscript_sha256": "2c78c07583a0164338abcdc4f3846defa16a5c6ceeb826d559943acf3cd72008",
   "models_refitted": false,
   "numerical_evidence_unchanged": true,
   "pdf_inspection": "passed: current section overview and revised pages inspected in color/grayscale",
-  "pdf_sha256": "c7ee7ef2e2632ca80c18fc99d1d5718e432914a2c93ec6013b0955194c93d7d8",
+  "pdf_sha256": "27e7917cbe0ce8ff0c43211cc231bbda1accaf1c25befab815aee009a07d3499",
   "protected_files": 796,
   "protected_hashes": {
     "data/analysis/audits/final_pointpcapp_input_audit.csv": "6b336eaab2014200eae8c7418523cd108e642be95cf0d94d68ffbf51b9251937",
@@ -842,5 +842,12 @@
     "review_regressor_comparison.pdf",
     "review_single_iqa_selection.pdf"
   ],
-  "table_cells_unchanged": true
+  "table_cells_unchanged": true,
+  "fold_wording_correction": {
+    "description": "Replace project shorthand with five content-disjoint cross-validation folds and the selected regression pipeline; matching family paragraph and generated caption corrected.",
+    "experiments_rerun": false,
+    "build_log": "tmp/review-build/fold-wording-final.log",
+    "checked_caption_image": "tmp/review-build/fold-wording-25.png",
+    "checked_caption_image_sha256": "640e17eae5881dba29679e468436303d4d6f82f069f9181bb02b00be15210946"
+  }
 }

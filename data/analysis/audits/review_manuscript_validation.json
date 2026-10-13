@@ -2,13 +2,13 @@
   "status": "passed",
   "revision": "Comparison evidence and canonical method terminology correction, 2026-10-13",
   "manuscript": "main.tex",
-  "manuscript_sha256": "f8b41d4d9e7817fa6ce35f4f47dfd58d3889ff8d49c1558513fef6cfd89231ba",
+  "manuscript_sha256": "2c78c07583a0164338abcdc4f3846defa16a5c6ceeb826d559943acf3cd72008",
   "bibliography_sha256": "7b647a37f4a68aa59ef07a13c48b3d0277d678d3fbc911967d848f89bc01dea9",
   "pdf": "tmp/review-build/main.pdf",
-  "pdf_sha256": "c7ee7ef2e2632ca80c18fc99d1d5718e432914a2c93ec6013b0955194c93d7d8",
+  "pdf_sha256": "27e7917cbe0ce8ff0c43211cc231bbda1accaf1c25befab815aee009a07d3499",
   "pdf_pages": 42,
-  "final_build_log": "tmp/review-build/correction-final-build.log",
-  "final_build_log_sha256": "bcb9a9ad748f00e33aeebd37b65c6860efd733b65ef32ec280f015da172b7645",
+  "final_build_log": "tmp/review-build/fold-wording-final.log",
+  "final_build_log_sha256": "35e1ddaab4c0f1a450626ae27c3f997fadc17c33fcf0a5723f8fbf45a3bf8402",
   "unresolved_references": 0,
   "unresolved_citations": 0,
   "oversized_floats": 0,
@@ -180,11 +180,18 @@
   },
   "script_hashes": {
     "scripts/run_analysis.py": "eb8695bf01618620174323553919f79f3dfd93f3f0826043fab5ee31ea04d137",
-    "scripts/review_analysis.py": "9befd826fdadf15cb0f5022543897e588f22f4a9ac4655470b840be66ec201e0",
+    "scripts/review_analysis.py": "13a4371cc383ded0ef44e8e8cb91ab5484eae9afba0e5be5095f00b1e32b36e5",
     "scripts/review_presentation.py": "af3bdcacb4163e27daad9751f9329066cfbd4ede5ce7b18ec60aac0c1da4a015"
   },
   "memory_failure_provenance": "Author-confirmed original PointPCA feature-extraction failure on non-APSIPA datasets with 128 GB RAM; no quantitative peak-memory benchmark or failure log is asserted.",
   "historical_literature_evidence": "Retained only as provenance; no manuscript comparison table or appendix relocation.",
   "full_review_complete": false,
-  "unchanged_open_dependencies": "Resolution inputs and comparable timing/protocol evidence remain unavailable."
+  "unchanged_open_dependencies": "Resolution inputs and comparable timing/protocol evidence remain unavailable.",
+  "fold_wording_correction": {
+    "description": "Replace project shorthand with five content-disjoint cross-validation folds and the selected regression pipeline; matching family paragraph and generated caption corrected.",
+    "experiments_rerun": false,
+    "build_log": "tmp/review-build/fold-wording-final.log",
+    "checked_caption_image": "tmp/review-build/fold-wording-25.png",
+    "checked_caption_image_sha256": "640e17eae5881dba29679e468436303d4d6f82f069f9181bb02b00be15210946"
+  }
 }
