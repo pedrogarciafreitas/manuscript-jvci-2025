@@ -3960,117 +3960,9 @@ def generate_figures(
 
 
 def generate_pointpcapp_runtime_figure(runtime_samples: pd.DataFrame) -> None:
-    style = configure_figure_style()
-    layout = [
-        ("APSIPA", 0),
-        ("ICIP2023", 1),
-        ("LS-PCQA", 2),
-        ("SJTU-PCQA", 3),
-        ("UnB_PC", 0),
-        ("WPC", 1),
-        ("WPC2", 2),
-    ]
-    fig, axes = plt.subplots(
-        4,
-        4,
-        figsize=(12.2, 9.0),
-        gridspec_kw={"hspace": 0.42, "wspace": 0.34},
-    )
-    panel_letters = "abcdefg"
-    for index, (dataset, column) in enumerate(layout):
-        row_offset = 0 if index < 4 else 2
-        time_ax = axes[row_offset, column]
-        speedup_ax = axes[row_offset + 1, column]
-        data = runtime_samples[runtime_samples["dataset"].eq(dataset)].copy()
-        common = {
-            "data": data,
-            "x": "total_points_millions",
-            "units": "REF",
-            "order": 2,
-            "ci": 95,
-            "n_boot": 10_000,
-            "seed": SEED,
-            "truncate": True,
-        }
-        sns.regplot(
-            **common,
-            y="matlab_time",
-            color=style["neutral"],
-            marker="o",
-            scatter_kws={
-                "s": 10,
-                "alpha": 0.48,
-                "edgecolor": "none",
-                "zorder": 2,
-            },
-            line_kws={"linewidth": 1.5, "zorder": 3},
-            ax=time_ax,
-        )
-        sns.regplot(
-            **common,
-            y="pointpcapp_time",
-            color=style["primary"],
-            marker="^",
-            scatter_kws={
-                "s": 12,
-                "alpha": 0.52,
-                "edgecolor": "none",
-                "zorder": 2,
-            },
-            line_kws={"linewidth": 1.5, "zorder": 3},
-            ax=time_ax,
-        )
-        sns.regplot(
-            **common,
-            y="speedup",
-            color=style["secondary"],
-            marker="o",
-            scatter_kws={
-                "s": 10,
-                "alpha": 0.48,
-                "edgecolor": "none",
-                "zorder": 2,
-            },
-            line_kws={"linewidth": 1.5, "zorder": 3},
-            ax=speedup_ax,
-        )
-        maximum_x = data["total_points_millions"].max() * 1.03
-        for ax in (time_ax, speedup_ax):
-            ax.set_xlim(0, maximum_x)
-            ax.set_ylim(bottom=0)
-            ax.set_xlabel("")
-            sns.despine(ax=ax)
-        time_ax.set_title(
-            f"({panel_letters[index]}) {dataset}", fontsize=9, pad=3
-        )
-        time_ax.set_ylabel("Time (s)" if column == 0 else "")
-        speedup_ax.set_ylabel("Speedup ($\\times$)" if column == 0 else "")
-        speedup_ax.set_xlabel("Total points (millions)")
-
-    axes[2, 3].axis("off")
-    axes[3, 3].axis("off")
-    fig.legend(
-        handles=[
-            Line2D(
-                [0], [0], color=style["neutral"], marker="o", linewidth=1.5,
-                markersize=4.5, label="MATLAB PointPCA2",
-            ),
-            Line2D(
-                [0], [0], color=style["primary"], marker="^", linewidth=1.5,
-                markersize=4.5, label="PointPCA++ (measured)",
-            ),
-            Line2D(
-                [0], [0], color=style["secondary"], marker="o", linewidth=1.5,
-                markersize=4.5, label="Paired speedup",
-            ),
-        ],
-        loc="lower center",
-        ncol=3,
-        frameon=False,
-        bbox_to_anchor=(0.5, 0.005),
-    )
-    fig.subplots_adjust(left=0.07, right=0.99, top=0.97, bottom=0.09)
-    save_figure(fig, "pointpcapp_runtime.pdf")
+    from review_presentation import render_runtime
+    configure_figure_style()
+    render_runtime(runtime_samples, save_figure)
 
 
 def generate_cross_dataset_modality_importance_figure(
@@ -5209,6 +5101,10 @@ def parse_args():
                         help="With --figures-only, render only regressor and feature comparisons")
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument(
+        "--review-stage", choices=["audit", "predictions", "statistics", "reports", "presentation", "validate", "all"],
+        help="Run scoped review work without reopening frozen model selection",
+    )
+    modes.add_argument(
         "--figures-only",
         action="store_true",
         help="Regenerate figures from saved artifacts without recomputing analyses",
@@ -5242,7 +5138,10 @@ def parse_args():
 if __name__ == "__main__":
     args = parse_args()
     try:
-        if args.figures_only:
+        if args.review_stage:
+            import review_analysis
+            review_analysis.run(sys.modules[__name__], args.review_stage)
+        elif args.figures_only:
             render_saved_figures(selection_only=args.selection_figures_only)
         elif args.iqa_contribution_only:
             run_iqa_contribution_only()
@@ -5255,5 +5154,6 @@ if __name__ == "__main__":
         else:
             main()
     except Exception:
-        (DIRS["logs"] / "failure.log").write_text(traceback.format_exc())
+        log_name = "review_failure.log" if args.review_stage else "failure.log"
+        (DIRS["logs"] / log_name).write_text(traceback.format_exc())
         raise

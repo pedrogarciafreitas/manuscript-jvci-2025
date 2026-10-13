@@ -1,0 +1,124 @@
+model,dataset,eligible,reason,checkpoint_statuses,valid_metric_folds,recorded_folds,builtin_cv,builtin_cv_grouping,srocc,plcc,rmse
+AdaBoostRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9661603136546404,0.9487294436788902,0.481174087612155
+AdaBoostRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9092341178384352,0.9091163345007828,10.59561167153828
+AdaBoostRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8290044002655623,0.8376249177508711,0.4622433932827833
+BaggingRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9638169997537092,0.9518091730667418,0.4937643494204707
+BaggingRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9033696033696034,0.9041518936975856,10.803366738081618
+BaggingRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8441274453690326,0.8562476579957379,0.4293198463368671
+BayesianRidge,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9524664688849084,0.9316806612996356,0.5680546542158714
+BayesianRidge,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8988065988065989,0.8938398837712414,11.301777571044129
+BayesianRidge,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8293530514476615,0.8160064648899553,0.5053352675860481
+DecisionTreeRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9337567338542974,0.9162659314454508,0.6280014139013295
+DecisionTreeRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8360315118722812,0.8388068028139899,13.923605225993311
+DecisionTreeRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.7516722465030995,0.7698216445919784,0.5705619663624385
+DummyRegressor,APSIPA,False,sanity baseline excluded from selection,complete,0,25,False,not applicable,,,1.350171191858504
+DummyRegressor,WPC,False,sanity baseline excluded from selection,complete,0,25,False,not applicable,,,23.054690744856664
+DummyRegressor,LS-PCQA,False,sanity baseline excluded from selection,complete,0,25,False,not applicable,,,0.8250253813336897
+ElasticNet,APSIPA,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,25,25,False,not applicable,0.9414809069791198,0.9154590755469904,0.901349564898032
+ElasticNet,WPC,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,25,25,False,not applicable,0.8737363987363987,0.8765309976565445,12.15726158842712
+ElasticNet,LS-PCQA,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,24,25,False,not applicable,0.6671091075327858,0.6530742237631846,0.8067177974993166
+ElasticNetCV,APSIPA,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.9479004770513312,0.9253353116150348,0.5890638574659874
+ElasticNetCV,WPC,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.8937521937521936,0.8925591920382183,11.555354651298694
+ElasticNetCV,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.8439715581877617,0.8144237458508085,0.4951338421344002
+ExtraTreeRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9314393376521752,0.9076398359016968,0.6371914398628428
+ExtraTreeRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8351904896223369,0.8409291242596644,13.800423114933295
+ExtraTreeRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.7524196986044555,0.7718420659399026,0.5811112606590404
+ExtraTreesRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9676530226240784,0.9592402060460016,0.4464231094739762
+ExtraTreesRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9133818883818884,0.9154051302461328,10.085143296155255
+ExtraTreesRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8621848749752816,0.869402962173781,0.4111838302757363
+GammaRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9662953831336912,0.9299557684295237,0.5826986556031677
+GammaRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8928044928044927,0.8847456311559494,11.003320526176385
+GammaRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8431639693806221,0.8409279058102122,0.47722210020025
+GaussianProcessRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9119398246346884,0.7813627587552895,2.120611540548984
+GaussianProcessRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.5703580203580203,0.5429195259657489,41.02048034344409
+GaussianProcessRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.4738468650485211,0.4764291481059478,2.24188071394668
+GradientBoostingRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9634513202960222,0.9501154336782612,0.4704484163720514
+GradientBoostingRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9102566475529084,0.9081955388405872,10.572091078371225
+GradientBoostingRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8625535786173348,0.8702119716612209,0.4238313674301066
+HistGradientBoostingRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9634754590673904,0.9572065955860422,0.4309859468063264
+HistGradientBoostingRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9106675501689884,0.9094863988946984,10.281300023847344
+HistGradientBoostingRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8556177096930458,0.8586205550072536,0.4326465662118254
+HuberRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9264933679545276,0.917309816861194,0.6894875870646894
+HuberRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8912625815789768,0.8918955098792983,11.821918360244604
+HuberRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8041401666947752,0.7982553724160562,0.5377008079391467
+KNeighborsRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9580511767183512,0.9414196715628812,0.5457350310708772
+KNeighborsRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8983941733941733,0.9029426844892968,10.19914014141422
+KNeighborsRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8311592163349065,0.8438505563751485,0.449803685605065
+KernelRidge,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9563509119758038,0.933378305301586,2.5739786874434176
+KernelRidge,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9000789750789749,0.8992556266093481,49.828386326118206
+KernelRidge,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8214621658371302,0.8094222558731008,3.289394226716074
+Lars,APSIPA,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,25,25,False,not applicable,0.0753275192746185,0.0499257135128157,19348.62975590716
+Lars,WPC,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,25,25,False,not applicable,-0.0064847314847314,-0.0166267676309741,36477.863894108246
+Lars,LS-PCQA,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,24,25,False,not applicable,-0.0429423965518743,0.0002636145042125,2529.0689914230093
+LarsCV,APSIPA,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,23,25,True,estimator default; not supplied reference groups,0.9366221670149828,0.9052662927911868,1.0020858061278146
+LarsCV,WPC,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,25,25,True,estimator default; not supplied reference groups,0.7919269919269919,0.7943998967623849,16.495055380408782
+LarsCV,LS-PCQA,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,25,25,True,estimator default; not supplied reference groups,0.701043227115814,0.679848348522214,0.7192003286352424
+Lasso,APSIPA,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,25,25,False,not applicable,0.9375385634796,0.8978374477091999,1.1936469371573546
+Lasso,WPC,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,25,25,False,not applicable,0.8785626535626535,0.8707283481298227,12.050898721742028
+Lasso,LS-PCQA,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,0,25,False,not applicable,,,0.8250253813336897
+LassoCV,APSIPA,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.9492561852200124,0.92927949804327,0.5929274836274372
+LassoCV,WPC,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.8951825201825202,0.8902432724637983,11.47806848051614
+LassoCV,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.8403727149190257,0.8142473947635802,0.4951828353724536
+LassoLars,APSIPA,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,25,25,False,not applicable,0.9375385634796,0.8978374477091997,1.1936469371573546
+LassoLars,WPC,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,25,25,False,not applicable,0.8786767286767285,0.8707322600053582,12.051757748951555
+LassoLars,LS-PCQA,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,0,25,False,not applicable,,,0.8250253813336897
+LassoLarsCV,APSIPA,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.9492561852200124,0.9294301590513824,0.6118785395877417
+LassoLarsCV,WPC,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.8944015444015443,0.8883285259203024,11.507912111238074
+LassoLarsCV,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.8405558522399507,0.8134135661986076,0.4952947455198787
+LassoLarsIC,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9324298087108082,0.9055986138596206,0.852680506307957
+LassoLarsIC,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8882239382239382,0.8761854864558759,11.901329443124569
+LassoLarsIC,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8109829403542093,0.7945555747591869,0.5292966397167465
+LinearRegression,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9200993431102952,0.8979125234737415,1.0961554522844812
+LinearRegression,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8830291330291329,0.8724896308585379,12.207496151779065
+LinearRegression,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8015205303873031,0.7889157670633699,0.5388353226295468
+LinearSVR,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9447596945455088,0.9303087531290144,0.6120091959965649
+LinearSVR,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8943664443664443,0.8921787062710663,11.704580444822074
+LinearSVR,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8095738525507088,0.797876849121271,0.5371133202275337
+MLPRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.949717204187052,0.947484951011744,0.4820044789923633
+MLPRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.883064233064233,0.8863345628833136,11.58248625674718
+MLPRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8391034732434597,0.8393656583898462,0.4751026987412132
+NuSVR,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9528870821108468,0.9579471723521288,0.556244145887163
+NuSVR,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8763689013689013,0.8766174198452016,14.461989989772848
+NuSVR,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8520248862404428,0.8662113068444608,0.4185009736641141
+OrthogonalMatchingPursuit,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9385067975198368,0.9109498561051474,0.681565627544294
+OrthogonalMatchingPursuit,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8521235521235521,0.8448847697976162,13.172674722068884
+OrthogonalMatchingPursuit,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8116182845475015,0.792609260467618,0.5096982540465588
+OrthogonalMatchingPursuitCV,APSIPA,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.9383335387910074,0.9093704546572648,0.6907424048155212
+OrthogonalMatchingPursuitCV,WPC,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.8703141453141453,0.8573608038526684,12.908750596495953
+OrthogonalMatchingPursuitCV,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.8176249524347803,0.8043538133844337,0.5132737378757778
+PassiveAggressiveRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.916873229149888,0.8949305505969113,0.8085352743659271
+PassiveAggressiveRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8533706970907357,0.8445305079406357,15.689915354756709
+PassiveAggressiveRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.7404983127670293,0.7264487980855598,0.6732121715219679
+PoissonRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9661442223657932,0.9428494912449764,0.5856044194031143
+PoissonRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9026237276237276,0.9014549868062468,10.65635791115923
+PoissonRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.85520688124341,0.8568306288113223,0.4460093999722012
+QuantileRegressor,APSIPA,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,0,25,False,not applicable,,,1.4007656465489593
+QuantileRegressor,WPC,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,0,25,False,not applicable,,,23.125636174079396
+QuantileRegressor,LS-PCQA,False,excluded by recorded finite-metric eligibility; at least one inner metric undefined,complete,0,25,False,not applicable,,,0.8306997039021469
+RANSACRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8923223840629398,0.8517480612449757,1.1469091054103526
+RANSACRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.7442435942435942,0.6546051157824626,23.60213153165185
+RANSACRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.1069712161777921,-0.1523448018232018,50377701.89758733
+RandomForestRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9699995565931864,0.9521936195568844,0.4829966110575764
+RandomForestRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9186819936819935,0.9200078466271246,10.185394762342035
+RandomForestRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8561166847959443,0.8646010932299136,0.4199617785550149
+Ridge,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9563509119758038,0.9333783053015832,0.5469996183680667
+Ridge,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9000789750789749,0.8992556266093469,11.238532366363216
+Ridge,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8214621658371302,0.8094222558732487,0.5089062150237061
+RidgeCV,APSIPA,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.9329971561413504,0.9161165550928572,0.6712307073018997
+RidgeCV,WPC,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.8971818003457506,0.8913330934168131,11.238522025184418
+RidgeCV,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,True,estimator default; not supplied reference groups,0.8166758548263965,0.8103513788238906,0.5199211331382931
+SGDRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9478388930806286,0.927288167828068,0.644351027299631
+SGDRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8989382239382239,0.8929827287228503,11.606098672396667
+SGDRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.841022486051641,0.8113784819124593,0.4990365435862399
+SVR,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.955013425667458,0.9572293478242252,0.5517048863955413
+SVR,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8718687184650753,0.8684133257804647,13.67108985298263
+SVR,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.85532694840251,0.865967911645318,0.416961017945917
+TransformedTargetRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9200993431102952,0.8979125234737415,1.0961554522844812
+TransformedTargetRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8830291330291329,0.8724896308585379,12.207496151779065
+TransformedTargetRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8015205303873031,0.7889157670633699,0.5388353226295468
+TweedieRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9625072209154864,0.931060642621609,0.586294554433645
+TweedieRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8773780273780273,0.876193396672999,12.26440483058412
+TweedieRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8357115214984826,0.8058368733189047,0.5089023636728771
+XGBRegressor,APSIPA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.9570804759487668,0.9380465672841698,0.555785095039039
+XGBRegressor,WPC,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8948841698841699,0.8930541256032044,10.929622805631206
+XGBRegressor,LS-PCQA,True,eligible in all recorded inner folds,complete,25,25,False,not applicable,0.8501798467678511,0.8482013500832991,0.4427340810382876

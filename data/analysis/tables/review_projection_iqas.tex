@@ -1,0 +1,36 @@
+\begin{table*}[t!]
+\centering
+\caption{All 22 IQAs for the fixed crop/Navier--Stokes pipeline on APSIPA. Accuracy is median [IQR] across five grouped folds with the original fixed Extra Trees estimator; time is the recorded median projection/IQA interval in seconds. This historical extraction differs from the final complete-file DISTS experiment.}
+\label{tab_review_projection_iqas}
+\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrrrr}
+\toprule
+IQA & SROCC [IQR] & PLCC [IQR] & RMSE [IQR] & Time (s) \\
+\midrule
+AHIQ & 0.761 [0.264] & 0.651 [0.165] & 1.340 [0.010] & 17.674 \\
+CKDN & 0.464 [0.392] & 0.367 [0.364] & 1.403 [0.197] & 4.886 \\
+CW\_SSIM & 0.897 [0.102] & 0.856 [0.109] & 0.652 [0.215] & 5.879 \\
+DISTS & 0.941 [0.043] & 0.934 [0.058] & 0.615 [0.129] & 4.985 \\
+DSS & 0.846 [0.111] & 0.818 [0.156] & 0.855 [0.008] & 4.930 \\
+FSIM & 0.906 [0.034] & 0.878 [0.050] & 0.740 [0.359] & 5.080 \\
+GMSD & 0.896 [0.065] & 0.848 [0.065] & 0.876 [0.192] & 4.918 \\
+HaarPSI & 0.914 [0.150] & 0.872 [0.186] & 0.885 [0.295] & 4.901 \\
+MAD & 0.920 [0.056] & 0.902 [0.051] & 0.725 [0.012] & 9.984 \\
+MDSI & 0.917 [0.042] & 0.858 [0.001] & 0.945 [0.258] & 4.938 \\
+MSGMSD & 0.890 [0.085] & 0.832 [0.031] & 0.940 [0.094] & 4.907 \\
+MSSSIM & 0.817 [0.134] & 0.723 [0.130] & 1.264 [0.034] & 5.027 \\
+NLPD & 0.598 [0.033] & 0.589 [0.094] & 1.305 [0.041] & 4.939 \\
+PIEAPP & 0.868 [0.016] & 0.822 [0.068] & 1.005 [0.210] & 5.800 \\
+PSNR & 0.499 [0.333] & 0.425 [0.246] & 1.291 [0.250] & 4.883 \\
+SRSSIM & 0.936 [0.267] & 0.829 [0.228] & 0.938 [0.600] & 4.952 \\
+SSIMC & 0.692 [0.387] & 0.699 [0.320] & 1.281 [0.129] & 4.969 \\
+SSIM & 0.889 [0.157] & 0.762 [0.062] & 1.056 [0.219] & 4.908 \\
+TOPIQ\_FR & 0.925 [0.019] & 0.914 [0.073] & 0.780 [0.143] & 5.132 \\
+VIF & 0.748 [0.064] & 0.726 [0.079] & 0.988 [0.124] & 4.986 \\
+VSI & 0.873 [0.159] & 0.820 [0.150] & 0.991 [0.117] & 5.328 \\
+WADIQAM\_FR & 0.858 [0.046] & 0.831 [0.042] & 0.922 [0.169] & 5.087 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

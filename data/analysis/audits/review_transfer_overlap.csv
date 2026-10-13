@@ -1,0 +1,25 @@
+train_dataset,test_dataset,REF,identity_status
+APSIPA,UnB_PC,amphoriskos_vox10.ply,shared filename; raw-content identity unverified
+APSIPA,UnB_PC,biplane_vox10.ply,shared filename; raw-content identity unverified
+APSIPA,UnB_PC,romanoillamp_vox10.ply,shared filename; raw-content identity unverified
+WPC,SJTU-PCQA,statue.ply,shared filename; raw-content identity unverified
+WPC,WPC2,bag.ply,shared filename; raw-content identity unverified
+WPC,WPC2,banana.ply,shared filename; raw-content identity unverified
+WPC,WPC2,biscuits.ply,shared filename; raw-content identity unverified
+WPC,WPC2,cake.ply,shared filename; raw-content identity unverified
+WPC,WPC2,cauliflower.ply,shared filename; raw-content identity unverified
+WPC,WPC2,flowerpot.ply,shared filename; raw-content identity unverified
+WPC,WPC2,house.ply,shared filename; raw-content identity unverified
+WPC,WPC2,litchi.ply,shared filename; raw-content identity unverified
+WPC,WPC2,mushroom.ply,shared filename; raw-content identity unverified
+WPC,WPC2,ping-pong_bat.ply,shared filename; raw-content identity unverified
+WPC,WPC2,puer_tea.ply,shared filename; raw-content identity unverified
+WPC,WPC2,pumpkin.ply,shared filename; raw-content identity unverified
+WPC,WPC2,ship.ply,shared filename; raw-content identity unverified
+WPC,WPC2,statue.ply,shared filename; raw-content identity unverified
+WPC,WPC2,stone.ply,shared filename; raw-content identity unverified
+WPC,WPC2,tool_box.ply,shared filename; raw-content identity unverified
+LS-PCQA,SJTU-PCQA,longdress.ply,shared filename; raw-content identity unverified
+LS-PCQA,SJTU-PCQA,loot.ply,shared filename; raw-content identity unverified
+LS-PCQA,SJTU-PCQA,redandblack.ply,shared filename; raw-content identity unverified
+LS-PCQA,SJTU-PCQA,soldier.ply,shared filename; raw-content identity unverified

@@ -1,0 +1,143 @@
+{
+  "semantic_order_verified": true,
+  "original_pointpca_schema": 46,
+  "matlab_rs_corresponding_slots": 40,
+  "sources": [
+    {
+      "repository": "https://github.com/cwi-dis/pointpca2",
+      "commit": "4f174ec905d343beb5f6bd20d5add04f00caf0dd",
+      "file": "Matlab_FeatureExtraction/lib/compute_predictors.m",
+      "sha256": "d8169b3e8ddcf2bfbbf55af409cf25116901e4ace9c56dc5b3a2e3c89cf88092",
+      "url": "https://github.com/cwi-dis/pointpca2/blob/4f174ec905d343beb5f6bd20d5add04f00caf0dd/Matlab_FeatureExtraction/lib/compute_predictors.m"
+    },
+    {
+      "repository": "https://github.com/cwi-dis/pointpca",
+      "commit": "00da64c8c89c0d5c6ef2e20e07bb551d9f1fc4a3",
+      "file": "functions/get_predictor_names.m",
+      "sha256": "9d486f1fe3011863757d6addb7b0a7644fb56c084002c63f3c7acb5636f021cb",
+      "url": "https://github.com/cwi-dis/pointpca/blob/00da64c8c89c0d5c6ef2e20e07bb551d9f1fc4a3/functions/get_predictor_names.m"
+    },
+    {
+      "repository": "https://github.com/arthurhscarvalho/pointpca2-rs",
+      "commit": "4f47a2911001141a700fdf2cef4fcf002c213948",
+      "file": "src/predictors.rs",
+      "sha256": "804f88fd2f0a2eddf22473523b8ebe77745e5cc926e2d2398067ebfceb8ee0b5",
+      "url": "https://github.com/arthurhscarvalho/pointpca2-rs/blob/4f47a2911001141a700fdf2cef4fcf002c213948/src/predictors.rs"
+    },
+    {
+      "repository": "https://github.com/arthurhscarvalho/pointpca2-rs",
+      "commit": "4f47a2911001141a700fdf2cef4fcf002c213948",
+      "file": "src/spatial_metrics.rs",
+      "sha256": "f8f7d2e22e48e8cec90e5a38c42833a0e24674d8fdb1151231d9059582c195fa",
+      "url": "https://github.com/arthurhscarvalho/pointpca2-rs/blob/4f47a2911001141a700fdf2cef4fcf002c213948/src/spatial_metrics.rs"
+    },
+    {
+      "repository": "https://github.com/arthurhscarvalho/pointpca3-rs",
+      "commit": "65fc0f43e9b8430222060544a02f92288005f093",
+      "file": "src/lib.rs",
+      "sha256": "c9a98f93ed62d63592de01de3a7a11b2e711a92f2bfde4d014738b44e6c68f59",
+      "url": "https://github.com/arthurhscarvalho/pointpca3-rs/blob/65fc0f43e9b8430222060544a02f92288005f093/src/lib.rs"
+    },
+    {
+      "repository": "https://github.com/arthurhscarvalho/pointpca3-rs",
+      "commit": "65fc0f43e9b8430222060544a02f92288005f093",
+      "file": "src/features.rs",
+      "sha256": "6dfb16cde38b4323e73a14e919424c895000775c6d7593c5e9115e01ab5253f2",
+      "url": "https://github.com/arthurhscarvalho/pointpca3-rs/blob/65fc0f43e9b8430222060544a02f92288005f093/src/features.rs"
+    },
+    {
+      "repository": "https://gitlab.com/gpds-unb/pointpcapp",
+      "commit": "a64ed60788927b15ccf4a653493d8dedea5673c7",
+      "file": ".gitmodules",
+      "sha256": "8652856bf723815808d1a4dd9e4992f46bccc38d747d716146d9e6549a849de7",
+      "url": "https://gitlab.com/gpds-unb/pointpcapp/-/blob/a64ed60788927b15ccf4a653493d8dedea5673c7/.gitmodules"
+    },
+    {
+      "repository": "https://gitlab.com/gpds-unb/pointpcapp",
+      "commit": "a64ed60788927b15ccf4a653493d8dedea5673c7",
+      "file": "pyproject.toml",
+      "sha256": "eeb1b54401765d0abeea5f2b13cda1a475ebf8142f8e6ffe46329f7209fde931",
+      "url": "https://gitlab.com/gpds-unb/pointpcapp/-/blob/a64ed60788927b15ccf4a653493d8dedea5673c7/pyproject.toml"
+    },
+    {
+      "repository": "https://gitlab.com/gpds-unb/pointpcapp",
+      "commit": "a64ed60788927b15ccf4a653493d8dedea5673c7",
+      "file": "scripts/only_feature_extraction/run_pointpcapp_complete.sh",
+      "sha256": "04502494c0ccc7e3a74bd23d14580e0272cf050c696da69355e85a860f15051e",
+      "url": "https://gitlab.com/gpds-unb/pointpcapp/-/blob/a64ed60788927b15ccf4a653493d8dedea5673c7/scripts/only_feature_extraction/run_pointpcapp_complete.sh"
+    },
+    {
+      "repository": "https://gitlab.com/gpds-unb/pointpcapp",
+      "commit": "a64ed60788927b15ccf4a653493d8dedea5673c7",
+      "file": "src/pointpcapp/pointpca/pointpca3.py",
+      "sha256": "78d9549cad5d55e7b954d69e50d56dbdfa8a2d11a6146c9e61370b83fc206028",
+      "url": "https://gitlab.com/gpds-unb/pointpcapp/-/blob/a64ed60788927b15ccf4a653493d8dedea5673c7/src/pointpcapp/pointpca/pointpca3.py"
+    },
+    {
+      "repository": "https://gitlab.com/gpds-unb/pointpcapp",
+      "commit": "a64ed60788927b15ccf4a653493d8dedea5673c7",
+      "file": "src/pointpcapp/projectors/cubic.py",
+      "sha256": "071f64db74d977d9f39079dc9ab915cb6b99eb569b399a5645d33913eb365f89",
+      "url": "https://gitlab.com/gpds-unb/pointpcapp/-/blob/a64ed60788927b15ccf4a653493d8dedea5673c7/src/pointpcapp/projectors/cubic.py"
+    },
+    {
+      "repository": "https://gitlab.com/gpds-unb/pointpcapp",
+      "commit": "a64ed60788927b15ccf4a653493d8dedea5673c7",
+      "file": "src/pointpcapp/tasks/benchmark_pointpca1_matlab.py",
+      "sha256": "2a786a568405969bb45ab067221abb6c109d3a56237b841c3e0ce2fc75b578d1",
+      "url": "https://gitlab.com/gpds-unb/pointpcapp/-/blob/a64ed60788927b15ccf4a653493d8dedea5673c7/src/pointpcapp/tasks/benchmark_pointpca1_matlab.py"
+    },
+    {
+      "repository": "https://gitlab.com/gpds-unb/pointpcapp",
+      "commit": "a64ed60788927b15ccf4a653493d8dedea5673c7",
+      "file": "src/pointpcapp/tasks/benchmark_pointpca2_matlab.py",
+      "sha256": "077474936f300cf673578af296c5056a11c6c612941a3794dd04cb049d75666a",
+      "url": "https://gitlab.com/gpds-unb/pointpcapp/-/blob/a64ed60788927b15ccf4a653493d8dedea5673c7/src/pointpcapp/tasks/benchmark_pointpca2_matlab.py"
+    },
+    {
+      "repository": "https://gitlab.com/gpds-unb/pointpcapp",
+      "commit": "a64ed60788927b15ccf4a653493d8dedea5673c7",
+      "file": "src/pointpcapp/tasks/benchmark_pointpca_rust.py",
+      "sha256": "e5bb00047e5633c5ee48fe9059ef690c0e27017e47b96015a8e3223f45482ec2",
+      "url": "https://gitlab.com/gpds-unb/pointpcapp/-/blob/a64ed60788927b15ccf4a653493d8dedea5673c7/src/pointpcapp/tasks/benchmark_pointpca_rust.py"
+    },
+    {
+      "repository": "https://gitlab.com/gpds-unb/pointpcapp",
+      "commit": "a64ed60788927b15ccf4a653493d8dedea5673c7",
+      "file": "src/pointpcapp/tasks/benchmark_pointpcapp_complete.py",
+      "sha256": "47c5c96d912cfd8220d74e44a6c159b9f462b18959db607278df6557c80457a8",
+      "url": "https://gitlab.com/gpds-unb/pointpcapp/-/blob/a64ed60788927b15ccf4a653493d8dedea5673c7/src/pointpcapp/tasks/benchmark_pointpcapp_complete.py"
+    },
+    {
+      "repository": "https://gitlab.com/gpds-unb/pointpcapp",
+      "commit": "a64ed60788927b15ccf4a653493d8dedea5673c7",
+      "file": "src/pointpcapp/projectors/pre_processing.py",
+      "sha256": "e029e8e7f92ceb64eca2af456f58f303182e4fc543449f47720a25e59567d818",
+      "url": "https://gitlab.com/gpds-unb/pointpcapp/-/blob/a64ed60788927b15ccf4a653493d8dedea5673c7/src/pointpcapp/projectors/pre_processing.py"
+    }
+  ],
+  "generator_commit": "a64ed60788927b15ccf4a653493d8dedea5673c7",
+  "generator_calls": "PointPCA3; orthographic_projector; precision 10; search size 81; complete workers 32",
+  "iqr_claim": "No IQR-skipping step in inspected RS or PC3 paths; removed from manuscript",
+  "caveats": [
+    "Inspected native source commits establish intended semantics; exact historical installed native binary versions were not recorded in the CSVs.",
+    "Original MATLAB upstream code snapshot establishes the 46-feature schema; no new extraction was performed.",
+    "View indices are retained without an asserted historical camera mapping."
+  ],
+  "papers": [
+    {
+      "filename": "BMSB.pdf",
+      "sha256": "c9466bc253e1e6aed3ef3031a2d10c8c7589cd22b1cffb765dee95fc656675cb"
+    },
+    {
+      "filename": "PointPCA2-RS.pdf",
+      "sha256": "364ef33919bd5ec3b30725caf05660f9b0c626287112afa0750e46a26fc5d88b"
+    },
+    {
+      "filename": "No-Reference_3D_Point_Cloud_Quality_Assessment_Using_Multi-View_Projection_and_Deep_Convolutional_Neural_Network.pdf",
+      "sha256": "63033e8278b3bf5a820cc07d207be9641696b6a63d8b3c2ffcff91c560189718"
+    }
+  ],
+  "projection_preprocessing": "Common translation if negative coordinates; shared reference-coordinate normalization/scaling; subsequent per-cloud upper-range rescaling. Not centroid/unit-radius normalization or a registration guarantee.",
+  "configuration_provenance": "Generator config is a gitlink at 0888693b8c7c7e12aa9c105619aeef9b15fdc42c; full configuration repository was not inspected."
+}

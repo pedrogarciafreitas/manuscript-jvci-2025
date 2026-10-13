@@ -1,0 +1,87 @@
+family,index,semantic,matlab_column,rs_column,correspondence
+PointPCA+,0,t_mu_y,QUALITY_INDEX_PointPCA2_0,QUALITY_INDEX_PointPCA2_0,intended descriptor and slot; not numerical equivalence
+PointPCA+,1,t_mu_u,QUALITY_INDEX_PointPCA2_1,QUALITY_INDEX_PointPCA2_1,intended descriptor and slot; not numerical equivalence
+PointPCA+,2,t_mu_v,QUALITY_INDEX_PointPCA2_2,QUALITY_INDEX_PointPCA2_2,intended descriptor and slot; not numerical equivalence
+PointPCA+,3,t_var_y,QUALITY_INDEX_PointPCA2_3,QUALITY_INDEX_PointPCA2_3,intended descriptor and slot; not numerical equivalence
+PointPCA+,4,t_var_u,QUALITY_INDEX_PointPCA2_4,QUALITY_INDEX_PointPCA2_4,intended descriptor and slot; not numerical equivalence
+PointPCA+,5,t_var_v,QUALITY_INDEX_PointPCA2_5,QUALITY_INDEX_PointPCA2_5,intended descriptor and slot; not numerical equivalence
+PointPCA+,6,t_cov_y,QUALITY_INDEX_PointPCA2_6,QUALITY_INDEX_PointPCA2_6,intended descriptor and slot; not numerical equivalence
+PointPCA+,7,t_cov_u,QUALITY_INDEX_PointPCA2_7,QUALITY_INDEX_PointPCA2_7,intended descriptor and slot; not numerical equivalence
+PointPCA+,8,t_cov_v,QUALITY_INDEX_PointPCA2_8,QUALITY_INDEX_PointPCA2_8,intended descriptor and slot; not numerical equivalence
+PointPCA+,9,t_varsum,QUALITY_INDEX_PointPCA2_9,QUALITY_INDEX_PointPCA2_9,intended descriptor and slot; not numerical equivalence
+PointPCA+,10,t_omnivariance,QUALITY_INDEX_PointPCA2_10,QUALITY_INDEX_PointPCA2_10,intended descriptor and slot; not numerical equivalence
+PointPCA+,11,t_entropy,QUALITY_INDEX_PointPCA2_11,QUALITY_INDEX_PointPCA2_11,intended descriptor and slot; not numerical equivalence
+PointPCA+,12,g_pB2pA,QUALITY_INDEX_PointPCA2_12,QUALITY_INDEX_PointPCA2_12,intended descriptor and slot; not numerical equivalence
+PointPCA+,13,g_vAB2plA_x,QUALITY_INDEX_PointPCA2_13,QUALITY_INDEX_PointPCA2_13,intended descriptor and slot; not numerical equivalence
+PointPCA+,14,g_vAB2plA_y,QUALITY_INDEX_PointPCA2_14,QUALITY_INDEX_PointPCA2_14,intended descriptor and slot; not numerical equivalence
+PointPCA+,15,g_vAB2plA_z,QUALITY_INDEX_PointPCA2_15,QUALITY_INDEX_PointPCA2_15,intended descriptor and slot; not numerical equivalence
+PointPCA+,16,g_pA2plA_y,QUALITY_INDEX_PointPCA2_16,QUALITY_INDEX_PointPCA2_16,intended descriptor and slot; not numerical equivalence
+PointPCA+,17,g_pA2plA_z,QUALITY_INDEX_PointPCA2_17,QUALITY_INDEX_PointPCA2_17,intended descriptor and slot; not numerical equivalence
+PointPCA+,18,g_pB2cA,QUALITY_INDEX_PointPCA2_18,QUALITY_INDEX_PointPCA2_18,intended descriptor and slot; not numerical equivalence
+PointPCA+,19,g_pB2plA_y,QUALITY_INDEX_PointPCA2_19,QUALITY_INDEX_PointPCA2_19,intended descriptor and slot; not numerical equivalence
+PointPCA+,20,g_pB2plA_z,QUALITY_INDEX_PointPCA2_20,QUALITY_INDEX_PointPCA2_20,intended descriptor and slot; not numerical equivalence
+PointPCA+,21,g_cB2cA,QUALITY_INDEX_PointPCA2_21,QUALITY_INDEX_PointPCA2_21,intended descriptor and slot; not numerical equivalence
+PointPCA+,22,g_cB2plA_y,QUALITY_INDEX_PointPCA2_22,QUALITY_INDEX_PointPCA2_22,intended descriptor and slot; not numerical equivalence
+PointPCA+,23,g_cB2plA_z,QUALITY_INDEX_PointPCA2_23,QUALITY_INDEX_PointPCA2_23,intended descriptor and slot; not numerical equivalence
+PointPCA+,24,g_var_x,QUALITY_INDEX_PointPCA2_24,QUALITY_INDEX_PointPCA2_24,intended descriptor and slot; not numerical equivalence
+PointPCA+,25,g_var_y,QUALITY_INDEX_PointPCA2_25,QUALITY_INDEX_PointPCA2_25,intended descriptor and slot; not numerical equivalence
+PointPCA+,26,g_var_z,QUALITY_INDEX_PointPCA2_26,QUALITY_INDEX_PointPCA2_26,intended descriptor and slot; not numerical equivalence
+PointPCA+,27,g_cov_x,QUALITY_INDEX_PointPCA2_27,QUALITY_INDEX_PointPCA2_27,intended descriptor and slot; not numerical equivalence
+PointPCA+,28,g_cov_y,QUALITY_INDEX_PointPCA2_28,QUALITY_INDEX_PointPCA2_28,intended descriptor and slot; not numerical equivalence
+PointPCA+,29,g_cov_z,QUALITY_INDEX_PointPCA2_29,QUALITY_INDEX_PointPCA2_29,intended descriptor and slot; not numerical equivalence
+PointPCA+,30,g_omnivariance,QUALITY_INDEX_PointPCA2_30,QUALITY_INDEX_PointPCA2_30,intended descriptor and slot; not numerical equivalence
+PointPCA+,31,g_entropy,QUALITY_INDEX_PointPCA2_31,QUALITY_INDEX_PointPCA2_31,intended descriptor and slot; not numerical equivalence
+PointPCA+,32,g_anisotropy,QUALITY_INDEX_PointPCA2_32,QUALITY_INDEX_PointPCA2_32,intended descriptor and slot; not numerical equivalence
+PointPCA+,33,g_planarity,QUALITY_INDEX_PointPCA2_33,QUALITY_INDEX_PointPCA2_33,intended descriptor and slot; not numerical equivalence
+PointPCA+,34,g_linearity,QUALITY_INDEX_PointPCA2_34,QUALITY_INDEX_PointPCA2_34,intended descriptor and slot; not numerical equivalence
+PointPCA+,35,g_surfaceVariation,QUALITY_INDEX_PointPCA2_35,QUALITY_INDEX_PointPCA2_35,intended descriptor and slot; not numerical equivalence
+PointPCA+,36,g_sphericity,QUALITY_INDEX_PointPCA2_36,QUALITY_INDEX_PointPCA2_36,intended descriptor and slot; not numerical equivalence
+PointPCA+,37,g_asim_y,QUALITY_INDEX_PointPCA2_37,QUALITY_INDEX_PointPCA2_37,intended descriptor and slot; not numerical equivalence
+PointPCA+,38,g_paralellity_x,QUALITY_INDEX_PointPCA2_38,QUALITY_INDEX_PointPCA2_38,intended descriptor and slot; not numerical equivalence
+PointPCA+,39,g_paralellity_z,QUALITY_INDEX_PointPCA2_39,QUALITY_INDEX_PointPCA2_39,intended descriptor and slot; not numerical equivalence
+PointPCA,0,mean_g_eigval1,FV_PointPCA1_0,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,1,mean_g_eigval2,FV_PointPCA1_1,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,2,mean_g_eigval3,FV_PointPCA1_2,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,3,mean_g_sum_eigvals,FV_PointPCA1_3,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,4,mean_g_linearity,FV_PointPCA1_4,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,5,mean_g_planarity,FV_PointPCA1_5,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,6,mean_g_sphericity,FV_PointPCA1_6,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,7,mean_g_anisotropy,FV_PointPCA1_7,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,8,mean_g_omnivariance,FV_PointPCA1_8,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,9,mean_g_eigenentropy,FV_PointPCA1_9,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,10,mean_g_surface_variation,FV_PointPCA1_10,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,11,mean_g_roughness,FV_PointPCA1_11,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,12,mean_g_parallelity_x,FV_PointPCA1_12,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,13,mean_g_parallelity_y,FV_PointPCA1_13,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,14,mean_g_parallelity_z,FV_PointPCA1_14,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,15,mean_t_R,FV_PointPCA1_15,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,16,mean_t_G,FV_PointPCA1_16,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,17,mean_t_B,FV_PointPCA1_17,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,18,mean_t_eigval1,FV_PointPCA1_18,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,19,mean_t_eigval2,FV_PointPCA1_19,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,20,mean_t_eigval3,FV_PointPCA1_20,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,21,mean_t_sum_eigvals,FV_PointPCA1_21,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,22,mean_t_eigenentropy,FV_PointPCA1_22,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,23,std_g_eigval1,FV_PointPCA1_23,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,24,std_g_eigval2,FV_PointPCA1_24,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,25,std_g_eigval3,FV_PointPCA1_25,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,26,std_g_sum_eigvals,FV_PointPCA1_26,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,27,std_g_linearity,FV_PointPCA1_27,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,28,std_g_planarity,FV_PointPCA1_28,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,29,std_g_sphericity,FV_PointPCA1_29,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,30,std_g_anisotropy,FV_PointPCA1_30,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,31,std_g_omnivariance,FV_PointPCA1_31,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,32,std_g_eigenentropy,FV_PointPCA1_32,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,33,std_g_surface_variation,FV_PointPCA1_33,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,34,std_g_roughness,FV_PointPCA1_34,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,35,std_g_parallelity_x,FV_PointPCA1_35,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,36,std_g_parallelity_y,FV_PointPCA1_36,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,37,std_g_parallelity_z,FV_PointPCA1_37,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,38,std_t_R,FV_PointPCA1_38,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,39,std_t_G,FV_PointPCA1_39,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,40,std_t_B,FV_PointPCA1_40,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,41,std_t_eigval1,FV_PointPCA1_41,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,42,std_t_eigval2,FV_PointPCA1_42,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,43,std_t_eigval3,FV_PointPCA1_43,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,44,std_t_sum_eigvals,FV_PointPCA1_44,,native 46-feature schema; no forced correspondence to PointPCA+
+PointPCA,45,std_t_eigenentropy,FV_PointPCA1_45,,native 46-feature schema; no forced correspondence to PointPCA+

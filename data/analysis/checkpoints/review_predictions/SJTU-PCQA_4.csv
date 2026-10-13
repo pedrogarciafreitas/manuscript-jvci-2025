@@ -1,0 +1,379 @@
+dataset,SIGNAL,REF,method,variant,fold,y_true,y_pred,features
+SJTU-PCQA,redandblack_0.ply,redandblack.ply,PointPCA++,standalone,3,8.167091836735,7.4638098917451305,46
+SJTU-PCQA,redandblack_1.ply,redandblack.ply,PointPCA++,standalone,3,6.45,6.538882432299731,46
+SJTU-PCQA,redandblack_2.ply,redandblack.ply,PointPCA++,standalone,3,6.734375,6.1867817651098,46
+SJTU-PCQA,redandblack_3.ply,redandblack.ply,PointPCA++,standalone,3,4.9,5.239466754971243,46
+SJTU-PCQA,redandblack_4.ply,redandblack.ply,PointPCA++,standalone,3,6.286989795918,4.520149422749829,46
+SJTU-PCQA,redandblack_5.ply,redandblack.ply,PointPCA++,standalone,3,3.7578125,2.76256532083968,46
+SJTU-PCQA,redandblack_6.ply,redandblack.ply,PointPCA++,standalone,3,9.392857142857,9.032804650706332,46
+SJTU-PCQA,redandblack_7.ply,redandblack.ply,PointPCA++,standalone,3,7.608333333333,6.053041413199901,46
+SJTU-PCQA,redandblack_8.ply,redandblack.ply,PointPCA++,standalone,3,7.247448979592,5.5062164606227695,46
+SJTU-PCQA,redandblack_9.ply,redandblack.ply,PointPCA++,standalone,3,6.53125,5.05911577708011,46
+SJTU-PCQA,redandblack_10.ply,redandblack.ply,PointPCA++,standalone,3,5.515625,4.5845613471350495,46
+SJTU-PCQA,redandblack_11.ply,redandblack.ply,PointPCA++,standalone,3,4.780769230769,4.246614092752442,46
+SJTU-PCQA,redandblack_12.ply,redandblack.ply,PointPCA++,standalone,3,7.767307692308,8.191974203623749,46
+SJTU-PCQA,redandblack_13.ply,redandblack.ply,PointPCA++,standalone,3,6.803846153846,7.344635850012991,46
+SJTU-PCQA,redandblack_14.ply,redandblack.ply,PointPCA++,standalone,3,6.65,6.8314784471480285,46
+SJTU-PCQA,redandblack_15.ply,redandblack.ply,PointPCA++,standalone,3,5.1640625,5.636530555010459,46
+SJTU-PCQA,redandblack_16.ply,redandblack.ply,PointPCA++,standalone,3,3.709615384615,4.48667230017006,46
+SJTU-PCQA,redandblack_17.ply,redandblack.ply,PointPCA++,standalone,3,2.141666666667,2.7060463026555994,46
+SJTU-PCQA,redandblack_18.ply,redandblack.ply,PointPCA++,standalone,3,8.191666666667,8.22333514848244,46
+SJTU-PCQA,redandblack_19.ply,redandblack.ply,PointPCA++,standalone,3,6.85,5.886256320316579,46
+SJTU-PCQA,redandblack_20.ply,redandblack.ply,PointPCA++,standalone,3,6.144132653061,5.164321134222922,46
+SJTU-PCQA,redandblack_21.ply,redandblack.ply,PointPCA++,standalone,3,4.6484375,4.318674025379392,46
+SJTU-PCQA,redandblack_22.ply,redandblack.ply,PointPCA++,standalone,3,3.465384615385,1.8824121533228892,46
+SJTU-PCQA,redandblack_23.ply,redandblack.ply,PointPCA++,standalone,3,1.433333333333,1.9364319646127697,46
+SJTU-PCQA,redandblack_24.ply,redandblack.ply,PointPCA++,standalone,3,8.2578125,7.59089123822606,46
+SJTU-PCQA,redandblack_25.ply,redandblack.ply,PointPCA++,standalone,3,7.3515625,6.148501921441578,46
+SJTU-PCQA,redandblack_26.ply,redandblack.ply,PointPCA++,standalone,3,5.579081632653,4.853257366889132,46
+SJTU-PCQA,redandblack_27.ply,redandblack.ply,PointPCA++,standalone,3,2.4375,2.49179856750394,46
+SJTU-PCQA,redandblack_28.ply,redandblack.ply,PointPCA++,standalone,3,2.275,1.7543263098508897,46
+SJTU-PCQA,redandblack_29.ply,redandblack.ply,PointPCA++,standalone,3,1.0,1.1797805713631906,46
+SJTU-PCQA,redandblack_30.ply,redandblack.ply,PointPCA++,standalone,3,8.125,7.644004734105198,46
+SJTU-PCQA,redandblack_31.ply,redandblack.ply,PointPCA++,standalone,3,6.441666666667,7.053401515894809,46
+SJTU-PCQA,redandblack_32.ply,redandblack.ply,PointPCA++,standalone,3,5.9609375,5.03062866300367,46
+SJTU-PCQA,redandblack_33.ply,redandblack.ply,PointPCA++,standalone,3,3.394132653061,2.634128548534769,46
+SJTU-PCQA,redandblack_34.ply,redandblack.ply,PointPCA++,standalone,3,1.866666666667,2.2395512984040082,46
+SJTU-PCQA,redandblack_35.ply,redandblack.ply,PointPCA++,standalone,3,1.848076923077,1.5019114092752504,46
+SJTU-PCQA,redandblack_36.ply,redandblack.ply,PointPCA++,standalone,3,8.525,7.890398327119325,46
+SJTU-PCQA,redandblack_37.ply,redandblack.ply,PointPCA++,standalone,3,6.063461538462,5.731697426085719,46
+SJTU-PCQA,redandblack_38.ply,redandblack.ply,PointPCA++,standalone,3,5.96875,4.559810676674461,46
+SJTU-PCQA,redandblack_39.ply,redandblack.ply,PointPCA++,standalone,3,3.125,2.5613918023939686,46
+SJTU-PCQA,redandblack_40.ply,redandblack.ply,PointPCA++,standalone,3,1.876923076923,2.0607926151227085,46
+SJTU-PCQA,redandblack_41.ply,redandblack.ply,PointPCA++,standalone,3,1.691666666667,1.5309829523154301,46
+SJTU-PCQA,ULB Unicorn_0.ply,ULB Unicorn.ply,PointPCA++,standalone,2,8.220663265306,7.5089990760727,46
+SJTU-PCQA,ULB Unicorn_1.ply,ULB Unicorn.ply,PointPCA++,standalone,2,7.405769230769,7.166512313579258,46
+SJTU-PCQA,ULB Unicorn_2.ply,ULB Unicorn.ply,PointPCA++,standalone,2,6.975,5.614006410256391,46
+SJTU-PCQA,ULB Unicorn_3.ply,ULB Unicorn.ply,PointPCA++,standalone,2,6.1015625,5.178367256998939,46
+SJTU-PCQA,ULB Unicorn_4.ply,ULB Unicorn.ply,PointPCA++,standalone,2,4.963461538462,4.405268625719498,46
+SJTU-PCQA,ULB Unicorn_5.ply,ULB Unicorn.ply,PointPCA++,standalone,2,2.380102040816,3.149136888409219,46
+SJTU-PCQA,ULB Unicorn_6.ply,ULB Unicorn.ply,PointPCA++,standalone,2,7.688461538462,8.278708316980529,46
+SJTU-PCQA,ULB Unicorn_7.ply,ULB Unicorn.ply,PointPCA++,standalone,2,8.3671875,6.896876594387662,46
+SJTU-PCQA,ULB Unicorn_8.ply,ULB Unicorn.ply,PointPCA++,standalone,2,6.553571428571,6.436258814102448,46
+SJTU-PCQA,ULB Unicorn_9.ply,ULB Unicorn.ply,PointPCA++,standalone,2,6.880769230769,6.022492150706367,46
+SJTU-PCQA,ULB Unicorn_10.ply,ULB Unicorn.ply,PointPCA++,standalone,2,6.348076923077,5.387469044348511,46
+SJTU-PCQA,ULB Unicorn_11.ply,ULB Unicorn.ply,PointPCA++,standalone,2,5.9453125,4.877842024790759,46
+SJTU-PCQA,ULB Unicorn_12.ply,ULB Unicorn.ply,PointPCA++,standalone,2,7.352040816327,7.810346873364751,46
+SJTU-PCQA,ULB Unicorn_13.ply,ULB Unicorn.ply,PointPCA++,standalone,2,5.857692307692,7.45475102204346,46
+SJTU-PCQA,ULB Unicorn_14.ply,ULB Unicorn.ply,PointPCA++,standalone,2,6.226923076923,6.378294888147576,46
+SJTU-PCQA,ULB Unicorn_15.ply,ULB Unicorn.ply,PointPCA++,standalone,2,5.525510204082,5.303102670395111,46
+SJTU-PCQA,ULB Unicorn_16.ply,ULB Unicorn.ply,PointPCA++,standalone,2,3.5859375,4.716158948194678,46
+SJTU-PCQA,ULB Unicorn_17.ply,ULB Unicorn.ply,PointPCA++,standalone,2,1.848076923077,3.270719502223969,46
+SJTU-PCQA,ULB Unicorn_18.ply,ULB Unicorn.ply,PointPCA++,standalone,2,6.841666666667,7.973724113683939,46
+SJTU-PCQA,ULB Unicorn_19.ply,ULB Unicorn.ply,PointPCA++,standalone,2,6.5703125,6.909274782509147,46
+SJTU-PCQA,ULB Unicorn_20.ply,ULB Unicorn.ply,PointPCA++,standalone,2,5.141666666667,5.616853488029779,46
+SJTU-PCQA,ULB Unicorn_21.ply,ULB Unicorn.ply,PointPCA++,standalone,2,4.234375,5.063328337585009,46
+SJTU-PCQA,ULB Unicorn_22.ply,ULB Unicorn.ply,PointPCA++,standalone,2,3.455769230769,3.992619121206211,46
+SJTU-PCQA,ULB Unicorn_23.ply,ULB Unicorn.ply,PointPCA++,standalone,2,1.377551020408,3.0770916323260593,46
+SJTU-PCQA,ULB Unicorn_24.ply,ULB Unicorn.ply,PointPCA++,standalone,2,7.2,7.474861051151198,46
+SJTU-PCQA,ULB Unicorn_25.ply,ULB Unicorn.ply,PointPCA++,standalone,2,5.9296875,6.81890218635533,46
+SJTU-PCQA,ULB Unicorn_26.ply,ULB Unicorn.ply,PointPCA++,standalone,2,4.6328125,5.481646773613258,46
+SJTU-PCQA,ULB Unicorn_27.ply,ULB Unicorn.ply,PointPCA++,standalone,2,2.067602040816,3.451614566980639,46
+SJTU-PCQA,ULB Unicorn_28.ply,ULB Unicorn.ply,PointPCA++,standalone,2,1.5,2.9042684867216493,46
+SJTU-PCQA,ULB Unicorn_29.ply,ULB Unicorn.ply,PointPCA++,standalone,2,1.223076923077,2.6180515355180596,46
+SJTU-PCQA,ULB Unicorn_30.ply,ULB Unicorn.ply,PointPCA++,standalone,2,7.767857142857,7.295650739141771,46
+SJTU-PCQA,ULB Unicorn_31.ply,ULB Unicorn.ply,PointPCA++,standalone,2,7.155612244898,7.138612719126107,46
+SJTU-PCQA,ULB Unicorn_32.ply,ULB Unicorn.ply,PointPCA++,standalone,2,4.59056122449,6.464881982600733,46
+SJTU-PCQA,ULB Unicorn_33.ply,ULB Unicorn.ply,PointPCA++,standalone,2,2.609375,3.6376086473050497,46
+SJTU-PCQA,ULB Unicorn_34.ply,ULB Unicorn.ply,PointPCA++,standalone,2,1.857692307692,3.2222669577446394,46
+SJTU-PCQA,ULB Unicorn_35.ply,ULB Unicorn.ply,PointPCA++,standalone,2,1.3,2.73894489141813,46
+SJTU-PCQA,ULB Unicorn_36.ply,ULB Unicorn.ply,PointPCA++,standalone,2,8.375,7.411328631933528,46
+SJTU-PCQA,ULB Unicorn_37.ply,ULB Unicorn.ply,PointPCA++,standalone,2,7.066326530612,6.567742224293493,46
+SJTU-PCQA,ULB Unicorn_38.ply,ULB Unicorn.ply,PointPCA++,standalone,2,5.15,5.318028764390362,46
+SJTU-PCQA,ULB Unicorn_39.ply,ULB Unicorn.ply,PointPCA++,standalone,2,3.103316326531,3.4164195610936705,46
+SJTU-PCQA,ULB Unicorn_40.ply,ULB Unicorn.ply,PointPCA++,standalone,2,2.2,2.9881893723835504,46
+SJTU-PCQA,ULB Unicorn_41.ply,ULB Unicorn.ply,PointPCA++,standalone,2,1.30612244898,2.7489995666536093,46
+SJTU-PCQA,loot_0.ply,loot.ply,PointPCA++,standalone,4,6.996153846154,8.350626291862904,46
+SJTU-PCQA,loot_1.ply,loot.ply,PointPCA++,standalone,4,7.0859375,6.430016197344161,46
+SJTU-PCQA,loot_2.ply,loot.ply,PointPCA++,standalone,4,5.383333333333,6.106267317503756,46
+SJTU-PCQA,loot_3.ply,loot.ply,PointPCA++,standalone,4,5.208333333333,5.780004129055459,46
+SJTU-PCQA,loot_4.ply,loot.ply,PointPCA++,standalone,4,6.679846938776,5.0381705586079635,46
+SJTU-PCQA,loot_5.ply,loot.ply,PointPCA++,standalone,4,2.708333333333,3.2190909128073093,46
+SJTU-PCQA,loot_6.ply,loot.ply,PointPCA++,standalone,4,9.65,9.045930762689661,46
+SJTU-PCQA,loot_7.ply,loot.ply,PointPCA++,standalone,4,7.316666666667,7.2257093472003895,46
+SJTU-PCQA,loot_8.ply,loot.ply,PointPCA++,standalone,4,5.396683673469,6.266266009288374,46
+SJTU-PCQA,loot_9.ply,loot.ply,PointPCA++,standalone,4,4.584615384615,5.903499975471021,46
+SJTU-PCQA,loot_10.ply,loot.ply,PointPCA++,standalone,4,4.230867346939,5.354359464939922,46
+SJTU-PCQA,loot_11.ply,loot.ply,PointPCA++,standalone,4,4.0625,4.673953967163839,46
+SJTU-PCQA,loot_12.ply,loot.ply,PointPCA++,standalone,4,8.267307692308,8.065638736263912,46
+SJTU-PCQA,loot_13.ply,loot.ply,PointPCA++,standalone,4,8.613520408163,7.927751937794328,46
+SJTU-PCQA,loot_14.ply,loot.ply,PointPCA++,standalone,4,7.676020408163,7.4517087830324495,46
+SJTU-PCQA,loot_15.ply,loot.ply,PointPCA++,standalone,4,5.78125,6.0500836031528005,46
+SJTU-PCQA,loot_16.ply,loot.ply,PointPCA++,standalone,4,2.975,4.736323701596018,46
+SJTU-PCQA,loot_17.ply,loot.ply,PointPCA++,standalone,4,1.85,2.640159774005689,46
+SJTU-PCQA,loot_18.ply,loot.ply,PointPCA++,standalone,4,8.180769230769,8.411409585949787,46
+SJTU-PCQA,loot_19.ply,loot.ply,PointPCA++,standalone,4,6.925,7.39708277734172,46
+SJTU-PCQA,loot_20.ply,loot.ply,PointPCA++,standalone,4,4.8,5.888375318877487,46
+SJTU-PCQA,loot_21.ply,loot.ply,PointPCA++,standalone,4,4.299744897959,4.689156339939843,46
+SJTU-PCQA,loot_22.ply,loot.ply,PointPCA++,standalone,4,2.283333333333,3.561350822540581,46
+SJTU-PCQA,loot_23.ply,loot.ply,PointPCA++,standalone,4,1.223076923077,2.4320927361328786,46
+SJTU-PCQA,loot_24.ply,loot.ply,PointPCA++,standalone,4,7.190384615385,7.760889619309264,46
+SJTU-PCQA,loot_25.ply,loot.ply,PointPCA++,standalone,4,7.28125,6.974045664900567,46
+SJTU-PCQA,loot_26.ply,loot.ply,PointPCA++,standalone,4,4.166666666667,5.240527317176902,46
+SJTU-PCQA,loot_27.ply,loot.ply,PointPCA++,standalone,4,2.376923076923,2.911225381017811,46
+SJTU-PCQA,loot_28.ply,loot.ply,PointPCA++,standalone,4,1.703846153846,2.0974495192307407,46
+SJTU-PCQA,loot_29.ply,loot.ply,PointPCA++,standalone,4,1.0,1.14653905841181,46
+SJTU-PCQA,loot_30.ply,loot.ply,PointPCA++,standalone,4,7.341666666667,7.961522656658782,46
+SJTU-PCQA,loot_31.ply,loot.ply,PointPCA++,standalone,4,7.765306122449,7.322209388082189,46
+SJTU-PCQA,loot_32.ply,loot.ply,PointPCA++,standalone,4,4.775,5.77308384844313,46
+SJTU-PCQA,loot_33.ply,loot.ply,PointPCA++,standalone,4,2.825,3.22116590626623,46
+SJTU-PCQA,loot_34.ply,loot.ply,PointPCA++,standalone,4,2.492346938776,2.4132834494374085,46
+SJTU-PCQA,loot_35.ply,loot.ply,PointPCA++,standalone,4,1.223076923077,1.6595733581894498,46
+SJTU-PCQA,loot_36.ply,loot.ply,PointPCA++,standalone,4,8.344230769231,8.120699715463125,46
+SJTU-PCQA,loot_37.ply,loot.ply,PointPCA++,standalone,4,6.7,6.514846538134518,46
+SJTU-PCQA,loot_38.ply,loot.ply,PointPCA++,standalone,4,4.25,4.8258007424123015,46
+SJTU-PCQA,loot_39.ply,loot.ply,PointPCA++,standalone,4,2.758333333333,2.7979461178701297,46
+SJTU-PCQA,loot_40.ply,loot.ply,PointPCA++,standalone,4,1.934615384615,2.25085262133679,46
+SJTU-PCQA,loot_41.ply,loot.ply,PointPCA++,standalone,4,1.2,1.6044819466247804,46
+SJTU-PCQA,soldier_0.ply,soldier.ply,PointPCA++,standalone,1,8.3203125,7.777733418367396,46
+SJTU-PCQA,soldier_1.ply,soldier.ply,PointPCA++,standalone,1,5.783333333333,6.901969240580784,46
+SJTU-PCQA,soldier_2.ply,soldier.ply,PointPCA++,standalone,1,5.832692307692,6.31729088991353,46
+SJTU-PCQA,soldier_3.ply,soldier.ply,PointPCA++,standalone,1,6.175,5.352608958006146,46
+SJTU-PCQA,soldier_4.ply,soldier.ply,PointPCA++,standalone,1,5.083333333333,6.085794462977634,46
+SJTU-PCQA,soldier_5.ply,soldier.ply,PointPCA++,standalone,1,3.835459183673,3.182453182234339,46
+SJTU-PCQA,soldier_6.ply,soldier.ply,PointPCA++,standalone,1,9.583333333333,9.583048731030692,46
+SJTU-PCQA,soldier_7.ply,soldier.ply,PointPCA++,standalone,1,6.950255102041,7.314352711276817,46
+SJTU-PCQA,soldier_8.ply,soldier.ply,PointPCA++,standalone,1,5.813461538462,5.700984047945981,46
+SJTU-PCQA,soldier_9.ply,soldier.ply,PointPCA++,standalone,1,6.069230769231,4.555503769296203,46
+SJTU-PCQA,soldier_10.ply,soldier.ply,PointPCA++,standalone,1,4.516666666667,4.26984551609109,46
+SJTU-PCQA,soldier_11.ply,soldier.ply,PointPCA++,standalone,1,3.90943877551,4.112305558281021,46
+SJTU-PCQA,soldier_12.ply,soldier.ply,PointPCA++,standalone,1,7.615384615385,8.196500081763396,46
+SJTU-PCQA,soldier_13.ply,soldier.ply,PointPCA++,standalone,1,8.5234375,7.904109056122348,46
+SJTU-PCQA,soldier_14.ply,soldier.ply,PointPCA++,standalone,1,7.688775510204,7.296710786237651,46
+SJTU-PCQA,soldier_15.ply,soldier.ply,PointPCA++,standalone,1,5.623076923077,5.499337683150161,46
+SJTU-PCQA,soldier_16.ply,soldier.ply,PointPCA++,standalone,1,4.1171875,4.117486108385542,46
+SJTU-PCQA,soldier_17.ply,soldier.ply,PointPCA++,standalone,1,1.934615384615,2.2672293792517295,46
+SJTU-PCQA,soldier_18.ply,soldier.ply,PointPCA++,standalone,1,9.178571428571,8.38415985576916,46
+SJTU-PCQA,soldier_19.ply,soldier.ply,PointPCA++,standalone,1,8.1328125,6.802550047422772,46
+SJTU-PCQA,soldier_20.ply,soldier.ply,PointPCA++,standalone,1,5.765625,5.011371631344759,46
+SJTU-PCQA,soldier_21.ply,soldier.ply,PointPCA++,standalone,1,4.463461538462,4.100208701268898,46
+SJTU-PCQA,soldier_22.ply,soldier.ply,PointPCA++,standalone,1,3.1640625,2.8600460900705587,46
+SJTU-PCQA,soldier_23.ply,soldier.ply,PointPCA++,standalone,1,1.491666666667,1.7945369162088993,46
+SJTU-PCQA,soldier_24.ply,soldier.ply,PointPCA++,standalone,1,7.816666666667,7.560410828754632,46
+SJTU-PCQA,soldier_25.ply,soldier.ply,PointPCA++,standalone,1,5.833333333333,6.369772648482506,46
+SJTU-PCQA,soldier_26.ply,soldier.ply,PointPCA++,standalone,1,4.5546875,4.134885735544323,46
+SJTU-PCQA,soldier_27.ply,soldier.ply,PointPCA++,standalone,1,1.7265625,2.13464922651759,46
+SJTU-PCQA,soldier_28.ply,soldier.ply,PointPCA++,standalone,1,1.781887755102,1.4991483843537003,46
+SJTU-PCQA,soldier_29.ply,soldier.ply,PointPCA++,standalone,1,1.0,1.085448717948731,46
+SJTU-PCQA,soldier_30.ply,soldier.ply,PointPCA++,standalone,1,7.825,7.579881925366343,46
+SJTU-PCQA,soldier_31.ply,soldier.ply,PointPCA++,standalone,1,7.6640625,6.663659913003662,46
+SJTU-PCQA,soldier_32.ply,soldier.ply,PointPCA++,standalone,1,4.334615384615,4.561767382914724,46
+SJTU-PCQA,soldier_33.ply,soldier.ply,PointPCA++,standalone,1,2.280769230769,2.283827928767698,46
+SJTU-PCQA,soldier_34.ply,soldier.ply,PointPCA++,standalone,1,1.8671875,1.8421550235478688,46
+SJTU-PCQA,soldier_35.ply,soldier.ply,PointPCA++,standalone,1,1.234693877551,1.3464233876243308,46
+SJTU-PCQA,soldier_36.ply,soldier.ply,PointPCA++,standalone,1,8.65,7.97559758470701,46
+SJTU-PCQA,soldier_37.ply,soldier.ply,PointPCA++,standalone,1,7.084183673469,5.426134615384526,46
+SJTU-PCQA,soldier_38.ply,soldier.ply,PointPCA++,standalone,1,4.358333333333,4.124764251373608,46
+SJTU-PCQA,soldier_39.ply,soldier.ply,PointPCA++,standalone,1,2.75,2.119711473050628,46
+SJTU-PCQA,soldier_40.ply,soldier.ply,PointPCA++,standalone,1,2.320153061224,1.7435388785320698,46
+SJTU-PCQA,soldier_41.ply,soldier.ply,PointPCA++,standalone,1,1.4140625,1.3192356178048208,46
+SJTU-PCQA,Romanoillamp_0.ply,Romanoillamp.ply,PointPCA++,standalone,3,9.116666666667,8.48672689364207,46
+SJTU-PCQA,Romanoillamp_1.ply,Romanoillamp.ply,PointPCA++,standalone,3,9.321428571429,7.984363389586582,46
+SJTU-PCQA,Romanoillamp_2.ply,Romanoillamp.ply,PointPCA++,standalone,3,9.682692307692,7.378976533882759,46
+SJTU-PCQA,Romanoillamp_3.ply,Romanoillamp.ply,PointPCA++,standalone,3,8.622448979592,6.548605523940321,46
+SJTU-PCQA,Romanoillamp_4.ply,Romanoillamp.ply,PointPCA++,standalone,3,7.691326530612,5.819751937794332,46
+SJTU-PCQA,Romanoillamp_5.ply,Romanoillamp.ply,PointPCA++,standalone,3,3.6171875,4.892729608189452,46
+SJTU-PCQA,Romanoillamp_6.ply,Romanoillamp.ply,PointPCA++,standalone,3,8.771683673469,8.01310395408166,46
+SJTU-PCQA,Romanoillamp_7.ply,Romanoillamp.ply,PointPCA++,standalone,3,7.56887755102,7.474605172357521,46
+SJTU-PCQA,Romanoillamp_8.ply,Romanoillamp.ply,PointPCA++,standalone,3,6.619897959184,7.091887338108233,46
+SJTU-PCQA,Romanoillamp_9.ply,Romanoillamp.ply,PointPCA++,standalone,3,7.808333333333,6.785195553702193,46
+SJTU-PCQA,Romanoillamp_10.ply,Romanoillamp.ply,PointPCA++,standalone,3,6.953125,5.990289916928333,46
+SJTU-PCQA,Romanoillamp_11.ply,Romanoillamp.ply,PointPCA++,standalone,3,6.2265625,5.716431670264269,46
+SJTU-PCQA,Romanoillamp_12.ply,Romanoillamp.ply,PointPCA++,standalone,3,7.941666666667,8.322067095107291,46
+SJTU-PCQA,Romanoillamp_13.ply,Romanoillamp.ply,PointPCA++,standalone,3,8.163461538462,7.73420895473572,46
+SJTU-PCQA,Romanoillamp_14.ply,Romanoillamp.ply,PointPCA++,standalone,3,8.25,7.53513365057557,46
+SJTU-PCQA,Romanoillamp_15.ply,Romanoillamp.ply,PointPCA++,standalone,3,7.544230769231,6.70900261643119,46
+SJTU-PCQA,Romanoillamp_16.ply,Romanoillamp.ply,PointPCA++,standalone,3,5.125,6.16971303473313,46
+SJTU-PCQA,Romanoillamp_17.ply,Romanoillamp.ply,PointPCA++,standalone,3,2.723076923077,4.513791478610739,46
+SJTU-PCQA,Romanoillamp_18.ply,Romanoillamp.ply,PointPCA++,standalone,3,9.553571428571,8.34423686878594,46
+SJTU-PCQA,Romanoillamp_19.ply,Romanoillamp.ply,PointPCA++,standalone,3,8.71875,7.389298534798492,46
+SJTU-PCQA,Romanoillamp_20.ply,Romanoillamp.ply,PointPCA++,standalone,3,7.296153846154,6.6274132816587406,46
+SJTU-PCQA,Romanoillamp_21.ply,Romanoillamp.ply,PointPCA++,standalone,3,6.198076923077,5.4604647190606785,46
+SJTU-PCQA,Romanoillamp_22.ply,Romanoillamp.ply,PointPCA++,standalone,3,6.667091836735,4.779876226452137,46
+SJTU-PCQA,Romanoillamp_23.ply,Romanoillamp.ply,PointPCA++,standalone,3,2.6,2.2260838893248294,46
+SJTU-PCQA,Romanoillamp_24.ply,Romanoillamp.ply,PointPCA++,standalone,3,8.008333333333,7.859229616365784,46
+SJTU-PCQA,Romanoillamp_25.ply,Romanoillamp.ply,PointPCA++,standalone,3,8.7734375,7.20527649954204,46
+SJTU-PCQA,Romanoillamp_26.ply,Romanoillamp.ply,PointPCA++,standalone,3,6.533333333333,5.86061347952641,46
+SJTU-PCQA,Romanoillamp_27.ply,Romanoillamp.ply,PointPCA++,standalone,3,3.125,2.688879161760769,46
+SJTU-PCQA,Romanoillamp_28.ply,Romanoillamp.ply,PointPCA++,standalone,3,2.411989795918,2.1090430648220706,46
+SJTU-PCQA,Romanoillamp_29.ply,Romanoillamp.ply,PointPCA++,standalone,3,1.433333333333,1.4553243638802298,46
+SJTU-PCQA,Romanoillamp_30.ply,Romanoillamp.ply,PointPCA++,standalone,3,9.40625,8.021264930010576,46
+SJTU-PCQA,Romanoillamp_31.ply,Romanoillamp.ply,PointPCA++,standalone,3,7.008333333333,7.560564887493469,46
+SJTU-PCQA,Romanoillamp_32.ply,Romanoillamp.ply,PointPCA++,standalone,3,6.166666666667,6.392645105638366,46
+SJTU-PCQA,Romanoillamp_33.ply,Romanoillamp.ply,PointPCA++,standalone,3,3.936224489796,2.6452308182887987,46
+SJTU-PCQA,Romanoillamp_34.ply,Romanoillamp.ply,PointPCA++,standalone,3,3.7734375,2.36078840430402,46
+SJTU-PCQA,Romanoillamp_35.ply,Romanoillamp.ply,PointPCA++,standalone,3,1.5703125,1.6998013147566604,46
+SJTU-PCQA,Romanoillamp_36.ply,Romanoillamp.ply,PointPCA++,standalone,3,8.433333333333,8.110042067307754,46
+SJTU-PCQA,Romanoillamp_37.ply,Romanoillamp.ply,PointPCA++,standalone,3,8.5625,7.223405963827788,46
+SJTU-PCQA,Romanoillamp_38.ply,Romanoillamp.ply,PointPCA++,standalone,3,7.1953125,5.673138809850896,46
+SJTU-PCQA,Romanoillamp_39.ply,Romanoillamp.ply,PointPCA++,standalone,3,3.545918367347,2.58922232306382,46
+SJTU-PCQA,Romanoillamp_40.ply,Romanoillamp.ply,PointPCA++,standalone,3,2.811538461538,2.005311208137031,46
+SJTU-PCQA,Romanoillamp_41.ply,Romanoillamp.ply,PointPCA++,standalone,3,1.223076923077,1.5482741774594309,46
+SJTU-PCQA,longdress_0.ply,longdress.ply,PointPCA++,standalone,0,8.501275510204,7.9667926069467025,46
+SJTU-PCQA,longdress_1.ply,longdress.ply,PointPCA++,standalone,0,6.159615384615,6.90297247841438,46
+SJTU-PCQA,longdress_2.ply,longdress.ply,PointPCA++,standalone,0,6.3046875,5.980576187205543,46
+SJTU-PCQA,longdress_3.ply,longdress.ply,PointPCA++,standalone,0,5.5078125,5.09652557561485,46
+SJTU-PCQA,longdress_4.ply,longdress.ply,PointPCA++,standalone,0,7.117346938776,3.9746530939297973,46
+SJTU-PCQA,longdress_5.ply,longdress.ply,PointPCA++,standalone,0,3.40625,2.553430607339,46
+SJTU-PCQA,longdress_6.ply,longdress.ply,PointPCA++,standalone,0,9.682692307692,9.283857012035464,46
+SJTU-PCQA,longdress_7.ply,longdress.ply,PointPCA++,standalone,0,7.526923076923,7.454591714089504,46
+SJTU-PCQA,longdress_8.ply,longdress.ply,PointPCA++,standalone,0,6.709615384615,7.091848385988969,46
+SJTU-PCQA,longdress_9.ply,longdress.ply,PointPCA++,standalone,0,4.927295918367,6.644914377289358,46
+SJTU-PCQA,longdress_10.ply,longdress.ply,PointPCA++,standalone,0,4.90625,6.104396479264827,46
+SJTU-PCQA,longdress_11.ply,longdress.ply,PointPCA++,standalone,0,4.091666666667,5.484048158686611,46
+SJTU-PCQA,longdress_12.ply,longdress.ply,PointPCA++,standalone,0,8.161538461538,8.105832147763119,46
+SJTU-PCQA,longdress_13.ply,longdress.ply,PointPCA++,standalone,0,8.38137755102,7.783108066784411,46
+SJTU-PCQA,longdress_14.ply,longdress.ply,PointPCA++,standalone,0,7.744897959184,6.994549524136527,46
+SJTU-PCQA,longdress_15.ply,longdress.ply,PointPCA++,standalone,0,5.7578125,5.430416740253769,46
+SJTU-PCQA,longdress_16.ply,longdress.ply,PointPCA++,standalone,0,4.421875,4.121358140371512,46
+SJTU-PCQA,longdress_17.ply,longdress.ply,PointPCA++,standalone,0,2.126923076923,2.1309963942306496,46
+SJTU-PCQA,longdress_18.ply,longdress.ply,PointPCA++,standalone,0,9.171875,8.226229403780819,46
+SJTU-PCQA,longdress_19.ply,longdress.ply,PointPCA++,standalone,0,6.783333333333,7.551250098116153,46
+SJTU-PCQA,longdress_20.ply,longdress.ply,PointPCA++,standalone,0,5.849489795918,5.863372081043971,46
+SJTU-PCQA,longdress_21.ply,longdress.ply,PointPCA++,standalone,0,4.136538461538,4.58138609530354,46
+SJTU-PCQA,longdress_22.ply,longdress.ply,PointPCA++,standalone,0,3.623724489796,2.816645032051137,46
+SJTU-PCQA,longdress_23.ply,longdress.ply,PointPCA++,standalone,0,1.790384615385,1.89555980180533,46
+SJTU-PCQA,longdress_24.ply,longdress.ply,PointPCA++,standalone,0,7.833333333333,7.681208333333429,46
+SJTU-PCQA,longdress_25.ply,longdress.ply,PointPCA++,standalone,0,6.640384615385,6.316347658294019,46
+SJTU-PCQA,longdress_26.ply,longdress.ply,PointPCA++,standalone,0,5.166666666667,4.596322875784953,46
+SJTU-PCQA,longdress_27.ply,longdress.ply,PointPCA++,standalone,0,3.191666666667,2.0771996255232206,46
+SJTU-PCQA,longdress_28.ply,longdress.ply,PointPCA++,standalone,0,1.4453125,1.7090391401752796,46
+SJTU-PCQA,longdress_29.ply,longdress.ply,PointPCA++,standalone,0,1.075,1.1249240499084103,46
+SJTU-PCQA,longdress_30.ply,longdress.ply,PointPCA++,standalone,0,7.358333333333,7.871327838827953,46
+SJTU-PCQA,longdress_31.ply,longdress.ply,PointPCA++,standalone,0,6.985969387755,6.982111484497637,46
+SJTU-PCQA,longdress_32.ply,longdress.ply,PointPCA++,standalone,0,4.55,5.193532100340089,46
+SJTU-PCQA,longdress_33.ply,longdress.ply,PointPCA++,standalone,0,2.515625,2.75523878205121,46
+SJTU-PCQA,longdress_34.ply,longdress.ply,PointPCA++,standalone,0,1.987244897959,2.02833369309261,46
+SJTU-PCQA,longdress_35.ply,longdress.ply,PointPCA++,standalone,0,1.448979591837,1.484395138343881,46
+SJTU-PCQA,longdress_36.ply,longdress.ply,PointPCA++,standalone,0,8.325,7.950468504709693,46
+SJTU-PCQA,longdress_37.ply,longdress.ply,PointPCA++,standalone,0,6.008333333333,6.730739926739832,46
+SJTU-PCQA,longdress_38.ply,longdress.ply,PointPCA++,standalone,0,4.825,4.756732764259453,46
+SJTU-PCQA,longdress_39.ply,longdress.ply,PointPCA++,standalone,0,2.330769230769,2.6578748282966504,46
+SJTU-PCQA,longdress_40.ply,longdress.ply,PointPCA++,standalone,0,1.783333333333,2.09085227793028,46
+SJTU-PCQA,longdress_41.ply,longdress.ply,PointPCA++,standalone,0,1.433333333333,1.539497587977611,46
+SJTU-PCQA,statue_0.ply,statue.ply,PointPCA++,standalone,0,6.908333333333,7.14465431220558,46
+SJTU-PCQA,statue_1.ply,statue.ply,PointPCA++,standalone,0,7.6328125,7.19724495519363,46
+SJTU-PCQA,statue_2.ply,statue.ply,PointPCA++,standalone,0,6.168367346939,6.2216595695971,46
+SJTU-PCQA,statue_3.ply,statue.ply,PointPCA++,standalone,0,4.938775510204,5.59904583660394,46
+SJTU-PCQA,statue_4.ply,statue.ply,PointPCA++,standalone,0,3.015625,4.5514143364076105,46
+SJTU-PCQA,statue_5.ply,statue.ply,PointPCA++,standalone,0,1.453125,2.6074581779826214,46
+SJTU-PCQA,statue_6.ply,statue.ply,PointPCA++,standalone,0,7.40625,8.644671964939597,46
+SJTU-PCQA,statue_7.ply,statue.ply,PointPCA++,standalone,0,5.459183673469,7.546665006868239,46
+SJTU-PCQA,statue_8.ply,statue.ply,PointPCA++,standalone,0,6.4,7.092196608450913,46
+SJTU-PCQA,statue_9.ply,statue.ply,PointPCA++,standalone,0,5.899234693878,6.602404336734688,46
+SJTU-PCQA,statue_10.ply,statue.ply,PointPCA++,standalone,0,6.588461538462,6.263664442700197,46
+SJTU-PCQA,statue_11.ply,statue.ply,PointPCA++,standalone,0,5.107692307692,5.5819625932104096,46
+SJTU-PCQA,statue_12.ply,statue.ply,PointPCA++,standalone,0,7.825,7.406742175235584,46
+SJTU-PCQA,statue_13.ply,statue.ply,PointPCA++,standalone,0,6.133333333333,6.982404606554115,46
+SJTU-PCQA,statue_14.ply,statue.ply,PointPCA++,standalone,0,6.054846938776,6.919044070512818,46
+SJTU-PCQA,statue_15.ply,statue.ply,PointPCA++,standalone,0,3.965384615385,5.939404115973301,46
+SJTU-PCQA,statue_16.ply,statue.ply,PointPCA++,standalone,0,3.4921875,4.943548027864962,46
+SJTU-PCQA,statue_17.ply,statue.ply,PointPCA++,standalone,0,1.1875,3.0469084412610505,46
+SJTU-PCQA,statue_18.ply,statue.ply,PointPCA++,standalone,0,7.141666666667,7.423535174646852,46
+SJTU-PCQA,statue_19.ply,statue.ply,PointPCA++,standalone,0,6.762755102041,7.171962429683389,46
+SJTU-PCQA,statue_20.ply,statue.ply,PointPCA++,standalone,0,6.1328125,6.139719657574599,46
+SJTU-PCQA,statue_21.ply,statue.ply,PointPCA++,standalone,0,3.441326530612,5.00004145408161,46
+SJTU-PCQA,statue_22.ply,statue.ply,PointPCA++,standalone,0,2.5546875,4.06475619767131,46
+SJTU-PCQA,statue_23.ply,statue.ply,PointPCA++,standalone,0,1.0,2.2654240008502806,46
+SJTU-PCQA,statue_24.ply,statue.ply,PointPCA++,standalone,0,5.813775510204,7.427925979526381,46
+SJTU-PCQA,statue_25.ply,statue.ply,PointPCA++,standalone,0,5.808673469388,6.554551265698599,46
+SJTU-PCQA,statue_26.ply,statue.ply,PointPCA++,standalone,0,4.765625,5.46044300268179,46
+SJTU-PCQA,statue_27.ply,statue.ply,PointPCA++,standalone,0,1.916666666667,4.2474865253793,46
+SJTU-PCQA,statue_28.ply,statue.ply,PointPCA++,standalone,0,2.073979591837,2.988312982404411,46
+SJTU-PCQA,statue_29.ply,statue.ply,PointPCA++,standalone,0,1.0,1.950596824306601,46
+SJTU-PCQA,statue_30.ply,statue.ply,PointPCA++,standalone,0,6.795918367347,7.816118393511253,46
+SJTU-PCQA,statue_31.ply,statue.ply,PointPCA++,standalone,0,6.525,7.189943493262726,46
+SJTU-PCQA,statue_32.ply,statue.ply,PointPCA++,standalone,0,6.536989795918,5.916210712650418,46
+SJTU-PCQA,statue_33.ply,statue.ply,PointPCA++,standalone,0,2.85,4.47283047161161,46
+SJTU-PCQA,statue_34.ply,statue.ply,PointPCA++,standalone,0,1.625,3.341415759091981,46
+SJTU-PCQA,statue_35.ply,statue.ply,PointPCA++,standalone,0,1.690051020408,2.2591026703949315,46
+SJTU-PCQA,statue_36.ply,statue.ply,PointPCA++,standalone,0,8.121153846154,7.760932005494482,46
+SJTU-PCQA,statue_37.ply,statue.ply,PointPCA++,standalone,0,6.784615384615,7.008242763932539,46
+SJTU-PCQA,statue_38.ply,statue.ply,PointPCA++,standalone,0,5.184615384615,5.50985313644678,46
+SJTU-PCQA,statue_39.ply,statue.ply,PointPCA++,standalone,0,3.1796875,4.265305689102481,46
+SJTU-PCQA,statue_40.ply,statue.ply,PointPCA++,standalone,0,2.463010204082,3.18235984105174,46
+SJTU-PCQA,statue_41.ply,statue.ply,PointPCA++,standalone,0,1.617307692308,2.1405541846545106,46
+SJTU-PCQA,shiva_0.ply,shiva.ply,PointPCA++,standalone,2,6.558333333333,7.054190795068006,46
+SJTU-PCQA,shiva_1.ply,shiva.ply,PointPCA++,standalone,2,7.834615384615,6.501078893576578,46
+SJTU-PCQA,shiva_2.ply,shiva.ply,PointPCA++,standalone,2,7.767307692308,6.1236964122187985,46
+SJTU-PCQA,shiva_3.ply,shiva.ply,PointPCA++,standalone,2,5.991666666667,4.996491218602871,46
+SJTU-PCQA,shiva_4.ply,shiva.ply,PointPCA++,standalone,2,6.6171875,4.18847181613026,46
+SJTU-PCQA,shiva_5.ply,shiva.ply,PointPCA++,standalone,2,3.262755102041,2.5897673011512192,46
+SJTU-PCQA,shiva_6.ply,shiva.ply,PointPCA++,standalone,2,8.5,8.083417876765948,46
+SJTU-PCQA,shiva_7.ply,shiva.ply,PointPCA++,standalone,2,6.917091836735,7.92884832057806,46
+SJTU-PCQA,shiva_8.ply,shiva.ply,PointPCA++,standalone,2,7.844230769231,7.203300652472328,46
+SJTU-PCQA,shiva_9.ply,shiva.ply,PointPCA++,standalone,2,7.622448979592,6.5525642987964305,46
+SJTU-PCQA,shiva_10.ply,shiva.ply,PointPCA++,standalone,2,6.784615384615,7.0777720189036435,46
+SJTU-PCQA,shiva_11.ply,shiva.ply,PointPCA++,standalone,2,6.244897959184,7.011233925300831,46
+SJTU-PCQA,shiva_12.ply,shiva.ply,PointPCA++,standalone,2,6.975,7.442476811878619,46
+SJTU-PCQA,shiva_13.ply,shiva.ply,PointPCA++,standalone,2,6.816666666667,6.722291789311775,46
+SJTU-PCQA,shiva_14.ply,shiva.ply,PointPCA++,standalone,2,6.591666666667,6.308523229003157,46
+SJTU-PCQA,shiva_15.ply,shiva.ply,PointPCA++,standalone,2,6.331632653061,5.17772024627176,46
+SJTU-PCQA,shiva_16.ply,shiva.ply,PointPCA++,standalone,2,5.94387755102,4.149964392006841,46
+SJTU-PCQA,shiva_17.ply,shiva.ply,PointPCA++,standalone,2,3.4609375,2.9100909782182485,46
+SJTU-PCQA,shiva_18.ply,shiva.ply,PointPCA++,standalone,2,7.401785714286,7.426487539246518,46
+SJTU-PCQA,shiva_19.ply,shiva.ply,PointPCA++,standalone,2,6.833333333333,6.649027259942316,46
+SJTU-PCQA,shiva_20.ply,shiva.ply,PointPCA++,standalone,2,7.9921875,6.078334028322948,46
+SJTU-PCQA,shiva_21.ply,shiva.ply,PointPCA++,standalone,2,6.001923076923,4.769789050235551,46
+SJTU-PCQA,shiva_22.ply,shiva.ply,PointPCA++,standalone,2,5.0078125,3.8318098018052593,46
+SJTU-PCQA,shiva_23.ply,shiva.ply,PointPCA++,standalone,2,2.955357142857,2.1945722053244996,46
+SJTU-PCQA,shiva_24.ply,shiva.ply,PointPCA++,standalone,2,6.525,6.654094641221757,46
+SJTU-PCQA,shiva_25.ply,shiva.ply,PointPCA++,standalone,2,7.78125,6.611860650510207,46
+SJTU-PCQA,shiva_26.ply,shiva.ply,PointPCA++,standalone,2,5.724489795918,5.421759026687662,46
+SJTU-PCQA,shiva_27.ply,shiva.ply,PointPCA++,standalone,2,3.3984375,3.0415545607665804,46
+SJTU-PCQA,shiva_28.ply,shiva.ply,PointPCA++,standalone,2,2.021153846154,2.3089069204604393,46
+SJTU-PCQA,shiva_29.ply,shiva.ply,PointPCA++,standalone,2,1.216666666667,1.5708466934850998,46
+SJTU-PCQA,shiva_30.ply,shiva.ply,PointPCA++,standalone,2,8.8359375,6.825944441718917,46
+SJTU-PCQA,shiva_31.ply,shiva.ply,PointPCA++,standalone,2,6.825,6.505892930729949,46
+SJTU-PCQA,shiva_32.ply,shiva.ply,PointPCA++,standalone,2,5.75,6.22745827609897,46
+SJTU-PCQA,shiva_33.ply,shiva.ply,PointPCA++,standalone,2,2.830769230769,3.5224099784144203,46
+SJTU-PCQA,shiva_34.ply,shiva.ply,PointPCA++,standalone,2,2.320153061224,2.948348336930901,46
+SJTU-PCQA,shiva_35.ply,shiva.ply,PointPCA++,standalone,2,1.600765306122,1.7773822360675504,46
+SJTU-PCQA,shiva_36.ply,shiva.ply,PointPCA++,standalone,2,7.084183673469,6.785773670525817,46
+SJTU-PCQA,shiva_37.ply,shiva.ply,PointPCA++,standalone,2,6.673469387755,6.726591444270068,46
+SJTU-PCQA,shiva_38.ply,shiva.ply,PointPCA++,standalone,2,5.828125,6.19969929846943,46
+SJTU-PCQA,shiva_39.ply,shiva.ply,PointPCA++,standalone,2,3.733333333333,3.26996177557559,46
+SJTU-PCQA,shiva_40.ply,shiva.ply,PointPCA++,standalone,2,3.041666666667,2.5192252583725705,46
+SJTU-PCQA,shiva_41.ply,shiva.ply,PointPCA++,standalone,2,2.108333333333,1.6535942569336104,46
+SJTU-PCQA,hhi_0.ply,hhi.ply,PointPCA++,standalone,1,9.516666666667,6.81088778780743,46
+SJTU-PCQA,hhi_1.ply,hhi.ply,PointPCA++,standalone,1,7.7109375,6.612817814625813,46
+SJTU-PCQA,hhi_2.ply,hhi.ply,PointPCA++,standalone,1,8.9453125,6.359515575941912,46
+SJTU-PCQA,hhi_3.ply,hhi.ply,PointPCA++,standalone,1,7.371153846154,5.435590348639531,46
+SJTU-PCQA,hhi_4.ply,hhi.ply,PointPCA++,standalone,1,4.183333333333,4.50415925889594,46
+SJTU-PCQA,hhi_5.ply,hhi.ply,PointPCA++,standalone,1,1.953125,2.25904726746469,46
+SJTU-PCQA,hhi_6.ply,hhi.ply,PointPCA++,standalone,1,9.796875,7.469772280546968,46
+SJTU-PCQA,hhi_7.ply,hhi.ply,PointPCA++,standalone,1,6.776923076923,6.6340816326529755,46
+SJTU-PCQA,hhi_8.ply,hhi.ply,PointPCA++,standalone,1,6.107692307692,6.080668105703902,46
+SJTU-PCQA,hhi_9.ply,hhi.ply,PointPCA++,standalone,1,6.140625,5.660043988749309,46
+SJTU-PCQA,hhi_10.ply,hhi.ply,PointPCA++,standalone,1,4.808333333333,5.044882800235391,46
+SJTU-PCQA,hhi_11.ply,hhi.ply,PointPCA++,standalone,1,5.021153846154,4.769441326530511,46
+SJTU-PCQA,hhi_12.ply,hhi.ply,PointPCA++,standalone,1,8.741666666667,6.807546310832067,46
+SJTU-PCQA,hhi_13.ply,hhi.ply,PointPCA++,standalone,1,6.534615384615,6.7058694891418,46
+SJTU-PCQA,hhi_14.ply,hhi.ply,PointPCA++,standalone,1,7.015625,6.588325165162202,46
+SJTU-PCQA,hhi_15.ply,hhi.ply,PointPCA++,standalone,1,4.9296875,5.630827119309331,46
+SJTU-PCQA,hhi_16.ply,hhi.ply,PointPCA++,standalone,1,4.05612244898,4.43483453525651,46
+SJTU-PCQA,hhi_17.ply,hhi.ply,PointPCA++,standalone,1,1.785714285714,2.18930939298797,46
+SJTU-PCQA,hhi_18.ply,hhi.ply,PointPCA++,standalone,1,8.238461538462,6.720008176347498,46
+SJTU-PCQA,hhi_19.ply,hhi.ply,PointPCA++,standalone,1,7.399234693878,5.646366668302001,46
+SJTU-PCQA,hhi_20.ply,hhi.ply,PointPCA++,standalone,1,5.016666666667,4.860100503663071,46
+SJTU-PCQA,hhi_21.ply,hhi.ply,PointPCA++,standalone,1,4.308333333333,3.57477477433276,46
+SJTU-PCQA,hhi_22.ply,hhi.ply,PointPCA++,standalone,1,2.4453125,2.8481388670852605,46
+SJTU-PCQA,hhi_23.ply,hhi.ply,PointPCA++,standalone,1,1.905769230769,1.70619704997382,46
+SJTU-PCQA,hhi_24.ply,hhi.ply,PointPCA++,standalone,1,7.680769230769,6.74412684785451,46
+SJTU-PCQA,hhi_25.ply,hhi.ply,PointPCA++,standalone,1,6.366666666667,6.547668792517002,46
+SJTU-PCQA,hhi_26.ply,hhi.ply,PointPCA++,standalone,1,4.5625,4.95288916961022,46
+SJTU-PCQA,hhi_27.ply,hhi.ply,PointPCA++,standalone,1,2.208333333333,2.1558344534928806,46
+SJTU-PCQA,hhi_28.ply,hhi.ply,PointPCA++,standalone,1,1.540384615385,1.8513009958790902,46
+SJTU-PCQA,hhi_29.ply,hhi.ply,PointPCA++,standalone,1,1.0,1.2009431253270408,46
+SJTU-PCQA,hhi_30.ply,hhi.ply,PointPCA++,standalone,1,9.464285714286,6.738139970892201,46
+SJTU-PCQA,hhi_31.ply,hhi.ply,PointPCA++,standalone,1,8.3125,6.601266344518559,46
+SJTU-PCQA,hhi_32.ply,hhi.ply,PointPCA++,standalone,1,6.836734693878,5.427866962650511,46
+SJTU-PCQA,hhi_33.ply,hhi.ply,PointPCA++,standalone,1,3.475,2.8274990024855695,46
+SJTU-PCQA,hhi_34.ply,hhi.ply,PointPCA++,standalone,1,1.867307692308,2.11669733614599,46
+SJTU-PCQA,hhi_35.ply,hhi.ply,PointPCA++,standalone,1,1.1953125,1.635944556187851,46
+SJTU-PCQA,hhi_36.ply,hhi.ply,PointPCA++,standalone,1,8.219230769231,6.6921627992543105,46
+SJTU-PCQA,hhi_37.ply,hhi.ply,PointPCA++,standalone,1,5.842307692308,5.49572815279963,46
+SJTU-PCQA,hhi_38.ply,hhi.ply,PointPCA++,standalone,1,4.920918367347,4.1478546327184596,46
+SJTU-PCQA,hhi_39.ply,hhi.ply,PointPCA++,standalone,1,2.4921875,2.2566718913526898,46
+SJTU-PCQA,hhi_40.ply,hhi.ply,PointPCA++,standalone,1,2.083333333333,1.9205419446624987,46
+SJTU-PCQA,hhi_41.ply,hhi.ply,PointPCA++,standalone,1,1.5,1.472847274005841,46

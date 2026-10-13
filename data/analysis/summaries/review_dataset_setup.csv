@@ -1,0 +1,8 @@
+id,dataset,attributes,distortions,published_references,published_samples,analyzed_references,analyzed_samples,score_min,score_max,role,family_comparison,notes
+1,APSIPA,Color,"G-PCC, V-PCC",8,254,8,232,1.0,5.0,Modelling,True,Original PointPCA coverage is APSIPA only
+2,ICIP2023,"Color, normals",Compression,75,1494,45,898,1.12068965517241,4.81967213114754,Evaluation,True,
+3,LS-PCQA,Color,"Noise, resampling, compression",104,"$>22{,}000$",85,930,1.0,4.96428571428571,Modelling,False,LS-PCQA uses the supplied accurate-MOS subset; larger published corpus includes generated scores
+4,SJTU-PCQA,Color,"Octree, resampling, noise",9,378,9,378,1.0,9.796875,Evaluation,True,
+5,UnB_PC,"Color, normals","Octree, JPEG",6,60,6,60,1.2,5.0,Evaluation,True,
+6,WPC,Color,"Noise, resampling, G/V-PCC",20,740,20,740,1.8126002512715,94.3049845185472,Modelling,False,
+7,WPC2,Color,V-PCC,16,400,16,400,10.8230670565952,93.1362499169797,Evaluation,False,WPC2 class labels missing; shared WPC contents
