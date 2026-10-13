@@ -1,15 +1,16 @@
 {
+  "comparison_evidence_revision": "Unmatched literature table removed; pending SOTA note; PointPCA memory limitation; canonical method names",
   "descriptor_label_provenance": {
     "PointPCA3_dispatch": "c9a98f93ed62d63592de01de3a7a11b2e711a92f2bfde4d014738b44e6c68f59",
     "dictionary": "data/analysis/manifests/review_feature_dictionary.csv",
     "shared_RS_predictors": "804f88fd2f0a2eddf22473523b8ebe77745e5cc926e2d2398067ebfceb8ee0b5",
     "verification": "Inspected pinned PointPCA3 lib.rs delegates to the audited pointpca2-rs compute_predictors; v1.5.1 Cargo.lock resolves the same commit."
   },
-  "manuscript_sha256": "db34f93e792a55ca24a27f3a41ea5599918abe300fb27bde52f3f26dc9945dae",
+  "manuscript_sha256": "f8b41d4d9e7817fa6ce35f4f47dfd58d3889ff8d49c1558513fef6cfd89231ba",
   "models_refitted": false,
   "numerical_evidence_unchanged": true,
-  "pdf_inspection": "passed; see review_manuscript_validation.json",
-  "pdf_sha256": "0ae3fa69597c660285e30bce244ca46235cca027439333afdf17bb1a611be7d1",
+  "pdf_inspection": "passed: current section overview and revised pages inspected in color/grayscale",
+  "pdf_sha256": "c7ee7ef2e2632ca80c18fc99d1d5718e432914a2c93ec6013b0955194c93d7d8",
   "protected_files": 796,
   "protected_hashes": {
     "data/analysis/audits/final_pointpcapp_input_audit.csv": "6b336eaab2014200eae8c7418523cd108e642be95cf0d94d68ffbf51b9251937",
@@ -809,6 +810,27 @@
     "data/features/pointpcapp/complete/WPC/PointPCAPP-Complete.csv": "5f95271daed89b28a9d5db2451584f6b32963022897457d8f45118ac3da8c091",
     "data/features/pointpcapp/complete/WPC2/PointPCAPP-Complete.csv": "b27b42e67092621ffc9f8d7d5320d3a4dfabf5107d4a64915f24a1e71237384f"
   },
+  "reading_flow": {
+    "canonical_method_names": true,
+    "float_barriers_at_argument_boundaries": true,
+    "main_exhibits_retained": 21,
+    "no_duplicate_error_rmse": true,
+    "pointpca_memory_limit_documented": true,
+    "runtime_continued_parts": 2,
+    "selection_before_final_comparisons": true,
+    "sota_pending_note": true,
+    "subsection_order": [
+      "sec_results_projection_analysis",
+      "sec_results_regression_features",
+      "sec_results_pca_family",
+      "sec_results_pointpcapp_sota",
+      "sec_results_diagnostics",
+      "sec_results_errors",
+      "sec_results_transfer",
+      "sec_results_pointpca3_runtime"
+    ],
+    "unmatched_sota_table_removed": true
+  },
   "rendered_figures": [
     "review_feature_importance.pdf",
     "review_feature_set_ablation.pdf",
@@ -819,5 +841,6 @@
     "review_projection_accuracy_runtime.pdf",
     "review_regressor_comparison.pdf",
     "review_single_iqa_selection.pdf"
-  ]
+  ],
+  "table_cells_unchanged": true
 }

@@ -41,7 +41,7 @@ def render_importance(importance, dictionary, save):
             iqa, view = name.removeprefix('proj__').split('__view')
             return f'{iqa.removesuffix('metric').upper().replace("_", "-")} (view {view})'
         return name.replace('Metric', '').replace('_', '-')
-    fig, axes = plt.subplots(1, 2, figsize=(10.5, 5.7), gridspec_kw={'width_ratios': [1.2, 1]})
+    fig, axes = plt.subplots(1, 2, figsize=(10.5, 5.4), gridspec_kw={'width_ratios': [1.2, 1]})
     for ax, level, title in zip(axes, ['individual', 'iqa_block'], ['Individual features', 'Six-view IQA blocks']):
         frame = importance[importance.level.eq(level)].nlargest(15, 'median_srocc_decrease').iloc[::-1]
         labels = [readable(x) for x in frame.feature]
@@ -87,7 +87,7 @@ def render_runtime(samples, save):
             ax.set_xlabel('Total points (millions)');sns.despine(ax=ax)
         axes.flat[-1].axis('off')
         if kind=='time':
-            handles=[Line2D([],[],color=c,marker=m,ls='',label=n) for c,m,n in [('#777777','o','MATLAB PointPCA+'),('#4c72b0','^','PointPCA++ (32 workers)')]]
+            handles=[Line2D([],[],color=c,marker=m,ls='',label=n) for c,m,n in [('#777777','o','PointPCA+'),('#4c72b0','^','PointPCA++ (32 workers)')]]
             axes.flat[-1].legend(handles=handles,loc='center',fontsize=10)
         fig.tight_layout(h_pad=2,w_pad=1)
         save(fig,'pointpcapp_runtime.pdf' if kind=='time' else 'pointpcapp_runtime_speedup.pdf')
@@ -107,6 +107,7 @@ def render(review):
     B=review.B
     before=protected_hashes(review.ROOT)
     review.quality_tables()
+    review.setup_and_runtime_tables(presentation_only=True)
     review.report_narratives()
     review.figures(review.read('predictions','review_residuals.csv'))
     wanted={'projection_accuracy_runtime.pdf','single_iqa_selection.pdf',
@@ -125,6 +126,7 @@ def render(review):
             ax.tick_params(axis='both',which='both',labelsize=minimum)
         for artist in fig.findobj(mtext.Text):
             if artist.get_text():
+                artist.set_text(artist.get_text().replace('PointPCA3', r'PointPCA$^3$'))
                 artist.set_fontsize(max(artist.get_fontsize(),minimum))
         if filename=='projection_accuracy_runtime.pdf':
             fig.set_figheight(7.8)
@@ -176,7 +178,7 @@ def validate_structure(review):
         'sec_results_projection_analysis': ['fig_projection_pipeline_heatmap','fig_projection_accuracy_runtime'],
         'sec_results_regression_features': ['fig_single_iqa_selection','fig_regressor_comparison','fig_feature_set_ablation'],
         'sec_results_pca_family': ['fig_review_feature_agreement','tab_review_pca_family'],
-        'sec_results_pointpcapp_sota': ['tab_review_projection_only','tab_pointpcapp_all_datasets','tab_review_sota'],
+        'sec_results_pointpcapp_sota': ['tab_review_projection_only','tab_pointpcapp_all_datasets'],
         'sec_results_diagnostics': ['fig_feature_importance','tab_review_iqa_complementarity','tab_review_views_pooling'],
         'sec_results_errors': ['fig_pointpcapp_modality_importance','fig_review_mos_scatter','fig_review_residuals','tab_review_error_summary'],
         'sec_results_transfer': ['fig_pointpcapp_all_datasets'],
@@ -196,6 +198,20 @@ def validate_structure(review):
     assert r'\ContinuedFloat' in chunks[-1]
     assert 'RMSE' not in review.path('tables','review_error_summary.tex').read_text()
     assert '-0.000' not in review.path('tables','review_pairwise.tex').read_text()
+    assert sum(map(len,responsibilities.values()))==21
+    assert 'tab_review_sota' not in source
+    assert not review.path('tables','review_sota.tex').exists()
+    pending_note=r'\textcolor{red}{Comparison with state-of-the-art methods remains pending because results obtained under the same evaluation protocol are not yet available.}'
+    assert chunks[3].rstrip().endswith(pending_note+'\n\n'+r'\FloatBarrier')
+    assert 'feature extraction for the other datasets could not be completed because memory requirements exceeded the available 128~GB RAM' in source.split(r'\section{Experimental Results}',1)[0]
+    assert '128 GB RAM' in review.path('tables','review_pca_family.tex').read_text()
+    expanded=source+'\n'+review.path('tables','review_macros.tex').read_text()
+    for filename in re.findall(r'\\input\{([^}]+)\}',source):
+        expanded+='\n'+(review.ROOT/filename).read_text()
+    # Historical identifiers are allowed in the method-name definition only.
+    visible=re.sub(r'PointPCA2-RS', '', expanded)
+    assert not re.search(r'(?<!PointPCA\+)\bRS\b|MATLAB/RS|PointPCA\+/RS|\bMATLAB time\b',visible)
     return {'subsection_order':subsections,'main_exhibits_retained':sum(map(len,responsibilities.values())),
             'selection_before_final_comparisons':True,'runtime_continued_parts':2,
-            'float_barriers_at_argument_boundaries':True,'no_duplicate_error_rmse':True}
+            'unmatched_sota_table_removed':True,'sota_pending_note':True,'pointpca_memory_limit_documented':True,
+            'canonical_method_names':True,'float_barriers_at_argument_boundaries':True,'no_duplicate_error_rmse':True}

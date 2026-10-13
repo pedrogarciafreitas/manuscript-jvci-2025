@@ -537,7 +537,8 @@ def registry_report():
 
 
 def literature_report():
-    # Transcribed from supplied papers; keep combined cells and literal dataset IDs.
+    # Historical provenance only; these unmatched results must not generate manuscript tables.
+    # Keep combined cells and literal dataset IDs in the preserved evidence.
     bmsb_methods=['PointPCA3','PointPCA+RS','PointPCA+','PointPCA','PCQM','pSSIM','BitDance','Plane2plane','P2P MSE','PSNR Y']
     bmsb_values={'D0':[.937,.938,.942,.941,.940,.925,.859,.847,.896,.798],'D2':[.955,.956,.957,.890,.862,.708,.748,.761,.612,.743],'D3':[.910,.901,.909,.866,.749,.465,.451,.454,.563,.614]}
     sbrt_methods=['PointPCA+/RS (combined)','PointPCA','PCQM','pSSIM','BitDance','Plane2plane','P2Plane MSE','P2P MSE','PSNR Y']
@@ -552,15 +553,6 @@ def literature_report():
     frame=pd.DataFrame(rows)
     write('summaries','review_sota_evidence.csv',frame)
     write('audits','review_sota_quarantined.csv',frame[frame.mapping_status.eq('quarantined')])
-    roster=list(dict.fromkeys(bmsb_methods+sbrt_methods))
-    latex=[]
-    for method in roster:
-        row=[label(method)]
-        for source,dataset in [('PointPCA2-RS.pdf, Table V','APSIPA'),('PointPCA2-RS.pdf, Table V','SJTU-PCQA'),('PointPCA2-RS.pdf, Table V','WPC'),('BMSB.pdf, Table III','APSIPA'),('BMSB.pdf, Table III','WPC')]:
-            part=frame[frame.source.eq(source)&frame.dataset.eq(dataset)&frame.method.eq(method)]
-            row.append(number(part.srocc.iloc[0]) if len(part) else '--')
-        latex.append(row)
-    table('review_sota.tex',r'Earlier-paper SROCC context from SBrT~\cite{carvalho2025rs}, Table V, and the supplied BMSB manuscript~\cite{carvalho2026pc3}, Table III. M-PCCD is labelled APSIPA. Columns remain separated by source; populations and exact validation protocols are not established as matching the current experiment. BMSB D2 is quarantined because its dataset mapping is inconsistent. Combined PointPCA+/RS cells remain combined. PLCC/RMSE are unavailable in these source tables; missing entries are shown as --. No cross-protocol ranking or paired significance is implied.','tab_review_sota',['Method',r'SBrT APSIPA',r'SBrT SJTU',r'SBrT WPC',r'BMSB APSIPA',r'BMSB WPC'],latex)
 
 
 def error_reports():
@@ -665,7 +657,7 @@ def figures(residuals):
         ax.scatter(part['index']+.12,part.spearman,marker='s',s=12,color='#dd8452',label='Spearman (95% CI)',zorder=3)
         worst=part.loc[part.pearson.idxmin()]
         ax.annotate(f'{int(worst["index"])}: {descriptor_label(worst.semantic)}',xy=(worst['index']-.12,worst.pearson),xytext=(.03,.2),textcoords='axes fraction',fontsize=11,arrowprops={'arrowstyle':'-','lw':.6,'color':'0.4'})
-        ax.set_title(dataset,pad=30);ax.set_xlabel('Corresponding feature index');ax.set_ylabel('MATLAB/RS correlation')
+        ax.set_title(dataset,pad=30);ax.set_xlabel('Corresponding feature index');ax.set_ylabel('PointPCA+ and PointPCA+RS\ncorrelation')
         ax.set_ylim(0,1.035);ax.set_xlim(-1,40);ax.set_xticks(range(0,40,5))
     fig.legend(*axes.flat[0].get_legend_handles_labels(),loc='lower center',ncol=2,fontsize=11,bbox_to_anchor=(.5,-.08),frameon=False)
     fig.tight_layout(h_pad=2.5);fig.savefig(path('figures','review_feature_agreement.pdf'),bbox_inches='tight');plt.close(fig)
@@ -703,7 +695,7 @@ def quality_tables():
             row += [number(part[m].iloc[0]) if len(part) else '--' for m in ['srocc','plcc','rmse']]
         rows.append(row)
     headers=['Dataset']+[r'\multicolumn{3}{c}{'+label(method)+'}' for method in METHODS]
-    table('review_pca_family.tex',r'Controlled PCA-family prediction on complete matched datasets. Each method triplet is SROCC/PLCC/RMSE from pooled OOF predictions, using the same persisted folds and fixed JVCI Extra Trees preprocessing/parameters. Original PointPCA uses its native 46 predictors on APSIPA; it is unavailable elsewhere. PointPCA+, RS, and PointPCA$^3$ use 40 predictors; PointPCA++ uses 46. Populations/roles are in Table~\ref{tab_datasets}; intervals and paired inference accompany the saved summaries. These are common-regressor comparisons, not reproductions of each method\textquotesingle s native regression protocol.','tab_review_pca_family',headers,rows,spec='l'+'r'*15)
+    table('review_pca_family.tex',r'Controlled PCA-family prediction on complete matched datasets. Each method triplet is SROCC/PLCC/RMSE from pooled OOF predictions, using the same persisted folds and fixed JVCI Extra Trees preprocessing/parameters. Original PointPCA uses its native 46 predictors on APSIPA; -- denotes extraction that could not be completed because memory requirements exceeded the available 128 GB RAM. PointPCA+, PointPCA+RS, and PointPCA$^3$ use 40 predictors; PointPCA++ uses 46. Populations/roles are in Table~\ref{tab_datasets}; intervals and paired inference accompany the saved summaries. These are common-regressor comparisons, not reproductions of each method\textquotesingle s native regression protocol.','tab_review_pca_family',headers,rows,spec='l'+'r'*15)
     # Explicit second header gives the metric order under every grouped method.
     p=path('tables','review_pca_family.tex');s=p.read_text();s=s.replace(r'\midrule', ' & '+' & '.join(['SROCC','PLCC','RMSE']*5)+r' \\'+'\n'+r'\midrule',1);p.write_text(s)
     tests=read('summaries','review_pca_pairwise_tests.csv')
@@ -714,7 +706,7 @@ def quality_tables():
         arm_a,arm_b=(r.arm_b,r.arm_a) if reverse else (r.arm_a,r.arm_b)
         delta,low,high=(-r.difference_a_minus_b,-r.high,-r.low) if reverse else (r.difference_a_minus_b,r.low,r.high)
         rows.append([tex(r.dataset),label(arm_a)+' / '+label(arm_b),r.metric.upper(),f'{feature_error(delta)} [{feature_error(low)}, {feature_error(high)}]',f'{r.p_holm:.3f}'])
-    table('review_pairwise.tex',r'Focused paired comparisons on shared OOF samples. Differences are first minus second method: RS minus MATLAB, or fusion minus MATLAB. Positive SROCC/PLCC and negative RMSE favor the first. Brackets are unadjusted, pointwise paired reference-clustered 95\% intervals. Two-sided reference-level prediction-label-swap p-values use 10,000 draws and a plus-one correction, followed by Holm correction over all available method pairs and all three metrics within each dataset (30 tests on APSIPA; 18 elsewhere). These adjusted tests need not agree with exclusion of zero by a pointwise bootstrap interval. Nonsignificance is not equivalence.','tab_review_pairwise',['Dataset','Methods','Metric',r'Difference [95\% CI]',r'$p_{\mathrm{Holm}}$'],rows)
+    table('review_pairwise.tex',r'Focused paired comparisons on shared OOF samples. Differences are first minus second method: PointPCA+RS minus PointPCA+, or PointPCA++ minus PointPCA+. Positive SROCC/PLCC and negative RMSE favor the first. Brackets are unadjusted, pointwise paired reference-clustered 95\% intervals. Two-sided reference-level prediction-label-swap p-values use 10,000 draws and a plus-one correction, followed by Holm correction over all available method pairs and all three metrics within each dataset (30 tests on APSIPA; 18 elsewhere). These adjusted tests need not agree with exclusion of zero by a pointwise bootstrap interval. Nonsignificance is not equivalence.','tab_review_pairwise',['Dataset','Methods','Metric',r'Difference [95\% CI]',r'$p_{\mathrm{Holm}}$'],rows)
     iqas=read('summaries','review_iqa_complementarity.csv')
     rows=[[design_label(r.variant),str(r.features)]+[f'{getattr(r,m):.3f} [{getattr(r,m+"_low"):.3f}, {getattr(r,m+"_high"):.3f}]' for m in ['srocc','plcc','rmse']] for r in iqas.itertuples()]
     table('review_iqa_complementarity.tex',r'Diagnostic DISTS/TOPIQ-FR combinations on APSIPA using the historical standalone IQA extraction, fixed Extra Trees pipeline, and persisted final grouped folds. Plus signs indicate concatenation. Metrics are pooled OOF values with reference-clustered 95\% intervals. Extraction cost is unmeasured for the combined designs; these comparisons do not reopen final selection.','tab_review_iqa_complementarity',['Features','Dimension','SROCC','PLCC','RMSE'],rows)
@@ -736,11 +728,11 @@ def quality_tables():
             r=agreement[agreement.dataset.eq(dataset)&agreement['index'].eq(index)].iloc[0]
             row += [number(r.spearman),feature_error(r.mae)]
         rows.append(row)
-    table('review_feature_agreement.tex',r'Per-feature MATLAB PointPCA+/RS agreement on matched samples. Each dataset pair is Spearman correlation and MAE in that feature\textquotesingle s native units; nonzero MAE below 0.0005 uses compact scientific notation. Indices follow the audited 40-slot correspondence; different features need not share units. Pearson correlation, bias, RMSE, clustered intervals and invalid/constant-value flags are retained in the accompanying numerical artifact. Agreement is descriptive and does not establish equivalence.','tab_review_feature_agreement',['Index','Feature',r'\multicolumn{2}{c}{APSIPA}',r'\multicolumn{2}{c}{ICIP2023}',r'\multicolumn{2}{c}{SJTU-PCQA}',r'\multicolumn{2}{c}{UnB\_PC}'],rows,spec='ll'+'r'*8)
+    table('review_feature_agreement.tex',r'Per-feature agreement between PointPCA+ and PointPCA+RS on matched samples. Each dataset pair is Spearman correlation and MAE in that feature\textquotesingle s native units; nonzero MAE below 0.0005 uses compact scientific notation. Indices follow the audited 40-slot correspondence; different features need not share units. Pearson correlation, bias, RMSE, clustered intervals and invalid/constant-value flags are retained in the accompanying numerical artifact. Agreement is descriptive and does not establish equivalence.','tab_review_feature_agreement',['Index','Feature',r'\multicolumn{2}{c}{APSIPA}',r'\multicolumn{2}{c}{ICIP2023}',r'\multicolumn{2}{c}{SJTU-PCQA}',r'\multicolumn{2}{c}{UnB\_PC}'],rows,spec='ll'+'r'*8)
     p=path('tables','review_feature_agreement.tex');s=p.read_text();s=s.replace(r'\midrule',' & & '+' & '.join(['Spearman','MAE']*4)+r' \\'+'\n'+r'\midrule',1);p.write_text(s)
 
 
-def setup_and_runtime_tables():
+def setup_and_runtime_tables(presentation_only=False):
     published={'APSIPA':('8','254','Color','G-PCC, V-PCC',r'\cite{apsipa_dataset}'),'ICIP2023':('75','1494','Color, normals','Compression',r'\cite{basics_dataset}'),'LS-PCQA':('104',r'$>22{,}000$','Color','Noise, resampling, compression',r'\cite{liu2023lspcqa}'),'SJTU-PCQA':('9','378','Color','Octree, resampling, noise',r'\cite{yang2020predicting}'),'UnB_PC':('6','60','Color, normals','Octree, JPEG',r'\cite{Torlig2018anovel}'),'WPC':('20','740','Color','Noise, resampling, G/V-PCC',r'\cite{wpc}'),'WPC2':('16','400','Color','V-PCC',r'\cite{liu2021wpc2}')}
     rows=[];inventory=[]
     for i,dataset in enumerate(DATASETS,1):
@@ -751,10 +743,12 @@ def setup_and_runtime_tables():
         rows.append([str(i),tex(dataset)+' '+citation,tex(attributes),tex(distortions),refs,samples,str(base.REF.nunique()),str(len(base)),score_range,role,subset])
         inventory.append({'id':i,'dataset':dataset,'attributes':attributes,'distortions':distortions,'published_references':refs,'published_samples':samples,'analyzed_references':base.REF.nunique(),'analyzed_samples':len(base),'score_min':base.SCORE.min(),'score_max':base.SCORE.max(),'role':role,'family_comparison':dataset in FAMILY_DATASETS,'notes':'LS-PCQA uses the supplied accurate-MOS subset; larger published corpus includes generated scores' if dataset=='LS-PCQA' else 'Original PointPCA coverage is APSIPA only' if dataset=='APSIPA' else 'WPC2 class labels missing; shared WPC contents' if dataset=='WPC2' else ''})
     rows.append(['--','QoMEX2019','--','--','--','--',r'4$^\ast$',r'12$^\ast$','--','Setup only','--'])
-    write('summaries','review_dataset_setup.csv',pd.DataFrame(inventory))
-    table('review_dataset_setup.tex',r'Dataset properties and populations. Published and analyzed reference/sample counts are distinguished; the MOS column is the observed source-score range, retained without calibration or reversal. Modelling datasets influenced selection; evaluation datasets did not. Family identifies the four-dataset PCA-family study, whose populations equal the main analyzed populations; original PointPCA is available only on APSIPA. LS-PCQA uses 930 supplied accurate-MOS samples rather than its larger generated-score corpus. $^\ast$QoMEX2019 identifies 12 historical records/four references, excluded from every revised analysis; its original dataset identity remains unverified. WPC2 has unknown distortion-class metadata.','tab_datasets',['ID','Dataset','Attributes','Distortions','Pub. refs','Pub. samples','Used refs','Used samples','MOS range','Role','Family'],rows,spec='ll'+'l'*2+'r'*5+'ll')
+    if not presentation_only:
+        write('summaries','review_dataset_setup.csv',pd.DataFrame(inventory))
+    table('review_dataset_setup.tex',r'Dataset properties and populations. Published and analyzed reference/sample counts are distinguished; the MOS column is the observed source-score range, retained without calibration or reversal. Modelling datasets influenced selection; evaluation datasets did not. Family identifies the four-dataset PCA-family study, whose populations equal the main analyzed populations; PointPCA is evaluated only on APSIPA because feature extraction for the other datasets exceeded the available 128 GB RAM. LS-PCQA uses 930 supplied accurate-MOS samples rather than its larger generated-score corpus. $^\ast$QoMEX2019 identifies 12 historical records/four references, excluded from every revised analysis; its original dataset identity remains unverified. WPC2 has unknown distortion-class metadata.','tab_datasets',['ID','Dataset','Attributes','Distortions','Pub. refs','Pub. samples','Used refs','Used samples','MOS range','Role','Family'],rows,spec='ll'+'l'*2+'r'*5+'ll')
     old=read('summaries','runtime_pointpca_summary.csv');filtered=old[old.dataset.isin(DATASETS)]
-    write('summaries','review_runtime_pointpca.csv',filtered)
+    if not presentation_only:
+        write('summaries','review_runtime_pointpca.csv',filtered)
     lines=[]
     for r in filtered.itertuples():
         lines.append(f'{tex(r.dataset)} & {r.matlab_median_time:.3f} [{r.matlab_time_iqr:.3f}] & {r.pc3_w16_median_time:.3f} [{r.pc3_w16_time_iqr:.3f}] & {r.median_speedup:.2f} [{r.speedup_iqr:.2f}] '+r'\\')
@@ -784,12 +778,12 @@ def report_narratives():
     for dataset in FAMILY_DATASETS:
         part=pca[pca.dataset.eq(dataset)].set_index('method')
         diffs.append(part.loc['PointPCA+RS','srocc']-part.loc['PointPCA+','srocc'])
-    lines.append(r'\newcommand{\ReviewFamilyInterpretation}{Table~\ref{tab_review_pca_family} compares feature representations with the same Extra Trees pipeline and shared folds. The RS-minus-MATLAB SROCC difference ranges from '+f'{min(diffs):.3f} to {max(diffs):.3f}'+r'. PointPCA++ has the strongest SROCC on APSIPA, ICIP2023, and SJTU-PCQA among these controlled methods, while PointPCA$^3$ is slightly higher on UnB\_PC. MATLAB PointPCA+ has lower RMSE on ICIP2023 than PointPCA++. Thus, the fusion does not dominate every method on every metric. Original PointPCA is evaluated only on APSIPA using its native 46-feature vector. These comparisons isolate representations under a common regressor and do not reproduce each historical method\textquotesingle s native regression procedure.}')
+    lines.append(r'\newcommand{\ReviewFamilyInterpretation}{Table~\ref{tab_review_pca_family} compares feature representations with the same Extra Trees pipeline and shared folds. The SROCC difference (PointPCA+RS minus PointPCA+) ranges from '+f'{min(diffs):.3f} to {max(diffs):.3f}'+r'. PointPCA++ has the strongest SROCC on APSIPA, ICIP2023, and SJTU-PCQA among these controlled methods, while PointPCA$^3$ is slightly higher on UnB\_PC. PointPCA+ has lower RMSE on ICIP2023 than PointPCA++. Thus, the fusion does not dominate every method on every metric. Original PointPCA is evaluated only on APSIPA using its native 46-feature vector. These comparisons isolate representations under a common regressor and do not reproduce each historical method\textquotesingle s native regression procedure.}')
     paired=read('summaries','review_pca_pairwise_tests.csv')
     rs=paired[paired.arm_a.eq('PointPCA+') & paired.arm_b.eq('PointPCA+RS') & paired.metric.eq('srocc')].set_index('dataset')
     r=rs.loc['SJTU-PCQA']
-    agreement_example=f' On SJTU-PCQA, for example, RS minus MATLAB SROCC is {feature_error(-r.difference_a_minus_b)} with a pointwise 95\\% interval [{feature_error(-r.high)}, {feature_error(-r.low)}]. '
-    lines.append(r'\newcommand{\ReviewAgreementInterpretation}{Figure~\ref{fig_review_feature_agreement} and Table~\ref{tab_review_feature_agreement} compare corresponding MATLAB/RS predictors after verifying their intended descriptor order. Across the 160 feature--dataset pairs, median Spearman correlation is '+f'{agreement.spearman.median():.3f}'+r', with a minimum of '+f'{agreement.spearman.min():.3f}'+r'. Per-feature errors reveal departures that a single pooled correlation would conceal.'+agreement_example+r'Table~\ref{tab_review_pairwise} reports paired prediction differences and Holm-adjusted tests; none of the MATLAB-versus-RS differences passes the declared correction. The tests do not establish equivalence; the estimated differences and their intervals quantify the agreement supported by these populations. Inspected source establishes intended feature semantics, while exact historical native binary versions remain a provenance limitation.}')
+    agreement_example=f' On SJTU-PCQA, for example, PointPCA+RS minus PointPCA+ SROCC is {feature_error(-r.difference_a_minus_b)} with a pointwise 95\\% interval [{feature_error(-r.high)}, {feature_error(-r.low)}]. '
+    lines.append(r'\newcommand{\ReviewAgreementInterpretation}{Figure~\ref{fig_review_feature_agreement} and Table~\ref{tab_review_feature_agreement} compare corresponding PointPCA+ and PointPCA+RS predictors after verifying their intended descriptor order. Across the 160 feature--dataset pairs, median Spearman correlation is '+f'{agreement.spearman.median():.3f}'+r', with a minimum of '+f'{agreement.spearman.min():.3f}'+r'. Per-feature errors reveal departures that a single pooled correlation would conceal.'+agreement_example+r'Table~\ref{tab_review_pairwise} reports paired prediction differences and Holm-adjusted tests; none of the paired comparisons between PointPCA+ and PointPCA+RS is significant after the declared correction. The tests do not establish equivalence; the estimated differences and their intervals quantify the agreement supported by these populations. Inspected source establishes intended feature semantics, while exact historical native binary versions remain a provenance limitation.}')
     a=iqa.loc['pc3_dists'];b=iqa.loc['pc3_dists_topiq']
     paired_iqa=read('summaries','review_iqa_pairwise_tests.csv')
     paired_iqa=paired_iqa[paired_iqa.arm_a.eq('pc3_dists') & paired_iqa.arm_b.eq('pc3_dists_topiq') & paired_iqa.metric.eq('srocc')].iloc[0]
@@ -857,14 +851,14 @@ REQUESTS = [
     (1,'Projection-only results and discussion','tab_review_projection_only;tab_review_projection_iqas','summaries/review_projection_only.csv;summaries/projection_case_summary.csv',''),
     (2,'Numeric heatmap cells','fig_projection_pipeline_heatmap','manifests/review_heatmap.json',''),
     (3,'Diverging heatmap and white text','fig_projection_pipeline_heatmap','figures/review_projection_heatmap.pdf;manifests/review_heatmap.json',''),
-    (4,'SOTA/baseline comparison','tab_review_sota','summaries/review_sota_evidence.csv;audits/review_sota_quarantined.csv','BMSB D2 mapping and matched source populations/protocols unresolved; published PLCC/RMSE absent'),
+    (4,'SOTA/baseline comparison','sec_results_pointpcapp_sota','summaries/review_sota_evidence.csv;audits/review_sota_quarantined.csv','Same-protocol SOTA comparison results are not available; earlier-paper aggregates are retained only as provenance and excluded from manuscript analyses'),
     (5,'PCA-family SROCC/PLCC/RMSE table','tab_review_pca_family','summaries/review_pca_family.csv;audits/review_inputs.csv',''),
     (6,'Per-feature agreement and statistical evidence','fig_review_feature_agreement;tab_review_feature_agreement;tab_review_pairwise','summaries/review_feature_agreement.csv;summaries/review_pca_pairwise_tests.csv;manifests/review_feature_dictionary.csv',''),
-    (7,'Standalone MATLAB versus RS on shared folds','tab_review_pca_family;tab_review_pairwise','predictions/review_baselines.csv;summaries/review_pca_pairwise_tests.csv',''),
-    (8,'Efficiency including RS/hybrid SOTA','sec_results_pointpcapp_runtime','summaries/review_runtime_pointpca.csv;summaries/runtime_pointpcapp_integrated_summary.csv','Comparable JVCI RS/hybrid timings and independently aligned timer boundaries not supplied; historical supplement timing excluded'),
+    (7,'Standalone PointPCA+ versus PointPCA+RS on shared folds','tab_review_pca_family;tab_review_pairwise','predictions/review_baselines.csv;summaries/review_pca_pairwise_tests.csv',''),
+    (8,'Efficiency including PointPCA+RS/hybrid SOTA','sec_results_pointpcapp_runtime','summaries/review_runtime_pointpca.csv;summaries/runtime_pointpcapp_integrated_summary.csv','Comparable JVCI PointPCA+RS/hybrid timings and independently aligned timer boundaries not supplied; historical supplement timing excluded'),
     (9,'Prediction versus MOS scatterplots','fig_review_mos_scatter','predictions/final_pointpcapp_oof_predictions.csv;figures/review_mos_scatter.pdf',''),
     (10,'Success/failure analysis','fig_review_residuals;tab_review_error_summary;tab_review_cases;tab_review_error_groups','predictions/review_residuals.csv;summaries/review_error_groups.csv;summaries/review_cases.csv',''),
-    (11,'Resolution ablation','sec_results_regression_features','manifests/review_method_provenance.json','Raw APSIPA inputs/reproducible extraction or audited multi-resolution feature package missing'),
+    (11,'Resolution ablation','sec_results_diagnostics','manifests/review_method_provenance.json','Raw APSIPA inputs/reproducible extraction or audited multi-resolution feature package missing'),
     (12,'View-count accuracy and cost ablation','tab_review_views_pooling','predictions/review_ablations.csv;summaries/review_views_pooling.csv;summaries/review_views_pooling_paired_intervals.csv','Accuracy complete; changed-configuration extraction cost unavailable; historical camera mapping unverified'),
     (13,'View-pooling accuracy and cost ablation','tab_review_views_pooling','summaries/review_views_pooling.csv;summaries/review_views_pooling_paired_intervals.csv','Accuracy complete; changed-configuration extraction cost unavailable'),
     (14,'DISTS plus TOPIQ-FR complementarity','tab_review_iqa_complementarity','summaries/review_iqa_complementarity.csv;summaries/review_iqa_pairwise_tests.csv','Accuracy and paired inference complete; dual-IQA extraction cost unavailable'),
@@ -881,7 +875,7 @@ def response_matrix(validated=False):
     for identifier,request,labels,evidence,dependency in REQUESTS:
         missing=[item for item in evidence.split(';') if not (OUT/item).exists()]
         status='blocked' if dependency or missing else 'complete' if validated else 'in progress'
-        rows.append({'id':identifier,'request':request,'status':status,'implemented_component':'Source-audited earlier-paper context; ambiguous rows quarantined' if identifier==4 else 'Matched JVCI MATLAB timing, scope and claim corrections' if identifier==8 else 'Resolution provenance and explicit missing-input record only' if identifier==11 else 'Available accuracy/statistical evidence and explicit unmeasured cost' if identifier in [12,13,14] else 'Requested available-data implementation','manuscript_labels':labels,'evidence':';'.join('data/analysis/'+item for item in evidence.split(';')),'checks':'source preservation, available evidence existence, manuscript label/reference checks; experiment-specific counts/folds/metrics in audits/review_validation.json' if validated else 'pending validation','dependency':dependency or ';'.join(missing)})
+        rows.append({'id':identifier,'request':request,'status':status,'implemented_component':'Unmatched literature table removed; red pending-comparison note at subsection footer; historical evidence retained only as provenance' if identifier==4 else 'Matched JVCI PointPCA+ timing, scope and claim corrections' if identifier==8 else 'Resolution provenance and explicit missing-input record only' if identifier==11 else 'Available accuracy/statistical evidence and explicit unmeasured cost' if identifier in [12,13,14] else 'Requested available-data implementation','manuscript_labels':labels,'evidence':';'.join('data/analysis/'+item for item in evidence.split(';')),'checks':'source preservation, available evidence existence, manuscript label/reference checks; experiment-specific counts/folds/metrics in audits/review_validation.json' if validated else 'pending validation','dependency':dependency or ';'.join(missing)})
     frame=pd.DataFrame(rows)
     write('manifests','review_response_matrix.csv',frame)
     return frame
@@ -901,7 +895,6 @@ def provenance():
         'review_error_summary':['predictions/review_residuals.csv'],
         'review_error_groups':['summaries/review_error_groups.csv'],
         'review_cases':['summaries/review_cases.csv'],
-        'review_sota':['summaries/review_sota_evidence.csv'],
         'review_regressors':['summaries/review_regressors.csv'],
         'review_dataset_setup':['summaries/review_dataset_setup.csv'],
         'review_projection_heatmap':['summaries/projection_case_summary.csv','manifests/review_heatmap.json'],
