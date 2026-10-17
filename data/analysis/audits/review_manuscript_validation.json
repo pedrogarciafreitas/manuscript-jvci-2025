@@ -1,0 +1,197 @@
+{
+  "status": "passed",
+  "revision": "Comparison evidence and canonical method terminology correction, 2026-10-13",
+  "manuscript": "main.tex",
+  "manuscript_sha256": "2c78c07583a0164338abcdc4f3846defa16a5c6ceeb826d559943acf3cd72008",
+  "bibliography_sha256": "7b647a37f4a68aa59ef07a13c48b3d0277d678d3fbc911967d848f89bc01dea9",
+  "pdf": "tmp/review-build/main.pdf",
+  "pdf_sha256": "27e7917cbe0ce8ff0c43211cc231bbda1accaf1c25befab815aee009a07d3499",
+  "pdf_pages": 42,
+  "final_build_log": "tmp/review-build/fold-wording-final.log",
+  "final_build_log_sha256": "35e1ddaab4c0f1a450626ae27c3f997fadc17c33fcf0a5723f8fbf45a3bf8402",
+  "unresolved_references": 0,
+  "unresolved_citations": 0,
+  "oversized_floats": 0,
+  "overfull_vboxes": 0,
+  "remaining_warnings": "Existing LaTeX release/glossaries warnings, earlier-method overfull hboxes, and one bibliography URL hbox. Diagnostic float-only page warnings remain; no results-section overflow.",
+  "scientific_tests_passed": 6,
+  "scientific_test_log": "tmp/review-build/correction-tests.log",
+  "source_csv_hashes_independently_rechecked": 300,
+  "pre_review_artifacts_independently_rechecked": 259,
+  "protected_source_numerical_and_frozen_files": 796,
+  "unchanged_generated_table_bodies": [
+    "review_regressors.tex",
+    "review_cases.tex",
+    "review_projection_only.tex",
+    "review_projection_iqas.tex",
+    "review_pca_family.tex",
+    "review_pairwise.tex",
+    "review_iqa_complementarity.tex",
+    "review_views_pooling.tex",
+    "review_feature_agreement.tex",
+    "review_dataset_setup.tex",
+    "review_error_summary.tex",
+    "review_error_groups.tex"
+  ],
+  "reading_flow": {
+    "canonical_method_names": true,
+    "float_barriers_at_argument_boundaries": true,
+    "main_exhibits_retained": 21,
+    "no_duplicate_error_rmse": true,
+    "pointpca_memory_limit_documented": true,
+    "runtime_continued_parts": 2,
+    "selection_before_final_comparisons": true,
+    "sota_pending_note": true,
+    "subsection_order": [
+      "sec_results_projection_analysis",
+      "sec_results_regression_features",
+      "sec_results_pca_family",
+      "sec_results_pointpcapp_sota",
+      "sec_results_diagnostics",
+      "sec_results_errors",
+      "sec_results_transfer",
+      "sec_results_pointpca3_runtime"
+    ],
+    "unmatched_sota_table_removed": true
+  },
+  "compiled_placement": {
+    "physical_conclusion_page": 34,
+    "main_result_figure_pages": {
+      "11": [
+        20
+      ],
+      "12": [
+        21
+      ],
+      "13": [
+        22
+      ],
+      "14": [
+        22
+      ],
+      "15": [
+        23
+      ],
+      "16": [
+        24
+      ],
+      "17": [
+        27
+      ],
+      "18": [
+        29
+      ],
+      "19": [
+        29
+      ],
+      "20": [
+        30
+      ],
+      "21": [
+        31
+      ],
+      "22": [
+        32
+      ],
+      "23": [
+        33,
+        33
+      ]
+    },
+    "main_result_table_pages": {
+      "4": 25,
+      "5": 26,
+      "6": 26,
+      "7": 27,
+      "8": 27,
+      "9": 30,
+      "10": 32,
+      "11": 32
+    },
+    "all_results_exhibits_before_conclusion": true,
+    "pending_sota_note_physical_page": 25,
+    "pca_family_memory_caption_physical_page": 25
+  },
+  "visual_checks": {
+    "status": "passed",
+    "scope": "Current complete Section 5 page-order overview; revised agreement and runtime names, paired appendix, PointPCA memory caption and red pending-SOTA note checked at publication dimensions. Color/grayscale checks of revised figure layouts; remaining designs and numeric evidence preserved.",
+    "minimum_extracted_plot_text_pt_by_physical_page": {
+      "page20": 7.555,
+      "page21": 7.316,
+      "page22": 7.255,
+      "page23": 7.481,
+      "page24": 7.278,
+      "page27": 7.258,
+      "page29": 7.261,
+      "page30": 7.466,
+      "page31": 7.243,
+      "page32": 7.473,
+      "page33": 7.736
+    },
+    "font_measurement": "MuPDF DejaVu figure spans longer than three characters; mathematical superscripts excluded. Heatmap outlined annotations preserve their previous size.",
+    "evidence": {
+      "tmp/review-build/correction-color-14.png": "7a986943ea8ad9f8b74dde7b68af53498ef919513cabacd8a15a2ec2ca10aa8b",
+      "tmp/review-build/correction-color-15.png": "eee7f293d383b29c7be9f0995191c0c4497196277f5c47c9c1a875bc16b03df5",
+      "tmp/review-build/correction-color-19.png": "275472cb94676b4f8d8924dc2f7edc06ba443e64374e13e4e6172c9294126885",
+      "tmp/review-build/correction-color-20.png": "5dd8d038930a1d0989c34872c137a502a93e998aa7d7845a97efb7c97109bfec",
+      "tmp/review-build/correction-color-21.png": "4f7e3670e3cf0f56ff3a152a7ace19eef2f2d6c5ef396a5b7861ac588bf87ee0",
+      "tmp/review-build/correction-color-22.png": "cddd5a37883303d64e31d469396eaa0bc5321581fdc25ac9e8be94c5143fdb1e",
+      "tmp/review-build/correction-color-23.png": "738fd4112dad0ebc9ac79d3d8de0e771aa7d991b85f963834969187b300d3354",
+      "tmp/review-build/correction-color-24.png": "0b15f2ab2a78c19c10557b5b00462f7177925c3248ea7db8dd21aa40c952fb95",
+      "tmp/review-build/correction-color-25.png": "88df3693d9380df7ddc5995ae607228178676e7abde421fd08a7f788bde4bb47",
+      "tmp/review-build/correction-color-26.png": "5339a591a1fca4b97620211367b40aaad964b6091e3a21391a9db8f4f68fd79f",
+      "tmp/review-build/correction-color-27.png": "f06116c660a6e878aad99e52aef8178681116b928b6aacfdd1ea479ae85b1e98",
+      "tmp/review-build/correction-color-28.png": "3de2f562e79fc7d986fe58b58e780343c1b605f4a155d5b0f78faba4cdbd465b",
+      "tmp/review-build/correction-color-29.png": "cce8382b54f637335f807d7af496e64e6354fcacc8efe690ff61e37bd831444d",
+      "tmp/review-build/correction-color-30.png": "aced9754b3d1c0bbd2c8895a655c5c8fdf645115437a2733236f92b302c20543",
+      "tmp/review-build/correction-color-31.png": "5de7d78a9c82becc3799d9afde1fc21a332464d30258f5513ed3ad036d85b6c7",
+      "tmp/review-build/correction-color-32.png": "12aed2ba414110f47fe1d169a8fcbee4597c0169a07d36fa28c955b82560560c",
+      "tmp/review-build/correction-color-33.png": "fbe6d2c2be90dabec81263cbeb24de45b52736792bb4181074c1237b7b7b0eb6",
+      "tmp/review-build/correction-color-34.png": "c8f0f995d0dbb6a82ba81921181c3670f02184b951716326b9ea538b17bb2fdc",
+      "tmp/review-build/correction-color-38.png": "863f45a8228315ca888645e56b8d5e3e3695e4014bc23200dab64998ae7891ee",
+      "tmp/review-build/correction-gray-24.png": "606da21a598a461b2f10730763ec21bbf364da349f6eef6373a41606e095fc4a",
+      "tmp/review-build/correction-gray-25.png": "06858d99ecf1b2c9a3704c22cc6766b85ce8294fc5edde6b9da802d10a1d89b6",
+      "tmp/review-build/correction-gray-26.png": "5339a591a1fca4b97620211367b40aaad964b6091e3a21391a9db8f4f68fd79f",
+      "tmp/review-build/correction-gray-27.png": "94ad5887bf105bbe7cf262a4433c2b2ac194740638301f65790c0c9f76639a1e",
+      "tmp/review-build/correction-gray-32.png": "d7ff9ecdb0dcd848e51209b613bfbd812140a1b6c17f859868ab73988e7493c9",
+      "tmp/review-build/correction-gray-33.png": "ff34895cfb56dd3e6641ee145bd571bfabab1b7f7be3181ab571328b62dbaf49",
+      "tmp/review-build/correction-section-overview.png": "bfa443725a6aa154819f744815cc164fe5df5fad83ac5699c7d63162ce9990eb"
+    }
+  },
+  "review_figure_hashes": {
+    "data/analysis/figures/review_feature_agreement.pdf": "f94e981c9ad932c42098732c40e88cb513174a31057644fd35ff7dfd72821cd7",
+    "data/analysis/figures/review_feature_importance.pdf": "a0e86aee69878e884c48dc79ecf1b374b75742c3bce51f717c1a38fda6dfb0b4",
+    "data/analysis/figures/review_feature_set_ablation.pdf": "54867f57ca95948dc116d1043a486b27faf00f2e3ca9ebe7b31eecad4805376a",
+    "data/analysis/figures/review_mos_scatter.pdf": "a0d01a162b295ed393ff3828e035dfc35c18113804c709c2e6db6a8e38da645f",
+    "data/analysis/figures/review_orthographic_schematic.pdf": "c878b13fadbb310130b38500b50c791704aa2b29ed97876b557b870a7590d122",
+    "data/analysis/figures/review_pc3_architecture.pdf": "14d418817686a03ffe724d8210f4e510361a410afc585871f7de5d8fe2801b47",
+    "data/analysis/figures/review_pointpcapp_all_datasets.pdf": "8cb4dd306e728c46a67cf5a99294be568286afdbf68ed81709fb9a26beeac22d",
+    "data/analysis/figures/review_pointpcapp_architecture.pdf": "06cd8cf0c968862fac9f61274397cd7ef7e4b190efef8fadf56f8f1afec708cf",
+    "data/analysis/figures/review_pointpcapp_modality_importance.pdf": "4932c6eb80aaacb495c02ddaf3e3ce26d07414f03ed57053eda8c228caf87731",
+    "data/analysis/figures/review_pointpcapp_runtime.pdf": "3222f3841e74eaa4eb8ab3e10929c0c825e3ee4ac3cb98c4a4dae38df10bd003",
+    "data/analysis/figures/review_pointpcapp_runtime_speedup.pdf": "f91206a4f677eaf0f9a822539448891b7eee6f0c4efd44c30c9669ddfef355aa",
+    "data/analysis/figures/review_projection_accuracy_runtime.pdf": "c41147a5e9cd1b71cbbde8fc5ae8981ed7de629d4c28baa5610de5c065d243a3",
+    "data/analysis/figures/review_projection_heatmap.pdf": "c30068c0bf7b71cfe594a27bee6db1c02649d8a890e241ea72c4e043f9e876cc",
+    "data/analysis/figures/review_regressor_comparison.pdf": "3ef435367d9aa9e177995e6c5e71e09b155ff05c553a184a5dc334dcd2b5e223",
+    "data/analysis/figures/review_residuals.pdf": "4b9f4714b490ea2c3ec5878f77cf4ff55bc42f34369054bbd4f216de7a4d3a8d",
+    "data/analysis/figures/review_rs_architecture.pdf": "5f0851bfc876d82d327a13b8b2da5f8815e5201a29979ff934a202b8269a8271",
+    "data/analysis/figures/review_single_iqa_selection.pdf": "1108e21c54f7cc25b4feb1663f4612c852e0134441097d52b682d473bd8da5d0",
+    "data/analysis/figures/review_worker_scaling.pdf": "e098d6752870e656280051d0bb6caad57b3df92da6de92d9a7df49e5d854245d"
+  },
+  "script_hashes": {
+    "scripts/run_analysis.py": "eb8695bf01618620174323553919f79f3dfd93f3f0826043fab5ee31ea04d137",
+    "scripts/review_analysis.py": "13a4371cc383ded0ef44e8e8cb91ab5484eae9afba0e5be5095f00b1e32b36e5",
+    "scripts/review_presentation.py": "af3bdcacb4163e27daad9751f9329066cfbd4ede5ce7b18ec60aac0c1da4a015"
+  },
+  "memory_failure_provenance": "Author-confirmed original PointPCA feature-extraction failure on non-APSIPA datasets with 128 GB RAM; no quantitative peak-memory benchmark or failure log is asserted.",
+  "historical_literature_evidence": "Retained only as provenance; no manuscript comparison table or appendix relocation.",
+  "full_review_complete": false,
+  "unchanged_open_dependencies": "Resolution inputs and comparable timing/protocol evidence remain unavailable.",
+  "fold_wording_correction": {
+    "description": "Replace project shorthand with five content-disjoint cross-validation folds and the selected regression pipeline; matching family paragraph and generated caption corrected.",
+    "experiments_rerun": false,
+    "build_log": "tmp/review-build/fold-wording-final.log",
+    "checked_caption_image": "tmp/review-build/fold-wording-25.png",
+    "checked_caption_image_sha256": "640e17eae5881dba29679e468436303d4d6f82f069f9181bb02b00be15210946"
+  }
+}

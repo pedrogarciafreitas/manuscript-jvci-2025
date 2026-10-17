@@ -50,6 +50,7 @@
 \usepackage{tabularx}
 \usepackage{arydshln}
 \usepackage{subcaption}
+\usepackage{placeins}
 \usepackage{url}
 
 
@@ -180,6 +181,8 @@
 \newacronym{VGG}{VGG}{Very Deep Convolutional Networks for Large-Scale Image Recognition}
 
 
+\newacronym{OOF}{OOF}{out-of-fold}
+
 
 
 
@@ -265,7 +268,7 @@
 
 %% Abstract
 \begin{abstract}
-\gls{PCQA} plays a fundamental role in 3D spatial data acquisition, compression, transmission, and rendering for human-oriented technologies. In this paper, we propose a computationally efficient enhancement of the PointPCA+ \gls{PCQA} metric, namely PointPCA++. PointPCA+ is a descriptor-based metric that employs \gls{PCA} decomposition on the geometry data and defines a set of texture descriptors to model perceptual features. The proposed PointPCA++ retains these features and also introduces an additional set of complementary features based on 3D-to-2D projections. The quality score is obtained through a learning-based method that fuses high-dimensional features to predict the visual quality of the point cloud. Extensive experimental results show that the proposed method achieves high predictive performance against subjective ground truth scores obtained from the APSIPA, ICIP2023, QoMEX2019, SJTU-PCQA, UnB, and WPC\red{2.0?} benchmark datasets. Moreover, statistical and correlation tests demonstrate that PointPCA++ significantly outperforms \gls{SOTA} \gls{PCQA} methods while demanding considerably fewer computational resources, such as memory and processing time. The code is available at \url{https://gitlab.com/gpds-unb/pointpcapp}.
+\gls{PCQA} plays a fundamental role in 3D spatial data acquisition, compression, transmission, and rendering for human-oriented technologies. In this paper, we propose a computationally efficient enhancement of the PointPCA+ \gls{PCQA} metric, namely PointPCA++. PointPCA+ is a descriptor-based metric that employs \gls{PCA} decomposition on the geometry data and defines a set of texture descriptors to model perceptual features. The proposed PointPCA++ combines the VoSS-based PointPCA$^3$ representation with complementary features based on 3D-to-2D projections. The quality score is obtained through a learning-based fusion that predicts the visual quality of the point cloud. The final 46-feature configuration is evaluated using content-disjoint validation on seven benchmark datasets: APSIPA, ICIP2023, LS-PCQA, SJTU-PCQA, UnB\_PC, WPC, and WPC2. Within-dataset results show high correlations with subjective scores, whereas directed cross-dataset transfer reveals greater variation across populations. The measured complete feature-extraction pipeline remains substantially faster than PointPCA+. The code is available at \url{https://gitlab.com/gpds-unb/pointpcapp}.
 \end{abstract}
 
 %%Graphical abstract
@@ -276,9 +279,9 @@
 %%Research highlights
 \begin{highlights}
  \item A novel quality metric named PointPCA++ is proposed.
- \item PointPCA++ enhances PointPCA+ for improved quality assessment of point clouds.
- \item PointPCA++ offers high performance with lower memory and processing needs.
- \item PointPCA++ outperforms state-of-the-art methods on benchmark datasets.
+ \item PointPCA++ combines PointPCA$^3$ descriptors and six-view DISTS measurements.
+ \item Complete feature extraction is faster than the PointPCA+ baseline.
+ \item Seven-dataset evaluation examines prediction accuracy and cross-dataset transfer.
 \end{highlights}
 
 %% Keywords
@@ -303,7 +306,7 @@ Point cloud \sep Principal component analysis \sep Feature selection \sep Visual
 
 A \gls{PC} consist of a collection of points in a 3D space, often represented in Cartesian coordinates (x,y,z) with a set of attributes associated with each point. These attributes can vary, but commonly include RGB components, reflective information, physical sensor data, and normal vectors. To accurately describe a realistic 3D scene, especially for \gls{IMEx} applications, \glspl{PC} require a huge number of points.  As a consequence, coding technologies must implement lossy compression approaches to enable real applications~\cite{LUO2025104481, PAN2024104243}. Nevertheless, the main issue with using lossy compression is that it impairs the quality of the original data in order to achieve smaller file sizes, making the visual content less appealing depending on the compression level. For instance, Figure~\ref{fig_teaser} depicts a compression process that, depending on its \gls{QP}, can affect the same content in various ways. These differently compressed \glspl{PC} may influence human perception of quality in distinct ways, potentially impairing \gls{QoE} across several aspects. Consequently, the progress of these lossy compression algorithms has demanded to the development of quality assessment methods specifically designed for \gls{PC} contents.
 
-\begin{figure*}[t!]
+\begin{figure*}[tbp]
   \centering
   \setlength{\fboxrule}{0.5pt}
   \setlength{\fboxsep}{0pt}
@@ -330,47 +333,47 @@ In addition to these metrics that consider only the geometry of the point cloud,
 %In this paper, we propose a \gls{FR} objective \gls{PCQA} metric that combines both 3D and 2D approaches. Indeed, there have already been few efforts to create hybrid models based on this 2D/3D combination. 
 More recently, there have been few efforts to create hybrid models based on this 2D/3D combination. For instance, Javaheri et al.~\cite{Javaheri2022joint} proposed a joint geometry and color projection-based \gls{PC} quality metric which solves the misalignment between the reference and degraded projected images. Freitas et al.~\cite{freitas2023point} proposed calculating the visual texture similarities from the 2D projections of both the reference and degraded \glspl{PC}, and then combining them with geometric similarities to evaluate the \gls{PC} quality. Similarly, Cui et al.~\cite{Cui2024Colored} proposed a \gls{PCQA} metric using complementary 3D and 2D feature spaces to model perceptual \glspl{PC} properties. 
 
-Unlike methods that rely solely on 2D or 3D approaches, those methods combining both have demonstrated better robustness to different distortions and improved accuracy in predicting perceptual quality scores. However, these \gls{SOTA} methods based on the combination of 2D and 3D approaches have some shortcomings. As an example, the metric proposed by Freitas et al.~\cite{freitas2023point} is based on a peculiar projection technique that represents the 3D space as 2D manifolds. That means that the projections used by Freitas, while offering the convenience of mapping all points from the 3D space onto a single 2D image, do not structure the information in a semantically or visually comprehensible for humans. On the other hand, in this paper, we employ an orthographic projection that generates six images, each corresponding to a distinct viewpoint of the \gls{PC}. In other words, our approach produces a set of 2D images that represent the objects from perspectives that are visually interpretable by humans, thereby resulting in more plausible perceptual models. Moreover, the information extracted from the 3D space is based on the descriptor-based PointPCA2 method~\cite{zhou2025pointpca+}.  We chose to rely on this approach because it offers the best trade-off between quality prediction performance and low computational cost. Additionally, it serves as a superset of features proposed in other combined methods, such as those by Cui et al.~\cite{Cui2024Colored}.
+Unlike methods that rely solely on 2D or 3D approaches, those methods combining both have demonstrated better robustness to different distortions and improved accuracy in predicting perceptual quality scores. However, these \gls{SOTA} methods based on the combination of 2D and 3D approaches have some shortcomings. As an example, the metric proposed by Freitas et al.~\cite{freitas2023point} is based on a peculiar projection technique that represents the 3D space as 2D manifolds. That means that the projections used by Freitas, while offering the convenience of mapping all points from the 3D space onto a single 2D image, do not structure the information in a semantically or visually comprehensible for humans. On the other hand, in this paper, we employ an orthographic projection that generates six images, each corresponding to a distinct viewpoint of the \gls{PC}. In other words, our approach produces a set of 2D images that represent the objects from perspectives that are visually interpretable by humans, providing appearance measurements for empirical quality prediction. Moreover, the 3D branch uses PointPCA$^3$~\cite{carvalho2026pc3}, a VoSS-based extension of the Rust PointPCA+RS implementation~\cite{carvalho2025rs}, inspired by PointPCA+~\cite{zhou2025pointpca+}.  We chose this approach to combine quality-aware geometric and texture descriptors with projection-based information. The utility of combining these representations is evaluated through controlled standalone and fusion comparisons.
 
-This work advances the field of \gls{PCQA} by addressing the challenge of assessing \gls{PC} quality developing a novel full-reference objective metric that combines both 3D and 2D approaches. More specifically, we improved and extended the method proposed by Zhou et al.~\cite{zhou2023pointpca+, zhou2025pointpca+}, known as PointPCA+. We chose Zhou's metric because, as far as we could find, it is the most efficient \gls{SOTA} method for predicting subjective scores. However, despite this efficiency, Zhou's metric is still quite computationally costly, which can be prohibitive in various scenarios. Therefore, one contribution of our work is a new framework to generate the same features while requiring significantly less processing time and memory consumption. Additionally, we use a hybrid approach that combines these PointPCA+ features with  a projection-based pipeline. This projection technique mitigates issues of irregularity and sparsity in the original \gls{3D} \gls{PC} domain by adapting highly efficient \gls{IQA}, originally developed for standard images, to point cloud data. Furthermore, by using projections, we avoid common limitations in feature-based metrics, such as sensitivity to noise, outliers, scale, and computational complexity. Applying \gls{PCA} on geometric data and calculating descriptors from both geometric and textural data also resolves issues typical of projection-based methods, including the loss of \gls{3D} structure, viewpoint dependence, and reductions in resolution and detail. This new method we propose is called PointPCA++.
+This work advances the field of \gls{PCQA} by addressing the challenge of assessing \gls{PC} quality developing a novel full-reference objective metric that combines both 3D and 2D approaches. More specifically, we improved and extended the method proposed by Zhou et al.~\cite{zhou2023pointpca+, zhou2025pointpca+}, known as PointPCA+. Zhou's metric provides a descriptor-based foundation for predicting subjective quality. However, despite this efficiency, Zhou's metric is still quite computationally costly, which can be prohibitive in various scenarios. The point-cloud branch builds on the prior PointPCA+RS and PointPCA$^3$ extractors~\cite{carvalho2025rs,carvalho2026pc3}. Our hybrid approach combines PointPCA$^3$ predictors with a projection-based pipeline. This projection technique mitigates issues of irregularity and sparsity in the original \gls{3D} \gls{PC} domain by adapting highly efficient \gls{IQA}, originally developed for standard images, to point cloud data. The projections provide appearance information that complements the point-cloud descriptors. Applying \gls{PCA} on geometric data and calculating descriptors from both geometric and textural data retains information about \gls{3D} structure that can be lost in the projected views. This new method we propose is called PointPCA++.
 
 
 Building upon these advances, the contributions of this paper are as follows:
 \begin{itemize}
-    \item A novel descriptor-based metric entitled \gls{PointPCA+RS}. This metric produces the same feature set as PointPCA+ while drastically reducing computational requirements in terms of both memory and processing time. This streamlining enables the practical use of additional complementary 2D features.
+    \item A controlled validation of the PointPCA-family feature representations, including standalone PointPCA+ and PointPCA+RS prediction and per-feature agreement on matched populations. The proposed fusion uses the prior VoSS-based PointPCA$^3$ extractor.
     \item A novel Cubemap projection-based metric that projects the 3D point cloud onto the six faces of a cube, generating texture regions. By applying one or more \gls{IQA} metrics to these views, a tensor of perceptual distances is obtained, effectively representing the quality of the projected data.
-    \item The integration of \gls{PointPCA+RS} descriptors with cubemap-based perceptual features into a unified metric produces the proposed PointPCA++. Extensive evaluations on multiple benchmark databases demonstrate that PointPCA++ achieves superior performance compared to \gls{SOTA} methods, establishing it as a notable advancement in \gls{PCQA}.
+    \item The integration of PointPCA$^3$ descriptors with cubemap-based perceptual features into a unified metric produces the proposed PointPCA++. Content-disjoint evaluations on seven benchmark databases demonstrate consistently high correlation with subjective quality scores.
 \end{itemize}
 
 
-%Such an objective metric predicts content quality automatically without human input. As a full-reference metric, it evaluates both the original and distorted content to approximate the human visual system's perception. Our approach combines projections, representing point clouds as \gls{2D} images, with the PointPCA+\cite{zhou2023pointpca+} method. This projection technique mitigates issues of irregularity and sparsity in the original \gls{3D} \gls{PC} domain by adapting highly efficient \gls{IQA}, originally developed for standard images, to point cloud data. Furthermore, by using projections, we avoid common limitations in feature-based metrics, such as sensitivity to noise, outliers, scale, and computational complexity. Applying \gls{PCA} on geometric data and calculating descriptors from both geometric and textural data also resolves issues typical of projection-based methods, including the loss of \gls{3D} structure, viewpoint dependence, and reductions in resolution and detail.
+%Such an objective metric predicts content quality automatically without human input. As a full-reference metric, it evaluates both the original and distorted content to approximate the human visual system's perception. Our approach combines projections, representing point clouds as \gls{2D} images, with the PointPCA+\cite{zhou2023pointpca+} method. This projection technique mitigates issues of irregularity and sparsity in the original \gls{3D} \gls{PC} domain by adapting highly efficient \gls{IQA}, originally developed for standard images, to point cloud data. The projections provide appearance information that complements the point-cloud descriptors. Applying \gls{PCA} on geometric data and calculating descriptors from both geometric and textural data retains information about \gls{3D} structure that can be lost in the projected views.
 
-The rest of this paper is organized as follows. In Section~\ref{sec_review}, we discuss the existing work related to PCA-based \gls{PCQA} methods, their advantages and limitations. In Section~\ref{sec_proposed}, we present a detailed description of the proposed PointPCA++ and its main components, namely PointPCA+RS and \gls{CMP}. The experimental setups and the results acquired on public \gls{PC} quality databases are described in Sections~\ref{sec_setup} and \ref{sec_results}, respectively. Finally, Section~\ref{sec_conclusions} concludes the paper.
+The rest of this paper is organized as follows. In Section~\ref{sec_review}, we discuss the existing work related to PCA-based \gls{PCQA} methods, their advantages and limitations. In Section~\ref{sec_proposed}, we present a detailed description of the proposed PointPCA++ and its main components, namely PointPCA$^3$ and \gls{CMP}. The experimental setups and the results acquired on public \gls{PC} quality databases are described in Sections~\ref{sec_setup} and \ref{sec_results}, respectively. Finally, Section~\ref{sec_conclusions} concludes the paper.
 
 
-\begin{figure*}[t!]
+\begin{figure*}[tbp]
     \centering
     \begin{subfigure}[b]{0.85\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{diagrams/pointpca1.pdf}
+        \includegraphics[width=\textwidth]{figures/pointpca1.pdf}
         \caption{PointPCA~\cite{alexiou2024pointpca}}
         \label{fig_pointpca_diagram}
     \end{subfigure}
     \\[1em]
     \begin{subfigure}[b]{0.85\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{diagrams/pointpca2.pdf}
+        \includegraphics[width=\textwidth]{figures/pointpca2.pdf}
         \caption{PointPCA+~\cite{zhou2023pointpca+, zhou2025pointpca+}}
         \label{fig_pointpca2_diagram}
     \end{subfigure}
     \\[1em]
     \begin{subfigure}[b]{0.85\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{diagrams/pointpca2_rs.pdf}
-        \caption{PointPCA+RS (proposed)}
+        \includegraphics[width=\textwidth]{data/analysis/figures/review_rs_architecture.pdf}
+        \caption{PointPCA+RS~\cite{carvalho2025rs}}
         \label{fig_pointpca2_rs_diagram}
     \end{subfigure}
-    \caption{Architectures of PCA-based point cloud quality assessment metrics. These metrics have some steps in common, such as duplicates merging, computation of descriptors, and statistical features. The difference between PointPCA and PointPCA+ is that PointPCA+ performs PCA only on the geometry data of the reference PC, and transforms both the reference and distorted PCs onto the new basis, avoiding costly processing operations on texture data. \gls{PointPCA+RS} is a technique proposed in this paper to generate an approximated feature set of PointPCA+ while using much less computational complexity and consuming significantly fewer computational resources.}
+    \caption{Architectures of the prior PointPCA, PointPCA+, and Rust PointPCA+RS methods. PointPCA+ changes the descriptors and coordinate representation relative to PointPCA. PointPCA+RS retains the intended 40-predictor layout with on-demand neighborhood queries and parallel computation. The present fusion uses the distinct VoSS-based PointPCA$^3$ extractor described in Section~\ref{sec_pointpca_rs}.}
     \label{fig_pointpca_family}
 \end{figure*}
 
@@ -396,7 +399,7 @@ where $|P_i|$ is the size of the set and $\bar{{p}}_i$ represents its centroid, 
 \begin{equation} \label{eq_centroid}
 \bar{{p}}_i = \frac{1}{|P_i|} \sum_{n=1}^{|P_i|} {p}_n.
 \end{equation}
-Eigen-decomposition is performed on the covariance matrix $\mathbf{\Sigma}_i$, which is both symmetric and positive definite. As a result, its eigenvalues are non-negative and its eigenvectors form an orthogonal system. The eigenvectors represent the directions of greatest data dispersion, while the eigenvalues indicate the variance of the transformed data along these principal axes.
+Eigen-decomposition is performed on the covariance matrix $\mathbf{\Sigma}_i$, which is both symmetric and positive semidefinite. As a result, its eigenvalues are non-negative and its eigenvectors form an orthogonal system. The eigenvectors represent the directions of greatest data dispersion, while the eigenvalues indicate the variance of the transformed data along these principal axes.
 
 To compute the geometric descriptors, the coordinates of the points in $P_i$ are used. Therefore, in Equations~\ref{eq_covariance} and \ref{eq_centroid}, $p_i$ is set to $(x_i, y_i, z_i)^\top$. Assuming that $\textbf{e}_1^g$, $\textbf{e}_2^g$, and $\textbf{e}_3^g$ denote the eigenvectors and $\lambda_1^g$, 
 $\lambda_2^g$, and $\lambda_3^g$ the corresponding eigenvalues ($\lambda_1^g \geq \lambda_2^g \geq \lambda_3^g$) obtained from the eigen-decomposition of $\mathbf{\Sigma}_i$. Additionally, we define the unit vectors $\mathbf{u}_x = [1, 0, 0]^\top$, $\mathbf{u}_y = [0, 1, 0]^\top$, and $\mathbf{u}_z = [0, 0, 1]^\top$ to represent the $x$, $y$, and $z$ axes. The geometric descriptors, $d^g \in \mathbb{R}^{1 \times 15}$, are constructed using these eigenvalues, eigenvectors, and unit vectors, as defined in Table~\ref{tab_pointpca_descriptors}. In this table, each descriptor represents an interpretable shape property, where $\{d_1^g, d_2^g, \cdots, d_4^g \}$ represent the individual and aggregated sum of eigenvalues that indicate the extent to which points are dispersed along the axes. The descriptors $\{d_5^g, d_6^g, d_7^g \}$  capture the dimensionality of the local surface by indicating the placements of points within a neighborhood. The descriptor $d_8^g$ highlights data variation between the first to the third principal directions. The descriptors $\{d_9^g, d_{10}^g, ~\text{and}~ d_{11}^g \}$ give a sense of the spread, uncertainty, and variation of the subjacent surface, taking into account all the main axes. The descriptor $d_{12}^g$ measures the projected distance of a query point from the centroid of its neighborhood, along the estimated normal vector $\mathbf{e}_3^g$. The remaining $d_{13}^g, d_{14}^g, ~\text{and}~ d_{15}^g$ measures the projected error of $\mathbf{e}_3^g$ onto unit vectors aligned with the Cartesian axes of the \glspl{PC} coordinate system.
@@ -423,10 +426,10 @@ $\lambda_2^g$, and $\lambda_3^g$ the corresponding eigenvalues ($\lambda_1^g \ge
 & Omnivariance & $d_9^g = \sqrt[3]{\lambda_1^g \cdot \lambda_2^g \cdot \lambda_3^g}$ \\
 & Eigenentropy & $d_{10}^g = -\sum_{i=1}^3 \lambda_i^g \cdot \ln(\lambda_i^g)$ \\
 & Surface variation & $d_{11}^g = \lambda_3^g / \sum_{i=1}^3 \lambda_i^g$ \\
-& Roughness & $d_{12}^g = |(p - \bar{p}) \cdot \mathbf{e}_1^g|$ \\
-& Parallellity$_x$ & $d_{13}^g = 1 - |\mathbf{u}_x \cdot \mathbf{e}_1^g|$ \\
-& Parallellity$_y$ & $d_{14}^g = 1 - |\mathbf{u}_y \cdot \mathbf{e}_1^g|$ \\
-& Parallellity$_z$ & $d_{15}^g = 1 - |\mathbf{u}_z \cdot \mathbf{e}_1^g|$ \\
+& Roughness & $d_{12}^g = |(p - \bar{p}) \cdot \mathbf{e}_3^g|$ \\
+& Parallellity$_x$ & $d_{13}^g = 1 - |\mathbf{u}_x \cdot \mathbf{e}_3^g|$ \\
+& Parallellity$_y$ & $d_{14}^g = 1 - |\mathbf{u}_y \cdot \mathbf{e}_3^g|$ \\
+& Parallellity$_z$ & $d_{15}^g = 1 - |\mathbf{u}_z \cdot \mathbf{e}_3^g|$ \\
 \cmidrule{2-3}
 \multirow{8}{*}{\rotatebox{90}{Textural}} & Red channel & $d_1^t = R$ \\
 & Green channel & $d_2^t = G$ \\
@@ -443,7 +446,7 @@ $\lambda_2^g$, and $\lambda_3^g$ the corresponding eigenvalues ($\lambda_1^g \ge
 
 
 Freitas et al.~\cite{freitas2023point} showed that texture measures can be more relevant for some regression models than geometry. Based on this, PointPCA uses RGB color values to serve as the first three texture descriptors, namely $d_{1}^t, d_{2}^t, ~\text{and}~ d_{3}^t$. To compute the PCA-based textural descriptors, the RGB color values of the points in $\mathcal{P}_i$ are used. Therefore, $p_i$ is set to $(R_i, G_i, B_i)^\top$  in Equations~\ref{eq_covariance} and \ref{eq_centroid}, which yields the eigenvalues  $\lambda_1^t$, 
-$\lambda_2^t$, and $\lambda_3^t$, where $\lambda_1^t \geq \lambda_2^t \geq \lambda_3^t$. These eigenvalues are used as descriptors themselves, i.e., $d_4^t=\lambda_1^t$, $d_5^t=\lambda_2^t$, and $d_5^t=\lambda_3^t$. Moreover, the aggregated sum and the eigenentropy of these eigenvalues are also used as the descriptors $d_{7}^t$ and $d_{8}^t$, respectively. These descriptors are computed to measure the spread and variability of the color distribution within a local neighborhood, specifically along its principal axes. Table~\ref{tab_pointpca_descriptors} lists the formal definitions of these textural descriptors.
+$\lambda_2^t$, and $\lambda_3^t$, where $\lambda_1^t \geq \lambda_2^t \geq \lambda_3^t$. These eigenvalues are used as descriptors themselves, i.e., $d_4^t=\lambda_1^t$, $d_5^t=\lambda_2^t$, and $d_6^t=\lambda_3^t$. Moreover, the aggregated sum and the eigenentropy of these eigenvalues are also used as the descriptors $d_{7}^t$ and $d_{8}^t$, respectively. These descriptors are computed to measure the spread and variability of the color distribution within a local neighborhood, specifically along its principal axes. Table~\ref{tab_pointpca_descriptors} lists the formal definitions of these textural descriptors.
  
 
 The descriptors stated above are used to compute a set of 46 features per point. Specifically, the mean is calculated to offer a smoother estimate of a surface properties, whether geometric or textural, by considering a wider region. The standard deviation is also determined to quantify how much that surface property varies within the surrounding area. In particular, considering a query point $p_i$, PointPCA identify a support region as a set $\mathbf{\widehat{P_i}}$ composed of neighboring points $p_{\hat{n}} \in \mathbf{\widehat{P_i}}$. The mean statistical feature of point $p_i$ is given by
@@ -554,7 +557,7 @@ The predictors calculations in PointPCA+ differ from those in PointPCA. First, P
     \item $r_\beta = \left| \mathbf{\mathfrak{d}_2} \right|$, 
     \item $r_{\gamma_1} =  \dfrac{|\lambda^\mathcal{A} \odot	\lambda^\mathcal{B} - \Sigma|}{\lambda^\mathcal{A} \odot	\lambda^\mathcal{B}}$,
     \item $r_{\gamma_2} =  \dfrac{|\tilde{s}^\mathcal{A} \odot	\tilde{s}^\mathcal{B} - \tilde{\Sigma}|}{\tilde{s}^\mathcal{A} \odot	\tilde{s}^\mathcal{B}} $, and
-    \item $r_{\delta} = \dfrac{|\phi_{i,j}^\mathcal{A} - \phi_{i,j}^\mathcal{B}|}{|\phi_{i,j}^\mathcal{A}| + |\phi_{i,j}^\mathcal{B}| + \varepsilon}$.
+    \item $r_{\delta} = 1 - \dfrac{|\phi_{i,j}^\mathcal{A} - \phi_{i,j}^\mathcal{B}|}{|\phi_{i,j}^\mathcal{A}| + |\phi_{i,j}^\mathcal{B}| + \varepsilon}$.
 \end{itemize}
 In the above equations, $\mathbf{\mathfrak{d}_1}$ is the difference between two points, $\mathbf{\mathfrak{d}_2}$ indicates the projected distance between a point to the reference axes, and $\varepsilon$ is a small constant added to ensure the operation is mathematically valid. The symbol $\odot$ represents element-wise product.  For the sake of notation, the distances \( r_{\rho} \) and \( r_{\theta} \) are defined to correspond exactly to \( P_{m} \) and \( \theta_{m} \), respectively.
 
@@ -568,98 +571,62 @@ Unlike PointPCA, which simply uses a regression algorithm such as \gls{RFR}, Poi
 PointPCA outperforms the majority of existing \gls{PCQA} metrics, being a simple yet extremely efficient framework for modeling perceptual quality aspects. Despite this efficiency, PointPCA still demands a significant amount of computational resources, making it unfeasible for many real-world applications involving dense \glspl{PC}. PointPCA+, on the other hand, employs a more refined set of descriptors that are of lower complexity than those used by its predecessor. Despite its advantages, PointPCA+ still has room for improvement. Being purely descriptor-based, PointPCA+ is particularly effective at describing 3D features but ignores some visual aspects that are captured by methods based on 2D projections.
 
 
-In this paper, we propose PointPCA++, a \gls{PCQA} metric that enhances PointPCA+ by supplementing its feature set with a collection of 2D projection-based features. Our proposal is inspired by \gls{SOTA} methods that utilize such a hybrid approach~\cite{Javaheri2022joint, freitas2023point, Cui2024Colored} and are among the few that currently achieve better results than PointPCA+ in terms of correlation with subjective scores. Such \gls{SOTA} methods, despite their quality prediction performances, are computationally complex. Driven by this concern, we developed PointPCA++ to outperform PointPCA+ in both its quality prediction and its computational efficiency.
+In this paper, we propose PointPCA++, a \gls{PCQA} metric that enhances PointPCA+ by supplementing its feature set with a collection of 2D projection-based features. Our proposal is inspired by \gls{SOTA} methods that utilize such a hybrid approach~\cite{Javaheri2022joint, freitas2023point, Cui2024Colored} and are among the few that currently achieve better results than PointPCA+ in terms of correlation with subjective scores. The extraction cost of such hybrid approaches motivates evaluating a compact fusion. We assess prediction accuracy through matched grouped validation and computational performance through the available JVCI PointPCA+ benchmarks. These measurements do not establish a speed advantage over hybrid methods measured on other systems.
 
 \section{Proposed Method: PointPCA++} \label{sec_proposed}
 
 
-Figure~\ref{fig_arquitecture_pointpca3} shows the proposed PointPCA++ framework, which has two specialized branches: \gls{PointPCA+RS} branch and \glsfirst{CMP} branch. \gls{PointPCA+RS} is a proposed lightweight version of PointPCA+ with emphasis on low computational resources usage. PointPCA+RS optimizes the original PointPCA+ by re-implementing it using a different programming language, data structures, parallelization, and specific algorithmic details. In other words, \gls{PointPCA+RS} yields the same approximate features as PointPCA+, while employing a much more rapid pipeline and requiring significantly lower memory consumption. The \gls{CMP} branch exploits the visual features of \glspl{PC} from 2D perspectives. It represents a \gls{PC} as a structured set of 2D projections, which are regular images derived from the \gls{3D} structure of the \gls{PC}. 
-Both the \gls{PointPCA+RS} and \gls{CMP} branches can be used independently to design standalone PCQA metrics. However, PointPCA++ is formed by concatenating their features, which are then used by a regression algorithm to predict perceptual \gls{PC} quality scores.
-
+Figure~\ref{fig_arquitecture_pointpca3} shows the two branches of PointPCA++: the PointPCA$^3$ extractor and the cubemap projection branch. PointPCA$^3$ produces 40 predictors; the selected projection branch produces six DISTS view scores. Their concatenation gives the final 46-feature representation used by Extra Trees regression. Both branches can also be evaluated independently. This section presents the selected architecture; Sections~\ref{sec_results_projection_analysis} and~\ref{sec_results_regression_features} establish the experimental basis for its configuration. The prior PointPCA+RS and VoSS contributions are attributed to their original papers~\cite{carvalho2025rs,carvalho2026pc3}; this paper evaluates their representations and the added projection information under the JVCI protocol.
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=\textwidth]{diagrams/pointpca3.pdf}
-    \caption{Overall architecture of the proposed PointPCA++ metric. The reference and test PCs are used to obtain a Projections Feature Set via orthographic projections. Similarly, they are processed to generate the \gls{PointPCA+RS} feature set. Both feature sets are concatenated, and the result is used by a regression algorithm to predict a final quality score.}
+    \includegraphics[width=\textwidth]{data/analysis/figures/review_pointpcapp_architecture.pdf}
+    \caption{PointPCA++ combines 40 PointPCA$^3$ predictors with six crop/Navier--Stokes DISTS view scores. The resulting 46 features are mapped to quality by Extra Trees regression. PointPCA+RS and PointPCA$^3$ are distinct prior extractors; the evaluated branch is PointPCA$^3$.}
     \label{fig_arquitecture_pointpca3}
 \end{figure*}
 
+\subsection{PointPCA$^3$: VoSS-Based Point-Cloud Predictors} \label{sec_pointpca_rs}
 
+PointPCA+RS, historically named PointPCA2-RS~\cite{carvalho2025rs}, is the Rust reimplementation of PointPCA+, whose original implementation is written in MATLAB. It obtains neighborhoods on demand using KD-trees, computes local geometry and texture descriptors in parallel, and pools the intended 40 predictors. Figure~\ref{fig_pointpca2_rs_diagram} summarizes this prior implementation. We use PointPCA for the original MATLAB PointPCA1, PointPCA+ for MATLAB PointPCA2, and PointPCA+RS for the Rust reimplementation; these names do not identify PointPCA$^3$.
 
+PointPCA$^3$ extends PointPCA+RS with voxelization-based spatial sampling (VoSS)~\cite{carvalho2026pc3}, as shown in Figure~\ref{fig_review_pc3_architecture}. Rather than evaluating a neighborhood around every reference point, it selects spatially distributed seed points and extracts their neighborhoods from the reference and distorted clouds. Local PCA and descriptors are computed for these neighborhoods, followed by the same intended 40-slot predictor layout. The inspected implementation identifies additional seeds until reference-neighborhood coverage is reached. This changes the sampled local regions; matching predictor dimensions alone therefore does not establish numerical equivalence to PointPCA+ or PointPCA+RS.
 
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.95\textwidth]{data/analysis/figures/review_pc3_architecture.pdf}
+    \caption{The evaluated PointPCA$^3$ branch uses VoSS seed selection before on-demand neighborhood extraction, PCA, descriptor computation, and pooling of 40 predictors. This prior sampling method is distinct from the exhaustive PointPCA+RS neighborhood path.}
+    \label{fig_review_pc3_architecture}
+\end{figure*}
 
-\subsection{PointPCA+RS: PointPCA+ with Resource Streamlining} \label{sec_pointpca_rs}
-
-Figure~\ref{fig_pointpca2_rs_diagram} gives an overview of \gls{PointPCA+RS}. A comparison of this figure with Figure~\ref{fig_pointpca2_diagram} reveals that both PointPCA+ and the proposed \gls{PointPCA+RS} share several common steps, including preprocessing, descriptor calculation, feature vector calculation, and a regression stage. The preprocessing stage involves two steps: duplicate merging and neighborhood identification. These steps, as explained in the previous section, serve to combine identical points by calculating the average color value for each point with multiple color values. However, while PointPCA+ utilizes a simple brute-force approach to find duplicates by comparing every point to all others, \gls{PointPCA+RS} employs a \texttt{BTreeMap}~\cite{muller2025b} to map each point to a vector containing all of its associated colors, including duplicates. The brute-force search used by PointPCA+, while it is a very simple and straightforward method, is also highly inefficient, especially for \glspl{PC} with large number of points. As the number of data points increases, the processing time and resource consumption rise significantly, making it slow and resource-intensive. In contrast, by using a \texttt{BTreeMap}, \gls{PointPCA+RS} organizes data in a hierarchical way, which makes it much faster to search for and retrieve information. In other words, instead of comparing every point, this data structure quickly maps each unique point to a list of its associated colors, including any duplicates. This significantly reduces the amount of work required and results in a much faster and more memory-efficient process.
-
-To ensure highly efficient implementation of \texttt{BTreeMap}, we opted an opensource implementation of this data structure in Rust language. Consequently, due to this design choice, the whole backend of \gls{PointPCA+RS} was entirely developed in Rust~\cite{matsakis2014rust}. Leveraging the static typing and ownership-based memory management of Rust language, our implementation guarantees strong reliability and consistent performance by eliminating the need for garbage collection and minimizing memory usage through advanced memory modeling. By redefining sequential operations, \gls{PointPCA+RS} boosts computational efficiency by using parallelism and optimized data structures while maintaining the core principles of the original PointPCA+ algorithm. Specifically, \gls{PointPCA+RS} parallelizes the sequential steps of PointPCA+, focusing on the highly resource-demanding feature extraction steps.
-
-The majority of the computational overhead is concentrated in the feature extraction phase (the steps inside the `Feature Extraction' group of Figure~\ref{fig_pointpca2_rs_diagram}). This is largely because of the extensive number of nearest neighbors searches that must be executed. For every point in the reference \gls{PC} $\mathcal{A}$, the algorithm identifies two sets of neighbors: the \glspl{KNN} within the reference itself and the \glspl{KNN} within the corresponding distorted \gls{PC} $\mathcal{B}$. This process is essential for creating a link between the local geometric areas in both \glspl{PC}.
-
-
-PointPCA+ identifies local neighborhoods for each point in $\mathcal{A}$ by using the \texttt{knnsearch} function of Matlab~\cite{MATLAB}. While \gls{KNN} search is inherently resource-intensive, the PointPCA+ approach further amplifies these demands by pre-calculating all neighborhoods sequentially. This results in two $n \times k$ elements being stored in memory, where $n \in \{ \left| \mathcal{A} \right| \cup \left| \mathcal{B} \right| \}$ represents the number of points. For instance, with an reference \gls{PC} of 1 million points and a typical $k$ value of 81, the neighborhood arrays would each contain 81 million elements, resulting in a total of 162 million elements being allocated in memory before feature any feature calculations are performed.
- 
-\gls{PointPCA+RS} enhances computational efficiency by utilizing \texttt{kd\_tree} data structure available for Rust. This approach references the original point arrays without explicitly storing the neighborhoods, which effectively lowers the extra memory overhead from $O(nk)$ to $O(n)$. With the same aforementioned example, the 1 million points only require 2 million memory elements.
-Moreover, in PointPCA+, during feature calculation, the algorithm iterate through each point, identify the local region using \gls{KNN}, performing \gls{PCA}, and then collect the features. This process involves significant redundancy, as  each point is examined individually. It is expected that even a single-point difference can lead to a substantial variation in the resulting features. On the other hand, in \gls{PointPCA+RS}, the \gls{KNN} of each point is collected and the inter-quartile range of the distances between point and its neighbors is computed. Points with distances below the inter-quartile range are marked as `visited' and processing continues. In subsequent iterations, if a `visited' point is found, that iteration is skipped and the the pre-computed distance is used. This statistical heuristic operates under the assumption that if point $a$ is within the neighborhood of point $b$, then point $b$ is also within the neighborhood of point $a$. While this is not universally true, it is sufficient to generate a feature set that is statistically similar to that produced by PointPCA+, as demonstrated in Section~\ref{sec_results}.
-
-Furthermore, the construction process in \gls{PointPCA+RS} is parallelized, which drastically reduces the computation time needed for feature extraction stage. Subsequently, the local descriptors are computed in parallel for each neighborhood. This is done by spawning the processes through the points in $\mathcal{A}$ to compute the covariance matrix as outlined in Equation~\ref{eq_covariance_pointpca2}. Then, \gls{PCA} is performed on the covariance matrices of both $\mathcal{A}$ and $\mathcal{B}$  to find their eigenvectors and establish a local orthonormal basis. Using these bases, we can then compute features like the mean, variance, eigenvectors, and covariance for both geometric and texture data. 
-
-\gls{PointPCA+RS} significantly improves efficiency by running iterations in parallel to calculate the $42 \times n$ descriptor matrix, similarly to described for Equations~\ref{eq_pooling_poinpca} and \ref{eq_pointpca2_feats}. Because each process is independent, it can extract neighborhoods from the pre-built \texttt{kd\_trees} as needed, compute descriptors, store the results in the descriptor matrix, and then free up memory. This approach is highly effective, especially since \glspl{PC} often contain millions or even billions of points. 
-
-In the final feature vector computation stage, the descriptor matrix is processed to generate the predictors. In this stage, a pooling operation converts 42 descriptors into a set of 40 predictors. For a \gls{PC} with 1 million of points, PointPCA+ maintains in memory a descriptor matrix of dimensions 42$\times$1M and simultaneously a predictors matrix of dimensions 40$\times$1M, incurring huge memory usage. To address this problem, \gls{PointPCA+RS} computes the pooled predictors directly during the spatial metric calculation, avoiding the need to store the entire descriptors matrix. As each column of metrics is computed independently, they are immediately pooled into a $40 \times 1$ output vector, which significantly reduces the amount of memory used.
-
+The recorded JVCI extraction calls the PointPCA$^3$ backend with neighborhood size 81. PointPCA+RS evaluates the reference-point neighborhoods, whereas PointPCA$^3$ uses VoSS seed neighborhoods. The recorded generator and inspected source establish this distinction. Section~\ref{sec_results_pca_family} evaluates prediction and feature agreement; Section~\ref{sec_results_pointpca3_runtime} evaluates computational performance. Historical native binary versions are not fully recorded, so source inspection establishes intended feature semantics rather than an exact replay of the original extraction. No quantitative memory benchmark is reported in the present experiments.
 
 \subsection{Perception-Driven Quality Measurements of Cubemap Projections} \label{sec_cmp}
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=\textwidth]{diagrams/orthographic_projections.pdf}
+    \includegraphics[width=\textwidth]{figures/orthographic_projections.pdf}
     \caption{Block diagram of the proposed projection-based PC metric. For PointPCA++, the projection feature set highlighted in green is used to model the metric.}
     \label{fig_arquitecture_orthographic_only}
 \end{figure*}
 
-Figure~\ref{fig_arquitecture_orthographic_only} depicts the block diagram of the proposed metric 3D-to-2D. It converts the original 3D \glspl{PC} onto six pairs of color texture and \gls{OcM}. Both reference and distorted \glspl{PC} are mapped to six perpendicular 2D image planes via \glspl{CMP}, as illustrated in Figure~\ref{fig_subemap}. The construction of \glspl{CMP} begins with point scaling processing to ensure consistency across samples. The point scaling ensures uniformity by shifting the \gls{PC} centroid to the origin and scaling the points such that their maximum distance
-from the origin equals one. This step normalizes the points data, enabling uniform analysis across different samples. In other words, this process, performed in 3D space, ensures that the point data of the 3D representation will be aligned in the projected 2D space, thereby avoiding registration-related issues. 
+Figure~\ref{fig_arquitecture_orthographic_only} summarizes the projection branch. Reference and distorted \glspl{PC} produce six color images and corresponding \glspl{OcM}, using the perpendicular orthographic views in Figure~\ref{fig_subemap}. The recorded preprocessing first translates both clouds by their common coordinate-wise minimum if negative coordinates occur. It then divides both by the reference cloud's largest coordinate and applies a scaling factor obtained from the reference. Each cloud is subsequently rescaled if its largest coordinate exceeds the precision-dependent range. This procedure supplies projection coordinates; it is not centroid/unit-radius normalization and does not establish registration between independently misaligned clouds.
 
 
-\begin{figure*}[t!]
+\begin{figure*}[tbp]
     \centering
-    \begin{subfigure}[b]{.8\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{diagram_cubemaps/cubemap_views_generation.pdf}
-        \caption{Six views generations}
-        \label{fig_cubemap_generation}
-    \end{subfigure}
-
-    \begin{subfigure}[b]{.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{diagram_cubemaps/single_perspective_view.pdf}
-        \caption{Single view representation}
-        \label{fig_cubemap_single_view}
-    \end{subfigure}
-    \begin{subfigure}[b]{.25\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{diagram_cubemaps/perspective_mechanism.pdf}
-        \caption{Perspective mechanism}
-        \label{fig_cubemap_prspective_mechanism}
-    \end{subfigure}
-
-    \caption{Cubemap projection.}
+    \includegraphics[width=\textwidth]{data/analysis/figures/review_orthographic_schematic.pdf}
+    \caption{The implemented projection path uses six perpendicular orthographic views, followed by occupancy-based cropping, inpainting, and paired IQA evaluation.}
     \label{fig_subemap}
 \end{figure*}
 
-
-After point scaling, the 3D point cloud is first projected onto six perpendicular cubic faces, referred as the corresponding views, e.g., ``front view,'' ``back view,'' ``left view,'' ``right view,'' ``top view,'' and ``bottom view'', as shown in Figure~\ref{fig_cubemap_generation}. Each perspective
-view has a 90 degree field of view both vertically and horizontally. The algorithm used to create a perspective projection begins by establishing a virtual camera at the origin. This camera's view is directed along the positive y-axis, with the z-axis serving as the ``up'' vector, as represented in Figure~\ref{fig_cubemap_single_view}. To generate a specific perspective view, one can rotate this initial camera's direction and orientation around any axis or a combination of axes. For a given coordinate system, a roll is a rotation around the y-axis, panning is a rotation around the z-axis, and tilting is a rotation around the x-axis. To generate the six faces of the cubemap, the initial camera's view direction is rotated accordingly, with both the horizontal and vertical fields of view set to 90 degrees. Considering the front as the initial viewpoint, the left view is obtained by panning 90 degrees, the right by panning -90 degrees, the back by panning 180 degrees, the top by tilting -90 degrees, and the bottom by tilting 90 degrees, as illustrated in Figure~\ref{fig_cubemap_prspective_mechanism}. 
-
-When multiple points share the same x and y coordinates but have different z values, the point closest to the projection plane (i.e., the one with the smallest z value) is retained. It means that, depending from the viewpoint perspective, a point from \gls{PC} can be occupied in a given pixel of a view or not. By collecting all pixels corresponding to a projected point and assigning them a value of one, while leaving other pixels as zero, we create a binary image representing the \gls{OcM}. The resolution of the projected textures and \glspl{OcM} images are based on a `precision parameter' $\rho$, where the cube side is $2^\rho$.
+After shared point-cloud preprocessing, the recorded generator applies an orthographic projector to obtain six color views and occupancy maps, as summarized in Figure~\ref{fig_subemap}. Orthographic projection discards depth along each viewing direction; it does not use a perspective camera or a 90-degree field-of-view model. Occupancy maps distinguish projected samples from unoccupied pixels. The recorded precision is $\rho=10$, corresponding to a nominal side length $2^\rho=1024$ before cropping.
 
 The \glspl{OcM} are fundamental for subsequent steps, namely cropping and padding steps. These steps are illustrated in Figure~\ref{fig_cropping_and_padding_steps}. The cropping operation uses the \gls{OcM} to select the \gls{ROI} of the projected view. When a \gls{PC} is projected, a significant portion of the resulting image may consist of empty area, creating a background of non-occupied pixels that can interfere with the chosen \gls{IQA} technique. For instance, a pixel-level comparisons become unreliable because the non-degraded background contrasts with the occupied and degraded areas, leading to a poor correlation between objective metrics and subjective scores. To address this issue, \glspl{OcM} are employed to crop the projections, thereby reducing the background area and mitigating these effects.
 
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=\textwidth]{diagrams/specific_projections_steps.pdf}
+  \includegraphics[width=\textwidth]{figures/specific_projections_steps.pdf}
   \caption{Cropping and padding procedures applied to one out of the six projections.}
   \label{fig_cropping_and_padding_steps}
 \end{figure*}
@@ -669,33 +636,33 @@ The \glspl{OcM} are fundamental for subsequent steps, namely cropping and paddin
 
 Even after cropping step, certain areas in the projected images still have empty information in relation to the original 3D data (unoccupied areas). These areas can still act as misleading element for \gls{IQA} algorithms and impairing their performance. To resolve this, we use an inpainting algorithm~\cite{telea2004image,bertalmio2001navier} to perform the padding operation. Inpainting involves filling in part of an image in a visually plausible way using information from the surrounding area. The idea comes from art restoration where damaged areas of paintings are ``inpainted'' to make them look complete again. Inpainting algorithms usually need the image to be inpainted and a mask. The mask tells the algorithm which parts of the image should be inpainted. Without a mask, the algorithm would not know the regions to replace. In this paper, we use the cropped \gls{OcM} as mask, as illustrated in Figure~\ref{fig_cropping_and_padding_steps}. In this figure, the white area of \gls{OcM} represents the portions of the image to be preserved, while the black area indicates the region to be inpainted.
 
-\begin{figure*}[t!]
+\begin{figure*}[tbp]
   \centering
 
-  \includegraphics[width=\textwidth]{figures_inpaintings/fig_inpaints_algorithms.pdf}
+  \includegraphics[width=\textwidth]{figures/inpaintings/fig_inpaints_algorithms.pdf}
   \caption{ Visual effects caused by inpainting algorithms on the different views.}
   \label{fig_inpainting_faces}
 \end{figure*}
 
 
 
-The padding operation is applied independently to both the pristine and distorted projections. This independent application ensures that the filled regions in the distorted view are not identical to those in the pristine one. Instead, they reflect the changes and shifts caused by the \gls{PC} degradation. Consequently, the final perceptual distance computed by the \gls{IQA} metric accurately captures the differences between the two images, including those within the filled areas, avoiding the potential for biased or misleading results. This approach allows our method to be robust against the sparsity of the \glspl{PC} while leveraging the strengths of existing 2D \gls{IQA}  techniques. 
+The padding operation is applied independently to the pristine and distorted projections, allowing the filled regions to vary with degradation. Inpainting can also introduce differences unrelated to the original samples. Its predictive effect is therefore assessed empirically through the controlled crop/padding comparison.
 
 
-\begin{figure*}[t!]
+\begin{figure*}[tbp]
   \centering
 
-  \includegraphics[width=\textwidth]{figures_inpaintings/fig_different_quality_levels.pdf}
+  \includegraphics[width=\textwidth,height=0.67\textheight,keepaspectratio]{figures/inpaintings/fig_different_quality_levels.pdf}
   \caption{ Visual effects caused by inpainting algorithms on the same content impaired by different levels of the same distortion (DRACO lossy compression~\cite{de2022quality}).}
   \label{fig_inpainting_quality_levels}
 \end{figure*}
 
 
 
-\begin{figure*}[t!]
+\begin{figure*}[tbp]
   \centering
 
-  \includegraphics[width=\textwidth]{figures_inpaintings/fig_other_distortions.pdf}
+  \includegraphics[width=\textwidth]{figures/inpaintings/fig_other_distortions.pdf}
   \caption{ Visual effects caused by inpainting algorithms on the same content impaired by  4 different compression algorithms (VPCC, GPCC-RAHT, GPCC-Predlift and GEOCNN) at varying compression levels as available in BASICS dataset~\cite{basics_dataset}.}
   \label{fig_inpainting_other_distortions}
 \end{figure*}
@@ -703,52 +670,29 @@ The padding operation is applied independently to both the pristine and distorte
 Figures~\ref{fig_inpainting_faces}, \ref{fig_inpainting_quality_levels}, and \ref{fig_inpainting_other_distortions} illustrate the effects of the padding operation on projected point clouds. In this paper, we considered the Navier-Stokes-based~\cite{bertalmio2001navier}, Telea's~\cite{telea2004image}, \gls{FSR}~\cite{seiler2015resampling, genser2018signal}, and ShiftMap~\cite{shiftmap2012} inpainting algorithms. We chose these algorithms because they are relatively fast and publicly available through the OpenCV library. In Figures~\ref{fig_inpainting_faces}, shows the effects of these inpainting algorithms on the six projected views of a \gls{PC}. As can be noted, different algorithms produce different filling patterns. The images in the first column of Figures~\ref{fig_inpainting_faces} have different sizes due to the cropping operation. Figure~\ref{fig_inpainting_quality_levels} depicts the effect of padding on the same view perspective for point clouds impaired at different levels of degradation. Conversely, Figure~\ref{fig_inpainting_other_distortions} illustrates the effect of padding on pristine and distorted views with different types of distortions. It can be observed from these figures that padding produces distinct patterns for different distortion types and for different distortion levels of the same type.
 
 
-After generating the cropped and padded projections, the next step involves computing a score per projection using one or more \gls{IQA} metrics, as illustrated in Figure~\ref{fig_arquitecture_orthographic_only}. For each \gls{IQA} metric used, a set of six scores is obtained, with each score corresponding to a pair of reference and assessed views. For example,  using a single  \gls{IQA} metric  yields the set of scores {$\{g_{0},g_{1},\cdots,g_5\}$} \gls{IQA}. When multiple metrics are employed, the scores are concatenated into a feature vector. Specifically, if $n$ etrics are used, the resulting feature vector is of size $6n$, represented as {$v = \{ g_{i} \}_{i=0}^{6 \times n}$}, where $g_j^k$ is score for view $j$ from the $k^{th}$ metric.
+After cropping and padding, each \gls{IQA} metric produces six scores, one for each pair of reference and distorted views, as illustrated in Figure~\ref{fig_arquitecture_orthographic_only}. Let $g_j^{(k)}$ denote the score for view index $j\in\{0,\ldots,5\}$ and metric $k\in\{1,\ldots,n\}$. Concatenating these scores yields $v=(g_0^{(1)},\ldots,g_5^{(1)},\ldots,g_5^{(n)})\in\mathbb{R}^{6n}$. The final configuration uses one IQA and therefore six projection features.
 
-After generating the feature vector $v$, the rest of the pipeline is similar to that described for \gls{PointPCA+RS}. This is achieved using a regression algorithm, which takes $v$ as input and produces a quality score as output. To train this quality model, the feature vector is mapped to the subjective quality scores found in the quality databases, which can be expressed as $Q(I) = \mathfrak{R}(v, \mathcal{M})$, where $\mathfrak{R}(\cdot,\cdot)$ denotes the regression algorithm, $\mathcal{M}$ represents the trained regression model, and  $Q(\cdot)$ is the final predicted quality score of the assessed \gls{PC}.
+After generating the feature vector $v$, a standalone projection regressor can map it to quality. For PointPCA++, the selected six projection scores are concatenated with the 40 PointPCA$^3$ predictors. This is achieved using a regression algorithm, which takes $v$ as input and produces a quality score as output. To train this quality model, the feature vector is mapped to the subjective quality scores found in the quality databases, which can be expressed as $Q(I) = \mathfrak{R}(v, \mathcal{M})$, where $\mathfrak{R}(\cdot,\cdot)$ denotes the regression algorithm, $\mathcal{M}$ represents the trained regression model, and  $Q(\cdot)$ is the final predicted quality score of the assessed \gls{PC}.
 
 \section{Experimental Setup} \label{sec_setup}
 
-Benchmark datasets used to evaluate \gls{PCQA} metrics require perceptual quality values obtained from psychophysical experiments with human subjects.  In our tests, we use five datasets containing subjective scores collected from those experiments, as depicted in Table~\ref{tab_datasets}. These datasets are very diverse from each other and contain several \glspl{PPC}. Using these datasets to validate the effectiveness and reliability of the proposed \gls{PointPCA+RS}, we compare it with the original in terms of feature similarity, spent time, allocated memory, and correlations with \gls{MOS}.
-All experiments were conducted on a system equipped with an AMD Ryzen Threadripper\texttrademark~2950X with 128GB RAM and  an NVIDIA GeForce GTX 1080TI\texttrademark~ graphics card.
-{
- \def\arraystretch{1.3}
-\begin{table}[t!]
-  \centering
-  \caption{Used Point clouds quality benchmark databases}
+We evaluate prediction accuracy on the seven datasets listed in Table~\ref{tab_datasets}. The table consolidates published properties, analyzed populations, observed MOS ranges, and experimental roles. Published database sizes and analyzed populations are distinguished.
 
-\adjustbox{max width=\columnwidth}
-{
-\begin{tabular}{c c c c >{\raggedright\arraybackslash}m{5cm} c c}
-\toprule
-DB & REF & Mnemonic & Attributes & Distortion & SRC & PPC \\
-\midrule
-D1       & \cite{apsipa_dataset} & \makecell{M-PCCD\\(APSIPA)} & Color & G-PCC, V-PCC & \centering 8 & 254 \\  \cdashline{1-7}[.4pt/1pt]
+The experimental design separates projection selection, model selection, and evaluation. APSIPA is the reference dataset for the controlled crop, padding, and IQA study. APSIPA, WPC, and LS-PCQA are the modelling datasets used to select the regressor and compare feature designs. ICIP2023, SJTU-PCQA, UnB\_PC, and WPC2 are evaluation datasets: they do not influence those choices, although within-dataset validation trains a separate model in each of their training folds.
+All experiments were conducted on a system equipped with an AMD Ryzen Threadripper\texttrademark~2950X with 128~GB RAM and an NVIDIA GeForce RTX 5090 graphics card.
+\input{data/analysis/tables/review_dataset_setup.tex}
 
-D2       & \cite{basics_dataset} & \makecell{BASICS\\(ICIP2023)} & \makecell{Color, Normals} & PCC, GPCC-RAHT, GPCC-Predlift and GEOCNN & \centering 75 & 1494 \\ \cdashline{1-7}[.4pt/1pt]
+The implementation combines Python interfaces with Rust components for point-cloud processing and projection, as illustrated in Figures~\ref{fig_arquitecture_pointpca3}, \ref{fig_review_pc3_architecture}, and \ref{fig_arquitecture_orthographic_only}. PyO3/Maturin~\cite{johnson2024pyo3} provides interoperability between the two languages. Regression candidates are drawn from LazyPredict~\cite{lazypredict}, using Scikit-learn~\cite{scikit-learn} pipelines, while IQA implementations are obtained from \gls{PIQ}~\cite{piq} and \gls{PyIQA}~\cite{pyiqa}.
 
-D3       & \cite{yang2020predicting} & SJTU-PCQA & Color & Octree, downsampling, color and geometry noise & \centering 9 & 378 \\ \cdashline{1-7}[.4pt/1pt]
+Prediction performance is measured against the subjective scores using \gls{SROCC} as the primary criterion, \gls{PLCC} as a secondary correlation measure, and \gls{RMSE} as the error measure. Within-dataset experiments use five-fold GroupKFold, grouped by pristine reference content, so all distorted versions of a reference remain in the same fold. Selection uses a nested protocol. Each outer fold reserves reference contents for assessing performance on unseen contents; the remaining samples form its outer training partition. Five inner folds subdivide only that training partition to compare candidate choices. The outer test fold is not used to make that partition's selection, and preprocessing is fitted on training samples only. Randomized procedures use seed 42. The final fixed configuration is evaluated separately within each dataset and by directed transfer, which trains on one dataset and predicts on another without target-domain fitting or calibration.
 
-D4       & \cite{Torlig2018anovel} & \centering UnB\_PC & \makecell{Color, Normals} & Octree, JPEG compression & \centering 6 & 60 \\ \cdashline{1-7}[.4pt/1pt]
-D5   & \cite{wpc}     & WPC             & Color  & Gassian noise, dowsampling, G-PCC, V-PCC & \centering 20 & 740           \\
-\bottomrule
-\end{tabular}
-}
-\label{tab_datasets}
-\end{table}
-}
+All controlled comparisons use the same five content-disjoint cross-validation folds and the selected regression pipeline. The pipeline applies mean imputation and standardization fitted only on training samples, followed by Extra Trees with 100 estimators and seed 42. No explicit hyperparameter optimization was performed. LazyPredict screening used class defaults with the recorded seed where supported; built-in CV estimators retain their native internal procedures, which were not supplied reference groups. They are reported transparently but do not replace the selected Extra Trees model. The controlled PCA-family comparison uses four complete matched datasets; original PointPCA uses its audited native 46-feature schema. PointPCA results are reported only for APSIPA; feature extraction for the other datasets could not be completed because memory requirements exceeded the available 128~GB RAM.
 
+The recorded numerical environment uses Python 3.12.9, NumPy 2.4.4, SciPy 1.17.1, Scikit-learn 1.8.0, and LazyPredict 0.3.0. Candidate defaults can be reconstructed in this environment, but per-fit parameter snapshots and the historical XGBoost version were not recorded. Table~\ref{tab_review_regressors} reports the recorded registry scores.
 
-The method depicted in Figure~\ref{fig_arquitecture_pointpca3} was implemented in Python language, but some components of \gls{PointPCA+RS} and \gls{CMP} depicted in Figures~\ref{fig_pointpca2_rs_diagram} and \ref{fig_arquitecture_orthographic_only} where implemented in Rust language.
-More specifically, as outlined in Sections~\ref{sec_pointpca_rs} and \ref{sec_cmp}, Rust was used to achieve performance and speed, particularly due to capacity for memory management and efficiency. Additionally, Rust uses a unique memory ownership model that enforces memory safety at compile time, guaranteeing no memory leaks or dangling pointers without the need for a runtime garbage collector. This leads to extremely low and predictable memory usage, which is critical for large \glspl{PC}. Rust was also chosen due to its capabilities for concurrency and parallelism. While Python's Global Interpreter Lock (GIL) limits true multi-threading in many cases, preventing multiple threads from executing simultaneously, the design of Rust language, particularly its ownership system, makes it safe and straightforward to write concurrent and parallel code without race conditions, allowing for highly efficient utilization of modern multi-core processors. Moreover, Rust's strict compiler and strong static typing catch a wide range of bugs at compile time that would normally only be found at runtime in Python (like type mismatches and memory-related errors). These properties help us to implement PointPCA++ in a more robust, reliable, and secure manner that is less prone to crashes.
+Paired accuracy differences use the same \gls{OOF} samples and reference-clustered bootstrap draws. Two-sided reference-level prediction-label swaps use 10,000 draws, seed 42, and plus-one Monte Carlo p-values. Holm correction includes all available method pairs and all three metrics within each family-comparison dataset. The seven diagnostic IQA designs form a separate 63-test correction family on APSIPA. Per-feature agreement is descriptive, with corresponding feature meanings established from the inspected MATLAB and Rust sources; neither correlation nor nonsignificance is interpreted as equivalence.
 
-Rust has a modern and robust tooling ecosystem centered around its package manager and build tool, Cargo. This makes it easy to manage dependencies and build projects. This means that the entire PointPCA++ project could be implemented in Rust. However, we opted for a polyglot approach, where the core implementation is done in Rust and the public interfaces are developed in Python, in order to leverage the advantages of both languages while avoiding their respective disadvantages. Specifically, Python as an huge community, with a vast collection of libraries for everything from data analysis and \gls{ML}. By providing a Python interface, our Rust-based core can seamlessly integrate into this rich ecosystem, making it far more accessible and useful to a broader researchers. 
-The interoperability between Rust and Python components are integrated using PyO3/Maturin~\cite{johnson2024pyo3} that handles the complex data conversions between these two programming languages in a smooth interface.
-
-We used the Lazypredict~\cite{lazypredict} as an initial test to determine the best suitable regression model. Lazypredict is a Python library designed to help with the evaluation and comparison of different Scikit-learn~\cite{scikit-learn} models. It automates the process of fitting multiple models to a dataset, making it easier to determine which models are likely to perform well without the need for extensive manual coding.
-Additionally, \gls{SOTA} \gls{IQA} implementations were acquired from \gls{PIQ}~\cite{piq} and \gls{PyIQA}~\cite{pyiqa} libraries. 
-
-The score prediction performance is measured using \gls{PLCC}, \gls{SROCC}, and \gls{RMSE}. These performance metrics are computed considering the predicted scores and the corresponding \gls{MOS} provided in the benchmark datasets. For learning-based methods, we used the Group K-fold with K=5, \gls{LOCO}, and grouped holdout validation techniques to split the data. In the case of grouped holdout validation, the  proportion of the splitting was defined to 80\% of groups for training and 20\% for testing. The groups are determined by the pristine (reference) content. In other word, for all these grouped validations, we exclude from training all observations that share the source reference (same content), i.e., \glspl{PPC} generated from a source reference in the test subset are not present in the training subset and vice-versa.
+Fold-level results are summarized as median [IQR], where IQR denotes the third quartile minus the first quartile. Final within-dataset correlations are computed from pooled \gls{OOF} predictions, with exactly one held-out prediction per sample. Confidence intervals use 10,000 bootstrap resamples clustered by reference content; transfer intervals resample target references only. These intervals describe variation across reference contents, not uncertainty from repeated model training or benchmark trials. RMSE is interpreted only within a dataset because subjective-score scales differ. No test-set calibration or logistic score mapping is applied.
 
 
 
@@ -763,54 +707,267 @@ The score prediction performance is measured using \gls{PLCC}, \gls{SROCC}, and 
 
 \section{Experimental Results} \label{sec_results}
 
+\input{data/analysis/tables/experimental_results_macros.tex}
+\input{data/analysis/tables/cross_dataset_transfer_macros.tex}
+\input{data/analysis/tables/review_macros.tex}
 
-This section examines the performance of the proposed PointPCA++ metric for subjective point cloud quality estimation. The components of PointPCA++ are first analyzed as independent metrics themselves, following the full pipelines depicted in Figures~\ref{fig_pointpca2_rs_diagram} and \ref{fig_arquitecture_orthographic_only}. Subsequently, the performance of these combined metrics, forming PointPCA++, is analyzed. The final step involves a comparison of PointPCA++ with \gls{SOTA} methods.
+We first establish the projection pipeline, IQA descriptor, regressor, and fused representation. With that configuration fixed, we compare PCA-family representations and evaluate within-dataset accuracy alongside published baseline context. Diagnostic ablations and prediction-error analysis then characterize the design, followed by directed transfer and computational performance. All experiments use the dataset roles and validation procedures in Section~\ref{sec_setup}.
+\FloatBarrier
+\subsection{Projection-Pipeline Selection} \label{sec_results_projection_analysis}
+
+To determine how projection preprocessing affects quality prediction, we compare four crop/padding families on the APSIPA reference dataset using 22 common IQA metrics. Padding-based families are further separated into FSRFast, Navier--Stokes, Telea, and ShiftMap implementations, producing ten concrete pipelines. For each pipeline--IQA pair, an Extra Trees regressor with seed 42 is trained using the six view scores. Extra Trees serves here as a fixed comparison estimator, before the final regressor selection in Section~\ref{sec_results_regression_features}. Holding this estimator and the folds fixed isolates the effect of projection preprocessing. The pipelines are ranked independently for each IQA according to \gls{SROCC}, followed by \gls{PLCC}, \gls{RMSE}, and time; the global configuration is selected from the aggregate ranks across all IQAs.
+
+Figure~\ref{fig_projection_pipeline_heatmap} shows that padding is important for most IQAs. Without padding, median \gls{SROCC} across IQAs is 0.477 with cropping and 0.511 without cropping. ShiftMap padding also performs poorly in this experiment and has the largest computational cost. In contrast, the Navier--Stokes, Telea, and FSRFast variants provide substantially stronger correlations.
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{data/analysis/figures/review_projection_heatmap.pdf}
+    \caption{Projection-only performance for the ten cubemap pipelines and 22 common IQA metrics on APSIPA. Each cell is the median \gls{SROCC} over five grouped folds using the same ExtraTrees regressor. Every cell is annotated to three decimals. The diverging scale runs from low red to high blue, with white text outlined in dark gray. Its midpoint of 0.5 is a display convention, not a scientific threshold.}
+    \label{fig_projection_pipeline_heatmap}
+\end{figure*}
+
+Figure~\ref{fig_projection_accuracy_runtime} compares predictive accuracy with recorded processing time. The Navier--Stokes and Telea variants combine high correlations with relatively short processing times, while FSRFast is approximately three times slower. ShiftMap is both slower and less accurate on this dataset. Because these timings were collected with the IQA computations, they are used to compare the available projection implementations rather than as repeated microbenchmarks.
+
+\begin{figure}[tbp]
+    \centering
+    \includegraphics[width=\columnwidth]{data/analysis/figures/review_projection_accuracy_runtime.pdf}
+    \caption{Projection accuracy versus recorded processing time on APSIPA. Each point summarizes one pipeline over the same 22 IQAs; the vertical coordinate is the median grouped-CV \gls{SROCC} across IQAs and the horizontal coordinate is the median cubemap/IQA time on a logarithmic scale. Panel (a) shows all ten pipelines, with the dashed rectangle identifying the region enlarged in panel (b); panel (b) shows the six leading pipelines. Pipeline names are placed adjacent to their points, whose positions are not displaced. The red outline marks the selected pipeline. Higher and further left is better.}
+    \label{fig_projection_accuracy_runtime}
+\end{figure}
+
+Cropping followed by Navier--Stokes padding obtains the best aggregate rank. It reaches a median \gls{SROCC}/\gls{PLCC} of 0.881/0.825 across IQAs with a median processing time of 4.98~s. It is also selected in two of the five outer training partitions; the remaining folds select crop with FSRFast, no crop with Telea, or no crop with Navier--Stokes. This variation indicates sensitivity to the composition of the training references. We retain crop plus Navier--Stokes as the fixed projection pipeline for the subsequent multi-dataset study, without claiming that it is optimal for every dataset.
+
+The complete fixed-pipeline results for all 22 IQAs are reported in Table~\ref{tab_review_projection_iqas}. Their fold summaries characterize the historical projection study; the seven-dataset DISTS baseline in Section~\ref{sec_results_pointpcapp_sota} uses the final extraction and pooled \gls{OOF} metrics.
+
+\FloatBarrier
+\subsection{IQA, Regressor, and Fusion Selection} \label{sec_results_regression_features}
+
+Selecting an IQA descriptor requires a regression model to compare the candidate feature sets. The APSIPA reference study first selected Random Forest using the complete 172-feature representation, comprising 40 PointPCA$^3$ predictors and all 22 six-view IQA blocks. With that regressor fixed, we then compared candidates combining the 40 point-cloud predictors with one six-view IQA block, using the projection pipeline selected within each outer training partition. Figure~\ref{fig_single_iqa_selection} compares DISTS with the strongest alternative in each partition. DISTS achieves the highest median inner-validation \gls{SROCC} in all five partitions. The margins are small (0.0006--0.0036), supporting selection consistency within this experiment rather than statistical significance or universal superiority. We therefore fix DISTS and the selected crop plus Navier--Stokes pipeline, and subsequently reconsider the regressor on the three modelling datasets using this 46-feature representation.
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=0.93\textwidth]{data/analysis/figures/review_single_iqa_selection.pdf}
+    \caption{IQA selection on APSIPA using the preliminary Random Forest regressor. Each row compares DISTS (red diamond) with the strongest alternative among the other 21 IQAs (blue circle). All candidates combine the same 40 PointPCA$^3$ predictors with six IQA view scores and use the projection pipeline selected within that outer training partition. Coordinates are median inner-validation SROCC, not outer-test performance; annotations give the DISTS-minus-alternative margin. The consistently positive but small margins support selection consistency, not statistical significance or universal superiority.}
+    \label{fig_single_iqa_selection}
+\end{figure*}
+
+We then screened 41 LazyPredict regressors independently within the nested folds of APSIPA, WPC, and LS-PCQA. A model was eligible only when every required inner fold on all three datasets produced finite metrics; DummyRegressor served only as a baseline. Candidates were ranked separately within each dataset by \gls{SROCC}, followed by \gls{PLCC} and \gls{RMSE}, and the three dataset ranks were averaged with equal weight. LS-PCQA performance was used as the first tie-break. Figure~\ref{fig_regressor_comparison} reports the six leading eligible regressors. Extra Trees and Random Forest each win two outer-partition selections, but Extra Trees has the better median aggregate inner rank (2.00 versus 2.67) and is therefore selected. Gradient Boosting wins the remaining partition. This selection uses inner-validation results only.
 
 
 
-\red{Mencionar os datasets onde o MATLAB crashou}
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=0.96\textwidth]{data/analysis/figures/review_regressor_comparison.pdf}
+    \caption{Regressor selection using the fixed 46-feature representation. The first three panels show inner-validation \gls{SROCC} for the six leading eligible regressors on each modelling dataset: faint points are the five outer training partitions' median inner-validation scores, diamonds are their medians, and lines span the first to third quartiles, not confidence intervals. The fourth panel reports median aggregate dataset rank and selection frequency out of five partitions. Higher correlation and lower rank are preferable. Extra Trees is highlighted in red.}
+    \label{fig_regressor_comparison}
+\end{figure*}
 
-\red{Mencionar os casos onde o MATLAB estourou a RAM}
+Table~\ref{tab_review_regressors} reports all 41 candidates: 34 satisfy the finite-metric eligibility rule, six have an undefined inner metric, and DummyRegressor is a nonselectable sanity baseline. The close results of the leading candidates support Extra Trees as the selection under this rule, without establishing universal statistical superiority.
+
+With the regressor fixed, Figure~\ref{fig_feature_set_ablation} tests whether the two modalities provide complementary predictive information.
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=0.96\textwidth]{data/analysis/figures/review_feature_set_ablation.pdf}
+    \caption{Feature-set comparison with the selected Extra Trees regressor on the three modelling datasets. Markers show medians across five content-disjoint outer folds, with intervals spanning the first to third quartiles rather than confidence intervals. Upper panels show SROCC (blue circles) and PLCC (orange diamonds); higher values are preferable. Lower panels show RMSE; lower values are preferable, and scales are dataset-specific because subjective-score units differ. Bold labels identify the 46-feature fusion.}
+    \label{fig_feature_set_ablation}
+\end{figure*}
+
+The 46-feature fusion attains the highest median \gls{SROCC} and \gls{PLCC}, and the lowest median \gls{RMSE}, compared with PointPCA$^3$ alone or DISTS alone on each modelling dataset. It is also selected by the equal-dataset-rank rule in all five outer partitions. The largest gain over PointPCA$^3$ occurs on LS-PCQA, where median \gls{SROCC} increases from 0.803 to 0.871. The gains on APSIPA and WPC are smaller but follow the same direction, supporting the use of both modalities. Because these datasets also guide model selection, the comparison characterizes the chosen design rather than an independent evaluation of it.
+
+These analyses fix the PointPCA++ configuration used in the remaining experiments: 40 PointPCA$^3$ predictors concatenated with six DISTS scores from crop plus Navier--Stokes projections, followed by the selected Extra Trees regressor. Projection and IQA choices use APSIPA; regressor and fusion choices use APSIPA, WPC, and LS-PCQA. Subsequent diagnostic comparisons examine this design without selecting a replacement.
+
+\FloatBarrier
+\subsection{Controlled PCA-Family Validation} \label{sec_results_pca_family}
+
+We next examine agreement between corresponding PointPCA+ and PointPCA+RS features and compare PCA-family prediction accuracy under the selected regression protocol. Table~\ref{tab_review_pca_family} uses complete matched populations and the same content-disjoint cross-validation folds; per-feature PointPCA+ and PointPCA+RS agreement is evaluated independently of regression.
+
+\input{data/analysis/tables/review_pca_family.tex}
+\ReviewFamilyInterpretation
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{data/analysis/figures/review_feature_agreement.pdf}
+    \caption{PointPCA+ and PointPCA+RS per-feature Pearson and Spearman correlation on four complete matched datasets. Whiskers give pointwise reference-clustered 95\% intervals for Spearman correlation (10,000 draws, seed 42). Indices follow the descriptor correspondence, with texture and geometry groups marked; correlation measures agreement, not equivalence. Native-unit errors are reported in Table~\ref{tab_review_feature_agreement}.}
+    \label{fig_review_feature_agreement}
+\end{figure*}
+
+\ReviewAgreementInterpretation
+
+\FloatBarrier
+\subsection{Within-Dataset Accuracy and Baseline Context} \label{sec_results_pointpcapp_sota}
+
+\input{data/analysis/tables/review_projection_only.tex}
+\ReviewProjectionInterpretation
+
+Table~\ref{tab_pointpcapp_all_datasets} evaluates the fixed configuration when training and testing use different reference contents from the same dataset. Pooled \gls{SROCC} ranges from 0.868 on LS-PCQA to 0.957 on UnB\_PC, and pooled \gls{PLCC} ranges from 0.866 on WPC2 to 0.962 on UnB\_PC. These results support the predictive usefulness of the representation across the tested datasets, with wider WPC2 intervals indicating greater uncertainty across reference contents. Values for APSIPA, WPC, and LS-PCQA remain descriptive because these datasets influenced model selection; the other four datasets assess the design without participating in that selection. The pooled metrics combine predictions from five fitted models; they summarize this fixed-configuration evaluation differently from the selection-stage median fold statistics in Figure~\ref{fig_feature_set_ablation}.
+
+\begin{table*}[tbp]
+    \centering
+    \caption{Within-dataset performance of the frozen 46-feature PointPCA++ configuration with the selected Extra Trees regressor. Values are pooled \gls{OOF} metrics with reference-clustered 95\% confidence intervals in brackets. RMSE values are reported within each dataset and must not be compared across subjective-score scales. $^{\dagger}$APSIPA, WPC, and LS-PCQA are modelling datasets; the remaining four are evaluation datasets.}
+    \label{tab_pointpcapp_all_datasets}
+    \scriptsize
+    \begin{adjustbox}{max width=0.95\textwidth}
+    \begin{tabular}{lrrr}
+        \toprule
+        Dataset & \gls{SROCC} & \gls{PLCC} & \gls{RMSE} \\
+        \midrule
+        \input{data/analysis/tables/review_final_rows.tex}
+    \end{tabular}
+    \end{adjustbox}
+\end{table*}
+
+The PointPCA++ entries for the four matched datasets in Table~\ref{tab_review_pca_family} reuse these predictions. That table isolates representation differences; Table~\ref{tab_pointpcapp_all_datasets} establishes seven-dataset coverage.
+
+\textcolor{red}{Comparison with state-of-the-art methods remains pending because results obtained under the same evaluation protocol are not yet available.}
+
+\FloatBarrier
+\subsection{Diagnostic Feature and View Ablations} \label{sec_results_diagnostics}
+
+To investigate whether additional projection descriptors could contribute useful information, Figure~\ref{fig_feature_importance} examines the APSIPA-only 172-feature candidate pool with Extra Trees. This diagnostic model is distinct from the final 46-feature model. Importance is the decrease in held-out \gls{SROCC} after permuting a feature or block within each reference group. The projection modality produces a median decrease of \ProjectionImportance, compared with \PointPCAImportance{} for PointPCA$^3$. DISTS is the most influential six-view IQA block, with a median decrease of 0.131. This analysis measures reliance of the fitted model; correlated predictors can share or dilute permutation importance, and importance alone did not determine the IQA choice.
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=0.93\textwidth]{data/analysis/figures/review_feature_importance.pdf}
+    \caption{APSIPA-only held-out permutation importance for the selected Extra Trees regressor using the complete 172-feature representation. The left panel shows the 15 highest-ranked individual features with descriptor names and indexed projection views; the right panel shows the 15 highest-ranked six-view IQA blocks. Importance is the median decrease in test-fold \gls{SROCC}; correlated features may share importance. Indexed views do not imply a verified camera orientation.}
+    \label{fig_feature_importance}
+\end{figure*}
+
+\input{data/analysis/tables/review_iqa_complementarity.tex}
+\ReviewIQAInterpretation
+
+Table~\ref{tab_review_views_pooling} diagnoses view count and pooling under the same grouped folds and historical IQA extraction as Table~\ref{tab_review_iqa_complementarity}. Its six-view baselines reuse those diagnostic predictions. All 15 two-view and all 15 four-view subsets are evaluated, with subset variability reported instead of selecting a favorable camera combination. Mean, median, minimum, and maximum pooling compress the six DISTS scores to one value, with and without the 40 PointPCA$^3$ predictors. These comparisons characterize accuracy and dimension on APSIPA; they neither establish extraction speed nor select a new final representation.
+
+\input{data/analysis/tables/review_views_pooling.tex}
+\ReviewViewInterpretation
+
+\FloatBarrier
+\subsection{Model Reliance and Prediction Errors} \label{sec_results_errors}
+
+Figure~\ref{fig_pointpcapp_modality_importance} extends the reliance analysis to all seven complete datasets using the final 46-feature model. Permuting DISTS produces the larger median \gls{SROCC} decrease on APSIPA, WPC, LS-PCQA, SJTU-PCQA, and UnB\_PC, whereas permuting PointPCA$^3$ has the larger effect on ICIP2023 and WPC2. Both modalities have positive median effects on every dataset. The balance is therefore dataset-dependent: the fusion does not rely on the same branch to the same degree across populations. These grouped effects describe the fitted model's reliance and should not be interpreted as causal uniqueness or feature efficiency.
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=0.93\textwidth]{data/analysis/figures/review_pointpcapp_modality_importance.pdf}
+    \caption{Grouped modality importance for the final 46-feature PointPCA++ regressor across seven datasets. For each outer test fold, all six DISTS views or all 40 PointPCA$^3$ predictors are permuted jointly within each held-out reference content. Importance is the baseline \gls{SROCC} minus the permuted \gls{SROCC}; positive values indicate model reliance. Markers show the median of the five fold-level effects and horizontal intervals their IQR, after reducing 50 deterministic permutations to one median per fold. Shaded groups distinguish the three modelling datasets from the four evaluation datasets.}
+    \label{fig_pointpcapp_modality_importance}
+\end{figure*}
+
+To assess where predictions depart from subjective scores, we examine the same within-dataset \gls{OOF} predictions used in Table~\ref{tab_pointpcapp_all_datasets}. Figure~\ref{fig_review_mos_scatter} shows absolute agreement with MOS; Figure~\ref{fig_review_residuals} makes the direction and score dependence of errors visible.
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=0.97\textwidth]{data/analysis/figures/review_mos_scatter.pdf}
+    \caption{All frozen PointPCA++ \gls{OOF} predictions versus source MOS on the seven datasets, using the fixed 46-feature Extra Trees pipeline and persisted reference-disjoint folds. Dashed lines show identity. Axes follow each dataset\textquotesingle s source scale; no held-out calibration is applied. Populations and roles are in Table~\ref{tab_datasets}.}
+    \label{fig_review_mos_scatter}
+\end{figure*}
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=0.97\textwidth]{data/analysis/figures/review_residuals.pdf}
+    \caption{Signed frozen OOF residuals against MOS for the same seven populations and model as Figure~\ref{fig_review_mos_scatter}. Dashed lines mark zero error. Residuals retain dataset-specific units and are not calibrated using held-out scores.}
+    \label{fig_review_residuals}
+\end{figure*}
+\input{data/analysis/tables/review_error_summary.tex}
+\ReviewErrorInterpretation
+
+\FloatBarrier
+\subsection{Cross-Dataset Transfer} \label{sec_results_transfer}
+
+To test transfer without target-domain training, we fit one model on each of APSIPA, WPC, and LS-PCQA and apply it directly to the six remaining datasets. Figure~\ref{fig_pointpcapp_all_datasets} reports the resulting \TransferPairCount{} directed transfers. All correlations remain positive, but \gls{SROCC} ranges from \TransferLowestSROCC{} for \TransferLowestSROCCSource{} $\rightarrow$ \TransferLowestSROCCTarget{} to \TransferHighestSROCC{} for \TransferHighestSROCCSource{} $\rightarrow$ \TransferHighestSROCCTarget{}. Thus, the within-dataset accuracy in Table~\ref{tab_pointpcapp_all_datasets} does not imply equally strong transfer between populations. Differences in reference content and distortion distributions may contribute to this variation, but this experiment does not isolate their individual effects.
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=0.93\textwidth]{data/analysis/figures/review_pointpcapp_all_datasets.pdf}
+    \caption{Directed cross-dataset transfer of the frozen 46-feature PointPCA++ configuration. Each panel fits one Extra Trees pipeline using all samples from the named training dataset and applies it directly to the six other test datasets. Blue circles and orange diamonds show target-set SROCC and PLCC, respectively; horizontal intervals are 95\% confidence intervals from 10,000 bootstrap resamples clustered by target reference content. Gray rows identify the training source and contain no self-evaluation. Warm and blue background groups distinguish modelling and evaluation targets. No target samples or scores are used for fitting, preprocessing, calibration, or model selection within a transfer pair. Intervals characterize target-content variation rather than source-training uncertainty. Four pairs have shared reference names; WPC/WPC2 reuse of source contents is documented. Dataset-disjoint transfer therefore does not guarantee unseen reference content.}
+    \label{fig_pointpcapp_all_datasets}
+\end{figure*}
+
+When a modelling dataset appears as a transfer target, it did not train that source-specific model, although it previously influenced the shared regressor and feature design. The four evaluation targets did not influence either selection stage, but this does not guarantee unseen reference content. The source files share reference names in APSIPA $\rightarrow$ UnB\_PC (3), WPC $\rightarrow$ SJTU-PCQA (1), WPC $\rightarrow$ WPC2 (16), and LS-PCQA $\rightarrow$ SJTU-PCQA (4). WPC2 documentation confirms that its 16 original clouds come from WPC~\cite{liu2021wpc2}; raw-content identity for the other shared names is unverified. These pairs must not be described as demonstrated unseen-content transfer. Moreover, the intervals quantify variation among target contents conditional on the fitted source model; they do not account for uncertainty in source training. We report correlations rather than RMSE because the source and target subjective-score scales differ.
+
+\FloatBarrier
+\subsection{Computational Performance} \label{sec_results_pointpca3_runtime}
+
+We first examine branch-level extraction cost and worker scaling, then evaluate the complete pipeline. We compare the execution time of PointPCA+ with PointPCA$^3$ using the same reference--distorted point-cloud pairs. PointPCA$^3$ was evaluated with 1, 2, 4, 8, 16, and 32 workers. Figure~\ref{fig_pointpca3_worker_scaling} reports the median extraction time and the samplewise speedup relative to the single-worker execution. The time decreases consistently as the number of workers increases, although the gain becomes smaller beyond eight workers. At 16 workers, the median parallel speedup over one worker ranges from $1.67\times$ on SJTU-PCQA to $2.78\times$ on LS-PCQA. The sublinear gains are consistent with sequential work and parallelization overhead, although this timing comparison does not isolate their contributions.
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=0.92\textwidth]{data/analysis/figures/review_worker_scaling.pdf}
+    \caption{PointPCA$^3$ worker scaling on the seven included datasets. The left panel reports the median feature-extraction time on a logarithmic scale. The right panel reports the median samplewise speedup relative to one worker. Worker counts use logarithmic spacing. The vertical dotted line identifies the 16-worker branch configuration used in Table~\ref{tab_pointpca3_runtime}.}
+    \label{fig_pointpca3_worker_scaling}
+\end{figure*}
+
+Table~\ref{tab_pointpca3_runtime} compares the 16-worker configuration with PointPCA+. PointPCA$^3$ reduces the median extraction time on every database. The smallest median paired speedup is $45.44\times$ on SJTU-PCQA, whereas the largest is $113.95\times$ on LS-PCQA. These results isolate the PointPCA branch and do not yet include cubemap processing.
+
+\begin{table*}[tbp]
+    \centering
+    \caption{Execution-time comparison between PointPCA+ and PointPCA$^3$ with 16 workers. Times are reported in seconds as median [IQR]; speedup is computed for each matched sample as the PointPCA+ time divided by the PointPCA$^3$ time.}
+    \label{tab_pointpca3_runtime}
+    \scriptsize
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabular}{lrrr}
+        \toprule
+        Database & PointPCA+ & PointPCA$^3$ & Paired speedup \\
+        \midrule
+        \input{data/analysis/tables/review_runtime_pointpca_rows.tex}
+    \end{tabular}
+    \end{adjustbox}
+\end{table*}
+
+\paragraph{Complete extraction.}\label{sec_results_pointpcapp_runtime}
+We next compare complete PointPCA++ extraction with PointPCA+. The measured complete implementation uses 32 workers and executes PointPCA$^3$ followed sequentially by projection, cropping, Navier--Stokes inpainting, and DISTS evaluation. Timing includes point counting, point-cloud loading, and feature extraction after one initialization warm-up, but excludes CSV serialization and Extra Trees inference. Figure~\ref{fig_pointpcapp_runtime} compares sample-level times and paired speedups across all seven datasets against the total reference-plus-distorted point count. The separate dataset panels show variation in runtime and speedup across the observed input sizes; the logarithmic time axes separate the two implementations, while linear speedup axes show their paired ratios.
+
+\begin{figure*}[tbp]
+    \centering
+    \includegraphics[width=\textwidth]{data/analysis/figures/review_pointpcapp_runtime.pdf}
+    \caption{Complete feature-extraction time on all 3,638 matched samples across seven datasets. Logarithmic time axes compare recorded PointPCA+ with measured PointPCA++ at 32 workers. The horizontal coordinate is the sum of reference and distorted point counts. Every point is an exact, unjittered measurement; no complexity model is fitted. Paired speedups appear in the continuation.}
+    \label{fig_pointpcapp_runtime}
+\end{figure*}
+\begin{figure*}[tbp]
+    \ContinuedFloat
+    \centering
+    \includegraphics[width=\textwidth]{data/analysis/figures/review_pointpcapp_runtime_speedup.pdf}
+    \caption{Continued: paired speedup $T_{\mathrm{PointPCA+}}/T_{\mathrm{PointPCA++}}$ for the same samples, on linear axes. Table~\ref{tab_pointpcapp_integrated_runtime} reports medians, IQRs, and reference-clustered intervals; those intervals describe content variation, not repeated-run timing uncertainty.}
+\end{figure*}
+
+Table~\ref{tab_pointpcapp_integrated_runtime} shows a double-digit median speedup for the complete pipeline over PointPCA+ on every dataset. ICIP2023 has the largest median paired gain and LS-PCQA the smallest. For example, APSIPA has a median complete extraction time of \PointPCAppTime~s, compared with \MatlabPointPCATime~s for PointPCA+, and a median paired speedup of $\PointPCAppSpeedup\times$. The paired speedup is computed per sample and is not the ratio of these two median times. Together with Figure~\ref{fig_pointpcapp_runtime}, these results support a computational advantage across the tested populations, although its magnitude varies by dataset. There is one recorded measurement per sample; the intervals quantify content variation rather than run-to-run timing noise.
+
+\begin{table*}[tbp]
+    \centering
+    \caption{Measured complete PointPCA++ time and paired speedup relative to PointPCA+. Times and speedups are medians [IQR] over matched samples; the final column is a 95\% confidence interval obtained by resampling reference contents.}
+    \label{tab_pointpcapp_integrated_runtime}
+    \scriptsize
+    \begin{adjustbox}{max width=0.95\textwidth}
+    \begin{tabular}{lrrrr}
+        \toprule
+        Dataset & PointPCA++ time (s) & PointPCA+ time (s) & Speedup ($\times$) & Speedup 95\% CI \\
+        \midrule
+        \input{data/analysis/tables/review_integrated_runtime_rows.tex}
+    \end{tabular}
+    \end{adjustbox}
+\end{table*}
 
 
-\subsection{Performance comparison of PointPCA+ and PointPCA++}
-
-\red{Aqui vão os gráficos, tabelas e análises comparando as performance (avaliação dos preditores, tempo e memória) do PointPCA2 original e da versão atualizada }
-
-\red{OBS: NÃO USAR AS BASES DE DADOS QUE DÃO PROBLEMAS NESTA AVALIAÇÃO}
-
-
-
-
-\subsection{Performance evaluation of predictors}
-
-\red{Aqui vão uma analise de performance dos regressores e qual deles será escolhido para ser usado com a próxima sessão. Deve-se considerar também as features e parametros usados nas projeções (métricas do PIQ a serem usadas, etc). Cross-dataset, K-folds, etc, vão aqui.}
-
-\red{COLOCAR FEATURE IMPORTANCES AQUI}
-
-
-
-\subsection{Analysis of Projection Performance}
-
-
-
-\subsection{Parallel Implementation Performance}
-
-
-\red{Colocar umna análise aqui do ganho de performance ao se utilizar paralelização (aumentando o número de processo).}
-
-
-
-\subsection{Comparison with the state-of-the-art}
-
-\red{Aqui vão as tabelas e gráficos comparando o PointPCA++ proposto com outros métodos existentes.}
-
+\FloatBarrier
 
 \section{Conclusion} \label{sec_conclusions}
 
-\blue{Conclusão usada no WPOS2024 (expandir e melhorar)}
+We presented PointPCA++, a full-reference \gls{PCQA} method combining point-cloud descriptors with six-view DISTS scores. The controlled projection study and three-dataset model selection support a compact 46-feature representation with Extra Trees regression. The fusion improves on either modality alone on the modelling datasets, while the seven-dataset evaluation shows that their relative influence depends on the assessed population. Complete feature extraction is also faster than the PointPCA+ baseline.
 
-This paper proposes a novel type of \gls{PCQA} method that combines projection-based and \gls{PCA}-based techniques to predict the overall quality of \gls{PC} contents. Results show that the proposed approach outperform the independently-used techniques, showing robust and consistent prediction values that are well correlated with subjective quality scores, while requiring a fraction of the computation time and memory usage. Future works will investigate if the inclusion of saliency-aware descriptors can improve the the proposed metric performance.
+Within-dataset correlations and directed transfer provide complementary evidence: the fixed design predicts subjective quality well when trained within each dataset, but transferring a fitted model reveals greater variation between datasets. These findings support combining the two modalities without implying dataset-independent generalization. Future work will investigate methods to improve transfer robustness and assess whether saliency-aware descriptors provide additional predictive information.
+
+\FloatBarrier
+\appendix
+\section{Supporting Experimental Evidence} \label{sec_review_appendix}
+
+Table~\ref{tab_review_projection_iqas} retains the complete fixed-pipeline IQA comparison, including its fold variability and recorded timing. Table~\ref{tab_review_regressors} accounts for every screened regressor rather than only the leading ensembles; undefined correlations and the excluded sanity baseline remain explicit. Table~\ref{tab_review_feature_agreement} exposes feature-specific discrepancies, and Table~\ref{tab_review_pairwise} distinguishes those descriptive agreements from corrected prediction tests. Tables~\ref{tab_review_cases} and~\ref{tab_review_error_groups} support the failure analysis without interpreting illustrative cases as population-level evidence.
+
+\input{data/analysis/tables/review_projection_iqas.tex}
+\input{data/analysis/tables/review_regressors.tex}
+\input{data/analysis/tables/review_feature_agreement.tex}
+\input{data/analysis/tables/review_pairwise.tex}
+\input{data/analysis/tables/review_cases.tex}
+\input{data/analysis/tables/review_error_groups.tex}
+\clearpage
 
 \bibliographystyle{elsarticle-num} 
 \bibliography{biblio}

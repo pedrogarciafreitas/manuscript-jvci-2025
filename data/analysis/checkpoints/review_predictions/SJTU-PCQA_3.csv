@@ -1,0 +1,379 @@
+dataset,SIGNAL,REF,method,variant,fold,y_true,y_pred,features
+SJTU-PCQA,redandblack_0.ply,redandblack.ply,PointPCA3,standalone,3,8.167091836735,7.482780007195125,40
+SJTU-PCQA,redandblack_1.ply,redandblack.ply,PointPCA3,standalone,3,6.45,6.315566048534618,40
+SJTU-PCQA,redandblack_2.ply,redandblack.ply,PointPCA3,standalone,3,6.734375,6.049571812859673,40
+SJTU-PCQA,redandblack_3.ply,redandblack.ply,PointPCA3,standalone,3,4.9,5.51976627093143,40
+SJTU-PCQA,redandblack_4.ply,redandblack.ply,PointPCA3,standalone,3,6.286989795918,4.553821444924117,40
+SJTU-PCQA,redandblack_5.ply,redandblack.ply,PointPCA3,standalone,3,3.7578125,2.86523399071149,40
+SJTU-PCQA,redandblack_6.ply,redandblack.ply,PointPCA3,standalone,3,9.392857142857,9.079175170067911,40
+SJTU-PCQA,redandblack_7.ply,redandblack.ply,PointPCA3,standalone,3,7.608333333333,7.133836571166922,40
+SJTU-PCQA,redandblack_8.ply,redandblack.ply,PointPCA3,standalone,3,7.247448979592,5.737177982731513,40
+SJTU-PCQA,redandblack_9.ply,redandblack.ply,PointPCA3,standalone,3,6.53125,5.142149030285139,40
+SJTU-PCQA,redandblack_10.ply,redandblack.ply,PointPCA3,standalone,3,5.515625,4.834644508764998,40
+SJTU-PCQA,redandblack_11.ply,redandblack.ply,PointPCA3,standalone,3,4.780769230769,4.592769999345811,40
+SJTU-PCQA,redandblack_12.ply,redandblack.ply,PointPCA3,standalone,3,7.767307692308,7.797558272828378,40
+SJTU-PCQA,redandblack_13.ply,redandblack.ply,PointPCA3,standalone,3,6.803846153846,7.110404557495968,40
+SJTU-PCQA,redandblack_14.ply,redandblack.ply,PointPCA3,standalone,3,6.65,6.903965888278387,40
+SJTU-PCQA,redandblack_15.ply,redandblack.ply,PointPCA3,standalone,3,5.1640625,5.3052070823521715,40
+SJTU-PCQA,redandblack_16.ply,redandblack.ply,PointPCA3,standalone,3,3.709615384615,3.9984208774856302,40
+SJTU-PCQA,redandblack_17.ply,redandblack.ply,PointPCA3,standalone,3,2.141666666667,2.1187083088041794,40
+SJTU-PCQA,redandblack_18.ply,redandblack.ply,PointPCA3,standalone,3,8.191666666667,7.9012539491758,40
+SJTU-PCQA,redandblack_19.ply,redandblack.ply,PointPCA3,standalone,3,6.85,6.390397640306039,40
+SJTU-PCQA,redandblack_20.ply,redandblack.ply,PointPCA3,standalone,3,6.144132653061,5.05007550039248,40
+SJTU-PCQA,redandblack_21.ply,redandblack.ply,PointPCA3,standalone,3,4.6484375,4.272648278061141,40
+SJTU-PCQA,redandblack_22.ply,redandblack.ply,PointPCA3,standalone,3,3.465384615385,1.6808081011251899,40
+SJTU-PCQA,redandblack_23.ply,redandblack.ply,PointPCA3,standalone,3,1.433333333333,1.7672805795395994,40
+SJTU-PCQA,redandblack_24.ply,redandblack.ply,PointPCA3,standalone,3,8.2578125,7.577940746009987,40
+SJTU-PCQA,redandblack_25.ply,redandblack.ply,PointPCA3,standalone,3,7.3515625,6.467856276164207,40
+SJTU-PCQA,redandblack_26.ply,redandblack.ply,PointPCA3,standalone,3,5.579081632653,5.107375539639013,40
+SJTU-PCQA,redandblack_27.ply,redandblack.ply,PointPCA3,standalone,3,2.4375,2.4260279958137407,40
+SJTU-PCQA,redandblack_28.ply,redandblack.ply,PointPCA3,standalone,3,2.275,1.8118500457875504,40
+SJTU-PCQA,redandblack_29.ply,redandblack.ply,PointPCA3,standalone,3,1.0,1.1150655088958907,40
+SJTU-PCQA,redandblack_30.ply,redandblack.ply,PointPCA3,standalone,3,8.125,7.639148866758212,40
+SJTU-PCQA,redandblack_31.ply,redandblack.ply,PointPCA3,standalone,3,6.441666666667,7.140471080258959,40
+SJTU-PCQA,redandblack_32.ply,redandblack.ply,PointPCA3,standalone,3,5.9609375,5.134340602106179,40
+SJTU-PCQA,redandblack_33.ply,redandblack.ply,PointPCA3,standalone,3,3.394132653061,2.5764407868916392,40
+SJTU-PCQA,redandblack_34.ply,redandblack.ply,PointPCA3,standalone,3,1.866666666667,2.0524700663918893,40
+SJTU-PCQA,redandblack_35.ply,redandblack.ply,PointPCA3,standalone,3,1.848076923077,1.4895255265567702,40
+SJTU-PCQA,redandblack_36.ply,redandblack.ply,PointPCA3,standalone,3,8.525,7.9767640878467025,40
+SJTU-PCQA,redandblack_37.ply,redandblack.ply,PointPCA3,standalone,3,6.063461538462,6.375674426020289,40
+SJTU-PCQA,redandblack_38.ply,redandblack.ply,PointPCA3,standalone,3,5.96875,4.71732066817109,40
+SJTU-PCQA,redandblack_39.ply,redandblack.ply,PointPCA3,standalone,3,3.125,2.5656874754708796,40
+SJTU-PCQA,redandblack_40.ply,redandblack.ply,PointPCA3,standalone,3,1.876923076923,2.0603684752744895,40
+SJTU-PCQA,redandblack_41.ply,redandblack.ply,PointPCA3,standalone,3,1.691666666667,1.5181911466508697,40
+SJTU-PCQA,ULB Unicorn_0.ply,ULB Unicorn.ply,PointPCA3,standalone,2,8.220663265306,7.730704792974877,40
+SJTU-PCQA,ULB Unicorn_1.ply,ULB Unicorn.ply,PointPCA3,standalone,2,7.405769230769,7.2207333366039,40
+SJTU-PCQA,ULB Unicorn_2.ply,ULB Unicorn.ply,PointPCA3,standalone,2,6.975,5.86352720270801,40
+SJTU-PCQA,ULB Unicorn_3.ply,ULB Unicorn.ply,PointPCA3,standalone,2,6.1015625,5.43925963991366,40
+SJTU-PCQA,ULB Unicorn_4.ply,ULB Unicorn.ply,PointPCA3,standalone,2,4.963461538462,5.015517481030848,40
+SJTU-PCQA,ULB Unicorn_5.ply,ULB Unicorn.ply,PointPCA3,standalone,2,2.380102040816,3.8532021193092394,40
+SJTU-PCQA,ULB Unicorn_6.ply,ULB Unicorn.ply,PointPCA3,standalone,2,7.688461538462,7.598576268969049,40
+SJTU-PCQA,ULB Unicorn_7.ply,ULB Unicorn.ply,PointPCA3,standalone,2,8.3671875,7.182102024463506,40
+SJTU-PCQA,ULB Unicorn_8.ply,ULB Unicorn.ply,PointPCA3,standalone,2,6.553571428571,6.484466174450589,40
+SJTU-PCQA,ULB Unicorn_9.ply,ULB Unicorn.ply,PointPCA3,standalone,2,6.880769230769,6.195941408294113,40
+SJTU-PCQA,ULB Unicorn_10.ply,ULB Unicorn.ply,PointPCA3,standalone,2,6.348076923077,5.733776515894832,40
+SJTU-PCQA,ULB Unicorn_11.ply,ULB Unicorn.ply,PointPCA3,standalone,2,5.9453125,5.376386553178903,40
+SJTU-PCQA,ULB Unicorn_12.ply,ULB Unicorn.ply,PointPCA3,standalone,2,7.352040816327,7.740043988749401,40
+SJTU-PCQA,ULB Unicorn_13.ply,ULB Unicorn.ply,PointPCA3,standalone,2,5.857692307692,7.228616087781218,40
+SJTU-PCQA,ULB Unicorn_14.ply,ULB Unicorn.ply,PointPCA3,standalone,2,6.226923076923,6.405189233385681,40
+SJTU-PCQA,ULB Unicorn_15.ply,ULB Unicorn.ply,PointPCA3,standalone,2,5.525510204082,5.37717091836737,40
+SJTU-PCQA,ULB Unicorn_16.ply,ULB Unicorn.ply,PointPCA3,standalone,2,3.5859375,4.5574177459445,40
+SJTU-PCQA,ULB Unicorn_17.ply,ULB Unicorn.ply,PointPCA3,standalone,2,1.848076923077,3.8100987293956097,40
+SJTU-PCQA,ULB Unicorn_18.ply,ULB Unicorn.ply,PointPCA3,standalone,2,6.841666666667,7.299935177917248,40
+SJTU-PCQA,ULB Unicorn_19.ply,ULB Unicorn.ply,PointPCA3,standalone,2,6.5703125,6.766942790096834,40
+SJTU-PCQA,ULB Unicorn_20.ply,ULB Unicorn.ply,PointPCA3,standalone,2,5.141666666667,5.61565445120354,40
+SJTU-PCQA,ULB Unicorn_21.ply,ULB Unicorn.ply,PointPCA3,standalone,2,4.234375,4.969035379055461,40
+SJTU-PCQA,ULB Unicorn_22.ply,ULB Unicorn.ply,PointPCA3,standalone,2,3.455769230769,4.349418277407091,40
+SJTU-PCQA,ULB Unicorn_23.ply,ULB Unicorn.ply,PointPCA3,standalone,2,1.377551020408,3.7652077936944095,40
+SJTU-PCQA,ULB Unicorn_24.ply,ULB Unicorn.ply,PointPCA3,standalone,2,7.2,7.9427446935505,40
+SJTU-PCQA,ULB Unicorn_25.ply,ULB Unicorn.ply,PointPCA3,standalone,2,5.9296875,6.7822052426739505,40
+SJTU-PCQA,ULB Unicorn_26.ply,ULB Unicorn.ply,PointPCA3,standalone,2,4.6328125,5.611023384353728,40
+SJTU-PCQA,ULB Unicorn_27.ply,ULB Unicorn.ply,PointPCA3,standalone,2,2.067602040816,4.11606323587128,40
+SJTU-PCQA,ULB Unicorn_28.ply,ULB Unicorn.ply,PointPCA3,standalone,2,1.5,3.9319707123233703,40
+SJTU-PCQA,ULB Unicorn_29.ply,ULB Unicorn.ply,PointPCA3,standalone,2,1.223076923077,3.708024839743579,40
+SJTU-PCQA,ULB Unicorn_30.ply,ULB Unicorn.ply,PointPCA3,standalone,2,7.767857142857,8.310863332352202,40
+SJTU-PCQA,ULB Unicorn_31.ply,ULB Unicorn.ply,PointPCA3,standalone,2,7.155612244898,7.596046662414946,40
+SJTU-PCQA,ULB Unicorn_32.ply,ULB Unicorn.ply,PointPCA3,standalone,2,4.59056122449,6.392112661891655,40
+SJTU-PCQA,ULB Unicorn_33.ply,ULB Unicorn.ply,PointPCA3,standalone,2,2.609375,3.99002710459182,40
+SJTU-PCQA,ULB Unicorn_34.ply,ULB Unicorn.ply,PointPCA3,standalone,2,1.857692307692,4.115753213304539,40
+SJTU-PCQA,ULB Unicorn_35.ply,ULB Unicorn.ply,PointPCA3,standalone,2,1.3,3.9783821870094194,40
+SJTU-PCQA,ULB Unicorn_36.ply,ULB Unicorn.ply,PointPCA3,standalone,2,8.375,7.2038249362244775,40
+SJTU-PCQA,ULB Unicorn_37.ply,ULB Unicorn.ply,PointPCA3,standalone,2,7.066326530612,6.4309593635531295,40
+SJTU-PCQA,ULB Unicorn_38.ply,ULB Unicorn.ply,PointPCA3,standalone,2,5.15,6.1604882669414,40
+SJTU-PCQA,ULB Unicorn_39.ply,ULB Unicorn.ply,PointPCA3,standalone,2,3.103316326531,4.0308574862637405,40
+SJTU-PCQA,ULB Unicorn_40.ply,ULB Unicorn.ply,PointPCA3,standalone,2,2.2,4.003257187009429,40
+SJTU-PCQA,ULB Unicorn_41.ply,ULB Unicorn.ply,PointPCA3,standalone,2,1.30612244898,3.8712215953689086,40
+SJTU-PCQA,loot_0.ply,loot.ply,PointPCA3,standalone,4,6.996153846154,8.341432814952869,40
+SJTU-PCQA,loot_1.ply,loot.ply,PointPCA3,standalone,4,7.0859375,6.584114002812487,40
+SJTU-PCQA,loot_2.ply,loot.ply,PointPCA3,standalone,4,5.383333333333,6.261414777930225,40
+SJTU-PCQA,loot_3.ply,loot.ply,PointPCA3,standalone,4,5.208333333333,5.853556662087899,40
+SJTU-PCQA,loot_4.ply,loot.ply,PointPCA3,standalone,4,6.679846938776,5.4036743851386975,40
+SJTU-PCQA,loot_5.ply,loot.ply,PointPCA3,standalone,4,2.708333333333,3.224031634288238,40
+SJTU-PCQA,loot_6.ply,loot.ply,PointPCA3,standalone,4,9.65,8.835264553898373,40
+SJTU-PCQA,loot_7.ply,loot.ply,PointPCA3,standalone,4,7.316666666667,6.767102506868161,40
+SJTU-PCQA,loot_8.ply,loot.ply,PointPCA3,standalone,4,5.396683673469,5.86278485576936,40
+SJTU-PCQA,loot_9.ply,loot.ply,PointPCA3,standalone,4,4.584615384615,5.4447075974621315,40
+SJTU-PCQA,loot_10.ply,loot.ply,PointPCA3,standalone,4,4.230867346939,4.516144933935129,40
+SJTU-PCQA,loot_11.ply,loot.ply,PointPCA3,standalone,4,4.0625,4.338191015829363,40
+SJTU-PCQA,loot_12.ply,loot.ply,PointPCA3,standalone,4,8.267307692308,8.107104395604521,40
+SJTU-PCQA,loot_13.ply,loot.ply,PointPCA3,standalone,4,8.613520408163,8.31089666732074,40
+SJTU-PCQA,loot_14.ply,loot.ply,PointPCA3,standalone,4,7.676020408163,7.534912995486646,40
+SJTU-PCQA,loot_15.ply,loot.ply,PointPCA3,standalone,4,5.78125,5.9853124264128885,40
+SJTU-PCQA,loot_16.ply,loot.ply,PointPCA3,standalone,4,2.975,4.702364468864441,40
+SJTU-PCQA,loot_17.ply,loot.ply,PointPCA3,standalone,4,1.85,2.8789847429355984,40
+SJTU-PCQA,loot_18.ply,loot.ply,PointPCA3,standalone,4,8.180769230769,8.295226345826768,40
+SJTU-PCQA,loot_19.ply,loot.ply,PointPCA3,standalone,4,6.925,7.242397092490889,40
+SJTU-PCQA,loot_20.ply,loot.ply,PointPCA3,standalone,4,4.8,5.658980156004709,40
+SJTU-PCQA,loot_21.ply,loot.ply,PointPCA3,standalone,4,4.299744897959,4.612789647108903,40
+SJTU-PCQA,loot_22.ply,loot.ply,PointPCA3,standalone,4,2.283333333333,3.6244354477367917,40
+SJTU-PCQA,loot_23.ply,loot.ply,PointPCA3,standalone,4,1.223076923077,2.3203702822475885,40
+SJTU-PCQA,loot_24.ply,loot.ply,PointPCA3,standalone,4,7.190384615385,7.849699658228693,40
+SJTU-PCQA,loot_25.ply,loot.ply,PointPCA3,standalone,4,7.28125,7.139710549123447,40
+SJTU-PCQA,loot_26.ply,loot.ply,PointPCA3,standalone,4,4.166666666667,5.53193654336736,40
+SJTU-PCQA,loot_27.ply,loot.ply,PointPCA3,standalone,4,2.376923076923,3.321774300104691,40
+SJTU-PCQA,loot_28.ply,loot.ply,PointPCA3,standalone,4,1.703846153846,2.0974042713239096,40
+SJTU-PCQA,loot_29.ply,loot.ply,PointPCA3,standalone,4,1.0,1.1677005903322804,40
+SJTU-PCQA,loot_30.ply,loot.ply,PointPCA3,standalone,4,7.341666666667,8.055265175300883,40
+SJTU-PCQA,loot_31.ply,loot.ply,PointPCA3,standalone,4,7.765306122449,7.748066931580338,40
+SJTU-PCQA,loot_32.ply,loot.ply,PointPCA3,standalone,4,4.775,5.4302957711931015,40
+SJTU-PCQA,loot_33.ply,loot.ply,PointPCA3,standalone,4,2.825,3.2600923927262015,40
+SJTU-PCQA,loot_34.ply,loot.ply,PointPCA3,standalone,4,2.492346938776,2.57889917745937,40
+SJTU-PCQA,loot_35.ply,loot.ply,PointPCA3,standalone,4,1.223076923077,1.5547544479330297,40
+SJTU-PCQA,loot_36.ply,loot.ply,PointPCA3,standalone,4,8.344230769231,8.314229191195764,40
+SJTU-PCQA,loot_37.ply,loot.ply,PointPCA3,standalone,4,6.7,6.43194718897175,40
+SJTU-PCQA,loot_38.ply,loot.ply,PointPCA3,standalone,4,4.25,4.826892047684381,40
+SJTU-PCQA,loot_39.ply,loot.ply,PointPCA3,standalone,4,2.758333333333,2.9499119979722006,40
+SJTU-PCQA,loot_40.ply,loot.ply,PointPCA3,standalone,4,1.934615384615,2.22129205095476,40
+SJTU-PCQA,loot_41.ply,loot.ply,PointPCA3,standalone,4,1.2,1.4983309131344296,40
+SJTU-PCQA,soldier_0.ply,soldier.ply,PointPCA3,standalone,1,8.3203125,7.588048453035112,40
+SJTU-PCQA,soldier_1.ply,soldier.ply,PointPCA3,standalone,1,5.783333333333,6.7406772141548,40
+SJTU-PCQA,soldier_2.ply,soldier.ply,PointPCA3,standalone,1,5.832692307692,6.055790333921916,40
+SJTU-PCQA,soldier_3.ply,soldier.ply,PointPCA3,standalone,1,6.175,5.357284275248519,40
+SJTU-PCQA,soldier_4.ply,soldier.ply,PointPCA3,standalone,1,5.083333333333,6.175642881672023,40
+SJTU-PCQA,soldier_5.ply,soldier.ply,PointPCA3,standalone,1,3.835459183673,3.6264491185897088,40
+SJTU-PCQA,soldier_6.ply,soldier.ply,PointPCA3,standalone,1,9.583333333333,9.526278453688992,40
+SJTU-PCQA,soldier_7.ply,soldier.ply,PointPCA3,standalone,1,6.950255102041,7.408586489403485,40
+SJTU-PCQA,soldier_8.ply,soldier.ply,PointPCA3,standalone,1,5.813461538462,6.545457769165243,40
+SJTU-PCQA,soldier_9.ply,soldier.ply,PointPCA3,standalone,1,6.069230769231,5.576392799908239,40
+SJTU-PCQA,soldier_10.ply,soldier.ply,PointPCA3,standalone,1,4.516666666667,4.801812450941872,40
+SJTU-PCQA,soldier_11.ply,soldier.ply,PointPCA3,standalone,1,3.90943877551,4.356554176478304,40
+SJTU-PCQA,soldier_12.ply,soldier.ply,PointPCA3,standalone,1,7.615384615385,8.159241643772983,40
+SJTU-PCQA,soldier_13.ply,soldier.ply,PointPCA3,standalone,1,8.5234375,7.969866439364088,40
+SJTU-PCQA,soldier_14.ply,soldier.ply,PointPCA3,standalone,1,7.688775510204,7.16714962715853,40
+SJTU-PCQA,soldier_15.ply,soldier.ply,PointPCA3,standalone,1,5.623076923077,5.608656094649327,40
+SJTU-PCQA,soldier_16.ply,soldier.ply,PointPCA3,standalone,1,4.1171875,4.235616717359942,40
+SJTU-PCQA,soldier_17.ply,soldier.ply,PointPCA3,standalone,1,1.934615384615,2.1930187892465387,40
+SJTU-PCQA,soldier_18.ply,soldier.ply,PointPCA3,standalone,1,9.178571428571,8.31042743491627,40
+SJTU-PCQA,soldier_19.ply,soldier.ply,PointPCA3,standalone,1,8.1328125,7.031078402995779,40
+SJTU-PCQA,soldier_20.ply,soldier.ply,PointPCA3,standalone,1,5.765625,5.910411515567688,40
+SJTU-PCQA,soldier_21.ply,soldier.ply,PointPCA3,standalone,1,4.463461538462,4.60368243884077,40
+SJTU-PCQA,soldier_22.ply,soldier.ply,PointPCA3,standalone,1,3.1640625,3.8190189527733325,40
+SJTU-PCQA,soldier_23.ply,soldier.ply,PointPCA3,standalone,1,1.491666666667,2.0523497677918403,40
+SJTU-PCQA,soldier_24.ply,soldier.ply,PointPCA3,standalone,1,7.816666666667,7.561031560701292,40
+SJTU-PCQA,soldier_25.ply,soldier.ply,PointPCA3,standalone,1,5.833333333333,6.931568002681858,40
+SJTU-PCQA,soldier_26.ply,soldier.ply,PointPCA3,standalone,1,4.5546875,4.916775060505075,40
+SJTU-PCQA,soldier_27.ply,soldier.ply,PointPCA3,standalone,1,1.7265625,2.42052486427265,40
+SJTU-PCQA,soldier_28.ply,soldier.ply,PointPCA3,standalone,1,1.781887755102,1.6852655514128208,40
+SJTU-PCQA,soldier_29.ply,soldier.ply,PointPCA3,standalone,1,1.0,1.0984843014129,40
+SJTU-PCQA,soldier_30.ply,soldier.ply,PointPCA3,standalone,1,7.825,7.509877878074365,40
+SJTU-PCQA,soldier_31.ply,soldier.ply,PointPCA3,standalone,1,7.6640625,7.257150338500798,40
+SJTU-PCQA,soldier_32.ply,soldier.ply,PointPCA3,standalone,1,4.334615384615,5.055534496010003,40
+SJTU-PCQA,soldier_33.ply,soldier.ply,PointPCA3,standalone,1,2.280769230769,2.7101799123494787,40
+SJTU-PCQA,soldier_34.ply,soldier.ply,PointPCA3,standalone,1,1.8671875,2.1228082074176378,40
+SJTU-PCQA,soldier_35.ply,soldier.ply,PointPCA3,standalone,1,1.234693877551,1.3502151851125512,40
+SJTU-PCQA,soldier_36.ply,soldier.ply,PointPCA3,standalone,1,8.65,8.073919234039893,40
+SJTU-PCQA,soldier_37.ply,soldier.ply,PointPCA3,standalone,1,7.084183673469,6.667755658032441,40
+SJTU-PCQA,soldier_38.ply,soldier.ply,PointPCA3,standalone,1,4.358333333333,4.926398286237599,40
+SJTU-PCQA,soldier_39.ply,soldier.ply,PointPCA3,standalone,1,2.75,2.60812297226568,40
+SJTU-PCQA,soldier_40.ply,soldier.ply,PointPCA3,standalone,1,2.320153061224,2.124814813906178,40
+SJTU-PCQA,soldier_41.ply,soldier.ply,PointPCA3,standalone,1,1.4140625,1.3710102940214606,40
+SJTU-PCQA,Romanoillamp_0.ply,Romanoillamp.ply,PointPCA3,standalone,3,9.116666666667,8.114418424581363,40
+SJTU-PCQA,Romanoillamp_1.ply,Romanoillamp.ply,PointPCA3,standalone,3,9.321428571429,7.6468207581108825,40
+SJTU-PCQA,Romanoillamp_2.ply,Romanoillamp.ply,PointPCA3,standalone,3,9.682692307692,6.542713901425999,40
+SJTU-PCQA,Romanoillamp_3.ply,Romanoillamp.ply,PointPCA3,standalone,3,8.622448979592,5.631191351059719,40
+SJTU-PCQA,Romanoillamp_4.ply,Romanoillamp.ply,PointPCA3,standalone,3,7.691326530612,5.259605597527529,40
+SJTU-PCQA,Romanoillamp_5.ply,Romanoillamp.ply,PointPCA3,standalone,3,3.6171875,4.279685398678731,40
+SJTU-PCQA,Romanoillamp_6.ply,Romanoillamp.ply,PointPCA3,standalone,3,8.771683673469,8.20204568125327,40
+SJTU-PCQA,Romanoillamp_7.ply,Romanoillamp.ply,PointPCA3,standalone,3,7.56887755102,7.109586219584006,40
+SJTU-PCQA,Romanoillamp_8.ply,Romanoillamp.ply,PointPCA3,standalone,3,6.619897959184,6.875941285648792,40
+SJTU-PCQA,Romanoillamp_9.ply,Romanoillamp.ply,PointPCA3,standalone,3,7.808333333333,6.067579915620187,40
+SJTU-PCQA,Romanoillamp_10.ply,Romanoillamp.ply,PointPCA3,standalone,3,6.953125,5.785479003139816,40
+SJTU-PCQA,Romanoillamp_11.ply,Romanoillamp.ply,PointPCA3,standalone,3,6.2265625,5.236565958594989,40
+SJTU-PCQA,Romanoillamp_12.ply,Romanoillamp.ply,PointPCA3,standalone,3,7.941666666667,8.093636814822101,40
+SJTU-PCQA,Romanoillamp_13.ply,Romanoillamp.ply,PointPCA3,standalone,3,8.163461538462,7.419719992804739,40
+SJTU-PCQA,Romanoillamp_14.ply,Romanoillamp.ply,PointPCA3,standalone,3,8.25,6.982044536564611,40
+SJTU-PCQA,Romanoillamp_15.ply,Romanoillamp.ply,PointPCA3,standalone,3,7.544230769231,6.28925208496861,40
+SJTU-PCQA,Romanoillamp_16.ply,Romanoillamp.ply,PointPCA3,standalone,3,5.125,5.23388544119578,40
+SJTU-PCQA,Romanoillamp_17.ply,Romanoillamp.ply,PointPCA3,standalone,3,2.723076923077,2.982656822344349,40
+SJTU-PCQA,Romanoillamp_18.ply,Romanoillamp.ply,PointPCA3,standalone,3,9.553571428571,8.117665481096264,40
+SJTU-PCQA,Romanoillamp_19.ply,Romanoillamp.ply,PointPCA3,standalone,3,8.71875,6.881647444073739,40
+SJTU-PCQA,Romanoillamp_20.ply,Romanoillamp.ply,PointPCA3,standalone,3,7.296153846154,5.7583759075744885,40
+SJTU-PCQA,Romanoillamp_21.ply,Romanoillamp.ply,PointPCA3,standalone,3,6.198076923077,4.85978354755363,40
+SJTU-PCQA,Romanoillamp_22.ply,Romanoillamp.ply,PointPCA3,standalone,3,6.667091836735,3.613443010858199,40
+SJTU-PCQA,Romanoillamp_23.ply,Romanoillamp.ply,PointPCA3,standalone,3,2.6,1.893493442569269,40
+SJTU-PCQA,Romanoillamp_24.ply,Romanoillamp.ply,PointPCA3,standalone,3,8.008333333333,7.4783222135008005,40
+SJTU-PCQA,Romanoillamp_25.ply,Romanoillamp.ply,PointPCA3,standalone,3,8.7734375,6.2674337961146485,40
+SJTU-PCQA,Romanoillamp_26.ply,Romanoillamp.ply,PointPCA3,standalone,3,6.533333333333,5.020610380690772,40
+SJTU-PCQA,Romanoillamp_27.ply,Romanoillamp.ply,PointPCA3,standalone,3,3.125,2.8063444613421886,40
+SJTU-PCQA,Romanoillamp_28.ply,Romanoillamp.ply,PointPCA3,standalone,3,2.411989795918,2.3749638932495882,40
+SJTU-PCQA,Romanoillamp_29.ply,Romanoillamp.ply,PointPCA3,standalone,3,1.433333333333,1.6918689658555797,40
+SJTU-PCQA,Romanoillamp_30.ply,Romanoillamp.ply,PointPCA3,standalone,3,9.40625,7.801681972789171,40
+SJTU-PCQA,Romanoillamp_31.ply,Romanoillamp.ply,PointPCA3,standalone,3,7.008333333333,6.802217515371547,40
+SJTU-PCQA,Romanoillamp_32.ply,Romanoillamp.ply,PointPCA3,standalone,3,6.166666666667,4.772689813906319,40
+SJTU-PCQA,Romanoillamp_33.ply,Romanoillamp.ply,PointPCA3,standalone,3,3.936224489796,2.9243994472788786,40
+SJTU-PCQA,Romanoillamp_34.ply,Romanoillamp.ply,PointPCA3,standalone,3,3.7734375,2.440016156462589,40
+SJTU-PCQA,Romanoillamp_35.ply,Romanoillamp.ply,PointPCA3,standalone,3,1.5703125,1.94472430991624,40
+SJTU-PCQA,Romanoillamp_36.ply,Romanoillamp.ply,PointPCA3,standalone,3,8.433333333333,7.737701914900599,40
+SJTU-PCQA,Romanoillamp_37.ply,Romanoillamp.ply,PointPCA3,standalone,3,8.5625,6.189795370552011,40
+SJTU-PCQA,Romanoillamp_38.ply,Romanoillamp.ply,PointPCA3,standalone,3,7.1953125,4.459361108385609,40
+SJTU-PCQA,Romanoillamp_39.ply,Romanoillamp.ply,PointPCA3,standalone,3,3.545918367347,2.1881049352432296,40
+SJTU-PCQA,Romanoillamp_40.ply,Romanoillamp.ply,PointPCA3,standalone,3,2.811538461538,1.71884839416535,40
+SJTU-PCQA,Romanoillamp_41.ply,Romanoillamp.ply,PointPCA3,standalone,3,1.223076923077,1.5350720908555502,40
+SJTU-PCQA,longdress_0.ply,longdress.ply,PointPCA3,standalone,0,8.501275510204,8.077658907313063,40
+SJTU-PCQA,longdress_1.ply,longdress.ply,PointPCA3,standalone,0,6.159615384615,6.665531560701131,40
+SJTU-PCQA,longdress_2.ply,longdress.ply,PointPCA3,standalone,0,6.3046875,6.349786556449391,40
+SJTU-PCQA,longdress_3.ply,longdress.ply,PointPCA3,standalone,0,5.5078125,5.526667844060626,40
+SJTU-PCQA,longdress_4.ply,longdress.ply,PointPCA3,standalone,0,7.117346938776,5.593804160125604,40
+SJTU-PCQA,longdress_5.ply,longdress.ply,PointPCA3,standalone,0,3.40625,3.332100822540369,40
+SJTU-PCQA,longdress_6.ply,longdress.ply,PointPCA3,standalone,0,9.682692307692,9.387106709510604,40
+SJTU-PCQA,longdress_7.ply,longdress.ply,PointPCA3,standalone,0,7.526923076923,8.29060971023026,40
+SJTU-PCQA,longdress_8.ply,longdress.ply,PointPCA3,standalone,0,6.709615384615,7.701711293171128,40
+SJTU-PCQA,longdress_9.ply,longdress.ply,PointPCA3,standalone,0,4.927295918367,7.282105098770175,40
+SJTU-PCQA,longdress_10.ply,longdress.ply,PointPCA3,standalone,0,4.90625,6.856757481357861,40
+SJTU-PCQA,longdress_11.ply,longdress.ply,PointPCA3,standalone,0,4.091666666667,6.412020293694477,40
+SJTU-PCQA,longdress_12.ply,longdress.ply,PointPCA3,standalone,0,8.161538461538,8.090288134484727,40
+SJTU-PCQA,longdress_13.ply,longdress.ply,PointPCA3,standalone,0,8.38137755102,7.7953360151753035,40
+SJTU-PCQA,longdress_14.ply,longdress.ply,PointPCA3,standalone,0,7.744897959184,7.103085876177292,40
+SJTU-PCQA,longdress_15.ply,longdress.ply,PointPCA3,standalone,0,5.7578125,5.5101726681056995,40
+SJTU-PCQA,longdress_16.ply,longdress.ply,PointPCA3,standalone,0,4.421875,3.569246680402831,40
+SJTU-PCQA,longdress_17.ply,longdress.ply,PointPCA3,standalone,0,2.126923076923,2.22577465986397,40
+SJTU-PCQA,longdress_18.ply,longdress.ply,PointPCA3,standalone,0,9.171875,8.253719641221878,40
+SJTU-PCQA,longdress_19.ply,longdress.ply,PointPCA3,standalone,0,6.783333333333,7.396095728676133,40
+SJTU-PCQA,longdress_20.ply,longdress.ply,PointPCA3,standalone,0,5.849489795918,6.438172332875407,40
+SJTU-PCQA,longdress_21.ply,longdress.ply,PointPCA3,standalone,0,4.136538461538,5.07645474391688,40
+SJTU-PCQA,longdress_22.ply,longdress.ply,PointPCA3,standalone,0,3.623724489796,3.2717807921244613,40
+SJTU-PCQA,longdress_23.ply,longdress.ply,PointPCA3,standalone,0,1.790384615385,2.1614159880299,40
+SJTU-PCQA,longdress_24.ply,longdress.ply,PointPCA3,standalone,0,7.833333333333,7.9051418105705515,40
+SJTU-PCQA,longdress_25.ply,longdress.ply,PointPCA3,standalone,0,6.640384615385,6.981129374345823,40
+SJTU-PCQA,longdress_26.ply,longdress.ply,PointPCA3,standalone,0,5.166666666667,4.945003687532732,40
+SJTU-PCQA,longdress_27.ply,longdress.ply,PointPCA3,standalone,0,3.191666666667,2.30776065378069,40
+SJTU-PCQA,longdress_28.ply,longdress.ply,PointPCA3,standalone,0,1.4453125,1.9015110544217304,40
+SJTU-PCQA,longdress_29.ply,longdress.ply,PointPCA3,standalone,0,1.075,1.2077621664050202,40
+SJTU-PCQA,longdress_30.ply,longdress.ply,PointPCA3,standalone,0,7.358333333333,8.058931833791274,40
+SJTU-PCQA,longdress_31.ply,longdress.ply,PointPCA3,standalone,0,6.985969387755,7.571080079147081,40
+SJTU-PCQA,longdress_32.ply,longdress.ply,PointPCA3,standalone,0,4.55,5.495255314625793,40
+SJTU-PCQA,longdress_33.ply,longdress.ply,PointPCA3,standalone,0,2.515625,2.8962091100862586,40
+SJTU-PCQA,longdress_34.ply,longdress.ply,PointPCA3,standalone,0,1.987244897959,2.0675572589613282,40
+SJTU-PCQA,longdress_35.ply,longdress.ply,PointPCA3,standalone,0,1.448979591837,1.5453861280089911,40
+SJTU-PCQA,longdress_36.ply,longdress.ply,PointPCA3,standalone,0,8.325,8.143021912611237,40
+SJTU-PCQA,longdress_37.ply,longdress.ply,PointPCA3,standalone,0,6.008333333333,7.504307422488278,40
+SJTU-PCQA,longdress_38.ply,longdress.ply,PointPCA3,standalone,0,4.825,5.3202478169152005,40
+SJTU-PCQA,longdress_39.ply,longdress.ply,PointPCA3,standalone,0,2.330769230769,2.9433363585818593,40
+SJTU-PCQA,longdress_40.ply,longdress.ply,PointPCA3,standalone,0,1.783333333333,2.25944689462319,40
+SJTU-PCQA,longdress_41.ply,longdress.ply,PointPCA3,standalone,0,1.433333333333,1.5011468144951308,40
+SJTU-PCQA,statue_0.ply,statue.ply,PointPCA3,standalone,0,6.908333333333,7.2317630249214595,40
+SJTU-PCQA,statue_1.ply,statue.ply,PointPCA3,standalone,0,7.6328125,7.0416229068551095,40
+SJTU-PCQA,statue_2.ply,statue.ply,PointPCA3,standalone,0,6.168367346939,6.581078746402442,40
+SJTU-PCQA,statue_3.ply,statue.ply,PointPCA3,standalone,0,4.938775510204,5.924147558542602,40
+SJTU-PCQA,statue_4.ply,statue.ply,PointPCA3,standalone,0,3.015625,5.2353525068681215,40
+SJTU-PCQA,statue_5.ply,statue.ply,PointPCA3,standalone,0,1.453125,2.950505837912031,40
+SJTU-PCQA,statue_6.ply,statue.ply,PointPCA3,standalone,0,7.40625,8.6261923731029,40
+SJTU-PCQA,statue_7.ply,statue.ply,PointPCA3,standalone,0,5.459183673469,7.419186698718055,40
+SJTU-PCQA,statue_8.ply,statue.ply,PointPCA3,standalone,0,6.4,7.365372498037836,40
+SJTU-PCQA,statue_9.ply,statue.ply,PointPCA3,standalone,0,5.899234693878,7.439686755952372,40
+SJTU-PCQA,statue_10.ply,statue.ply,PointPCA3,standalone,0,6.588461538462,6.809428800366138,40
+SJTU-PCQA,statue_11.ply,statue.ply,PointPCA3,standalone,0,5.107692307692,6.466628123364708,40
+SJTU-PCQA,statue_12.ply,statue.ply,PointPCA3,standalone,0,7.825,7.096260302197868,40
+SJTU-PCQA,statue_13.ply,statue.ply,PointPCA3,standalone,0,6.133333333333,6.944248471023023,40
+SJTU-PCQA,statue_14.ply,statue.ply,PointPCA3,standalone,0,6.054846938776,6.606835573652559,40
+SJTU-PCQA,statue_15.ply,statue.ply,PointPCA3,standalone,0,3.965384615385,6.068110552394039,40
+SJTU-PCQA,statue_16.ply,statue.ply,PointPCA3,standalone,0,3.4921875,5.225081845238042,40
+SJTU-PCQA,statue_17.ply,statue.ply,PointPCA3,standalone,0,1.1875,3.0342017104918,40
+SJTU-PCQA,statue_18.ply,statue.ply,PointPCA3,standalone,0,7.141666666667,7.12964672455526,40
+SJTU-PCQA,statue_19.ply,statue.ply,PointPCA3,standalone,0,6.762755102041,7.0812964007718096,40
+SJTU-PCQA,statue_20.ply,statue.ply,PointPCA3,standalone,0,6.1328125,6.7623978201857495,40
+SJTU-PCQA,statue_21.ply,statue.ply,PointPCA3,standalone,0,3.441326530612,5.45310220434327,40
+SJTU-PCQA,statue_22.ply,statue.ply,PointPCA3,standalone,0,2.5546875,4.5403985642333415,40
+SJTU-PCQA,statue_23.ply,statue.ply,PointPCA3,standalone,0,1.0,2.9266097838172795,40
+SJTU-PCQA,statue_24.ply,statue.ply,PointPCA3,standalone,0,5.813775510204,7.19569454801153,40
+SJTU-PCQA,statue_25.ply,statue.ply,PointPCA3,standalone,0,5.808673469388,6.877975789835158,40
+SJTU-PCQA,statue_26.ply,statue.ply,PointPCA3,standalone,0,4.765625,6.481025829081643,40
+SJTU-PCQA,statue_27.ply,statue.ply,PointPCA3,standalone,0,1.916666666667,5.409493156397129,40
+SJTU-PCQA,statue_28.ply,statue.ply,PointPCA3,standalone,0,2.073979591837,3.9212187091182624,40
+SJTU-PCQA,statue_29.ply,statue.ply,PointPCA3,standalone,0,1.0,2.2028966019100205,40
+SJTU-PCQA,statue_30.ply,statue.ply,PointPCA3,standalone,0,6.795918367347,7.916434630102088,40
+SJTU-PCQA,statue_31.ply,statue.ply,PointPCA3,standalone,0,6.525,7.418809016876009,40
+SJTU-PCQA,statue_32.ply,statue.ply,PointPCA3,standalone,0,6.536989795918,6.79784079016223,40
+SJTU-PCQA,statue_33.ply,statue.ply,PointPCA3,standalone,0,2.85,5.323025003270479,40
+SJTU-PCQA,statue_34.ply,statue.ply,PointPCA3,standalone,0,1.625,3.6086534046310095,40
+SJTU-PCQA,statue_35.ply,statue.ply,PointPCA3,standalone,0,1.690051020408,2.52485519688635,40
+SJTU-PCQA,statue_36.ply,statue.ply,PointPCA3,standalone,0,8.121153846154,7.802097633765059,40
+SJTU-PCQA,statue_37.ply,statue.ply,PointPCA3,standalone,0,6.784615384615,7.348203067765577,40
+SJTU-PCQA,statue_38.ply,statue.ply,PointPCA3,standalone,0,5.184615384615,6.64388830291733,40
+SJTU-PCQA,statue_39.ply,statue.ply,PointPCA3,standalone,0,3.1796875,5.266221211080549,40
+SJTU-PCQA,statue_40.ply,statue.ply,PointPCA3,standalone,0,2.463010204082,3.53902378499471,40
+SJTU-PCQA,statue_41.ply,statue.ply,PointPCA3,standalone,0,1.617307692308,2.6628404385792903,40
+SJTU-PCQA,shiva_0.ply,shiva.ply,PointPCA3,standalone,2,6.558333333333,6.800390404238557,40
+SJTU-PCQA,shiva_1.ply,shiva.ply,PointPCA3,standalone,2,7.834615384615,7.020106308869629,40
+SJTU-PCQA,shiva_2.ply,shiva.ply,PointPCA3,standalone,2,7.767307692308,6.201377878074339,40
+SJTU-PCQA,shiva_3.ply,shiva.ply,PointPCA3,standalone,2,5.991666666667,4.820128425889651,40
+SJTU-PCQA,shiva_4.ply,shiva.ply,PointPCA3,standalone,2,6.6171875,3.8665460491889405,40
+SJTU-PCQA,shiva_5.ply,shiva.ply,PointPCA3,standalone,2,3.262755102041,2.20575241202253,40
+SJTU-PCQA,shiva_6.ply,shiva.ply,PointPCA3,standalone,2,8.5,8.04397598606738,40
+SJTU-PCQA,shiva_7.ply,shiva.ply,PointPCA3,standalone,2,6.917091836735,7.337123103087167,40
+SJTU-PCQA,shiva_8.ply,shiva.ply,PointPCA3,standalone,2,7.844230769231,7.011833791208571,40
+SJTU-PCQA,shiva_9.ply,shiva.ply,PointPCA3,standalone,2,7.622448979592,6.198498462846731,40
+SJTU-PCQA,shiva_10.ply,shiva.ply,PointPCA3,standalone,2,6.784615384615,6.08223582221367,40
+SJTU-PCQA,shiva_11.ply,shiva.ply,PointPCA3,standalone,2,6.244897959184,5.658246958398709,40
+SJTU-PCQA,shiva_12.ply,shiva.ply,PointPCA3,standalone,2,6.975,7.168954449568313,40
+SJTU-PCQA,shiva_13.ply,shiva.ply,PointPCA3,standalone,2,6.816666666667,6.740981734039739,40
+SJTU-PCQA,shiva_14.ply,shiva.ply,PointPCA3,standalone,2,6.591666666667,6.153537652080152,40
+SJTU-PCQA,shiva_15.ply,shiva.ply,PointPCA3,standalone,2,6.331632653061,4.51813061715082,40
+SJTU-PCQA,shiva_16.ply,shiva.ply,PointPCA3,standalone,2,5.94387755102,3.83724866725536,40
+SJTU-PCQA,shiva_17.ply,shiva.ply,PointPCA3,standalone,2,3.4609375,1.9652171392595603,40
+SJTU-PCQA,shiva_18.ply,shiva.ply,PointPCA3,standalone,2,7.401785714286,7.281734857404506,40
+SJTU-PCQA,shiva_19.ply,shiva.ply,PointPCA3,standalone,2,6.833333333333,6.71225551085824,40
+SJTU-PCQA,shiva_20.ply,shiva.ply,PointPCA3,standalone,2,7.9921875,5.30474881442963,40
+SJTU-PCQA,shiva_21.ply,shiva.ply,PointPCA3,standalone,2,6.001923076923,3.873794070512752,40
+SJTU-PCQA,shiva_22.ply,shiva.ply,PointPCA3,standalone,2,5.0078125,3.12462812336474,40
+SJTU-PCQA,shiva_23.ply,shiva.ply,PointPCA3,standalone,2,2.955357142857,1.7927458464155202,40
+SJTU-PCQA,shiva_24.ply,shiva.ply,PointPCA3,standalone,2,6.525,6.853695774463549,40
+SJTU-PCQA,shiva_25.ply,shiva.ply,PointPCA3,standalone,2,7.78125,6.346708235217157,40
+SJTU-PCQA,shiva_26.ply,shiva.ply,PointPCA3,standalone,2,5.724489795918,4.624519288003691,40
+SJTU-PCQA,shiva_27.ply,shiva.ply,PointPCA3,standalone,2,3.3984375,2.17042758209055,40
+SJTU-PCQA,shiva_28.ply,shiva.ply,PointPCA3,standalone,2,2.021153846154,1.83533828819988,40
+SJTU-PCQA,shiva_29.ply,shiva.ply,PointPCA3,standalone,2,1.216666666667,1.2838300382652803,40
+SJTU-PCQA,shiva_30.ply,shiva.ply,PointPCA3,standalone,2,8.8359375,6.929618557038177,40
+SJTU-PCQA,shiva_31.ply,shiva.ply,PointPCA3,standalone,2,6.825,6.5392478169151556,40
+SJTU-PCQA,shiva_32.ply,shiva.ply,PointPCA3,standalone,2,5.75,5.42932949045002,40
+SJTU-PCQA,shiva_33.ply,shiva.ply,PointPCA3,standalone,2,2.830769230769,2.543708799385109,40
+SJTU-PCQA,shiva_34.ply,shiva.ply,PointPCA3,standalone,2,2.320153061224,1.88330005559917,40
+SJTU-PCQA,shiva_35.ply,shiva.ply,PointPCA3,standalone,2,1.600765306122,1.5402479395605007,40
+SJTU-PCQA,shiva_36.ply,shiva.ply,PointPCA3,standalone,2,7.084183673469,7.01528510923596,40
+SJTU-PCQA,shiva_37.ply,shiva.ply,PointPCA3,standalone,2,6.673469387755,6.568615662611119,40
+SJTU-PCQA,shiva_38.ply,shiva.ply,PointPCA3,standalone,2,5.828125,4.699776998299352,40
+SJTU-PCQA,shiva_39.ply,shiva.ply,PointPCA3,standalone,2,3.733333333333,2.361076522435919,40
+SJTU-PCQA,shiva_40.ply,shiva.ply,PointPCA3,standalone,2,3.041666666667,1.8470212585034402,40
+SJTU-PCQA,shiva_41.ply,shiva.ply,PointPCA3,standalone,2,2.108333333333,1.5508855801936803,40
+SJTU-PCQA,hhi_0.ply,hhi.ply,PointPCA3,standalone,1,9.516666666667,5.60032280219781,40
+SJTU-PCQA,hhi_1.ply,hhi.ply,PointPCA3,standalone,1,7.7109375,5.15337874476716,40
+SJTU-PCQA,hhi_2.ply,hhi.ply,PointPCA3,standalone,1,8.9453125,4.886042369832551,40
+SJTU-PCQA,hhi_3.ply,hhi.ply,PointPCA3,standalone,1,7.371153846154,4.261825802917371,40
+SJTU-PCQA,hhi_4.ply,hhi.ply,PointPCA3,standalone,1,4.183333333333,3.866297136643201,40
+SJTU-PCQA,hhi_5.ply,hhi.ply,PointPCA3,standalone,1,1.953125,2.1072112522893405,40
+SJTU-PCQA,hhi_6.ply,hhi.ply,PointPCA3,standalone,1,9.796875,6.947204972854435,40
+SJTU-PCQA,hhi_7.ply,hhi.ply,PointPCA3,standalone,1,6.776923076923,6.59139511381472,40
+SJTU-PCQA,hhi_8.ply,hhi.ply,PointPCA3,standalone,1,6.107692307692,6.302463141025608,40
+SJTU-PCQA,hhi_9.ply,hhi.ply,PointPCA3,standalone,1,6.140625,5.8086470516089825,40
+SJTU-PCQA,hhi_10.ply,hhi.ply,PointPCA3,standalone,1,4.808333333333,5.113591501504352,40
+SJTU-PCQA,hhi_11.ply,hhi.ply,PointPCA3,standalone,1,5.021153846154,4.813003851059573,40
+SJTU-PCQA,hhi_12.ply,hhi.ply,PointPCA3,standalone,1,8.741666666667,5.836311052786499,40
+SJTU-PCQA,hhi_13.ply,hhi.ply,PointPCA3,standalone,1,6.534615384615,5.777313726452141,40
+SJTU-PCQA,hhi_14.ply,hhi.ply,PointPCA3,standalone,1,7.015625,5.3853374051543685,40
+SJTU-PCQA,hhi_15.ply,hhi.ply,PointPCA3,standalone,1,4.9296875,4.56873675431716,40
+SJTU-PCQA,hhi_16.ply,hhi.ply,PointPCA3,standalone,1,4.05612244898,3.7769996320644315,40
+SJTU-PCQA,hhi_17.ply,hhi.ply,PointPCA3,standalone,1,1.785714285714,2.0225846088435206,40
+SJTU-PCQA,hhi_18.ply,hhi.ply,PointPCA3,standalone,1,8.238461538462,5.76639256279432,40
+SJTU-PCQA,hhi_19.ply,hhi.ply,PointPCA3,standalone,1,7.399234693878,4.9807066898874615,40
+SJTU-PCQA,hhi_20.ply,hhi.ply,PointPCA3,standalone,1,5.016666666667,4.444782746271602,40
+SJTU-PCQA,hhi_21.ply,hhi.ply,PointPCA3,standalone,1,4.308333333333,3.399693493262729,40
+SJTU-PCQA,hhi_22.ply,hhi.ply,PointPCA3,standalone,1,2.4453125,3.19762649627164,40
+SJTU-PCQA,hhi_23.ply,hhi.ply,PointPCA3,standalone,1,1.905769230769,1.8397652570643503,40
+SJTU-PCQA,hhi_24.ply,hhi.ply,PointPCA3,standalone,1,7.680769230769,5.674373421964929,40
+SJTU-PCQA,hhi_25.ply,hhi.ply,PointPCA3,standalone,1,6.366666666667,5.346220328035071,40
+SJTU-PCQA,hhi_26.ply,hhi.ply,PointPCA3,standalone,1,4.5625,4.55530769230777,40
+SJTU-PCQA,hhi_27.ply,hhi.ply,PointPCA3,standalone,1,2.208333333333,2.14861092850602,40
+SJTU-PCQA,hhi_28.ply,hhi.ply,PointPCA3,standalone,1,1.540384615385,1.597011455062801,40
+SJTU-PCQA,hhi_29.ply,hhi.ply,PointPCA3,standalone,1,1.0,1.2209885367608704,40
+SJTU-PCQA,hhi_30.ply,hhi.ply,PointPCA3,standalone,1,9.464285714286,5.807787905546837,40
+SJTU-PCQA,hhi_31.ply,hhi.ply,PointPCA3,standalone,1,8.3125,5.438624444008388,40
+SJTU-PCQA,hhi_32.ply,hhi.ply,PointPCA3,standalone,1,6.836734693878,4.778032803506046,40
+SJTU-PCQA,hhi_33.ply,hhi.ply,PointPCA3,standalone,1,3.475,2.4511148040947206,40
+SJTU-PCQA,hhi_34.ply,hhi.ply,PointPCA3,standalone,1,1.867307692308,2.04809465757456,40
+SJTU-PCQA,hhi_35.ply,hhi.ply,PointPCA3,standalone,1,1.1953125,1.3902983712716406,40
+SJTU-PCQA,hhi_36.ply,hhi.ply,PointPCA3,standalone,1,8.219230769231,5.794565500719489,40
+SJTU-PCQA,hhi_37.ply,hhi.ply,PointPCA3,standalone,1,5.842307692308,4.820882244243871,40
+SJTU-PCQA,hhi_38.ply,hhi.ply,PointPCA3,standalone,1,4.920918367347,3.8640106374280787,40
+SJTU-PCQA,hhi_39.ply,hhi.ply,PointPCA3,standalone,1,2.4921875,1.9764279418498807,40
+SJTU-PCQA,hhi_40.ply,hhi.ply,PointPCA3,standalone,1,2.083333333333,1.7967470156331802,40
+SJTU-PCQA,hhi_41.ply,hhi.ply,PointPCA3,standalone,1,1.5,1.3335077184721513,40

@@ -1,0 +1,2 @@
+dataset,selected_pipeline,selected_iqa,samples,reference_groups,matlab_median_time,matlab_time_iqr,pointpcapp_median_time,pointpcapp_time_iqr,median_speedup,speedup_iqr,speedup_ci_low,speedup_ci_high,pointpca3_bottleneck_samples,cubemap_bottleneck_samples
+APSIPA,crop_pad_navier,DISTSMetric,232,8,135.7439216375351,57.13869792222977,4.984736442565918,0.7328674197196969,30.663952190048086,11.827897981593821,19.5135108056059,35.21804049475924,0,232

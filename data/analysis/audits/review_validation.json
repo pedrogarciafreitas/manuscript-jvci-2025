@@ -1,0 +1,39 @@
+{
+  "baseline_prediction_rows": 14282,
+  "diagnostic_arms": 77,
+  "diagnostic_prediction_rows": 17864,
+  "errors": [],
+  "exhibits_referenced_outside_captions": 43,
+  "feature_dataset_pairs": 160,
+  "frozen_artifacts_verified": 259,
+  "frozen_prediction_rows": 3638,
+  "full_review_complete": false,
+  "heatmap_cells": 220,
+  "reading_flow": {
+    "canonical_method_names": true,
+    "float_barriers_at_argument_boundaries": true,
+    "main_exhibits_retained": 21,
+    "no_duplicate_error_rmse": true,
+    "pointpca_memory_limit_documented": true,
+    "runtime_continued_parts": 2,
+    "selection_before_final_comparisons": true,
+    "sota_pending_note": true,
+    "subsection_order": [
+      "sec_results_projection_analysis",
+      "sec_results_regression_features",
+      "sec_results_pca_family",
+      "sec_results_pointpcapp_sota",
+      "sec_results_diagnostics",
+      "sec_results_errors",
+      "sec_results_transfer",
+      "sec_results_pointpca3_runtime"
+    ],
+    "unmatched_sota_table_removed": true
+  },
+  "registry_entries": 41,
+  "request_status_counts": {
+    "blocked": 6,
+    "complete": 13
+  },
+  "source_csvs_verified": 300
+}

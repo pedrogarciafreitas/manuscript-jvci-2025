@@ -1,0 +1,8 @@
+{
+  "outer_selection_frequency": {
+    "DISTSMetric": 5
+  },
+  "selected_iqa": "DISTSMetric",
+  "selected_pipeline": "crop_pad_navier",
+  "selected_regressor": "RandomForestRegressor"
+}

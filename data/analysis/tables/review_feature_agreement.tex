@@ -1,0 +1,55 @@
+\begin{table*}[t!]
+\centering
+\caption{Per-feature agreement between PointPCA+ and PointPCA+RS on matched samples. Each dataset pair is Spearman correlation and MAE in that feature\textquotesingle s native units; nonzero MAE below 0.0005 uses compact scientific notation. Indices follow the audited 40-slot correspondence; different features need not share units. Pearson correlation, bias, RMSE, clustered intervals and invalid/constant-value flags are retained in the accompanying numerical artifact. Agreement is descriptive and does not establish equivalence.}
+\label{tab_review_feature_agreement}
+\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{llrrrrrrrr}
+\toprule
+Index & Feature & \multicolumn{2}{c}{APSIPA} & \multicolumn{2}{c}{ICIP2023} & \multicolumn{2}{c}{SJTU-PCQA} & \multicolumn{2}{c}{UnB\_PC} \\
+ & & Spearman & MAE & Spearman & MAE & Spearman & MAE & Spearman & MAE \\
+\midrule
+0 & t\_mu\_y & 1.000 & 1.3e-5 & 1.000 & 1.8e-5 & 1.000 & 5.5e-6 & 1.000 & 5.0e-6 \\
+1 & t\_mu\_u & 1.000 & 1.6e-6 & 1.000 & 1.4e-6 & 1.000 & 8.7e-7 & 1.000 & 1.1e-6 \\
+2 & t\_mu\_v & 1.000 & 7.4e-7 & 1.000 & 1.1e-6 & 1.000 & 1.2e-6 & 1.000 & 3.4e-7 \\
+3 & t\_var\_y & 1.000 & 6.5e-5 & 1.000 & 1.2e-4 & 1.000 & 5.8e-5 & 1.000 & 2.5e-5 \\
+4 & t\_var\_u & 1.000 & 5.9e-5 & 1.000 & 8.3e-5 & 1.000 & 3.3e-5 & 1.000 & 2.7e-5 \\
+5 & t\_var\_v & 1.000 & 5.1e-5 & 1.000 & 7.4e-5 & 1.000 & 4.5e-5 & 1.000 & 1.0e-5 \\
+6 & t\_cov\_y & 0.997 & 0.002 & 0.935 & 0.019 & 1.000 & 0.001 & 0.999 & 1.5e-4 \\
+7 & t\_cov\_u & 1.000 & 4.7e-4 & 0.976 & 0.011 & 1.000 & 0.001 & 1.000 & 9.9e-5 \\
+8 & t\_cov\_v & 1.000 & 3.9e-4 & 0.978 & 0.010 & 0.999 & 0.001 & 1.000 & 8.0e-5 \\
+9 & t\_varsum & 1.000 & 6.5e-5 & 1.000 & 1.2e-4 & 1.000 & 5.4e-5 & 1.000 & 2.1e-5 \\
+10 & t\_omnivariance & 1.000 & 6.2e-5 & 1.000 & 1.0e-4 & 1.000 & 4.7e-5 & 1.000 & 1.6e-5 \\
+11 & t\_entropy & 1.000 & 7.3e-5 & 1.000 & 1.3e-4 & 1.000 & 6.6e-5 & 1.000 & 2.6e-5 \\
+12 & g\_pB2pA & 1.000 & 1.9e-7 & 1.000 & 3.6e-7 & 1.000 & 9.3e-10 & 1.000 & 6.3e-11 \\
+13 & g\_vAB2plA\_x & 0.998 & 0.007 & 0.999 & 0.006 & 1.000 & 0.001 & 1.000 & 2.3e-7 \\
+14 & g\_vAB2plA\_y & 0.999 & 0.007 & 0.998 & 0.007 & 1.000 & 0.001 & 1.000 & 1.4e-7 \\
+15 & g\_vAB2plA\_z & 0.993 & 0.013 & 0.997 & 0.012 & 1.000 & 0.002 & 1.000 & 9.3e-8 \\
+16 & g\_pA2plA\_y & 1.000 & 0.007 & 0.995 & 0.007 & 0.983 & 0.004 & 1.000 & 7.7e-7 \\
+17 & g\_pA2plA\_z & 1.000 & 2.7e-4 & 1.000 & 2.2e-4 & 1.000 & 2.1e-4 & 1.000 & 1.4e-7 \\
+18 & g\_pB2cA & 0.999 & 0.012 & 0.999 & 0.015 & 1.000 & 0.003 & 1.000 & 8.3e-7 \\
+19 & g\_pB2plA\_y & 0.997 & 0.007 & 0.999 & 0.006 & 1.000 & 0.003 & 1.000 & 7.4e-7 \\
+20 & g\_pB2plA\_z & 0.965 & 0.019 & 0.983 & 0.024 & 1.000 & 0.002 & 1.000 & 2.6e-7 \\
+21 & g\_cB2cA & 1.000 & 0.003 & 1.000 & 0.002 & 1.000 & 0.001 & 1.000 & 5.6e-7 \\
+22 & g\_cB2plA\_y & 1.000 & 0.002 & 0.998 & 0.003 & 1.000 & 0.001 & 0.998 & 5.2e-7 \\
+23 & g\_cB2plA\_z & 1.000 & 0.001 & 1.000 & 4.7e-4 & 1.000 & 1.1e-4 & 1.000 & 1.8e-7 \\
+24 & g\_var\_x & 1.000 & 2.2e-4 & 1.000 & 2.4e-4 & 1.000 & 1.4e-4 & 1.000 & 4.2e-5 \\
+25 & g\_var\_y & 1.000 & 1.7e-4 & 1.000 & 2.3e-4 & 1.000 & 9.5e-5 & 1.000 & 4.5e-5 \\
+26 & g\_var\_z & 1.000 & 1.2e-4 & 1.000 & 3.2e-4 & 1.000 & 4.7e-5 & 1.000 & 4.8e-5 \\
+27 & g\_cov\_x & 0.838 & 0.001 & 0.803 & 0.045 & 0.942 & 0.001 & 0.956 & 1.5e-4 \\
+28 & g\_cov\_y & 0.939 & 0.001 & 0.769 & 0.043 & 0.958 & 0.001 & 0.998 & 1.3e-4 \\
+29 & g\_cov\_z & 0.995 & 0.002 & 0.989 & 0.008 & 0.998 & 0.008 & 0.995 & 3.1e-4 \\
+30 & g\_omnivariance & 1.000 & 5.9e-5 & 0.987 & 0.006 & 0.998 & 0.004 & 1.000 & 8.4e-5 \\
+31 & g\_entropy & 1.000 & 1.7e-4 & 1.000 & 1.3e-4 & 1.000 & 6.1e-5 & 1.000 & 1.0e-5 \\
+32 & g\_anisotropy & 1.000 & 1.3e-4 & 1.000 & 1.3e-4 & 1.000 & 2.0e-5 & 1.000 & 7.9e-6 \\
+33 & g\_planarity & 1.000 & 3.6e-4 & 1.000 & 4.9e-4 & 1.000 & 1.8e-4 & 1.000 & 6.9e-5 \\
+34 & g\_linearity & 0.999 & 0.001 & 0.999 & 0.003 & 1.000 & 0.001 & 1.000 & 4.7e-4 \\
+35 & g\_surfaceVariation & 1.000 & 1.8e-4 & 1.000 & 3.8e-4 & 1.000 & 5.1e-5 & 1.000 & 8.5e-5 \\
+36 & g\_sphericity & 1.000 & 2.6e-4 & 1.000 & 4.7e-4 & 1.000 & 1.3e-4 & 1.000 & 9.6e-5 \\
+37 & g\_asim\_y & 0.999 & 0.001 & 0.630 & 0.033 & 0.997 & 0.001 & 0.999 & 2.7e-4 \\
+38 & g\_paralellity\_x & 0.998 & 0.001 & 0.699 & 0.032 & 0.996 & 0.001 & 1.000 & 4.5e-4 \\
+39 & g\_paralellity\_z & 0.965 & 0.003 & 0.524 & 0.092 & 0.804 & 0.010 & 0.965 & 0.001 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

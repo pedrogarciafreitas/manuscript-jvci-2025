@@ -1,0 +1,196 @@
+{
+  "bootstrap": {
+    "cluster": "REF",
+    "invalid_replicates": {
+      "APSIPA": {
+        "plcc": 0,
+        "rmse": 0,
+        "srocc": 0
+      },
+      "ICIP2023": {
+        "plcc": 0,
+        "rmse": 0,
+        "srocc": 0
+      },
+      "LS-PCQA": {
+        "plcc": 0,
+        "rmse": 0,
+        "srocc": 0
+      },
+      "SJTU-PCQA": {
+        "plcc": 0,
+        "rmse": 0,
+        "srocc": 0
+      },
+      "UnB_PC": {
+        "plcc": 0,
+        "rmse": 0,
+        "srocc": 0
+      },
+      "WPC": {
+        "plcc": 0,
+        "rmse": 0,
+        "srocc": 0
+      },
+      "WPC2": {
+        "plcc": 0,
+        "rmse": 0,
+        "srocc": 0
+      }
+    },
+    "repeats": 10000,
+    "seed": 42
+  },
+  "cross_dataset_transfer": {
+    "directed_pairs": 18,
+    "manifest": "data/analysis/manifests/cross_dataset_transfer.json",
+    "prediction_rows": 9012,
+    "sources": [
+      "APSIPA",
+      "WPC",
+      "LS-PCQA"
+    ],
+    "target_fitting_or_calibration": false,
+    "targets_per_source": 6
+  },
+  "datasets": [
+    "APSIPA",
+    "ICIP2023",
+    "LS-PCQA",
+    "SJTU-PCQA",
+    "UnB_PC",
+    "WPC",
+    "WPC2"
+  ],
+  "feature_extraction_provenance": {
+    "commit": "a64ed60788927b15ccf4a653493d8dedea5673c7",
+    "execution_order": "PointPCA3 then cubemap/DISTS (sequential)",
+    "hardware": "AMD Ryzen Threadripper 2950X, 128 GB RAM, NVIDIA GeForce RTX 5090",
+    "hardware_status": "author_confirmed",
+    "repository": "https://gitlab.com/gpds-unb/pointpcapp",
+    "timing_scope": "point counting, point-cloud loading, complete feature extraction; excludes CSV serialization and regression inference; initialization warm-up precedes recorded rows",
+    "worker_count": 16,
+    "worker_count_status": "author_assumed_unverified; public script at recorded commit passes 32"
+  },
+  "feature_order": [
+    "pc3__f00",
+    "pc3__f01",
+    "pc3__f02",
+    "pc3__f03",
+    "pc3__f04",
+    "pc3__f05",
+    "pc3__f06",
+    "pc3__f07",
+    "pc3__f08",
+    "pc3__f09",
+    "pc3__f10",
+    "pc3__f11",
+    "pc3__f12",
+    "pc3__f13",
+    "pc3__f14",
+    "pc3__f15",
+    "pc3__f16",
+    "pc3__f17",
+    "pc3__f18",
+    "pc3__f19",
+    "pc3__f20",
+    "pc3__f21",
+    "pc3__f22",
+    "pc3__f23",
+    "pc3__f24",
+    "pc3__f25",
+    "pc3__f26",
+    "pc3__f27",
+    "pc3__f28",
+    "pc3__f29",
+    "pc3__f30",
+    "pc3__f31",
+    "pc3__f32",
+    "pc3__f33",
+    "pc3__f34",
+    "pc3__f35",
+    "pc3__f36",
+    "pc3__f37",
+    "pc3__f38",
+    "pc3__f39",
+    "proj__crop_pad_navier__distsmetric__view0",
+    "proj__crop_pad_navier__distsmetric__view1",
+    "proj__crop_pad_navier__distsmetric__view2",
+    "proj__crop_pad_navier__distsmetric__view3",
+    "proj__crop_pad_navier__distsmetric__view4",
+    "proj__crop_pad_navier__distsmetric__view5"
+  ],
+  "features": 46,
+  "finished_utc": "2026-09-30T21:45:50Z",
+  "folds": "five-fold GroupKFold independently within each dataset, grouped by REF",
+  "legacy_runtime_artifacts": {
+    "prediction": "runtime_pointpcapp_by_sample.csv",
+    "status": "preserved_not_used_in_manuscript",
+    "summary": "runtime_pointpcapp_summary.csv"
+  },
+  "packages": {
+    "lazypredict": "0.3.0",
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "python": "3.12.9 (main, Mar 17 2025, 21:01:58) [Clang 20.1.0 ]",
+    "scikit_learn": "1.8.0",
+    "scipy": "1.17.1"
+  },
+  "qomex2019_status": "pending_missing_complete_file",
+  "reference_groups": 189,
+  "resolved_model_pipeline": {
+    "imputer": "SimpleImputer()",
+    "imputer_strategy": "mean",
+    "pipeline": "Pipeline(steps=[('preprocessor',\n                 ColumnTransformer(transformers=[('numeric',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer()),\n                                                                  ('scaler',\n                                                                   StandardScaler())]),\n                                                  Index(['pc3__f00', 'pc3__f01', 'pc3__f02', 'pc3__f03', 'pc3__f04', 'pc3__f05',\n       'pc3__f06', 'pc3__f07', 'pc3__f08', 'pc3__f09', 'pc3__f10', 'pc3__f11',\n       'pc3__f12', 'pc3__f13', 'pc3__f14', 'pc3__f15', 'pc3__f16', 'pc3__f...\n                                                                   OneHotEncoder(handle_unknown='ignore',\n                                                                                 sparse_output=False))]),\n                                                  Index([], dtype='str')),\n                                                 ('categorical_high',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer(fill_value='missing',\n                                                                                 strategy='constant')),\n                                                                  ('encoding',\n                                                                   OrdinalEncoder(handle_unknown='use_encoded_value',\n                                                                                  unknown_value=-1))]),\n                                                  Index([], dtype='str'))])),\n                ('regressor', ExtraTreesRegressor(random_state=42))])",
+    "regressor_parameters": {
+      "bootstrap": false,
+      "ccp_alpha": 0.0,
+      "criterion": "squared_error",
+      "max_depth": null,
+      "max_features": 1.0,
+      "max_leaf_nodes": null,
+      "max_samples": null,
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 1,
+      "min_samples_split": 2,
+      "min_weight_fraction_leaf": 0.0,
+      "monotonic_cst": null,
+      "n_estimators": 100,
+      "n_jobs": null,
+      "oob_score": false,
+      "random_state": 42,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "scaler": "StandardScaler()"
+  },
+  "run_id": "20260930T213454",
+  "samples": 3638,
+  "script": "analysis/experimental_results/scripts/run_analysis.py",
+  "script_sha256": "18d1ebed206258691d2d4bd61f6bb57b365c12411badef70f54c278a929f60e1",
+  "seed": 42,
+  "selected_configuration": {
+    "feature_set": "fusion_46",
+    "iqa": "DISTSMetric",
+    "projection": "crop_pad_navier",
+    "regressor": "ExtraTreesRegressor"
+  },
+  "selection_frozen": true,
+  "selection_roles": {
+    "evaluation_only": [
+      "ICIP2023",
+      "SJTU-PCQA",
+      "UnB_PC",
+      "WPC2"
+    ],
+    "model_selection": [
+      "APSIPA",
+      "WPC",
+      "LS-PCQA"
+    ]
+  },
+  "sota_comparison_status": "deferred",
+  "source_hash_manifest": "data/analysis/manifests/final_pointpcapp_source_hashes.csv",
+  "source_hash_manifest_sha256": "e875770fb6c954a39bbaec5915ff6c6c57fc6e3ddebec1bfaa0bbd8c5cda4e62",
+  "started_utc": "2026-09-30T21:34:54Z"
+}

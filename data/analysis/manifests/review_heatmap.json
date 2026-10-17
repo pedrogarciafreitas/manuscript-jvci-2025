@@ -1,0 +1,1331 @@
+{
+  "annotations": [
+    {
+      "display": "0.532",
+      "iqa": "AHIQMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.5318371780385546
+    },
+    {
+      "display": "0.518",
+      "iqa": "CKDNMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.5182701121992253
+    },
+    {
+      "display": "0.880",
+      "iqa": "CW_SSIMMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.8803290074634084
+    },
+    {
+      "display": "0.962",
+      "iqa": "DISTSMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.9620001536690304
+    },
+    {
+      "display": "0.897",
+      "iqa": "DSSMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.8970143435423819
+    },
+    {
+      "display": "0.919",
+      "iqa": "FSIMMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.919023159103229
+    },
+    {
+      "display": "0.819",
+      "iqa": "GMSDMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.8190112739626646
+    },
+    {
+      "display": "0.859",
+      "iqa": "HaarPSIMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.8589637304367052
+    },
+    {
+      "display": "0.921",
+      "iqa": "MADMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.921312897941344
+    },
+    {
+      "display": "0.913",
+      "iqa": "MDSIMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.9130677390077604
+    },
+    {
+      "display": "0.808",
+      "iqa": "MSGMSDMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.8084216201819328
+    },
+    {
+      "display": "0.822",
+      "iqa": "MSSSIMMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.8219083560636842
+    },
+    {
+      "display": "0.556",
+      "iqa": "NLPDMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.5563632019259074
+    },
+    {
+      "display": "0.910",
+      "iqa": "PIEAPPMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.910485100301236
+    },
+    {
+      "display": "0.543",
+      "iqa": "PSNRMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.5431366675820442
+    },
+    {
+      "display": "0.870",
+      "iqa": "SRSSIMMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.8704903056256067
+    },
+    {
+      "display": "0.693",
+      "iqa": "SSIMCMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.6927972224101948
+    },
+    {
+      "display": "0.897",
+      "iqa": "SSIMMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.8965339028445218
+    },
+    {
+      "display": "0.918",
+      "iqa": "TOPIQ_FRMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.9178941832629518
+    },
+    {
+      "display": "0.704",
+      "iqa": "VIFMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.7037197930031568
+    },
+    {
+      "display": "0.868",
+      "iqa": "VSIMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.8679787127459083
+    },
+    {
+      "display": "0.875",
+      "iqa": "WADIQAM_FRMetric",
+      "pipeline": "crop_pad_fsr",
+      "value": 0.8752096358485073
+    },
+    {
+      "display": "0.761",
+      "iqa": "AHIQMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.7614248956886464
+    },
+    {
+      "display": "0.464",
+      "iqa": "CKDNMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.4637488763195685
+    },
+    {
+      "display": "0.897",
+      "iqa": "CW_SSIMMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.8970143435423819
+    },
+    {
+      "display": "0.941",
+      "iqa": "DISTSMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.9411856147874224
+    },
+    {
+      "display": "0.846",
+      "iqa": "DSSMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.8457760618007091
+    },
+    {
+      "display": "0.906",
+      "iqa": "FSIMMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.906169418127643
+    },
+    {
+      "display": "0.896",
+      "iqa": "GMSDMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.8962739916314445
+    },
+    {
+      "display": "0.914",
+      "iqa": "HaarPSIMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.9141285157623896
+    },
+    {
+      "display": "0.920",
+      "iqa": "MADMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.92045735407679
+    },
+    {
+      "display": "0.917",
+      "iqa": "MDSIMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.91677236873054
+    },
+    {
+      "display": "0.890",
+      "iqa": "MSGMSDMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.8899622373430585
+    },
+    {
+      "display": "0.817",
+      "iqa": "MSSSIMMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.8171183664083901
+    },
+    {
+      "display": "0.598",
+      "iqa": "NLPDMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.5975923970877198
+    },
+    {
+      "display": "0.868",
+      "iqa": "PIEAPPMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.8681383895905899
+    },
+    {
+      "display": "0.499",
+      "iqa": "PSNRMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.4987143990723704
+    },
+    {
+      "display": "0.936",
+      "iqa": "SRSSIMMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.9359211607658292
+    },
+    {
+      "display": "0.692",
+      "iqa": "SSIMCMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.6923656690792163
+    },
+    {
+      "display": "0.889",
+      "iqa": "SSIMMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.8892021412073559
+    },
+    {
+      "display": "0.925",
+      "iqa": "TOPIQ_FRMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.9249396907839816
+    },
+    {
+      "display": "0.748",
+      "iqa": "VIFMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.7484278598805071
+    },
+    {
+      "display": "0.873",
+      "iqa": "VSIMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.8730577380017402
+    },
+    {
+      "display": "0.858",
+      "iqa": "WADIQAM_FRMetric",
+      "pipeline": "crop_pad_navier",
+      "value": 0.8580984769719082
+    },
+    {
+      "display": "0.760",
+      "iqa": "AHIQMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.7601900191143863
+    },
+    {
+      "display": "0.274",
+      "iqa": "CKDNMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.2739086166752146
+    },
+    {
+      "display": "0.919",
+      "iqa": "CW_SSIMMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.918748171249356
+    },
+    {
+      "display": "0.928",
+      "iqa": "DISTSMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.9281176369085754
+    },
+    {
+      "display": "0.898",
+      "iqa": "DSSMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.8975082941720859
+    },
+    {
+      "display": "0.914",
+      "iqa": "FSIMMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.9139745961604766
+    },
+    {
+      "display": "0.871",
+      "iqa": "GMSDMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.871297125021159
+    },
+    {
+      "display": "0.845",
+      "iqa": "HaarPSIMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.8451595349506849
+    },
+    {
+      "display": "0.908",
+      "iqa": "MADMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.9077466617362588
+    },
+    {
+      "display": "0.908",
+      "iqa": "MDSIMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.9081282327107209
+    },
+    {
+      "display": "0.848",
+      "iqa": "MSGMSDMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.8482182411979081
+    },
+    {
+      "display": "0.792",
+      "iqa": "MSSSIMMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.7923949090748076
+    },
+    {
+      "display": "0.658",
+      "iqa": "NLPDMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.6575296907597064
+    },
+    {
+      "display": "0.885",
+      "iqa": "PIEAPPMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.8851600953450254
+    },
+    {
+      "display": "0.481",
+      "iqa": "PSNRMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.4806734704051046
+    },
+    {
+      "display": "0.830",
+      "iqa": "SRSSIMMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.8299817998242617
+    },
+    {
+      "display": "0.720",
+      "iqa": "SSIMCMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.7199725616590941
+    },
+    {
+      "display": "0.874",
+      "iqa": "SSIMMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.873945995496717
+    },
+    {
+      "display": "0.940",
+      "iqa": "TOPIQ_FRMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.9403093109358898
+    },
+    {
+      "display": "0.793",
+      "iqa": "VIFMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.7933829326522076
+    },
+    {
+      "display": "0.839",
+      "iqa": "VSIMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.8387281692373152
+    },
+    {
+      "display": "0.869",
+      "iqa": "WADIQAM_FRMetric",
+      "pipeline": "crop_pad_telea",
+      "value": 0.8692787304175871
+    },
+    {
+      "display": "0.600",
+      "iqa": "AHIQMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.6004067024692766
+    },
+    {
+      "display": "0.092",
+      "iqa": "CKDNMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.091785250259534
+    },
+    {
+      "display": "0.526",
+      "iqa": "CW_SSIMMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.5261286015585402
+    },
+    {
+      "display": "0.547",
+      "iqa": "DISTSMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.5466164199454905
+    },
+    {
+      "display": "0.624",
+      "iqa": "DSSMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.6243539958237232
+    },
+    {
+      "display": "0.439",
+      "iqa": "FSIMMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.438969578349147
+    },
+    {
+      "display": "0.428",
+      "iqa": "GMSDMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.4281053739042472
+    },
+    {
+      "display": "0.662",
+      "iqa": "HaarPSIMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.6617058798817795
+    },
+    {
+      "display": "0.371",
+      "iqa": "MADMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.370911235744136
+    },
+    {
+      "display": "0.447",
+      "iqa": "MDSIMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.4465316552410172
+    },
+    {
+      "display": "0.495",
+      "iqa": "MSGMSDMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.4948658944561732
+    },
+    {
+      "display": "0.400",
+      "iqa": "MSSSIMMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.3995260946404267
+    },
+    {
+      "display": "0.314",
+      "iqa": "NLPDMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.3139058262230823
+    },
+    {
+      "display": "0.342",
+      "iqa": "PIEAPPMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.3424412683449676
+    },
+    {
+      "display": "0.565",
+      "iqa": "PSNRMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.5653387884753236
+    },
+    {
+      "display": "0.395",
+      "iqa": "SRSSIMMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.3945810376714697
+    },
+    {
+      "display": "0.258",
+      "iqa": "SSIMCMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.2581907668142841
+    },
+    {
+      "display": "0.245",
+      "iqa": "SSIMMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.2450928646012406
+    },
+    {
+      "display": "0.326",
+      "iqa": "TOPIQ_FRMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.3259525563870377
+    },
+    {
+      "display": "0.317",
+      "iqa": "VIFMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.317322950128682
+    },
+    {
+      "display": "0.255",
+      "iqa": "VSIMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.2553726391146083
+    },
+    {
+      "display": "0.377",
+      "iqa": "WADIQAM_FRMetric",
+      "pipeline": "crop_pad_shiftmap",
+      "value": 0.3768398785395628
+    },
+    {
+      "display": "0.604",
+      "iqa": "AHIQMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.6043879195047427
+    },
+    {
+      "display": "0.150",
+      "iqa": "CKDNMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.149765288118145
+    },
+    {
+      "display": "0.711",
+      "iqa": "CW_SSIMMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.710794956143991
+    },
+    {
+      "display": "0.926",
+      "iqa": "DISTSMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.9257539998105596
+    },
+    {
+      "display": "0.900",
+      "iqa": "DSSMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.8999780473206056
+    },
+    {
+      "display": "0.728",
+      "iqa": "FSIMMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.7278260221348205
+    },
+    {
+      "display": "0.778",
+      "iqa": "GMSDMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.777554033891348
+    },
+    {
+      "display": "0.866",
+      "iqa": "HaarPSIMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.8655803277354346
+    },
+    {
+      "display": "0.891",
+      "iqa": "MADMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.8911329272365603
+    },
+    {
+      "display": "0.811",
+      "iqa": "MDSIMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.8110288881736856
+    },
+    {
+      "display": "0.752",
+      "iqa": "MSGMSDMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.7515458830945673
+    },
+    {
+      "display": "0.807",
+      "iqa": "MSSSIMMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.8072380254244793
+    },
+    {
+      "display": "0.772",
+      "iqa": "NLPDMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.7720453286965818
+    },
+    {
+      "display": "0.840",
+      "iqa": "PIEAPPMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.8398595957162494
+    },
+    {
+      "display": "0.536",
+      "iqa": "PSNRMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.5357557848451551
+    },
+    {
+      "display": "0.853",
+      "iqa": "SRSSIMMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.8525863527724619
+    },
+    {
+      "display": "0.909",
+      "iqa": "SSIMCMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.9089065666035204
+    },
+    {
+      "display": "0.760",
+      "iqa": "SSIMMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.7595431251262573
+    },
+    {
+      "display": "0.883",
+      "iqa": "TOPIQ_FRMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.8831305034194854
+    },
+    {
+      "display": "0.860",
+      "iqa": "VIFMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.859790787502664
+    },
+    {
+      "display": "0.900",
+      "iqa": "VSIMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.9000894790114086
+    },
+    {
+      "display": "0.849",
+      "iqa": "WADIQAM_FRMetric",
+      "pipeline": "nocrop_pad_fsr",
+      "value": 0.8492062647753081
+    },
+    {
+      "display": "0.682",
+      "iqa": "AHIQMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.6818988443063095
+    },
+    {
+      "display": "0.239",
+      "iqa": "CKDNMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.238790870408111
+    },
+    {
+      "display": "0.845",
+      "iqa": "CW_SSIMMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.8450980108802363
+    },
+    {
+      "display": "0.922",
+      "iqa": "DISTSMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.9219970312796272
+    },
+    {
+      "display": "0.896",
+      "iqa": "DSSMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.8955324916532701
+    },
+    {
+      "display": "0.816",
+      "iqa": "FSIMMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.8156545032385458
+    },
+    {
+      "display": "0.835",
+      "iqa": "GMSDMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.834767569015953
+    },
+    {
+      "display": "0.904",
+      "iqa": "HaarPSIMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.9043210958309816
+    },
+    {
+      "display": "0.894",
+      "iqa": "MADMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.893763574672355
+    },
+    {
+      "display": "0.890",
+      "iqa": "MDSIMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.8900178968000361
+    },
+    {
+      "display": "0.823",
+      "iqa": "MSGMSDMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.822915759668638
+    },
+    {
+      "display": "0.837",
+      "iqa": "MSSSIMMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.8370846818201028
+    },
+    {
+      "display": "0.832",
+      "iqa": "NLPDMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.8320481434172521
+    },
+    {
+      "display": "0.853",
+      "iqa": "PIEAPPMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.8533002593239571
+    },
+    {
+      "display": "0.559",
+      "iqa": "PSNRMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.5593832211169112
+    },
+    {
+      "display": "0.911",
+      "iqa": "SRSSIMMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.9109797261385604
+    },
+    {
+      "display": "0.900",
+      "iqa": "SSIMCMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.9001463181852867
+    },
+    {
+      "display": "0.805",
+      "iqa": "SSIMMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.8046455757877423
+    },
+    {
+      "display": "0.939",
+      "iqa": "TOPIQ_FRMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.9388375805990652
+    },
+    {
+      "display": "0.822",
+      "iqa": "VIFMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.82247551018213
+    },
+    {
+      "display": "0.904",
+      "iqa": "VSIMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.9035475615323086
+    },
+    {
+      "display": "0.912",
+      "iqa": "WADIQAM_FRMetric",
+      "pipeline": "nocrop_pad_navier",
+      "value": 0.9124172921617896
+    },
+    {
+      "display": "0.525",
+      "iqa": "AHIQMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.5253468424051883
+    },
+    {
+      "display": "0.265",
+      "iqa": "CKDNMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.2653848838588294
+    },
+    {
+      "display": "0.853",
+      "iqa": "CW_SSIMMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.8534943134483214
+    },
+    {
+      "display": "0.904",
+      "iqa": "DISTSMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.9042592126417828
+    },
+    {
+      "display": "0.820",
+      "iqa": "DSSMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.819711069993713
+    },
+    {
+      "display": "0.815",
+      "iqa": "FSIMMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.8148231453077251
+    },
+    {
+      "display": "0.882",
+      "iqa": "GMSDMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.8823386563269575
+    },
+    {
+      "display": "0.903",
+      "iqa": "HaarPSIMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.9033179285517448
+    },
+    {
+      "display": "0.921",
+      "iqa": "MADMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.9207173477218576
+    },
+    {
+      "display": "0.911",
+      "iqa": "MDSIMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.911495118268154
+    },
+    {
+      "display": "0.857",
+      "iqa": "MSGMSDMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.857499291410025
+    },
+    {
+      "display": "0.832",
+      "iqa": "MSSSIMMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.8323075048804077
+    },
+    {
+      "display": "0.862",
+      "iqa": "NLPDMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.8623750454109024
+    },
+    {
+      "display": "0.863",
+      "iqa": "PIEAPPMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.8628254711651205
+    },
+    {
+      "display": "0.547",
+      "iqa": "PSNRMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.5474028362962755
+    },
+    {
+      "display": "0.862",
+      "iqa": "SRSSIMMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.8615561559498951
+    },
+    {
+      "display": "0.876",
+      "iqa": "SSIMCMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.8758829013651084
+    },
+    {
+      "display": "0.868",
+      "iqa": "SSIMMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.8679787127459083
+    },
+    {
+      "display": "0.940",
+      "iqa": "TOPIQ_FRMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.9402024963264828
+    },
+    {
+      "display": "0.817",
+      "iqa": "VIFMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.8168635020615695
+    },
+    {
+      "display": "0.881",
+      "iqa": "VSIMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.8806035989454699
+    },
+    {
+      "display": "0.882",
+      "iqa": "WADIQAM_FRMetric",
+      "pipeline": "nocrop_pad_telea",
+      "value": 0.8820871731544966
+    },
+    {
+      "display": "0.413",
+      "iqa": "AHIQMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.4131540474844292
+    },
+    {
+      "display": "0.117",
+      "iqa": "CKDNMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.1166551399083821
+    },
+    {
+      "display": "0.544",
+      "iqa": "CW_SSIMMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.5437837319133277
+    },
+    {
+      "display": "0.835",
+      "iqa": "DISTSMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.8354073448781674
+    },
+    {
+      "display": "0.524",
+      "iqa": "DSSMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.5240583294604686
+    },
+    {
+      "display": "0.483",
+      "iqa": "FSIMMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.4830230654857474
+    },
+    {
+      "display": "0.346",
+      "iqa": "GMSDMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.345902161837652
+    },
+    {
+      "display": "0.410",
+      "iqa": "HaarPSIMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.4102686784373405
+    },
+    {
+      "display": "-0.008",
+      "iqa": "MADMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": -0.0084064857058471
+    },
+    {
+      "display": "0.281",
+      "iqa": "MDSIMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.2809549800432033
+    },
+    {
+      "display": "0.196",
+      "iqa": "MSGMSDMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.1962557789588828
+    },
+    {
+      "display": "0.309",
+      "iqa": "MSSSIMMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.3094124091817604
+    },
+    {
+      "display": "0.205",
+      "iqa": "NLPDMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.2052877245740167
+    },
+    {
+      "display": "0.261",
+      "iqa": "PIEAPPMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.2613322362223025
+    },
+    {
+      "display": "0.435",
+      "iqa": "PSNRMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.4350204968640142
+    },
+    {
+      "display": "0.321",
+      "iqa": "SRSSIMMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.3212637709520221
+    },
+    {
+      "display": "0.420",
+      "iqa": "SSIMCMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.420077035712774
+    },
+    {
+      "display": "0.208",
+      "iqa": "SSIMMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.2079278614194214
+    },
+    {
+      "display": "0.291",
+      "iqa": "TOPIQ_FRMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.2906989219045364
+    },
+    {
+      "display": "0.653",
+      "iqa": "VIFMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.6533656526357973
+    },
+    {
+      "display": "0.468",
+      "iqa": "VSIMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.4682249810828792
+    },
+    {
+      "display": "0.104",
+      "iqa": "WADIQAM_FRMetric",
+      "pipeline": "nocrop_pad_shiftmap",
+      "value": 0.1041958901606762
+    },
+    {
+      "display": "0.615",
+      "iqa": "AHIQMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.614776017933664
+    },
+    {
+      "display": "0.049",
+      "iqa": "CKDNMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.0493950946063072
+    },
+    {
+      "display": "0.817",
+      "iqa": "CW_SSIMMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.8165782342727912
+    },
+    {
+      "display": "0.809",
+      "iqa": "DISTSMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.8093855817058859
+    },
+    {
+      "display": "0.721",
+      "iqa": "DSSMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.7212357456454609
+    },
+    {
+      "display": "0.415",
+      "iqa": "FSIMMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.4154550317332317
+    },
+    {
+      "display": "0.362",
+      "iqa": "GMSDMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.3620717743896587
+    },
+    {
+      "display": "0.731",
+      "iqa": "HaarPSIMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.7306292191109094
+    },
+    {
+      "display": "0.635",
+      "iqa": "MADMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.6352209166371108
+    },
+    {
+      "display": "0.391",
+      "iqa": "MDSIMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.3906860317202062
+    },
+    {
+      "display": "0.509",
+      "iqa": "MSGMSDMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.5086969734882469
+    },
+    {
+      "display": "0.571",
+      "iqa": "MSSSIMMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.5709143985603334
+    },
+    {
+      "display": "0.460",
+      "iqa": "NLPDMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.4598202621235041
+    },
+    {
+      "display": "0.393",
+      "iqa": "PIEAPPMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.3931362765011082
+    },
+    {
+      "display": "0.426",
+      "iqa": "PSNRMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.4262246018637841
+    },
+    {
+      "display": "0.495",
+      "iqa": "SRSSIMMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.4948230694632455
+    },
+    {
+      "display": "0.358",
+      "iqa": "SSIMCMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.357763162250693
+    },
+    {
+      "display": "0.310",
+      "iqa": "SSIMMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.3104803277158989
+    },
+    {
+      "display": "0.624",
+      "iqa": "TOPIQ_FRMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.6236898832337561
+    },
+    {
+      "display": "0.617",
+      "iqa": "VIFMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.6172677299806559
+    },
+    {
+      "display": "0.331",
+      "iqa": "VSIMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.3311531072788857
+    },
+    {
+      "display": "0.367",
+      "iqa": "WADIQAM_FRMetric",
+      "pipeline": "crop_nopad",
+      "value": 0.3669254704269932
+    },
+    {
+      "display": "0.529",
+      "iqa": "AHIQMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.528511848609494
+    },
+    {
+      "display": "0.052",
+      "iqa": "CKDNMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.0521344734029889
+    },
+    {
+      "display": "0.608",
+      "iqa": "CW_SSIMMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.6084722269464388
+    },
+    {
+      "display": "0.730",
+      "iqa": "DISTSMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.7297099794007104
+    },
+    {
+      "display": "0.658",
+      "iqa": "DSSMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.6583450187219586
+    },
+    {
+      "display": "0.577",
+      "iqa": "FSIMMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.5768942998573623
+    },
+    {
+      "display": "0.251",
+      "iqa": "GMSDMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.2509578355454757
+    },
+    {
+      "display": "0.713",
+      "iqa": "HaarPSIMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.7126584929202018
+    },
+    {
+      "display": "0.638",
+      "iqa": "MADMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.6379060341974956
+    },
+    {
+      "display": "0.407",
+      "iqa": "MDSIMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.4067683435612068
+    },
+    {
+      "display": "0.441",
+      "iqa": "MSGMSDMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.440959843539203
+    },
+    {
+      "display": "0.367",
+      "iqa": "MSSSIMMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.3672975408032701
+    },
+    {
+      "display": "0.293",
+      "iqa": "NLPDMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.2930057149059329
+    },
+    {
+      "display": "0.155",
+      "iqa": "PIEAPPMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.1553475725368361
+    },
+    {
+      "display": "0.532",
+      "iqa": "PSNRMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.5322259645839454
+    },
+    {
+      "display": "0.633",
+      "iqa": "SRSSIMMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.6326831497939275
+    },
+    {
+      "display": "0.050",
+      "iqa": "SSIMCMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.0499013091057944
+    },
+    {
+      "display": "0.458",
+      "iqa": "SSIMMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.4576452584207142
+    },
+    {
+      "display": "0.493",
+      "iqa": "TOPIQ_FRMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.4933959048047827
+    },
+    {
+      "display": "0.639",
+      "iqa": "VIFMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.6388464493143008
+    },
+    {
+      "display": "0.530",
+      "iqa": "VSIMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.5298829122775438
+    },
+    {
+      "display": "0.390",
+      "iqa": "WADIQAM_FRMetric",
+      "pipeline": "nocrop_nopad",
+      "value": 0.3901118402349954
+    }
+  ],
+  "cells": 220,
+  "colormap": "RdBu",
+  "midpoint": 0.5,
+  "midpoint_meaning": "display convention, not a significance or quality threshold",
+  "text": "white with dark outline",
+  "vmax": 1.008406485705847,
+  "vmin": -0.008406485705847122
+}

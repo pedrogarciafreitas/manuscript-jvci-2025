@@ -1,0 +1,39 @@
+{
+  "artifacts": {
+    "fold_metrics": "iqa_contribution_fold_metrics.csv",
+    "latex_macros": "iqa_contribution_macros.tex",
+    "predictions": "iqa_contribution_oof_predictions.csv",
+    "summary": "iqa_contribution_summary.csv"
+  },
+  "bootstrap_cluster": "REF",
+  "bootstrap_repeats": 10000,
+  "created_utc": "2026-09-29T13:07:52Z",
+  "effect_orientation": "positive values favor retaining the IQA block",
+  "input_artifact_hashes": {
+    "folds": "8f7dea4b941098d4ead89fcfb78e3e9e9f5ab6ac597aa34882aa8bebd8eb35e0",
+    "iqa_selection": "2abbb085f936e2f6e5df3424718075e66d15b9e0e27dc8c217486b335ecd0a36",
+    "projection_selection": "65c37f9f2d956d68c7dd1dfdd555165e689fa6642618d0dc8cf651d8df315b2c",
+    "regressor_selection": "4b99d25d1d47ed44e239519ab5d1df727ea2f4f6a58c88b11ddb209ce8d0f27a",
+    "source_hashes": "416812dee2beb73153203da4b685a0f993a82aef033eb07f7a9bb6fb45f54bfe"
+  },
+  "iqa_blocks": 22,
+  "model_fits_for_predictions": 230,
+  "model_fits_this_invocation": 0,
+  "outer_folds": 5,
+  "pipeline_by_outer": {
+    "0": "crop_pad_navier",
+    "1": "crop_pad_fsr",
+    "2": "nocrop_pad_telea",
+    "3": "nocrop_pad_navier",
+    "4": "crop_pad_navier"
+  },
+  "prediction_sha256": "1452fb02ffd04c9bef482267c83a81c0c5946e6fe4bd2c93faae276b69eeac47",
+  "predictions_reused": true,
+  "reference_groups": 8,
+  "samples": 232,
+  "script_sha256": "1903477381e3498dd2e6d7505f61fe361e8437819e3c4264d0ebff8d64742690",
+  "seed": 42,
+  "selected_iqa_frozen": "DISTSMetric",
+  "selected_regressor": "RandomForestRegressor",
+  "selection_reopened": false
+}

@@ -1,0 +1,28 @@
+\begin{table*}[t!]
+\centering
+\caption{Deterministic illustrative lowest/highest absolute-error OOF predictions per dataset for the frozen PointPCA++ model. Residual is prediction minus MOS. These examples illustrate individual cases, not subgroup performance; the saved case artifact also retains the second example and full distorted-sample identity for each category.}
+\label{tab_review_cases}
+\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrrrrr}
+\toprule
+Dataset & Case & Reference & MOS & Prediction & Residual \\
+\midrule
+APSIPA & lowest error & loot\_vox10\_1200.ply & 1.000 & 1.000 & 0.000 \\
+APSIPA & highest error & amphoriskos\_vox10.ply & 4.500 & 2.446 & -2.054 \\
+ICIP2023 & lowest error & p09.ply & 4.404 & 4.403 & -0.000 \\
+ICIP2023 & highest error & p33.ply & 2.621 & 4.038 & 1.417 \\
+LS-PCQA & lowest error & MuteSwan.ply & 3.714 & 3.713 & -0.001 \\
+LS-PCQA & highest error & Facade00064.ply & 1.875 & 3.407 & 1.532 \\
+SJTU-PCQA & lowest error & soldier.ply & 9.583 & 9.583 & -0.000 \\
+SJTU-PCQA & highest error & longdress.ply & 7.117 & 3.975 & -3.143 \\
+UnB\_PC & lowest error & loot\_vox10\_1200\_vox10.ply & 4.050 & 4.050 & -0.000 \\
+UnB\_PC & highest error & loot\_vox10\_1200\_vox10.ply & 3.150 & 2.227 & -0.923 \\
+WPC & lowest error & ping-pong\_bat.ply & 35.550 & 35.557 & 0.007 \\
+WPC & highest error & puer\_tea.ply & 75.444 & 35.401 & -40.043 \\
+WPC2 & lowest error & banana.ply & 50.022 & 50.024 & 0.003 \\
+WPC2 & highest error & puer\_tea.ply & 72.247 & 34.647 & -37.600 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

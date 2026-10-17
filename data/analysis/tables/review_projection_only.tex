@@ -1,0 +1,21 @@
+\begin{table*}[t!]
+\centering
+\caption{Standalone six-view DISTS prediction using the final complete-file projection inputs, fixed Extra Trees pipeline, and persisted five reference-disjoint folds. Values are pooled OOF metrics with reference-clustered 95\% intervals (10,000 draws, seed 42). Dataset populations and roles are in Table~\ref{tab_datasets}. RMSE is dataset-specific.}
+\label{tab_review_projection_only}
+\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrrr}
+\toprule
+Dataset & SROCC & PLCC & RMSE \\
+\midrule
+APSIPA & 0.927 [0.909, 0.952] & 0.907 [0.878, 0.944] & 0.574 [0.477, 0.659] \\
+ICIP2023 & 0.805 [0.767, 0.842] & 0.879 [0.850, 0.906] & 0.495 [0.441, 0.552] \\
+LS-PCQA & 0.663 [0.601, 0.722] & 0.675 [0.618, 0.732] & 0.617 [0.557, 0.677] \\
+SJTU-PCQA & 0.864 [0.835, 0.887] & 0.880 [0.864, 0.897] & 1.157 [1.081, 1.233] \\
+UnB\_PC & 0.914 [0.890, 0.957] & 0.935 [0.916, 0.964] & 0.441 [0.353, 0.532] \\
+WPC & 0.718 [0.685, 0.752] & 0.716 [0.686, 0.750] & 16.131 [15.147, 17.209] \\
+WPC2 & 0.669 [0.557, 0.795] & 0.658 [0.542, 0.792] & 17.101 [13.549, 20.801] \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

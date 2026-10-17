@@ -1,0 +1,258 @@
+{
+  "bootstrap": {
+    "cluster": "target REF",
+    "interpretation": "target-content variation; excludes source-training uncertainty",
+    "invalid_replicates": {
+      "APSIPA->ICIP2023": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "APSIPA->LS-PCQA": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "APSIPA->SJTU-PCQA": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "APSIPA->UnB_PC": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "APSIPA->WPC": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "APSIPA->WPC2": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "LS-PCQA->APSIPA": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "LS-PCQA->ICIP2023": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "LS-PCQA->SJTU-PCQA": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "LS-PCQA->UnB_PC": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "LS-PCQA->WPC": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "LS-PCQA->WPC2": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "WPC->APSIPA": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "WPC->ICIP2023": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "WPC->LS-PCQA": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "WPC->SJTU-PCQA": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "WPC->UnB_PC": {
+        "plcc": 0,
+        "srocc": 0
+      },
+      "WPC->WPC2": {
+        "plcc": 0,
+        "srocc": 0
+      }
+    },
+    "pair_seed_derivation": "numpy SeedSequence([42, source_index, target_index])",
+    "pair_seeds": {
+      "APSIPA->ICIP2023": 1896493428,
+      "APSIPA->LS-PCQA": 697079281,
+      "APSIPA->SJTU-PCQA": 1494732172,
+      "APSIPA->UnB_PC": 4101183755,
+      "APSIPA->WPC": 3625716501,
+      "APSIPA->WPC2": 1703491874,
+      "LS-PCQA->APSIPA": 955475868,
+      "LS-PCQA->ICIP2023": 1385871029,
+      "LS-PCQA->SJTU-PCQA": 627778343,
+      "LS-PCQA->UnB_PC": 2097342444,
+      "LS-PCQA->WPC": 142140079,
+      "LS-PCQA->WPC2": 2715768615,
+      "WPC->APSIPA": 3329053876,
+      "WPC->ICIP2023": 2134191843,
+      "WPC->LS-PCQA": 2436437895,
+      "WPC->SJTU-PCQA": 13771258,
+      "WPC->UnB_PC": 1462229373,
+      "WPC->WPC2": 2188516665
+    },
+    "repeats": 10000,
+    "root_seed": 42
+  },
+  "directed_pairs": 18,
+  "feature_order": [
+    "pc3__f00",
+    "pc3__f01",
+    "pc3__f02",
+    "pc3__f03",
+    "pc3__f04",
+    "pc3__f05",
+    "pc3__f06",
+    "pc3__f07",
+    "pc3__f08",
+    "pc3__f09",
+    "pc3__f10",
+    "pc3__f11",
+    "pc3__f12",
+    "pc3__f13",
+    "pc3__f14",
+    "pc3__f15",
+    "pc3__f16",
+    "pc3__f17",
+    "pc3__f18",
+    "pc3__f19",
+    "pc3__f20",
+    "pc3__f21",
+    "pc3__f22",
+    "pc3__f23",
+    "pc3__f24",
+    "pc3__f25",
+    "pc3__f26",
+    "pc3__f27",
+    "pc3__f28",
+    "pc3__f29",
+    "pc3__f30",
+    "pc3__f31",
+    "pc3__f32",
+    "pc3__f33",
+    "pc3__f34",
+    "pc3__f35",
+    "pc3__f36",
+    "pc3__f37",
+    "pc3__f38",
+    "pc3__f39",
+    "proj__crop_pad_navier__distsmetric__view0",
+    "proj__crop_pad_navier__distsmetric__view1",
+    "proj__crop_pad_navier__distsmetric__view2",
+    "proj__crop_pad_navier__distsmetric__view3",
+    "proj__crop_pad_navier__distsmetric__view4",
+    "proj__crop_pad_navier__distsmetric__view5"
+  ],
+  "features": 46,
+  "prediction_rows": 9012,
+  "predictions_sha256": "4b0c60f85a75d831c91e076bce26a1871cc9c7add97e530dcfac54c883d2352d",
+  "reported_metrics": [
+    "SROCC",
+    "PLCC"
+  ],
+  "resolved_source_models": {
+    "APSIPA": {
+      "pipeline": "Pipeline(steps=[('preprocessor',\n                 ColumnTransformer(transformers=[('numeric',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer()),\n                                                                  ('scaler',\n                                                                   StandardScaler())]),\n                                                  Index(['pc3__f00', 'pc3__f01', 'pc3__f02', 'pc3__f03', 'pc3__f04', 'pc3__f05',\n       'pc3__f06', 'pc3__f07', 'pc3__f08', 'pc3__f09', 'pc3__f10', 'pc3__f11',\n       'pc3__f12', 'pc3__f13', 'pc3__f14', 'pc3__f15', 'pc3__f16', 'pc3__f...\n                                                                   OneHotEncoder(handle_unknown='ignore',\n                                                                                 sparse_output=False))]),\n                                                  Index([], dtype='str')),\n                                                 ('categorical_high',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer(fill_value='missing',\n                                                                                 strategy='constant')),\n                                                                  ('encoding',\n                                                                   OrdinalEncoder(handle_unknown='use_encoded_value',\n                                                                                  unknown_value=-1))]),\n                                                  Index([], dtype='str'))])),\n                ('regressor', ExtraTreesRegressor(random_state=42))])",
+      "regressor_parameters": {
+        "bootstrap": false,
+        "ccp_alpha": 0.0,
+        "criterion": "squared_error",
+        "max_depth": null,
+        "max_features": 1.0,
+        "max_leaf_nodes": null,
+        "max_samples": null,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "n_estimators": 100,
+        "n_jobs": null,
+        "oob_score": false,
+        "random_state": 42,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "training_references": 8,
+      "training_samples": 232
+    },
+    "LS-PCQA": {
+      "pipeline": "Pipeline(steps=[('preprocessor',\n                 ColumnTransformer(transformers=[('numeric',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer()),\n                                                                  ('scaler',\n                                                                   StandardScaler())]),\n                                                  Index(['pc3__f00', 'pc3__f01', 'pc3__f02', 'pc3__f03', 'pc3__f04', 'pc3__f05',\n       'pc3__f06', 'pc3__f07', 'pc3__f08', 'pc3__f09', 'pc3__f10', 'pc3__f11',\n       'pc3__f12', 'pc3__f13', 'pc3__f14', 'pc3__f15', 'pc3__f16', 'pc3__f...\n                                                                   OneHotEncoder(handle_unknown='ignore',\n                                                                                 sparse_output=False))]),\n                                                  Index([], dtype='str')),\n                                                 ('categorical_high',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer(fill_value='missing',\n                                                                                 strategy='constant')),\n                                                                  ('encoding',\n                                                                   OrdinalEncoder(handle_unknown='use_encoded_value',\n                                                                                  unknown_value=-1))]),\n                                                  Index([], dtype='str'))])),\n                ('regressor', ExtraTreesRegressor(random_state=42))])",
+      "regressor_parameters": {
+        "bootstrap": false,
+        "ccp_alpha": 0.0,
+        "criterion": "squared_error",
+        "max_depth": null,
+        "max_features": 1.0,
+        "max_leaf_nodes": null,
+        "max_samples": null,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "n_estimators": 100,
+        "n_jobs": null,
+        "oob_score": false,
+        "random_state": 42,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "training_references": 85,
+      "training_samples": 930
+    },
+    "WPC": {
+      "pipeline": "Pipeline(steps=[('preprocessor',\n                 ColumnTransformer(transformers=[('numeric',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer()),\n                                                                  ('scaler',\n                                                                   StandardScaler())]),\n                                                  Index(['pc3__f00', 'pc3__f01', 'pc3__f02', 'pc3__f03', 'pc3__f04', 'pc3__f05',\n       'pc3__f06', 'pc3__f07', 'pc3__f08', 'pc3__f09', 'pc3__f10', 'pc3__f11',\n       'pc3__f12', 'pc3__f13', 'pc3__f14', 'pc3__f15', 'pc3__f16', 'pc3__f...\n                                                                   OneHotEncoder(handle_unknown='ignore',\n                                                                                 sparse_output=False))]),\n                                                  Index([], dtype='str')),\n                                                 ('categorical_high',\n                                                  Pipeline(steps=[('imputer',\n                                                                   SimpleImputer(fill_value='missing',\n                                                                                 strategy='constant')),\n                                                                  ('encoding',\n                                                                   OrdinalEncoder(handle_unknown='use_encoded_value',\n                                                                                  unknown_value=-1))]),\n                                                  Index([], dtype='str'))])),\n                ('regressor', ExtraTreesRegressor(random_state=42))])",
+      "regressor_parameters": {
+        "bootstrap": false,
+        "ccp_alpha": 0.0,
+        "criterion": "squared_error",
+        "max_depth": null,
+        "max_features": 1.0,
+        "max_leaf_nodes": null,
+        "max_samples": null,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "n_estimators": 100,
+        "n_jobs": null,
+        "oob_score": false,
+        "random_state": 42,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "training_references": 20,
+      "training_samples": 740
+    }
+  },
+  "rmse_omitted_reason": "source and target subjective-score scales differ",
+  "selected_regressor": "ExtraTreesRegressor",
+  "self_evaluation": false,
+  "source_datasets": [
+    "APSIPA",
+    "WPC",
+    "LS-PCQA"
+  ],
+  "source_features_sha256": "aec3d46fedaf723b7315c229bdcb0248ab210c37eaf1769fb2b3e570679c18f6",
+  "source_models": 3,
+  "summary_sha256": "d93a29ca98d48dcd9bdffb95e0773f1e089c9176e9297845fad04fb3940d5feb",
+  "target_datasets": [
+    "APSIPA",
+    "ICIP2023",
+    "LS-PCQA",
+    "SJTU-PCQA",
+    "UnB_PC",
+    "WPC",
+    "WPC2"
+  ],
+  "target_labels_used_for_fitting": false,
+  "target_preprocessing_or_calibration": false
+}

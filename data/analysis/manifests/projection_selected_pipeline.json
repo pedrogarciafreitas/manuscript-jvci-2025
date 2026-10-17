@@ -1,0 +1,10 @@
+{
+  "outer_selection_frequency": {
+    "crop_pad_fsr": 1,
+    "crop_pad_navier": 2,
+    "nocrop_pad_navier": 1,
+    "nocrop_pad_telea": 1
+  },
+  "selected_pipeline": "crop_pad_navier",
+  "selection_rule": "median rank, mean rank, rank IQR, median time"
+}

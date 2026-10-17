@@ -1,0 +1,8 @@
+dataset,path,samples,reference_groups,feature_columns,duplicate_keys,missing_class,errors
+APSIPA,data/features/pointpcapp/complete/APSIPA/PointPCAPP-Complete.csv,232,8,46,0,0,
+ICIP2023,data/features/pointpcapp/complete/ICIP2023/PointPCAPP-Complete.csv,898,45,46,0,0,
+LS-PCQA,data/features/pointpcapp/complete/LS-PCQA/PointPCAPP-Complete.csv,930,85,46,0,0,
+SJTU-PCQA,data/features/pointpcapp/complete/SJTU-PCQA/PointPCAPP-Complete.csv,378,9,46,0,0,
+UnB_PC,data/features/pointpcapp/complete/UnB_PC/PointPCAPP-Complete.csv,60,6,46,0,0,
+WPC,data/features/pointpcapp/complete/WPC/PointPCAPP-Complete.csv,740,20,46,0,0,
+WPC2,data/features/pointpcapp/complete/WPC2/PointPCAPP-Complete.csv,400,16,46,0,400,

@@ -1,0 +1,12 @@
+{
+  "scope": "seven-dataset complete PointPCA++ feature extraction",
+  "worker_count": 32,
+  "worker_count_status": "author_confirmed",
+  "confirmation_source": "Author confirmation in editorial review",
+  "supersedes": "provisional 16-worker attribution in historical complete-pipeline run manifests",
+  "hardware": "AMD Ryzen Threadripper 2950X; 128 GB RAM; NVIDIA GeForce RTX 5090",
+  "hardware_status": "author_confirmed",
+  "pointpca3_branch_comparison_workers": 16,
+  "numerical_measurements_changed": false,
+  "historical_manifests_preserved": true
+}

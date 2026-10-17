@@ -1,0 +1,28 @@
+\begin{table*}[t!]
+\centering
+\caption{APSIPA diagnostic view-count and pooling comparisons with fixed Extra Trees and persisted grouped folds. The 2-/4-view rows summarize all 15 indexed subsets: SROCC is the median [minimum, maximum] across subsets, not a confidence interval; PLCC/RMSE are subset medians. Pooling uses all six DISTS views. No opposing-camera interpretation or measured speedup is inferred. The six-view concatenation is the reference; the final design remains fixed.}
+\label{tab_review_views_pooling}
+\scriptsize
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrrrrrr}
+\toprule
+Representation & Views & Subsets & Dimension & SROCC [range] & PLCC & RMSE \\
+\midrule
+DISTS & 2 & 15 & 2 & 0.911 [0.891, 0.924] & 0.892 & 0.617 \\
+DISTS & 4 & 15 & 4 & 0.921 [0.909, 0.932] & 0.901 & 0.591 \\
+DISTS & 6 & 1 & 6 & 0.926 [0.926, 0.926] & 0.907 & 0.574 \\
+PointPCA$^3$ + DISTS & 2 & 15 & 42 & 0.924 [0.916, 0.932] & 0.906 & 0.579 \\
+PointPCA$^3$ + DISTS & 4 & 15 & 44 & 0.934 [0.926, 0.937] & 0.917 & 0.551 \\
+PointPCA$^3$ + DISTS & 6 & 1 & 46 & 0.937 [0.937, 0.937] & 0.919 & 0.543 \\
+DISTS (mean) & 6 & 1 & 1 & 0.919 & 0.900 & 0.600 \\
+PointPCA$^3$ + DISTS (mean) & 6 & 1 & 41 & 0.923 & 0.905 & 0.581 \\
+DISTS (median) & 6 & 1 & 1 & 0.895 & 0.868 & 0.684 \\
+PointPCA$^3$ + DISTS (median) & 6 & 1 & 41 & 0.920 & 0.902 & 0.589 \\
+DISTS (min) & 6 & 1 & 1 & 0.887 & 0.856 & 0.728 \\
+PointPCA$^3$ + DISTS (min) & 6 & 1 & 41 & 0.918 & 0.898 & 0.603 \\
+DISTS (max) & 6 & 1 & 1 & 0.920 & 0.902 & 0.593 \\
+PointPCA$^3$ + DISTS (max) & 6 & 1 & 41 & 0.923 & 0.906 & 0.579 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table*}

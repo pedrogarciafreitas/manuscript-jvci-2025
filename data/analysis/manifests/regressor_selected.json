@@ -1,0 +1,48 @@
+{
+  "outer_inner_winners": [
+    "GradientBoostingRegressor",
+    "AdaBoostRegressor",
+    "KNeighborsRegressor",
+    "PoissonRegressor",
+    "RandomForestRegressor"
+  ],
+  "selected_regressor": "RandomForestRegressor",
+  "stable_shortlist": [
+    "AdaBoostRegressor",
+    "GammaRegressor",
+    "HistGradientBoostingRegressor",
+    "PoissonRegressor",
+    "RandomForestRegressor",
+    "TweedieRegressor"
+  ],
+  "top10_frequency": {
+    "AdaBoostRegressor": 4,
+    "BaggingRegressor": 2,
+    "BayesianRidge": 1,
+    "ElasticNet": 1,
+    "ExtraTreesRegressor": 3,
+    "GammaRegressor": 5,
+    "GradientBoostingRegressor": 3,
+    "HistGradientBoostingRegressor": 5,
+    "KNeighborsRegressor": 2,
+    "KernelRidge": 1,
+    "LarsCV": 1,
+    "Lasso": 1,
+    "LassoLars": 1,
+    "MLPRegressor": 1,
+    "OrthogonalMatchingPursuitCV": 1,
+    "PoissonRegressor": 5,
+    "RandomForestRegressor": 5,
+    "Ridge": 1,
+    "RidgeCV": 1,
+    "TweedieRegressor": 5,
+    "XGBRegressor": 1
+  },
+  "winner_frequency": {
+    "AdaBoostRegressor": 1,
+    "GradientBoostingRegressor": 1,
+    "KNeighborsRegressor": 1,
+    "PoissonRegressor": 1,
+    "RandomForestRegressor": 1
+  }
+}
