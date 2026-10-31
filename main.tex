@@ -1,3 +1,4 @@
+% !TEX root = main.tex
 %% 
 %% Copyright 2007-2024 Elsevier Ltd
 %% 
@@ -351,7 +352,7 @@ Building upon these advances, the contributions of this paper are as follows:
 The rest of this paper is organized as follows. In Section~\ref{sec_review}, we discuss the existing work related to PCA-based \gls{PCQA} methods, their advantages and limitations. In Section~\ref{sec_proposed}, we present a detailed description of the proposed PointPCA++ and its main components, namely PointPCA$^3$ and \gls{CMP}. The experimental setups and the results acquired on public \gls{PC} quality databases are described in Sections~\ref{sec_setup} and \ref{sec_results}, respectively. Finally, Section~\ref{sec_conclusions} concludes the paper.
 
 
-\begin{figure*}[tbp]
+\begin{figure*}[t!]
     \centering
     \begin{subfigure}[b]{0.85\textwidth}
         \centering
@@ -509,7 +510,7 @@ While PointPCA defines 8 texture descriptors, the 6 texture descriptors of Point
 
 
 
-\begin{table}[t]
+\begin{table}[t!]
 \centering
 \caption{Definition of PointPCA+ descriptors.}
 \label{tab_pointpca2_descriptors}
@@ -578,10 +579,11 @@ In this paper, we propose PointPCA++, a \gls{PCQA} metric that enhances PointPCA
 
 Figure~\ref{fig_arquitecture_pointpca3} shows the two branches of PointPCA++: the PointPCA$^3$ extractor and the cubemap projection branch. PointPCA$^3$ produces 40 predictors; the selected projection branch produces six DISTS view scores. Their concatenation gives the final 46-feature representation used by Extra Trees regression. Both branches can also be evaluated independently. This section presents the selected architecture; Sections~\ref{sec_results_projection_analysis} and~\ref{sec_results_regression_features} establish the experimental basis for its configuration. The prior PointPCA+RS and VoSS contributions are attributed to their original papers~\cite{carvalho2025rs,carvalho2026pc3}; this paper evaluates their representations and the added projection information under the JVCI protocol.
 
-\begin{figure*}[t]
+\begin{figure*}[t!]
     \centering
-    \includegraphics[width=\textwidth]{data/analysis/figures/review_pointpcapp_architecture.pdf}
-    \caption{PointPCA++ combines 40 PointPCA$^3$ predictors with six crop/Navier--Stokes DISTS view scores. The resulting 46 features are mapped to quality by Extra Trees regression. PointPCA+RS and PointPCA$^3$ are distinct prior extractors; the evaluated branch is PointPCA$^3$.}
+    %\includegraphics[width=\textwidth]{data/analysis/figures/review_pointpcapp_architecture.pdf}
+    \includegraphics[width=\textwidth]{figures/pointpcapp_full.pdf}
+    \caption{PointPCA++ combines 40 PointPCA$^3$ predictors with six cropped-and-padded (inpainted) \gls{IQA} scores. The resulting 46 features are mapped to quality by a regression algorithm (e.g., Extremely Randomized Trees Regression). PointPCA+RS and PointPCA$^3$ are distinct prior extractors; the evaluated branch is PointPCA$^3$.}
     \label{fig_arquitecture_pointpca3}
 \end{figure*}
 
@@ -647,7 +649,7 @@ When multiple points share the same x and y coordinates but have different z val
 The \glspl{OcM} are fundamental for subsequent steps, namely cropping and padding steps. These steps are illustrated in Figure~\ref{fig_cropping_and_padding_steps}. The cropping operation uses the \gls{OcM} to select the \gls{ROI} of the projected view. When a \gls{PC} is projected, a significant portion of the resulting image may consist of empty area, creating a background of non-occupied pixels that can interfere with the chosen \gls{IQA} technique. For instance, a pixel-level comparisons become unreliable because the non-degraded background contrasts with the occupied and degraded areas, leading to a poor correlation between objective metrics and subjective scores. To address this issue, \glspl{OcM} are employed to crop the projections, thereby reducing the background area and mitigating these effects.
 
 
-\begin{figure*}[t]
+\begin{figure*}[t!]
   \centering
   \includegraphics[width=\textwidth]{figures/specific_projections_steps.pdf}
   \caption{Cropping and padding procedures applied to one out of the six projections.}
@@ -659,7 +661,7 @@ The \glspl{OcM} are fundamental for subsequent steps, namely cropping and paddin
 
 Even after cropping step, certain areas in the projected images still have empty information in relation to the original 3D data (unoccupied areas). These areas can still act as misleading element for \gls{IQA} algorithms and impairing their performance. To resolve this, we use an inpainting algorithm~\cite{telea2004image,bertalmio2001navier} to perform the padding operation. Inpainting involves filling in part of an image in a visually plausible way using information from the surrounding area. The idea comes from art restoration where damaged areas of paintings are ``inpainted'' to make them look complete again. Inpainting algorithms usually need the image to be inpainted and a mask. The mask tells the algorithm which parts of the image should be inpainted. Without a mask, the algorithm would not know the regions to replace. In this paper, we use the cropped \gls{OcM} as mask, as illustrated in Figure~\ref{fig_cropping_and_padding_steps}. In this figure, the white area of \gls{OcM} represents the portions of the image to be preserved, while the black area indicates the region to be inpainted.
 
-\begin{figure*}[tbp]
+\begin{figure*}[t!]
   \centering
 
   \includegraphics[width=\textwidth]{figures/inpaintings/fig_inpaints_algorithms.pdf}
@@ -699,7 +701,8 @@ After generating the feature vector $v$, a standalone projection regressor can m
 
 
 
-\section{Experimental Setup} \label{sec_setup}
+\section{Experimental Setup}
+\label{sec_setup}
 
 We evaluate prediction accuracy on the seven datasets listed in Table~\ref{tab_datasets}. The table consolidates published properties, analyzed populations, observed MOS ranges, and experimental roles. Published database sizes and analyzed populations are distinguished.
 
@@ -740,11 +743,11 @@ We first establish the projection pipeline, IQA descriptor, regressor, and fused
 \FloatBarrier
 \subsection{Projection-Pipeline Selection} \label{sec_results_projection_analysis}
 
-To determine how projection preprocessing affects quality prediction, we compare four crop/padding families on the APSIPA reference dataset using 22 common IQA metrics. Padding-based families are further separated into FSRFast, Navier--Stokes, Telea, and ShiftMap implementations, producing ten concrete pipelines. For each pipeline--IQA pair, an Extra Trees regressor with seed 42 is trained using the six view scores. Extra Trees serves here as a fixed comparison estimator, before the final regressor selection in Section~\ref{sec_results_regression_features}. Holding this estimator and the folds fixed isolates the effect of projection preprocessing. The pipelines are ranked independently for each IQA according to \gls{SROCC}, followed by \gls{PLCC}, \gls{RMSE}, and time; the global configuration is selected from the aggregate ranks across all IQAs.
+To determine how projection preprocessing affects quality prediction, we compare four crop/padding families on the APSIPA reference dataset using 22 common IQA metrics. Padding-based families are further separated into FSRFast, Navier-Stokes, Telea, and ShiftMap implementations, producing ten concrete pipelines. For each pipeline--IQA pair, an Extra Trees regressor with seed 42 is trained using the six view scores. Extra Trees serves here as a fixed comparison estimator, before the final regressor selection in Section~\ref{sec_results_regression_features}. Holding this estimator and the folds fixed isolates the effect of projection preprocessing. The pipelines are ranked independently for each IQA according to \gls{SROCC}, followed by \gls{PLCC}, \gls{RMSE}, and time; the global configuration is selected from the aggregate ranks across all IQAs.
 
-Figure~\ref{fig_projection_pipeline_heatmap} shows that padding is important for most IQAs. Without padding, median \gls{SROCC} across IQAs is 0.477 with cropping and 0.511 without cropping. ShiftMap padding also performs poorly in this experiment and has the largest computational cost. In contrast, the Navier--Stokes, Telea, and FSRFast variants provide substantially stronger correlations.
+Figure~\ref{fig_projection_pipeline_heatmap} shows that padding is important for most IQAs. Without padding, median \gls{SROCC} across IQAs is 0.477 with cropping and 0.511 without cropping. ShiftMap padding also performs poorly in this experiment and has the largest computational cost. In contrast, the Navier-Stokes, Telea, and FSRFast variants provide substantially stronger correlations.
 
-\begin{figure*}[tbp]
+\begin{figure*}[t!]
     \centering
     \includegraphics[width=\textwidth]{data/analysis/figures/review_projection_heatmap.pdf}
     \caption{Projection-only performance for the ten cubemap pipelines and 22 common IQA metrics on APSIPA. Each cell is the median \gls{SROCC} over five grouped folds using the same ExtraTrees regressor. Every cell is annotated to three decimals. The diverging scale runs from low red to high blue, with white text outlined in dark gray. Its midpoint of 0.5 is a display convention, not a scientific threshold.}
