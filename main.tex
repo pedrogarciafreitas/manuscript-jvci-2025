@@ -306,7 +306,7 @@ Point cloud \sep Principal component analysis \sep Feature selection \sep Visual
 
 A \gls{PC} consist of a collection of points in a 3D space, often represented in Cartesian coordinates (x,y,z) with a set of attributes associated with each point. These attributes can vary, but commonly include RGB components, reflective information, physical sensor data, and normal vectors. To accurately describe a realistic 3D scene, especially for \gls{IMEx} applications, \glspl{PC} require a huge number of points.  As a consequence, coding technologies must implement lossy compression approaches to enable real applications~\cite{LUO2025104481, PAN2024104243}. Nevertheless, the main issue with using lossy compression is that it impairs the quality of the original data in order to achieve smaller file sizes, making the visual content less appealing depending on the compression level. For instance, Figure~\ref{fig_teaser} depicts a compression process that, depending on its \gls{QP}, can affect the same content in various ways. These differently compressed \glspl{PC} may influence human perception of quality in distinct ways, potentially impairing \gls{QoE} across several aspects. Consequently, the progress of these lossy compression algorithms has demanded to the development of quality assessment methods specifically designed for \gls{PC} contents.
 
-\begin{figure*}[tbp]
+\begin{figure*}[t!]
   \centering
   \setlength{\fboxrule}{0.5pt}
   \setlength{\fboxsep}{0pt}
@@ -369,7 +369,7 @@ The rest of this paper is organized as follows. In Section~\ref{sec_review}, we 
     \\[1em]
     \begin{subfigure}[b]{0.85\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{data/analysis/figures/review_rs_architecture.pdf}
+        \includegraphics[width=\textwidth]{figures/pointpca2_rs.pdf}
         \caption{PointPCA+RS~\cite{carvalho2025rs}}
         \label{fig_pointpca2_rs_diagram}
     \end{subfigure}
@@ -612,14 +612,37 @@ The recorded JVCI extraction calls the PointPCA$^3$ backend with neighborhood si
 Figure~\ref{fig_arquitecture_orthographic_only} summarizes the projection branch. Reference and distorted \glspl{PC} produce six color images and corresponding \glspl{OcM}, using the perpendicular orthographic views in Figure~\ref{fig_subemap}. The recorded preprocessing first translates both clouds by their common coordinate-wise minimum if negative coordinates occur. It then divides both by the reference cloud's largest coordinate and applies a scaling factor obtained from the reference. Each cloud is subsequently rescaled if its largest coordinate exceeds the precision-dependent range. This procedure supplies projection coordinates; it is not centroid/unit-radius normalization and does not establish registration between independently misaligned clouds.
 
 
-\begin{figure*}[tbp]
+\begin{figure*}[t!]
     \centering
-    \includegraphics[width=\textwidth]{data/analysis/figures/review_orthographic_schematic.pdf}
-    \caption{The implemented projection path uses six perpendicular orthographic views, followed by occupancy-based cropping, inpainting, and paired IQA evaluation.}
+    \begin{subfigure}[b]{.8\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/cubemap_views_generation.pdf}
+        \caption{Six views generations}
+        \label{fig_cubemap_generation}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/single_perspective_view.pdf}
+        \caption{Single view representation}
+        \label{fig_cubemap_single_view}
+    \end{subfigure}
+    \begin{subfigure}[b]{.25\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/perspective_mechanism.pdf}
+        \caption{Perspective mechanism}
+        \label{fig_cubemap_prspective_mechanism}
+    \end{subfigure}
+
+    \caption{Cubemap projection.}
     \label{fig_subemap}
 \end{figure*}
 
-After shared point-cloud preprocessing, the recorded generator applies an orthographic projector to obtain six color views and occupancy maps, as summarized in Figure~\ref{fig_subemap}. Orthographic projection discards depth along each viewing direction; it does not use a perspective camera or a 90-degree field-of-view model. Occupancy maps distinguish projected samples from unoccupied pixels. The recorded precision is $\rho=10$, corresponding to a nominal side length $2^\rho=1024$ before cropping.
+
+After point scaling, the 3D point cloud is first projected onto six perpendicular cubic faces, referred as the corresponding views, e.g., ``front view,'' ``back view,'' ``left view,'' ``right view,'' ``top view,'' and ``bottom view'', as shown in Figure~\ref{fig_cubemap_generation}. Each perspective
+view has a 90 degree field of view both vertically and horizontally. The algorithm used to create a perspective projection begins by establishing a virtual camera at the origin. This camera's view is directed along the positive y-axis, with the z-axis serving as the ``up'' vector, as represented in Figure~\ref{fig_cubemap_single_view}. To generate a specific perspective view, one can rotate this initial camera's direction and orientation around any axis or a combination of axes. For a given coordinate system, a roll is a rotation around the y-axis, panning is a rotation around the z-axis, and tilting is a rotation around the x-axis. To generate the six faces of the cubemap, the initial camera's view direction is rotated accordingly, with both the horizontal and vertical fields of view set to 90 degrees. Considering the front as the initial viewpoint, the left view is obtained by panning 90 degrees, the right by panning -90 degrees, the back by panning 180 degrees, the top by tilting -90 degrees, and the bottom by tilting 90 degrees, as illustrated in Figure~\ref{fig_cubemap_prspective_mechanism}. 
+
+When multiple points share the same x and y coordinates but have different z values, the point closest to the projection plane (i.e., the one with the smallest z value) is retained. It means that, depending from the viewpoint perspective, a point from \gls{PC} can be occupied in a given pixel of a view or not. By collecting all pixels corresponding to a projected point and assigning them a value of one, while leaving other pixels as zero, we create a binary image representing the \gls{OcM}. The resolution of the projected textures and \glspl{OcM} images are based on a `precision parameter' $\rho$, where the cube side is $2^\rho$.
 
 The \glspl{OcM} are fundamental for subsequent steps, namely cropping and padding steps. These steps are illustrated in Figure~\ref{fig_cropping_and_padding_steps}. The cropping operation uses the \gls{OcM} to select the \gls{ROI} of the projected view. When a \gls{PC} is projected, a significant portion of the resulting image may consist of empty area, creating a background of non-occupied pixels that can interfere with the chosen \gls{IQA} technique. For instance, a pixel-level comparisons become unreliable because the non-degraded background contrasts with the occupied and degraded areas, leading to a poor correlation between objective metrics and subjective scores. To address this issue, \glspl{OcM} are employed to crop the projections, thereby reducing the background area and mitigating these effects.
 
@@ -649,7 +672,7 @@ Even after cropping step, certain areas in the projected images still have empty
 The padding operation is applied independently to the pristine and distorted projections, allowing the filled regions to vary with degradation. Inpainting can also introduce differences unrelated to the original samples. Its predictive effect is therefore assessed empirically through the controlled crop/padding comparison.
 
 
-\begin{figure*}[tbp]
+\begin{figure*}[t!]
   \centering
 
   \includegraphics[width=\textwidth,height=0.67\textheight,keepaspectratio]{figures/inpaintings/fig_different_quality_levels.pdf}
@@ -659,7 +682,7 @@ The padding operation is applied independently to the pristine and distorted pro
 
 
 
-\begin{figure*}[tbp]
+\begin{figure*}[t!]
   \centering
 
   \includegraphics[width=\textwidth]{figures/inpaintings/fig_other_distortions.pdf}
@@ -673,6 +696,8 @@ Figures~\ref{fig_inpainting_faces}, \ref{fig_inpainting_quality_levels}, and \re
 After cropping and padding, each \gls{IQA} metric produces six scores, one for each pair of reference and distorted views, as illustrated in Figure~\ref{fig_arquitecture_orthographic_only}. Let $g_j^{(k)}$ denote the score for view index $j\in\{0,\ldots,5\}$ and metric $k\in\{1,\ldots,n\}$. Concatenating these scores yields $v=(g_0^{(1)},\ldots,g_5^{(1)},\ldots,g_5^{(n)})\in\mathbb{R}^{6n}$. The final configuration uses one IQA and therefore six projection features.
 
 After generating the feature vector $v$, a standalone projection regressor can map it to quality. For PointPCA++, the selected six projection scores are concatenated with the 40 PointPCA$^3$ predictors. This is achieved using a regression algorithm, which takes $v$ as input and produces a quality score as output. To train this quality model, the feature vector is mapped to the subjective quality scores found in the quality databases, which can be expressed as $Q(I) = \mathfrak{R}(v, \mathcal{M})$, where $\mathfrak{R}(\cdot,\cdot)$ denotes the regression algorithm, $\mathcal{M}$ represents the trained regression model, and  $Q(\cdot)$ is the final predicted quality score of the assessed \gls{PC}.
+
+
 
 \section{Experimental Setup} \label{sec_setup}
 
