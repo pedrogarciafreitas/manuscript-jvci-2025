@@ -1134,12 +1134,12 @@ We first examine branch-level extraction cost and worker scaling, then evaluate 
 
 Table~\ref{tab_pointpca3_runtime} compares the 16-worker configuration with PointPCA+. PointPCA$^3$ reduces the median extraction time on every database. The smallest median paired speedup is $45.44\times$ on SJTU-PCQA, whereas the largest is $113.95\times$ on LS-PCQA. These results isolate the PointPCA branch and do not yet include cubemap processing.
 
-\begin{table*}[ht!]
+\begin{table}[ht!]
     \centering
     \caption{Execution-time comparison between PointPCA+ and PointPCA$^3$ with 16 workers. Times are reported in seconds as median [IQR]; speedup is computed for each matched sample as the PointPCA+ time divided by the PointPCA$^3$ time.}
     \label{tab_pointpca3_runtime}
     \scriptsize
-    \begin{adjustbox}{max width=\textwidth}
+    \begin{adjustbox}{max width=\columnwidth}
     \begin{tabular}{lrrr}
         \toprule
         Database & PointPCA+ & PointPCA$^3$ & Paired speedup \\
@@ -1154,7 +1154,7 @@ Table~\ref{tab_pointpca3_runtime} compares the 16-worker configuration with Poin
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-\end{table*}
+\end{table}
 
 \paragraph{Complete extraction.}\label{sec_results_pointpcapp_runtime}
 We next compare complete PointPCA++ extraction with PointPCA+. The measured complete implementation uses 32 workers and executes PointPCA$^3$ followed sequentially by projection, cropping, Navier--Stokes inpainting, and DISTS evaluation. Timing includes point counting, point-cloud loading, and feature extraction after one initialization warm-up, but excludes CSV serialization and Extra Trees inference. Figure~\ref{fig_pointpcapp_runtime} compares sample-level times and paired speedups across all seven datasets against the total reference-plus-distorted point count. The separate dataset panels show variation in runtime and speedup across the observed input sizes; the logarithmic time axes separate the two implementations, while linear speedup axes show their paired ratios.
