@@ -182,6 +182,11 @@
 \newacronym{VGG}{VGG}{Very Deep Convolutional Networks for Large-Scale Image Recognition}
 
 
+\newacronym{VoSS}{VoSS}{Voxelization-Based Spatial Sampling}
+
+
+
+
 \newacronym{OOF}{OOF}{out-of-fold}
 
 
@@ -591,7 +596,7 @@ Figure~\ref{fig_arquitecture_pointpca3} shows the two branches of PointPCA++: th
 
 PointPCA+RS, historically named PointPCA2-RS~\cite{carvalho2025rs}, is the Rust reimplementation of PointPCA+, whose original implementation is written in MATLAB. It obtains neighborhoods on demand using KD-trees, computes local geometry and texture descriptors in parallel, and pools the intended 40 predictors. Figure~\ref{fig_pointpca2_rs_diagram} summarizes this prior implementation. We use PointPCA for the original MATLAB PointPCA1, PointPCA+ for MATLAB PointPCA2, and PointPCA+RS for the Rust reimplementation; these names do not identify PointPCA$^3$.
 
-PointPCA$^3$ extends PointPCA+RS with voxelization-based spatial sampling (VoSS)~\cite{carvalho2026pc3}, as shown in Figure~\ref{fig_review_pc3_architecture}. Rather than evaluating a neighborhood around every reference point, it selects spatially distributed seed points and extracts their neighborhoods from the reference and distorted clouds. Local PCA and descriptors are computed for these neighborhoods, followed by the same intended 40-slot predictor layout. The inspected implementation identifies additional seeds until reference-neighborhood coverage is reached. This changes the sampled local regions; matching predictor dimensions alone therefore does not establish numerical equivalence to PointPCA+ or PointPCA+RS.
+PointPCA$^3$ extends PointPCA+RS with \gls{VoSS}~\cite{carvalho2026pc3}, as shown in Figure~\ref{fig_review_pc3_architecture}. Rather than evaluating a neighborhood around every reference point, it selects spatially distributed seed points and extracts their neighborhoods from the reference and distorted clouds. Local PCA and descriptors are computed for these neighborhoods, followed by the same intended 40-slot predictor layout. The inspected implementation identifies additional seeds until reference-neighborhood coverage is reached. This changes the sampled local regions; matching predictor dimensions alone therefore does not establish numerical equivalence to PointPCA+ or PointPCA+RS.
 
 \begin{figure*}[t]
     \centering
@@ -623,13 +628,13 @@ Figure~\ref{fig_arquitecture_orthographic_only} summarizes the projection branch
         \label{fig_cubemap_generation}
     \end{subfigure}
 
-    \begin{subfigure}[b]{.45\textwidth}
+    \begin{subfigure}[b]{.55\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/single_perspective_view.pdf}
         \caption{Single view representation}
         \label{fig_cubemap_single_view}
     \end{subfigure}
-    \begin{subfigure}[b]{.25\textwidth}
+    \begin{subfigure}[b]{.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/perspective_mechanism.pdf}
         \caption{Perspective mechanism}
@@ -637,9 +642,9 @@ Figure~\ref{fig_arquitecture_orthographic_only} summarizes the projection branch
     \end{subfigure}
 
 
-    \begin{subfigure}[b]{.9\textwidth}
+    \begin{subfigure}[b]{\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/specific_projections_steps.pdf}
+        \includegraphics[width=0.8\textwidth]{figures/specific_projections_steps_v2.pdf}
         \caption{Cropping and padding steps applied to one out of the six projections.}
         \label{fig_cropping_and_padding_steps}
     \end{subfigure}
@@ -820,7 +825,7 @@ Fold-level results are summarized as median [IQR], where IQR denotes the third q
 
 
 We first establish the projection pipeline, IQA descriptor, regressor, and fused representation. With that configuration fixed, we compare PCA-family representations and evaluate within-dataset accuracy alongside published baseline context. Diagnostic ablations and prediction-error analysis then characterize the design, followed by directed transfer and computational performance. All experiments use the dataset roles and validation procedures in Section~\ref{sec_setup}.
-\FloatBarrier
+
 \subsection{Projection-Pipeline Selection} \label{sec_results_projection_analysis}
 
 To determine how projection preprocessing affects quality prediction, we compare four crop/padding families on the APSIPA reference dataset using 22 common IQA metrics. Padding-based families are further separated into FSRFast, Navier-Stokes, Telea, and ShiftMap implementations, producing ten concrete pipelines. For each pipeline--IQA pair, an Extra Trees regressor with seed 42 is trained using the six view scores. Extra Trees serves here as a fixed comparison estimator, before the final regressor selection in Section~\ref{sec_results_regression_features}. Holding this estimator and the folds fixed isolates the effect of projection preprocessing. The pipelines are ranked independently for each IQA according to \gls{SROCC}, followed by \gls{PLCC}, \gls{RMSE}, and time; the global configuration is selected from the aggregate ranks across all IQAs.
@@ -847,7 +852,7 @@ Cropping followed by Navier--Stokes padding obtains the best aggregate rank. It 
 
 The complete fixed-pipeline results for all 22 IQAs are reported in Table~\ref{tab_review_projection_iqas}. Their fold summaries characterize the historical projection study; the seven-dataset DISTS baseline in Section~\ref{sec_results_pointpcapp_sota} uses the final extraction and pooled \gls{OOF} metrics.
 
-\FloatBarrier
+
 \subsection{IQA, Regressor, and Fusion Selection} \label{sec_results_regression_features}
 
 Selecting an IQA descriptor requires a regression model to compare the candidate feature sets. The APSIPA reference study first selected Random Forest using the complete 172-feature representation, comprising 40 PointPCA$^3$ predictors and all 22 six-view IQA blocks. With that regressor fixed, we then compared candidates combining the 40 point-cloud predictors with one six-view IQA block, using the projection pipeline selected within each outer training partition. Figure~\ref{fig_single_iqa_selection} compares DISTS with the strongest alternative in each partition. DISTS achieves the highest median inner-validation \gls{SROCC} in all five partitions. The margins are small (0.0006--0.0036), supporting selection consistency within this experiment rather than statistical significance or universal superiority. We therefore fix DISTS and the selected crop plus Navier--Stokes pipeline, and subsequently reconsider the regressor on the three modelling datasets using this 46-feature representation.
@@ -885,7 +890,7 @@ The 46-feature fusion attains the highest median \gls{SROCC} and \gls{PLCC}, and
 
 These analyses fix the PointPCA++ configuration used in the remaining experiments: 40 PointPCA$^3$ predictors concatenated with six DISTS scores from crop plus Navier--Stokes projections, followed by the selected Extra Trees regressor. Projection and IQA choices use APSIPA; regressor and fusion choices use APSIPA, WPC, and LS-PCQA. Subsequent diagnostic comparisons examine this design without selecting a replacement.
 
-\FloatBarrier
+
 \subsection{Controlled PCA-Family Validation} \label{sec_results_pca_family}
 
 We next examine agreement between corresponding PointPCA+ and PointPCA+RS features and compare PCA-family prediction accuracy under the selected regression protocol. Table~\ref{tab_review_pca_family} uses complete matched populations and the same content-disjoint cross-validation folds; per-feature PointPCA+ and PointPCA+RS agreement is evaluated independently of regression.
@@ -922,7 +927,7 @@ We next examine agreement between corresponding PointPCA+ and PointPCA+RS featur
 
 \ReviewAgreementInterpretation
 
-\FloatBarrier
+
 \subsection{Within-Dataset Accuracy and Baseline Context} \label{sec_results_pointpcapp_sota}
 
 \begin{table*}[t!]
@@ -981,7 +986,7 @@ The PointPCA++ entries for the four matched datasets in Table~\ref{tab_review_pc
 
 \textcolor{red}{Comparison with state-of-the-art methods remains pending because results obtained under the same evaluation protocol are not yet available.}
 
-\FloatBarrier
+
 \subsection{Diagnostic Feature and View Ablations} \label{sec_results_diagnostics}
 
 To investigate whether additional projection descriptors could contribute useful information, Figure~\ref{fig_feature_importance} examines the APSIPA-only 172-feature candidate pool with Extra Trees. This diagnostic model is distinct from the final 46-feature model. Importance is the decrease in held-out \gls{SROCC} after permuting a feature or block within each reference group. The projection modality produces a median decrease of \ProjectionImportance, compared with \PointPCAImportance{} for PointPCA$^3$. DISTS is the most influential six-view IQA block, with a median decrease of 0.131. This analysis measures reliance of the fitted model; correlated predictors can share or dilute permutation importance, and importance alone did not determine the IQA choice.
@@ -1054,7 +1059,7 @@ Table~\ref{tab_review_views_pooling} diagnoses view count and pooling under the 
 %% TODO: REMOVE THIS MACRO
 \ReviewViewInterpretation
 
-\FloatBarrier
+
 \subsection{Model Reliance and Prediction Errors} \label{sec_results_errors}
 
 Figure~\ref{fig_pointpcapp_modality_importance} extends the reliance analysis to all seven complete datasets using the final 46-feature model. Permuting DISTS produces the larger median \gls{SROCC} decrease on APSIPA, WPC, LS-PCQA, SJTU-PCQA, and UnB\_PC, whereas permuting PointPCA$^3$ has the larger effect on ICIP2023 and WPC2. Both modalities have positive median effects on every dataset. The balance is therefore dataset-dependent: the fusion does not rely on the same branch to the same degree across populations. These grouped effects describe the fitted model's reliance and should not be interpreted as causal uniqueness or feature efficiency.
@@ -1106,7 +1111,7 @@ To assess where predictions depart from subjective scores, we examine the same w
 %% TODO: Remove this Macro
 \ReviewErrorInterpretation
 
-\FloatBarrier
+
 \subsection{Cross-Dataset Transfer} \label{sec_results_transfer}
 
 To test transfer without target-domain training, we fit one model on each of APSIPA, WPC, and LS-PCQA and apply it directly to the six remaining datasets. Figure~\ref{fig_pointpcapp_all_datasets} reports the resulting \TransferPairCount{} directed transfers. All correlations remain positive, but \gls{SROCC} ranges from \TransferLowestSROCC{} for \TransferLowestSROCCSource{} $\rightarrow$ \TransferLowestSROCCTarget{} to \TransferHighestSROCC{} for \TransferHighestSROCCSource{} $\rightarrow$ \TransferHighestSROCCTarget{}. Thus, the within-dataset accuracy in Table~\ref{tab_pointpcapp_all_datasets} does not imply equally strong transfer between populations. Differences in reference content and distortion distributions may contribute to this variation, but this experiment does not isolate their individual effects.
@@ -1120,7 +1125,7 @@ To test transfer without target-domain training, we fit one model on each of APS
 
 When a modelling dataset appears as a transfer target, it did not train that source-specific model, although it previously influenced the shared regressor and feature design. The four evaluation targets did not influence either selection stage, but this does not guarantee unseen reference content. The source files share reference names in APSIPA $\rightarrow$ UnB\_PC (3), WPC $\rightarrow$ SJTU-PCQA (1), WPC $\rightarrow$ WPC2 (16), and LS-PCQA $\rightarrow$ SJTU-PCQA (4). WPC2 documentation confirms that its 16 original clouds come from WPC~\cite{liu2021wpc2}; raw-content identity for the other shared names is unverified. These pairs must not be described as demonstrated unseen-content transfer. Moreover, the intervals quantify variation among target contents conditional on the fitted source model; they do not account for uncertainty in source training. We report correlations rather than RMSE because the source and target subjective-score scales differ.
 
-\FloatBarrier
+
 \subsection{Computational Performance} \label{sec_results_pointpca3_runtime}
 
 We first examine branch-level extraction cost and worker scaling, then evaluate the complete pipeline. We compare the execution time of PointPCA+ with PointPCA$^3$ using the same reference--distorted point-cloud pairs. PointPCA$^3$ was evaluated with 1, 2, 4, 8, 16, and 32 workers. Figure~\ref{fig_pointpca3_worker_scaling} reports the median extraction time and the samplewise speedup relative to the single-worker execution. The time decreases consistently as the number of workers increases, although the gain becomes smaller beyond eight workers. At 16 workers, the median parallel speedup over one worker ranges from $1.67\times$ on SJTU-PCQA to $2.78\times$ on LS-PCQA. The sublinear gains are consistent with sequential work and parallelization overhead, although this timing comparison does not isolate their contributions.
@@ -1198,7 +1203,7 @@ Table~\ref{tab_pointpcapp_integrated_runtime} shows a double-digit median speedu
 \end{table*}
 
 
-\FloatBarrier
+
 
 \section{Conclusion} \label{sec_conclusions}
 
@@ -1206,7 +1211,7 @@ We presented PointPCA++, a full-reference \gls{PCQA} method combining point-clou
 
 Within-dataset correlations and directed transfer provide complementary evidence: the fixed design predicts subjective quality well when trained within each dataset, but transferring a fitted model reveals greater variation between datasets. These findings support combining the two modalities without implying dataset-independent generalization. Future work will investigate methods to improve transfer robustness and assess whether saliency-aware descriptors provide additional predictive information.
 
-\FloatBarrier
+
 \appendix
 \section{Supporting Experimental Evidence} \label{sec_review_appendix}
 
