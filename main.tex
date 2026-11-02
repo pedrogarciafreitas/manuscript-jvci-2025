@@ -144,6 +144,7 @@
 \newacronym{MPEG}{MPEG}{Moving Picture Experts Group}
 \newacronym{MPEG-I}{MPEG-I}{MPEG Immersive Media}
 \newacronym{PSNR}{PSNR}{Peak Signal-to-Noise Error}
+\newacronym{MAE}{MAE}{Mean Absolute Error}
 \newacronym{MSE}{MSE}{Mean Squared Error}
 \newacronym[longplural={Point Clouds}, plural=PCs]{PC}{PC}{Point Cloud}
 \newacronym{PCQA}{PCQA}{Point Cloud Quality Assessment}
@@ -408,47 +409,121 @@ where $|P_i|$ is the size of the set and $\bar{{p}}_i$ represents its centroid, 
 Eigen-decomposition is performed on the covariance matrix $\mathbf{\Sigma}_i$, which is both symmetric and positive semidefinite. As a result, its eigenvalues are non-negative and its eigenvectors form an orthogonal system. The eigenvectors represent the directions of greatest data dispersion, while the eigenvalues indicate the variance of the transformed data along these principal axes.
 
 To compute the geometric descriptors, the coordinates of the points in $P_i$ are used. Therefore, in Equations~\ref{eq_covariance} and \ref{eq_centroid}, $p_i$ is set to $(x_i, y_i, z_i)^\top$. Assuming that $\textbf{e}_1^g$, $\textbf{e}_2^g$, and $\textbf{e}_3^g$ denote the eigenvectors and $\lambda_1^g$, 
-$\lambda_2^g$, and $\lambda_3^g$ the corresponding eigenvalues ($\lambda_1^g \geq \lambda_2^g \geq \lambda_3^g$) obtained from the eigen-decomposition of $\mathbf{\Sigma}_i$. Additionally, we define the unit vectors $\mathbf{u}_x = [1, 0, 0]^\top$, $\mathbf{u}_y = [0, 1, 0]^\top$, and $\mathbf{u}_z = [0, 0, 1]^\top$ to represent the $x$, $y$, and $z$ axes. The geometric descriptors, $d^g \in \mathbb{R}^{1 \times 15}$, are constructed using these eigenvalues, eigenvectors, and unit vectors, as defined in Table~\ref{tab_pointpca_descriptors}. In this table, each descriptor represents an interpretable shape property, where $\{d_1^g, d_2^g, \cdots, d_4^g \}$ represent the individual and aggregated sum of eigenvalues that indicate the extent to which points are dispersed along the axes. The descriptors $\{d_5^g, d_6^g, d_7^g \}$  capture the dimensionality of the local surface by indicating the placements of points within a neighborhood. The descriptor $d_8^g$ highlights data variation between the first to the third principal directions. The descriptors $\{d_9^g, d_{10}^g, ~\text{and}~ d_{11}^g \}$ give a sense of the spread, uncertainty, and variation of the subjacent surface, taking into account all the main axes. The descriptor $d_{12}^g$ measures the projected distance of a query point from the centroid of its neighborhood, along the estimated normal vector $\mathbf{e}_3^g$. The remaining $d_{13}^g, d_{14}^g, ~\text{and}~ d_{15}^g$ measures the projected error of $\mathbf{e}_3^g$ onto unit vectors aligned with the Cartesian axes of the \glspl{PC} coordinate system.
+$\lambda_2^g$, and $\lambda_3^g$ the corresponding eigenvalues ($\lambda_1^g \geq \lambda_2^g \geq \lambda_3^g$) obtained from the eigen-decomposition of $\mathbf{\Sigma}_i$. Additionally, we define the unit vectors $\mathbf{u}_x = [1, 0, 0]^\top$, $\mathbf{u}_y = [0, 1, 0]^\top$, and $\mathbf{u}_z = [0, 0, 1]^\top$ to represent the $x$, $y$, and $z$ axes. The geometric descriptors, $d^g \in \mathbb{R}^{1 \times 15}$, are constructed using these eigenvalues, eigenvectors, and unit vectors, as defined in Table~\ref{tab_pointpca_descriptors}. In this table, each descriptor represents an interpretable shape property, where $\{d_1^g, d_2^g, d_3^g, d_4^g \}$ represent the individual and aggregated sum of eigenvalues that indicate the extent to which points are dispersed along the axes. The descriptors $\{d_5^g, d_6^g, d_7^g \}$  capture the dimensionality of the local surface by indicating the placements of points within a neighborhood. The descriptor $d_8^g$ highlights data variation between the first to the third principal directions. The descriptors $\{d_9^g, d_{10}^g, ~\text{and}~ d_{11}^g \}$ give a sense of the spread, uncertainty, and variation of the subjacent surface, taking into account all the main axes. The descriptor $d_{12}^g$ measures the projected distance of a query point from the centroid of its neighborhood, along the estimated normal vector $\mathbf{e}_3^g$. The remaining $d_{13}^g, d_{14}^g, ~\text{and}~ d_{15}^g$ measures the projected error of $\mathbf{e}_3^g$ onto unit vectors aligned with the Cartesian axes of the \glspl{PC} coordinate system.
 
 
-\begin{table}[ht!]
-\centering
-\caption{Definition of PointPCA descriptors.}
-\label{tab_pointpca_descriptors}
-\adjustbox{max width=\columnwidth}
-{
-\begin{tabular}{cll}
-\toprule
-~ & \textbf{Descriptor} & \textbf{Definition} \\
-\hline
-\multirow{15}{*}{\rotatebox{90}{Geometric}} & First eigenvalue & $d_1^g = \lambda_1^g$ \\
-& Second eigenvalue & $d_2^g = \lambda_2^g$ \\
-& Third eigenvalue & $d_3^g = \lambda_3^g$ \\
-& Sum of eigenvalues & $d_4^g = \sum_{i=1}^3 \lambda_i^g$ \\
-& Linearity & $d_5^g = (\lambda_1^g - \lambda_2^g)/\lambda_1^g$ \\
-& Planarity & $d_6^g = (\lambda_2^g - \lambda_3^g)/\lambda_1^g$ \\
-& Sphericity & $d_7^g = \lambda_3^g/\lambda_1^g$ \\
-& Anisotropy & $d_8^g = (\lambda_1^g - \lambda_3^g)/\lambda_1^g$ \\
-& Omnivariance & $d_9^g = \sqrt[3]{\lambda_1^g \cdot \lambda_2^g \cdot \lambda_3^g}$ \\
-& Eigenentropy & $d_{10}^g = -\sum_{i=1}^3 \lambda_i^g \cdot \ln(\lambda_i^g)$ \\
-& Surface variation & $d_{11}^g = \lambda_3^g / \sum_{i=1}^3 \lambda_i^g$ \\
-& Roughness & $d_{12}^g = |(p - \bar{p}) \cdot \mathbf{e}_3^g|$ \\
-& Parallellity$_x$ & $d_{13}^g = 1 - |\mathbf{u}_x \cdot \mathbf{e}_3^g|$ \\
-& Parallellity$_y$ & $d_{14}^g = 1 - |\mathbf{u}_y \cdot \mathbf{e}_3^g|$ \\
-& Parallellity$_z$ & $d_{15}^g = 1 - |\mathbf{u}_z \cdot \mathbf{e}_3^g|$ \\
-\cmidrule{2-3}
-\multirow{8}{*}{\rotatebox{90}{Textural}} & Red channel & $d_1^t = R$ \\
-& Green channel & $d_2^t = G$ \\
-& Blue channel & $d_3^t = B$ \\
-& First eigenvalue & $d_4^t = \lambda_1^t$ \\
-& Second eigenvalue & $d_5^t = \lambda_2^t$ \\
-& Third eigenvalue & $d_6^t = \lambda_3^t$ \\
-& Sum of eigenvalues & $d_7^t = \sum_{i=1}^3 \lambda_i^t$ \\
-& Eigenentropy & $d_8^t = -\sum_{i=1}^3 \lambda_i^t \cdot \ln(\lambda_i^t)$ \\
-\bottomrule
-\end{tabular}
-}
-\end{table}
+\begin{table*}[ht!]
+  \centering
+  \caption{Definitions of PointPCA and PointPCA+ descriptors.}
+  \label{tab_all_descriptors}
+
+  % --- First Subtable: PointPCA ---
+  \begin{subtable}[t]{0.33\textwidth}
+    \centering
+    \caption{PointPCA descriptors}
+    \label{tab_pointpca_descriptors}
+    \adjustbox{valign=t, max width=\linewidth}
+    {
+    \begin{tabular}{cll}
+    \toprule
+    ~ & \textbf{Descriptor} & \textbf{Definition} \\
+    \midrule
+    \multirow{15}{*}{\rotatebox{90}{Geometric}} & First eigenvalue & $d_1^g = \lambda_1^g$ \\
+    & Second eigenvalue & $d_2^g = \lambda_2^g$ \\
+    & Third eigenvalue & $d_3^g = \lambda_3^g$ \\
+    & Sum of eigenvalues & $d_4^g = \sum_{i=1}^3 \lambda_i^g$ \\
+    & Linearity & $d_5^g = (\lambda_1^g - \lambda_2^g)/\lambda_1^g$ \\
+    & Planarity & $d_6^g = (\lambda_2^g - \lambda_3^g)/\lambda_1^g$ \\
+    & Sphericity & $d_7^g = \lambda_3^g/\lambda_1^g$ \\
+    & Anisotropy & $d_8^g = (\lambda_1^g - \lambda_3^g)/\lambda_1^g$ \\
+    & Omnivariance & $d_9^g = \sqrt[3]{\lambda_1^g \cdot \lambda_2^g \cdot \lambda_3^g}$ \\
+    & Eigenentropy & $d_{10}^g = -\sum_{i=1}^3 \lambda_i^g \cdot \ln(\lambda_i^g)$ \\
+    & Surface variation & $d_{11}^g = \lambda_3^g / \sum_{i=1}^3 \lambda_i^g$ \\
+    & Roughness & $d_{12}^g = |(p - \bar{p}) \cdot \mathbf{e}_3^g|$ \\
+    & Parallellity$_x$ & $d_{13}^g = 1 - |\mathbf{u}_x \cdot \mathbf{e}_3^g|$ \\
+    & Parallellity$_y$ & $d_{14}^g = 1 - |\mathbf{u}_y \cdot \mathbf{e}_3^g|$ \\
+    & Parallellity$_z$ & $d_{15}^g = 1 - |\mathbf{u}_z \cdot \mathbf{e}_3^g|$ \\
+    \cmidrule{2-3}
+    \multirow{8}{*}{\rotatebox{90}{Textural}} & Red channel & $d_1^t = R$ \\
+    & Green channel & $d_2^t = G$ \\
+    & Blue channel & $d_3^t = B$ \\
+    & First eigenvalue & $d_4^t = \lambda_1^t$ \\
+    & Second eigenvalue & $d_5^t = \lambda_2^t$ \\
+    & Third eigenvalue & $d_6^t = \lambda_3^t$ \\
+    & Sum of eigenvalues & $d_7^t = \sum_{i=1}^3 \lambda_i^t$ \\
+    & Eigenentropy & $d_8^t = -\sum_{i=1}^3 \lambda_i^t \cdot \ln(\lambda_i^t)$ \\
+    \bottomrule
+    \end{tabular}
+    }
+  \end{subtable}
+    \hfill
+  \begin{subtable}[t]{0.43\textwidth}
+    \centering
+    \caption{PointPCA+ descriptors}
+    \label{tab_pointpca2_descriptors}
+    \adjustbox{valign=t,max width=\linewidth}
+    {
+    \begin{tabular}{cllc}
+    \toprule
+    ~ & \textbf{Descriptor} & \textbf{Definition} & \textbf{Distance} \\
+    \midrule
+    \multirow{16}{*}{\rotatebox{90}{Geometric}} & 
+    Error vector & $e = (\omega_i^B - \omega_i^A)$ & $r_\alpha$ \\
+    ~ & Error along axes & $\epsilon_m = (\omega_i^B - \omega_i^A)^T \cdot u_m$ & $r_\beta$ \\
+    ~ & Error from origin & $\epsilon = \omega_i^\mathcal{F}$ & $r_\alpha, r_\beta$ \\
+    ~ & Mean & $\mu^\mathcal{B} = \frac{1}{n} \sum_j \omega_j^\mathcal{B}$ & $r_\alpha, r_\beta$ \\
+    ~ & Variance & $\lambda_m^\mathcal{F} = \frac{1}{n} \sum_j (\omega_j^\mathcal{F} - \mu^\mathcal{F})^2$ & $r_\delta$ \\
+    ~ & Sum of variance & $\Sigma^\mathcal{F} = \sum_m \lambda_m^\mathcal{F}$ & $r_\delta$ \\
+    ~ & Covariance & $\Sigma = \frac{1}{n} \sum_j (\omega_j^A - \mu^A) \cdot (\omega_j^B - \mu^B)^T$ & $r_{\gamma_1}$ \\
+    ~ & Omnivariance & $\mathcal{O}^\mathcal{F} = \sqrt[3]{\prod_m \lambda_m^\mathcal{F}}$ & $r_\delta$ \\
+    ~ & Eigenentropy & $\mathcal{E}^\mathcal{F} = -\sum_m \lambda_m^\mathcal{F} \cdot \log \lambda_m^\mathcal{F}$ & $r_\delta$ \\
+    ~ & Anisotropy & $\mathcal{A}^\mathcal{F} = (\lambda_1^\mathcal{F} - \lambda_3^\mathcal{F}) / \lambda_1^\mathcal{F}$ & $r_\delta$ \\
+    ~ & Planarity & $\mathcal{P}^\mathcal{F} = (\lambda_2^\mathcal{F} - \lambda_3^\mathcal{F}) / \lambda_1^\mathcal{F}$ & $r_\delta$ \\
+    ~ & Linearity & $\mathcal{L}^\mathcal{F} = (\lambda_1^\mathcal{F} - \lambda_2^\mathcal{F}) / \lambda_1^\mathcal{F}$ & $r_\delta$ \\
+    ~ & Scattering & $\mathcal{S}^\mathcal{F} = \lambda_3^\mathcal{F} / \lambda_1^\mathcal{F}$ & $r_\delta$ \\
+    ~ & Curvature & $\mathcal{C}^\mathcal{F} = \lambda_3^\mathcal{F} / \sum_m \lambda_m^\mathcal{F}$ & $r_\delta$ \\
+    ~ & Parallelity & $p_m = 1 - u_m \cdot v_m^B$ & -- \\
+    ~ & Angular similarity & $\theta_m = 1 - {2 \cdot \arccos(\cos(u_m, v_m^B))}/{\pi}$ & -- \\
+    \cmidrule{2-4}
+    \multirow{6}{*}{\rotatebox{90}{Textural}} & 
+    Mean & $\tilde{\mu}^\mathcal{F} = \frac{1}{n} \sum_j p_{n,t}^\mathcal{F}$ & $r_\delta$ \\
+    ~ & Variance & $\tilde{s}^\mathcal{F} = \frac{1}{n} \sum_j (p_{n,t}^\mathcal{F} - \tilde{\mu}^\mathcal{F})^2$ & $r_\delta$ \\
+    ~ & Sum of variance & $\tilde{\Sigma}^\mathcal{F} = \sum_m \tilde{g}_m^\mathcal{F}$ & $r_\delta$ \\
+    ~ & Covariance & $\tilde{\Sigma} = \frac{1}{n} \sum_j (p_{n,t}^A - \tilde{\mu}^A) \cdot (p_{n,t}^B - \tilde{\mu}^B)^T$ & $r_{\gamma_2}$ \\
+    ~ & Omnivariance & $\tilde{\mathcal{O}}^\mathcal{F} = \sqrt[3]{\prod_m \tilde{g}_m^\mathcal{F}}$ & $r_\delta$ \\
+    ~ & Entropy & $\tilde{\mathcal{H}}^\mathcal{F} = -\sum_m \tilde{g}_m^\mathcal{F} \cdot \log \tilde{g}_m^\mathcal{F}$ & $r_\delta$ \\
+    \bottomrule
+    \end{tabular}
+    }
+  \end{subtable}
+\hfill
+  % --- Third Subtable: Distance Metrics ---
+  \begin{subtable}[t]{0.22\textwidth}
+    \centering
+    \caption{Distance metrics}
+    \label{tab_distance_metrics}
+    \adjustbox{valign=t, max width=\linewidth}
+    {
+    \begin{tabular}{ll}
+    \toprule
+    \textbf{Symbol} & \textbf{Definition} \\
+    \midrule
+    $r_\alpha$ & $\sqrt{\sum_m \mathbf{\mathfrak{d}_1}^2}$ \\
+    \addlinespace
+    $r_\beta$ & $\left| \mathbf{\mathfrak{d}_2} \right|$ \\
+    \addlinespace
+    $r_{\gamma_1}$ & $\dfrac{|\lambda^\mathcal{A} \odot \lambda^\mathcal{B} - \Sigma|}{\lambda^\mathcal{A} \odot \lambda^\mathcal{B}}$ \\
+    \addlinespace
+    $r_{\gamma_2}$ & $\dfrac{|\tilde{s}^\mathcal{A} \odot \tilde{s}^\mathcal{B} - \tilde{\Sigma}|}{\tilde{s}^\mathcal{A} \odot \tilde{s}^\mathcal{B}}$ \\
+    \addlinespace
+    $r_{\delta}$ & $1 - \dfrac{|\phi_{i,j}^\mathcal{A} - \phi_{i,j}^\mathcal{B}|}{|\phi_{i,j}^\mathcal{A}| + |\phi_{i,j}^\mathcal{B}| + \varepsilon}$ \\
+    \bottomrule
+    \end{tabular}
+    }
+  \end{subtable}
+
+\end{table*}
+
 
 
 Freitas et al.~\cite{freitas2023point} showed that texture measures can be more relevant for some regression models than geometry. Based on this, PointPCA uses RGB color values to serve as the first three texture descriptors, namely $d_{1}^t, d_{2}^t, ~\text{and}~ d_{3}^t$. To compute the PCA-based textural descriptors, the RGB color values of the points in $\mathcal{P}_i$ are used. Therefore, $p_i$ is set to $(R_i, G_i, B_i)^\top$  in Equations~\ref{eq_covariance} and \ref{eq_centroid}, which yields the eigenvalues  $\lambda_1^t$, 
@@ -463,7 +538,7 @@ where $d_u^\omega(\mathbf{p}_{\hat{n}})$ represents a descriptor of Table~\ref{t
 \begin{equation} \label{eq_std_feature}
 \sigma_i(d_u^\omega) = \sqrt{\frac{1}{|\hat{P}_i|} \sum_{\hat{n}=1}^{|\hat{P}_i|} (d_u^\omega(\mathbf{p}_{\hat{n}}) - \mu_i(d_u^\omega))^2}.
 \end{equation}
-Since $\mathbf{\mu}_i = \{ \mu_i(d_1^g), \mu_i(d_2^g), \cdots, \mu_i(d_{15}^g), \mu_i(d_1^t), \mu_i(d_2^t), \cdots, \mu_i(d_8^t) \}$ and $\mathbf{\sigma}_i = \{ \sigma_i(d_1^g), \sigma_i(d_2^g), \cdots, \sigma_i(d_{15}^g), \sigma_i(d_1^t), \sigma_i(d_2^t), \cdots, \sigma_i(d_8^t) \}$ then $ \mathbf{\mu}_i \in \mathbb{R}^{1 \times 23}$ and $ \mathbf{\sigma_i} \in \mathbb{R}^{1 \times 23}$. Therefore, the complete statistical feature vector is defined as $\mathbf{\phi}_i = \left[ \mathbf{\mu}_i; \mathbf{\sigma}_i \right] \in \mathbb{R}^{1 \times 46}$.
+Since $\mathbf{\mu}_i = \{ \mu_i(d_1^g), \allowbreak\mu_i(d_2^g), \allowbreak\cdots, \allowbreak\mu_i(d_{15}^g), \allowbreak\mu_i(d_1^t), \allowbreak\mu_i(d_2^t), \allowbreak\cdots, \allowbreak\mu_i(d_8^t) \}$ and $\mathbf{\sigma}_i = \{ \sigma_i(d_1^g), \allowbreak\sigma_i(d_2^g), \allowbreak\cdots, \allowbreak\sigma_i(d_{15}^g), \allowbreak\sigma_i(d_1^t), \allowbreak\sigma_i(d_2^t), \allowbreak\cdots, \allowbreak\sigma_i(d_8^t) \}$ then $ \mathbf{\mu}_i \in \mathbb{R}^{1 \times 23}$ and $ \mathbf{\sigma_i} \in \mathbb{R}^{1 \times 23}$. Therefore, the complete statistical feature vector is defined as $\mathbf{\phi}_i = \left[ \mathbf{\mu}_i; \mathbf{\sigma}_i \right] \in \mathbb{R}^{1 \times 46}$.
 
 
 To compute the aforementioned descriptors and statistical features, a support region is needed in PointPCA. This region is used for both geometric and textural descriptors and is determined by the spatial proximity of points. Two common methods for defining \gls{PC} neighborhoods are the \gls{KNN} and \gls{r-search} algorithms~\cite{behley2015efficient}. \gls{KNN} creates neighborhoods of a fixed size but with a variable extent, while the \gls{r-search} defines spherical volumes of a fixed radius that can contain a different number of points. 
@@ -515,56 +590,10 @@ While PointPCA defines 8 texture descriptors, the 6 texture descriptors of Point
 
 
 
-\begin{table}[t!]
-\centering
-\caption{Definition of PointPCA+ descriptors.}
-\label{tab_pointpca2_descriptors}
-\adjustbox{max width=\columnwidth}
-{
-\begin{tabular}{cllc}
-\toprule
-~ & \textbf{Descriptor} & \textbf{Definition} & \textbf{Distance} \\
-\midrule
-
-\multirow{16}{*}{\rotatebox{90}{Geometric}} & 
-Error vector & $e = (\omega_i^B - \omega_i^A)$ & $r_\alpha$ \\
-~ & Error along axes & $\epsilon_m = (\omega_i^B - \omega_i^A)^T \cdot u_m$ & $r_\beta$ \\
-~ & Error from origin & $\epsilon = \omega_i^\mathcal{F}$ & $r_\alpha, r_\beta$ \\
-~ & Mean & $\mu^\mathcal{B} = \frac{1}{n} \sum_j \omega_j^\mathcal{B}$ & $r_\alpha, r_\beta$ \\
-~ & Variance & $\lambda_m^\mathcal{F} = \frac{1}{n} \sum_j (\omega_j^\mathcal{F} - \mu^\mathcal{F})^2$ & $r_\delta$ \\
-~ & Sum of variance & $\Sigma^\mathcal{F} = \sum_m \lambda_m^\mathcal{F}$ & $r_\delta$ \\
-~ & Covariance & $\Sigma = \frac{1}{n} \sum_j (\omega_j^A - \mu^A) \cdot (\omega_j^B - \mu^B)^T$ & $r_{\gamma_1}$ \\
-~ & Omnivariance & $\mathcal{O}^\mathcal{F} = \sqrt[3]{\prod_m \lambda_m^\mathcal{F}}$ & $r_\delta$ \\
-~ & Eigenentropy & $\mathcal{E}^\mathcal{F} = -\sum_m \lambda_m^\mathcal{F} \cdot \log \lambda_m^\mathcal{F}$ & $r_\delta$ \\
-~ & Anisotropy & $\mathcal{A}^\mathcal{F} = (\lambda_1^\mathcal{F} - \lambda_3^\mathcal{F}) / \lambda_1^\mathcal{F}$ & $r_\delta$ \\
-~ & Planarity & $\mathcal{P}^\mathcal{F} = (\lambda_2^\mathcal{F} - \lambda_3^\mathcal{F}) / \lambda_1^\mathcal{F}$ & $r_\delta$ \\
-~ & Linearity & $\mathcal{L}^\mathcal{F} = (\lambda_1^\mathcal{F} - \lambda_2^\mathcal{F}) / \lambda_1^\mathcal{F}$ & $r_\delta$ \\
-~ & Scattering & $\mathcal{S}^\mathcal{F} = \lambda_3^\mathcal{F} / \lambda_1^\mathcal{F}$ & $r_\delta$ \\
-~ & Curvature & $\mathcal{C}^\mathcal{F} = \lambda_3^\mathcal{F} / \sum_m \lambda_m^\mathcal{F}$ & $r_\delta$ \\
-~ & Parallelity & $p_m = 1 - u_m \cdot v_m^B$ & -- \\
-~ & Angular similarity & $\theta_m = 1 - {2 \cdot \arccos(\cos(u_m, v_m^B))}/{\pi}$ & -- \\
- \cmidrule{2-4}
-\multirow{6}{*}{\rotatebox{90}{Textural}} & 
-Mean & $\tilde{\mu}^\mathcal{F} = \frac{1}{n} \sum_j p_{n,t}^\mathcal{F}$ & $r_\delta$ \\
-~ & Variance & $\tilde{s}^\mathcal{F} = \frac{1}{n} \sum_j (p_{n,t}^\mathcal{F} - \tilde{\mu}^\mathcal{F})^2$ & $r_\delta$ \\
-~ & Sum of variance & $\tilde{\Sigma}^\mathcal{F} = \sum_m \tilde{g}_m^\mathcal{F}$ & $r_\delta$ \\
-~ & Covariance & $\tilde{\Sigma} = \frac{1}{n} \sum_j (p_{n,t}^A - \tilde{\mu}^A) \cdot (p_{n,t}^B - \tilde{\mu}^B)^T$ & $r_{\gamma_2}$ \\
-~ & Omnivariance & $\tilde{\mathcal{O}}^\mathcal{F} = \sqrt[3]{\prod_m \tilde{g}_m^\mathcal{F}}$ & $r_\delta$ \\
-~ & Entropy & $\tilde{\mathcal{H}}^\mathcal{F} = -\sum_m \tilde{g}_m^\mathcal{F} \cdot \log \tilde{g}_m^\mathcal{F}$ & $r_\delta$ \\
-\bottomrule
-\end{tabular}
-}
-\end{table}
 
 
-The predictors calculations in PointPCA+ differ from those in PointPCA. First, PointPCA+ uses different distance metrics for descriptor values than PointPCA. While PointPCA uses only the distance defined in Equation~\ref{eq_comparison_funcion_pcqa}, PointPCA+ adopts a similar approach to that described in \cite{diniz2020multi}, where multiple distances are computed based on the descriptors listed in Table~\ref{tab_pointpca2_descriptors}. More precisely, these multiple distances are:
-\begin{itemize}
-    \item $r_\alpha = \sqrt{\sum_m \mathbf{\mathfrak{d}_1}^2}$,
-    \item $r_\beta = \left| \mathbf{\mathfrak{d}_2} \right|$, 
-    \item $r_{\gamma_1} =  \dfrac{|\lambda^\mathcal{A} \odot	\lambda^\mathcal{B} - \Sigma|}{\lambda^\mathcal{A} \odot	\lambda^\mathcal{B}}$,
-    \item $r_{\gamma_2} =  \dfrac{|\tilde{s}^\mathcal{A} \odot	\tilde{s}^\mathcal{B} - \tilde{\Sigma}|}{\tilde{s}^\mathcal{A} \odot	\tilde{s}^\mathcal{B}} $, and
-    \item $r_{\delta} = 1 - \dfrac{|\phi_{i,j}^\mathcal{A} - \phi_{i,j}^\mathcal{B}|}{|\phi_{i,j}^\mathcal{A}| + |\phi_{i,j}^\mathcal{B}| + \varepsilon}$.
-\end{itemize}
+
+The predictors calculations in PointPCA+ differ from those in PointPCA. First, PointPCA+ uses different distance metrics for descriptor values than PointPCA. While PointPCA uses only the distance defined in Equation~\ref{eq_comparison_funcion_pcqa}, PointPCA+ adopts a similar approach to that described in \cite{diniz2020multi}, where multiple distances are computed based on the descriptors listed in Table~\ref{tab_pointpca2_descriptors}. More precisely, these multiple distances are depicted in Table~\ref{tab_distance_metrics}.
 In the above equations, $\mathbf{\mathfrak{d}_1}$ is the difference between two points, $\mathbf{\mathfrak{d}_2}$ indicates the projected distance between a point to the reference axes, and $\varepsilon$ is a small constant added to ensure the operation is mathematically valid. The symbol $\odot$ represents element-wise product.  For the sake of notation, the distances \( r_{\rho} \) and \( r_{\theta} \) are defined to correspond exactly to \( P_{m} \) and \( \theta_{m} \), respectively.
 
 In a similar fashion to PointPCA, the features of PointPCA+ are obtained by pooling the predictors calculated per point. More precisely, the PointPCA+ predictors $\psi_{i,j,k}$ are obtained per point $p_i$ using the descriptor $j$ and the distance function $r_k$, where $k \in \{ \alpha, \beta, \gamma, \delta, \rho, \theta \}$, as listed in Table~\ref{tab_pointpca2_descriptors}. Through the pooling of these predictors, a single feature $f_{j,k}$ is derived for each predictor:
@@ -596,14 +625,11 @@ Figure~\ref{fig_arquitecture_pointpca3} shows the two branches of PointPCA++: th
 
 PointPCA+RS, historically named PointPCA2-RS~\cite{carvalho2025rs}, is the Rust reimplementation of PointPCA+, whose original implementation is written in MATLAB. It obtains neighborhoods on demand using KD-trees, computes local geometry and texture descriptors in parallel, and pools the intended 40 predictors. Figure~\ref{fig_pointpca2_rs_diagram} summarizes this prior implementation. We use PointPCA for the original MATLAB PointPCA1, PointPCA+ for MATLAB PointPCA2, and PointPCA+RS for the Rust reimplementation; these names do not identify PointPCA$^3$.
 
-PointPCA$^3$ extends PointPCA+RS with \gls{VoSS}~\cite{carvalho2026pc3}, as shown in Figure~\ref{fig_review_pc3_architecture}. Rather than evaluating a neighborhood around every reference point, it selects spatially distributed seed points and extracts their neighborhoods from the reference and distorted clouds. Local PCA and descriptors are computed for these neighborhoods, followed by the same intended 40-slot predictor layout. The inspected implementation identifies additional seeds until reference-neighborhood coverage is reached. This changes the sampled local regions; matching predictor dimensions alone therefore does not establish numerical equivalence to PointPCA+ or PointPCA+RS.
 
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=0.95\textwidth]{data/analysis/figures/review_pc3_architecture.pdf}
-    \caption{The evaluated PointPCA$^3$ branch uses VoSS seed selection before on-demand neighborhood extraction, PCA, descriptor computation, and pooling of 40 predictors. This prior sampling method is distinct from the exhaustive PointPCA+RS neighborhood path.}
-    \label{fig_review_pc3_architecture}
-\end{figure*}
+%% TODO: add ~\cite{carvalho2026pc3} after acceptance!
+PointPCA$^3$ extends PointPCA+RS with \gls{VoSS}, as shown in Figure~\ref{fig_arquitecture_pointpca3} (3D branch). Rather than evaluating a neighborhood around every reference point, it selects spatially distributed seed points and extracts their neighborhoods from the reference and distorted clouds. Local PCA and descriptors are computed for these neighborhoods, followed by the same intended 40-slot predictor layout. The inspected implementation identifies additional seeds until reference-neighborhood coverage is reached. This changes the sampled local regions; matching predictor dimensions alone therefore does not establish numerical equivalence to PointPCA+ or PointPCA+RS.
+
+
 
 The recorded JVCI extraction calls the PointPCA$^3$ backend with neighborhood size 81. PointPCA+RS evaluates the reference-point neighborhoods, whereas PointPCA$^3$ uses VoSS seed neighborhoods. The recorded generator and inspected source establish this distinction. Section~\ref{sec_results_pca_family} evaluates prediction and feature agreement; Section~\ref{sec_results_pointpca3_runtime} evaluates computational performance. Historical native binary versions are not fully recorded, so source inspection establishes intended feature semantics rather than an exact replay of the original extraction. No quantitative memory benchmark is reported in the present experiments.
 
@@ -807,7 +833,7 @@ Fold-level results are summarized as median [IQR], where IQR denotes the third q
 
 
 \newcommand{\ReviewProjectionInterpretation}{Table~\ref{tab_review_projection_only} evaluates the six DISTS scores independently of the point-cloud branch. Pooled SROCC ranges from 0.663 on LS-PCQA to 0.927 on APSIPA. This provides a standalone projection baseline on the same grouped folds as the fused model, rather than reusing fused predictions. Unlike the historical APSIPA IQA screening, this comparison uses the final extraction and pooled OOF metrics.}
-\newcommand{\ReviewFamilyInterpretation}{Table~\ref{tab_review_pca_family} compares feature representations with the same Extra Trees pipeline and shared folds. The SROCC difference (PointPCA+RS minus PointPCA+) ranges from -0.006 to 0.001. PointPCA++ has the strongest SROCC on APSIPA, ICIP2023, and SJTU-PCQA among these controlled methods, while PointPCA$^3$ is slightly higher on UnB\_PC. PointPCA+ has lower RMSE on ICIP2023 than PointPCA++. Thus, the fusion does not dominate every method on every metric. Original PointPCA is evaluated only on APSIPA using its native 46-feature vector. These comparisons isolate representations under a common regressor and do not reproduce each historical method\textquotesingle s native regression procedure.}
+\newcommand{\ReviewFamilyInterpretation}{Table~\ref{tab_review_pca_family} compares feature representations with the same Extra Trees pipeline and shared folds. The SROCC difference (PointPCA+RS minus PointPCA+) ranges from -0.006 to 0.001. PointPCA++ has the strongest SROCC on APSIPA, ICIP2023, and SJTU-PCQA among these controlled methods, while PointPCA$^3$ is slightly higher on UnB\_PC. PointPCA+ has lower RMSE on ICIP2023 than PointPCA++. Thus, the fusion does not dominate every method on every metric. Original PointPCA is evaluated only on APSIPA using its native 46-feature vector. These comparisons isolate representations under a common regressor and do not reproduce each historical method's native regression procedure.}
 \newcommand{\ReviewAgreementInterpretation}{Figure~\ref{fig_review_feature_agreement} and Table~\ref{tab_review_feature_agreement} compare corresponding PointPCA+ and PointPCA+RS predictors after verifying their intended descriptor order. Across the 160 feature--dataset pairs, median Spearman correlation is 1.000, with a minimum of 0.524. Per-feature errors reveal departures that a single pooled correlation would conceal. On SJTU-PCQA, for example, PointPCA+RS minus PointPCA+ SROCC is -0.006 with a pointwise 95\% interval [-0.015, 0.004]. Table~\ref{tab_review_pairwise} reports paired prediction differences and Holm-adjusted tests; none of the paired comparisons between PointPCA+ and PointPCA+RS is significant after the declared correction. The tests do not establish equivalence; the estimated differences and their intervals quantify the agreement supported by these populations. Inspected source establishes intended feature semantics, while exact historical native binary versions remain a provenance limitation.}
 \newcommand{\ReviewIQAInterpretation}{Table~\ref{tab_review_iqa_complementarity} tests whether TOPIQ-FR adds predictive information to DISTS on APSIPA. Adding its six views to the PointPCA$^3$/DISTS representation changes pooled SROCC from 0.937 to 0.928 and RMSE from 0.543 to 0.572. The paired SROCC change is -0.009 (pointwise 95\% interval [-0.020, 0.003], Holm-adjusted $p=1.000$), so the lower point estimate is not a demonstrated performance loss. Combining the two IQAs without PointPCA$^3$ also lowers the SROCC point estimate relative to DISTS alone. High importance in a larger correlated feature set therefore does not imply a benefit from this concatenation. These diagnostic results retain the selected 46-feature design and do not establish behavior beyond APSIPA.}
 \newcommand{\ReviewViewInterpretation}{For the fused representation, the median four-view SROCC is 0.934, compared with 0.937 for six views. Across the four pooling functions, fused SROCC ranges from 0.918 to 0.923. Pooling therefore reduces the input dimension from 46 to 41 with lower point estimates in this dataset, while some indexed subsets approach the six-view estimate. Paired reference-clustered intervals against each six-view baseline are retained for every design in the numerical results; these descriptive comparisons do not establish a universally preferable subset or pooling rule.}
@@ -890,7 +916,7 @@ We next examine agreement between corresponding PointPCA+ and PointPCA+RS featur
 
 \begin{table*}[t!]
     \centering
-    \caption{Controlled PCA-family prediction on complete matched datasets. Each method triplet is SROCC/PLCC/RMSE from pooled OOF predictions, using the same five content-disjoint cross-validation folds and selected Extra Trees pipeline. Original PointPCA uses its native 46 predictors on APSIPA; -- denotes extraction that could not be completed because memory requirements exceeded the available 128 GB RAM. PointPCA+, PointPCA+RS, and PointPCA$^3$ use 40 predictors; PointPCA++ uses 46. Populations/roles are in Table~\ref{tab_datasets}; intervals and paired inference accompany the saved summaries. These are common-regressor comparisons, not reproductions of each method\textquotesingle s native regression protocol.}
+    \caption{Controlled PCA-family prediction on complete matched datasets. Each method triplet is SROCC/PLCC/RMSE from pooled OOF predictions, using the same five content-disjoint cross-validation folds and selected Extra Trees pipeline. Original PointPCA uses its native 46 predictors on APSIPA; -- denotes extraction that could not be completed because memory requirements exceeded the available 128 GB RAM. PointPCA+, PointPCA+RS, and PointPCA$^3$ use 40 predictors; PointPCA++ uses 46. Populations/roles are in Table~\ref{tab_datasets}; intervals and paired inference accompany the saved summaries. These are common-regressor comparisons, not reproductions of each method's native regression protocol.}
     \label{tab_review_pca_family}
     \scriptsize
     \begin{adjustbox}{max width=\textwidth}
@@ -951,12 +977,12 @@ We next examine agreement between corresponding PointPCA+ and PointPCA+RS featur
 
 Table~\ref{tab_pointpcapp_all_datasets} evaluates the fixed configuration when training and testing use different reference contents from the same dataset. Pooled \gls{SROCC} ranges from 0.868 on LS-PCQA to 0.957 on UnB\_PC, and pooled \gls{PLCC} ranges from 0.866 on WPC2 to 0.962 on UnB\_PC. These results support the predictive usefulness of the representation across the tested datasets, with wider WPC2 intervals indicating greater uncertainty across reference contents. Values for APSIPA, WPC, and LS-PCQA remain descriptive because these datasets influenced model selection; the other four datasets assess the design without participating in that selection. The pooled metrics combine predictions from five fitted models; they summarize this fixed-configuration evaluation differently from the selection-stage median fold statistics in Figure~\ref{fig_feature_set_ablation}.
 
-\begin{table*}[ht!]
+\begin{table}[ht!]
     \centering
     \caption{Within-dataset performance of the frozen 46-feature PointPCA++ configuration with the selected Extra Trees regressor. Values are pooled \gls{OOF} metrics with reference-clustered 95\% confidence intervals in brackets. RMSE values are reported within each dataset and must not be compared across subjective-score scales. $^{\dagger}$APSIPA, WPC, and LS-PCQA are modelling datasets; the remaining four are evaluation datasets.}
     \label{tab_pointpcapp_all_datasets}
     \scriptsize
-    \begin{adjustbox}{max width=0.95\textwidth}
+    \begin{adjustbox}{max width=0.95\columnwidth}
     \begin{tabular}{lrrr}
         \toprule
         Dataset & \gls{SROCC} & \gls{PLCC} & \gls{RMSE} \\
@@ -973,7 +999,7 @@ Table~\ref{tab_pointpcapp_all_datasets} evaluates the fixed configuration when t
 
     \end{tabular}
     \end{adjustbox}
-\end{table*}
+\end{table}
 
 The PointPCA++ entries for the four matched datasets in Table~\ref{tab_review_pca_family} reuse these predictions. That table isolates representation differences; Table~\ref{tab_pointpcapp_all_datasets} establishes seven-dataset coverage.
 
@@ -1036,6 +1062,7 @@ Table~\ref{tab_review_views_pooling} diagnoses view count and pooling under the 
         PointPCA$^3$ + DISTS & 2 & 15 & 42 & 0.924 [0.916, 0.932] & 0.906 & 0.579 \\
         PointPCA$^3$ + DISTS & 4 & 15 & 44 & 0.934 [0.926, 0.937] & 0.917 & 0.551 \\
         PointPCA$^3$ + DISTS & 6 & 1 & 46 & 0.937 [0.937, 0.937] & 0.919 & 0.543 \\
+        \midrule
         DISTS (mean) & 6 & 1 & 1 & 0.919 & 0.900 & 0.600 \\
         PointPCA$^3$ + DISTS (mean) & 6 & 1 & 41 & 0.923 & 0.905 & 0.581 \\
         DISTS (median) & 6 & 1 & 1 & 0.895 & 0.868 & 0.684 \\
@@ -1069,7 +1096,7 @@ To assess where predictions depart from subjective scores, we examine the same w
 \begin{figure*}[ht!]
     \centering
     \includegraphics[width=0.97\textwidth]{data/analysis/figures/review_mos_scatter.pdf}
-    \caption{All frozen PointPCA++ \gls{OOF} predictions versus source MOS on the seven datasets, using the fixed 46-feature Extra Trees pipeline and persisted reference-disjoint folds. Dashed lines show identity. Axes follow each dataset\textquotesingle s source scale; no held-out calibration is applied. Populations and roles are in Table~\ref{tab_datasets}.}
+    \caption{All frozen PointPCA++ \gls{OOF} predictions versus source MOS on the seven datasets, using the fixed 46-feature Extra Trees pipeline and persisted reference-disjoint folds. Dashed lines show identity. Axes follow each dataset's source scale; no held-out calibration is applied. Populations and roles are in Table~\ref{tab_datasets}.}
     \label{fig_review_mos_scatter}
 \end{figure*}
 \begin{figure*}[ht!]
@@ -1080,9 +1107,9 @@ To assess where predictions depart from subjective scores, we examine the same w
 \end{figure*}
 
 
-\begin{table*}[t!]
+\begin{table}[t!]
     \centering
-    \caption{Frozen PointPCA++ OOF prediction errors. Bias is prediction minus MOS; normalized MAE divides each sample\textquotesingle s absolute error by its dataset\textquotesingle s observed MOS range. Normalization is descriptive and does not calibrate predictions. Populations and scales are in Table~\ref{tab_datasets}.}
+    \caption{Frozen PointPCA++ \gls{OOF} prediction errors. Bias is prediction minus \gls{MOS}; normalized \gls{MAE} divides each sample's absolute error by its dataset's observed MOS range. Normalization is descriptive and does not calibrate predictions. Populations and scales are in Table~\ref{tab_datasets}.}
     \label{tab_review_error_summary}
     \scriptsize
     \begin{adjustbox}{max width=\textwidth}
@@ -1100,7 +1127,7 @@ To assess where predictions depart from subjective scores, we examine the same w
         \bottomrule
         \end{tabular}
     \end{adjustbox}
-\end{table*}
+\end{table}
 %% TODO: Remove this Macro
 \ReviewErrorInterpretation
 
@@ -1314,7 +1341,7 @@ Table~\ref{tab_review_projection_iqas} retains the complete fixed-pipeline IQA c
 
 \begin{table*}[t!]
     \centering
-    \caption{Per-feature agreement between PointPCA+ and PointPCA+RS on matched samples. Each dataset pair is Spearman correlation and MAE in that feature\textquotesingle s native units; nonzero MAE below 0.0005 uses compact scientific notation. Indices follow the audited 40-slot correspondence; different features need not share units. Pearson correlation, bias, RMSE, clustered intervals and invalid/constant-value flags are retained in the accompanying numerical artifact. Agreement is descriptive and does not establish equivalence.}
+    \caption{Per-feature agreement between PointPCA+ and PointPCA+RS on matched samples. Each dataset pair is Spearman correlation and MAE in that feature's native units; nonzero MAE below 0.0005 uses compact scientific notation. Indices follow the audited 40-slot correspondence; different features need not share units. Pearson correlation, bias, \gls{RMSE}, clustered intervals and invalid/constant-value flags are retained in the accompanying numerical artifact. Agreement is descriptive and does not establish equivalence.}
     \label{tab_review_feature_agreement}
     \scriptsize
     \begin{adjustbox}{max width=\textwidth}
@@ -1449,12 +1476,12 @@ Table~\ref{tab_review_projection_iqas} retains the complete fixed-pipeline IQA c
 
 
 
-\begin{table*}[t!]
+\begin{table}[t!]
     \centering
     \caption{The two recorded distortion-class identifiers with greatest MAE per dataset (or all available classes if fewer). Grouping follows supplied CLASS metadata; no semantic class names are inferred. Unknown WPC2 labels form one unknown group. These post-hoc error concentrations are descriptive; complete class/reference summaries retain group sizes in the numerical artifacts.}
     \label{tab_review_error_groups}
     \scriptsize
-    \begin{adjustbox}{max width=\textwidth}
+    \begin{adjustbox}{max width=\columnwidth}
         \begin{tabular}{lrrrr}
         \toprule
         Dataset & Class identifier & Bias & MAE & RMSE \\
@@ -1474,7 +1501,7 @@ Table~\ref{tab_review_projection_iqas} retains the complete fixed-pipeline IQA c
         \bottomrule
         \end{tabular}
     \end{adjustbox}
-\end{table*}
+\end{table}
 
 
 
