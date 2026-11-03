@@ -620,7 +620,7 @@ In this paper, we propose PointPCA++, a \gls{PCQA} metric that enhances PointPCA
 \section{Proposed Method: PointPCA++} \label{sec_proposed}
 
 
-Figure~\ref{fig_arquitecture_pointpca3} shows the two branches of PointPCA++: the PointPCA$^3$ extractor and the cubemap projection branch. PointPCA$^3$ produces 40 predictors; the selected projection branch produces six DISTS view scores. Their concatenation gives the final 46-feature representation used by Extra Trees regression. Both branches can also be evaluated independently. This section presents the selected architecture; Sections~\ref{sec_results_projection_analysis} and~\ref{sec_results_regression_features} establish the experimental basis for its configuration. The prior PointPCA+RS and VoSS contributions are attributed to their original papers~\cite{carvalho2025rs,carvalho2026pc3}; this paper evaluates their representations and the added projection information under the protocol described in Section~\ref{sec_setup}.
+Figure~\ref{fig_arquitecture_pointpca3} shows the two branches of PointPCA++: the PointPCA$^3$ extractor and the cubemap projection branch. PointPCA$^3$ produces 40 predictors; the selected projection branch produces six \gls{IQA} view scores. Their concatenation gives the final 46-feature representation used by Extra Trees regression. Both branches can also be evaluated independently. This section presents the selected architecture; Sections~\ref{sec_results_projection_analysis} and~\ref{sec_results_regression_features} establish the experimental basis for its configuration. The prior PointPCA+RS and VoSS contributions are attributed to their original papers~\cite{carvalho2025rs,carvalho2026pc3}; this paper evaluates their representations and the added projection information under the protocol described in Section~\ref{sec_setup}.
 
 \begin{figure*}[t!]
     \centering
@@ -838,17 +838,17 @@ Figure~\ref{fig_projection_accuracy_runtime} compares predictive accuracy with r
 
 Cropping followed by Navier-Stokes padding obtains the best aggregate rank. It reaches a median \gls{SROCC}/\gls{PLCC} of 0.881/0.825 across IQAs with a median processing time of 4.98~s. It is selected in only two of the five outer training partitions; the remaining folds select crop with FSRFast, no crop with Telea, or no crop with Navier-Stokes. This variation indicates sensitivity to the composition of the training references. We retain crop plus Navier-Stokes as the fixed projection pipeline for the subsequent multi-dataset study, without claiming that it is optimal for every dataset.
 
-The complete fixed-pipeline results for all 22 IQAs are reported in Table~\ref{tab_review_projection_iqas}. Their fold summaries characterize the historical projection study; the seven-dataset DISTS baseline in Section~\ref{sec_results_pointpcapp_sota} uses the final extraction and pooled \gls{OOF} metrics.
+The complete fixed-pipeline results for all 22 IQAs are reported in Table~\ref{tab_review_projection_iqas}. Their fold summaries characterize the historical projection study; the seven-dataset \gls{DISTS} baseline in Section~\ref{sec_results_pointpcapp_sota} uses the final extraction and pooled \gls{OOF} metrics.
 
 
 \subsection{IQA, Regressor, and Fusion Selection} \label{sec_results_regression_features}
 
-Selecting an \gls{IQA} descriptor requires a regression model to compare the candidate feature sets. The APSIPA reference study first selected Random Forest~\cite{breiman2001random} using the complete 172-feature representation, comprising 40 PointPCA$^3$ predictors and all 22 six-view IQA blocks. With that regressor fixed, we then compared candidates combining the 40 point-cloud predictors with one six-view IQA block, using the projection pipeline selected within each outer training partition. Figure~\ref{fig_single_iqa_selection} compares DISTS with the strongest alternative in each partition. DISTS achieves the highest median inner-validation \gls{SROCC} in all five partitions. The margins are small (0.0006--0.0036), supporting selection consistency within this experiment rather than statistical significance or universal superiority. We therefore fix DISTS and the selected crop plus Navier-Stokes pipeline, and subsequently reconsider the regressor on the three modelling datasets using this 46-feature representation.
+Selecting an \gls{IQA} descriptor requires a regression model to compare the candidate feature sets. The APSIPA reference study first selected Random Forest~\cite{breiman2001random} using the complete 172-feature representation, comprising 40 PointPCA$^3$ predictors and all 22 six-view IQA blocks. With that regressor fixed, we then compared candidates combining the 40 point-cloud predictors with one six-view IQA block, using the projection pipeline selected within each outer training partition. Figure~\ref{fig_single_iqa_selection} compares \gls{DISTS} with the strongest alternative in each partition. DISTS achieves the highest median inner-validation \gls{SROCC} in all five partitions. The margins are small (0.0006--0.0036), supporting selection consistency within this experiment rather than statistical significance or universal superiority. We therefore fix \gls{DISTS} and the selected crop plus Navier-Stokes pipeline, and subsequently reconsider the regressor on the three modelling datasets using this 46-feature representation.
 
 \begin{figure*}[ht!]
     \centering
     \includegraphics[width=0.93\textwidth]{data/analysis/figures/review_single_iqa_selection.pdf}
-    \caption{IQA selection on APSIPA using the preliminary Random Forest regressor. Each row compares DISTS (red diamond) with the strongest alternative among the other 21 IQAs (blue circle). All candidates combine the same 40 PointPCA$^3$ predictors with six IQA view scores and use the projection pipeline selected within that outer training partition. Coordinates are median inner-validation SROCC, not outer-test performance; annotations give the DISTS-minus-alternative margin. The consistently positive but small margins support selection consistency, not statistical significance or universal superiority.}
+    \caption{IQA selection on APSIPA using the preliminary Random Forest regressor. Each row compares \gls{DISTS} (red diamond) with the strongest alternative among the other 21 IQAs (blue circle). All candidates combine the same 40 PointPCA$^3$ predictors with six IQA view scores and use the projection pipeline selected within that outer training partition. Coordinates are median inner-validation SROCC, not outer-test performance; annotations give the \gls{DISTS}-minus-alternative margin. The consistently positive but small margins support selection consistency, not statistical significance or universal superiority.}
     \label{fig_single_iqa_selection}
 \end{figure*}
 
@@ -874,9 +874,9 @@ With the regressor fixed, Figure~\ref{fig_feature_set_ablation} tests whether th
     \label{fig_feature_set_ablation}
 \end{figure*}
 
-The 46-feature fusion attains the highest median \gls{SROCC} and \gls{PLCC}, and the lowest median \gls{RMSE}, compared with PointPCA$^3$ alone or DISTS alone on each modelling dataset. It is also selected by the equal-dataset-rank rule in all five outer partitions. The largest gain over PointPCA$^3$ occurs on LS-PCQA, where median \gls{SROCC} increases from 0.803 to 0.871. The gains on APSIPA and WPC are smaller but follow the same direction, supporting the use of both modalities. On the evaluation datasets of Section~\ref{sec_results_pca_family}, however, the gain over PointPCA$^3$ is small on ICIP2023 and UnB\_PC. Because these datasets also guide model selection, the comparison characterizes the chosen design rather than an independent evaluation of it.
+The 46-feature fusion attains the highest median \gls{SROCC} and \gls{PLCC}, and the lowest median \gls{RMSE}, compared with PointPCA$^3$ alone or \gls{DISTS} alone on each modelling dataset. It is also selected by the equal-dataset-rank rule in all five outer partitions. The largest gain over PointPCA$^3$ occurs on LS-PCQA, where median \gls{SROCC} increases from 0.803 to 0.871. The gains on APSIPA and WPC are smaller but follow the same direction, supporting the use of both modalities. On the evaluation datasets of Section~\ref{sec_results_pca_family}, however, the gain over PointPCA$^3$ is small on ICIP2023 and UnB\_PC. Because these datasets also guide model selection, the comparison characterizes the chosen design rather than an independent evaluation of it.
 
-These analyses fix the PointPCA++ configuration used in the remaining experiments: 40 PointPCA$^3$ predictors concatenated with six DISTS scores from crop plus Navier-Stokes projections, followed by the selected Extra Trees regressor. Projection and IQA choices use APSIPA; regressor and fusion choices use APSIPA, WPC, and LS-PCQA. Subsequent diagnostic comparisons examine this design without selecting a replacement.
+These analyses fix the PointPCA++ configuration used in the remaining experiments: 40 PointPCA$^3$ predictors concatenated with six \gls{DISTS} scores from crop plus Navier-Stokes projections, followed by the selected Extra Trees regressor. Projection and IQA choices use APSIPA; regressor and fusion choices use APSIPA, WPC, and LS-PCQA. Subsequent diagnostic comparisons examine this design without selecting a replacement.
 
 
 \subsection{Controlled PCA-Family Validation} \label{sec_results_pca_family}
@@ -919,7 +919,7 @@ Figure~\ref{fig_review_feature_agreement} and Table~\ref{tab_review_feature_agre
 
 \begin{table*}[t!]
     \centering
-    \caption{Standalone six-view DISTS prediction using the final complete-file projection inputs, fixed Extra Trees pipeline, and persisted five reference-disjoint folds. Values are pooled OOF metrics with reference-clustered 95\% intervals (10,000 draws, seed 42). Dataset populations and roles are in Table~\ref{tab_datasets}. RMSE is dataset-specific.}
+    \caption{Standalone six-view \gls{DISTS} prediction using the final complete-file projection inputs, fixed Extra Trees pipeline, and persisted five reference-disjoint folds. Values are pooled \gls{OOF} metrics with reference-clustered 95\% intervals (10,000 draws, seed 42). Dataset populations and roles are in Table~\ref{tab_datasets}. RMSE is dataset-specific.}
     \label{tab_review_projection_only}
     \scriptsize
     \begin{adjustbox}{max width=\textwidth}
@@ -974,7 +974,7 @@ The PointPCA++ entries for the four matched datasets in Table~\ref{tab_review_pc
 
 \subsection{Diagnostic Feature and View Ablations} \label{sec_results_diagnostics}
 
-To investigate whether additional projection descriptors could contribute useful information, Figure~\ref{fig_feature_importance} examines the APSIPA-only 172-feature candidate pool with Extra Trees. This diagnostic model is distinct from the final 46-feature model. Importance is the decrease in held-out \gls{SROCC} after permuting a feature or block within each reference group. The projection modality produces a median decrease of 0.593, compared with 0.099 for PointPCA$^3$. DISTS is the most influential six-view \gls{IQA} block, with a median decrease of 0.131. This analysis measures reliance of the fitted model; correlated predictors can share or dilute permutation importance, and importance alone did not determine the IQA choice.
+To investigate whether additional projection descriptors could contribute useful information, Figure~\ref{fig_feature_importance} examines the APSIPA-only 172-feature candidate pool with Extra Trees. This diagnostic model is distinct from the final 46-feature model. Importance is the decrease in held-out \gls{SROCC} after permuting a feature or block within each reference group. The projection modality produces a median decrease of 0.593, compared with 0.099 for PointPCA$^3$. \gls{DISTS} is the most influential six-view \gls{IQA} block, with a median decrease of 0.131. This analysis measures reliance of the fitted model; correlated predictors can share or dilute permutation importance, and importance alone did not determine the IQA choice.
 
 \begin{figure*}[ht!]
     \centering
@@ -987,7 +987,7 @@ To investigate whether additional projection descriptors could contribute useful
 
 \begin{table*}[t!]
 \centering
-\caption{Diagnostic DISTS/TOPIQ-FR combinations on APSIPA using the historical standalone IQA extraction, fixed Extra Trees pipeline, and persisted final grouped folds. Plus signs indicate concatenation. Metrics are pooled OOF values with reference-clustered 95\% intervals. Extraction cost is unmeasured for the combined designs; these comparisons do not reopen final selection.}
+\caption{Diagnostic \gls{DISTS}/TOPIQ-FR combinations on APSIPA using the historical standalone IQA extraction, fixed Extra Trees pipeline, and persisted final grouped folds. Plus signs indicate concatenation. Metrics are pooled OOF values with reference-clustered 95\% intervals. Extraction cost is unmeasured for the combined designs; these comparisons do not reopen final selection.}
 \label{tab_review_iqa_complementarity}
 \scriptsize
     \begin{adjustbox}{max width=\textwidth}
@@ -1007,13 +1007,13 @@ To investigate whether additional projection descriptors could contribute useful
     \end{adjustbox}
 \end{table*}
 
-Table~\ref{tab_review_iqa_complementarity} tests whether TOPIQ-FR adds predictive information to DISTS on APSIPA. Adding its six views to the PointPCA$^3$/DISTS representation changes pooled SROCC from 0.937 to 0.928 and RMSE from 0.543 to 0.572. The paired SROCC change is -0.009 (pointwise 95\% interval [-0.020, 0.003], Holm-adjusted $p=1.000$), so the lower point estimate is not a demonstrated performance loss. Combining the two IQAs without PointPCA$^3$ also lowers the SROCC point estimate relative to DISTS alone. High importance in a larger correlated feature set therefore does not imply a benefit from this concatenation. These diagnostic results retain the selected 46-feature design and do not establish behavior beyond APSIPA.
+Table~\ref{tab_review_iqa_complementarity} tests whether TOPIQ-FR adds predictive information to \gls{DISTS} on APSIPA. Adding its six views to the PointPCA$^3$/DISTS representation changes pooled SROCC from 0.937 to 0.928 and RMSE from 0.543 to 0.572. The paired SROCC change is -0.009 (pointwise 95\% interval [-0.020, 0.003], Holm-adjusted $p=1.000$), so the lower point estimate is not a demonstrated performance loss. Combining the two IQAs without PointPCA$^3$ also lowers the SROCC point estimate relative to \gls{DISTS} alone. High importance in a larger correlated feature set therefore does not imply a benefit from this concatenation. These diagnostic results retain the selected 46-feature design and do not establish behavior beyond APSIPA.
 
-Table~\ref{tab_review_views_pooling} diagnoses view count and pooling under the same grouped folds and historical IQA extraction as Table~\ref{tab_review_iqa_complementarity}. Its six-view baselines reuse those diagnostic predictions. All 15 two-view and all 15 four-view subsets are evaluated, with subset variability reported instead of selecting a favorable camera combination. Mean, median, minimum, and maximum pooling compress the six DISTS scores to one value, with and without the 40 PointPCA$^3$ predictors. These comparisons characterize accuracy and dimension on APSIPA; they neither establish extraction speed nor select a new final representation.
+Table~\ref{tab_review_views_pooling} diagnoses view count and pooling under the same grouped folds and historical IQA extraction as Table~\ref{tab_review_iqa_complementarity}. Its six-view baselines reuse those diagnostic predictions. All 15 two-view and all 15 four-view subsets are evaluated, with subset variability reported instead of selecting a favorable camera combination. Mean, median, minimum, and maximum pooling compress the six \gls{DISTS} scores to one value, with and without the 40 PointPCA$^3$ predictors. These comparisons characterize accuracy and dimension on APSIPA; they neither establish extraction speed nor select a new final representation.
 
 \begin{table*}[t!]
     \centering
-    \caption{APSIPA diagnostic view-count and pooling comparisons with fixed Extra Trees and persisted grouped folds. The 2-/4-view rows summarize all 15 indexed subsets: SROCC is the median [minimum, maximum] across subsets, not a confidence interval; PLCC/RMSE are subset medians. Pooling uses all six DISTS views. No opposing-camera interpretation or measured speedup is inferred. The six-view concatenation is the reference; the final design remains fixed.}
+    \caption{APSIPA diagnostic view-count and pooling comparisons with fixed Extra Trees and persisted grouped folds. The 2-/4-view rows summarize all 15 indexed subsets: SROCC is the median [minimum, maximum] across subsets, not a confidence interval; PLCC/RMSE are subset medians. Pooling uses all six \gls{DISTS} views. No opposing-camera interpretation or measured speedup is inferred. The six-view concatenation is the reference; the final design remains fixed.}
     \label{tab_review_views_pooling}
     \scriptsize
     \begin{adjustbox}{max width=\textwidth}
@@ -1046,12 +1046,12 @@ For the fused representation, the median four-view SROCC is 0.934, compared with
 
 \subsection{Model Reliance and Prediction Errors} \label{sec_results_errors}
 
-Figure~\ref{fig_pointpcapp_modality_importance} extends the reliance analysis to all seven complete datasets using the final 46-feature model. Permuting DISTS produces the larger median \gls{SROCC} decrease on APSIPA, WPC, LS-PCQA, SJTU-PCQA, and UnB\_PC, whereas permuting PointPCA$^3$ has the larger effect on ICIP2023 and WPC2. Both modalities have positive median effects on every dataset. The balance is therefore dataset-dependent: the fusion does not rely on the same branch to the same degree across populations. These grouped effects describe the fitted model's reliance and should not be interpreted as causal uniqueness or feature efficiency.
+Figure~\ref{fig_pointpcapp_modality_importance} extends the reliance analysis to all seven complete datasets using the final 46-feature model. Permuting \gls{DISTS} produces the larger median \gls{SROCC} decrease on APSIPA, WPC, LS-PCQA, SJTU-PCQA, and UnB\_PC, whereas permuting PointPCA$^3$ has the larger effect on ICIP2023 and WPC2. Both modalities have positive median effects on every dataset. The balance is therefore dataset-dependent: the fusion does not rely on the same branch to the same degree across populations. These grouped effects describe the fitted model's reliance and should not be interpreted as causal uniqueness or feature efficiency.
 
 \begin{figure*}[ht!]
     \centering
     \includegraphics[width=0.93\textwidth]{data/analysis/figures/review_pointpcapp_modality_importance.pdf}
-    \caption{Grouped modality importance for the final 46-feature PointPCA++ regressor across seven datasets. For each outer test fold, all six DISTS views or all 40 PointPCA$^3$ predictors are permuted jointly within each held-out reference content. Importance is the baseline \gls{SROCC} minus the permuted \gls{SROCC}; positive values indicate model reliance. Markers show the median of the five fold-level effects and horizontal intervals their IQR, after reducing 50 deterministic permutations to one median per fold. Shaded groups distinguish the three modelling datasets from the four evaluation datasets.}
+    \caption{Grouped modality importance for the final 46-feature PointPCA++ regressor across seven datasets. For each outer test fold, all six \gls{DISTS} views or all 40 PointPCA$^3$ predictors are permuted jointly within each held-out reference content. Importance is the baseline \gls{SROCC} minus the permuted \gls{SROCC}; positive values indicate model reliance. Markers show the median of the five fold-level effects and horizontal intervals their IQR, after reducing 50 deterministic permutations to one median per fold. Shaded groups distinguish the three modelling datasets from the four evaluation datasets.}
     \label{fig_pointpcapp_modality_importance}
 \end{figure*}
 
@@ -1148,7 +1148,7 @@ Table~\ref{tab_pointpca3_runtime} compares the 16-worker configuration with Poin
 \end{table}
 
 
-We next compare complete PointPCA++ extraction with PointPCA+. The measured complete implementation uses 32 workers and executes PointPCA$^3$ followed sequentially by projection, cropping, Navier-Stokes inpainting, and DISTS evaluation. Timing includes point counting, point-cloud loading, and feature extraction after one initialization warm-up, but excludes \gls{CSV} serialization and Extra Trees inference. Figure~\ref{fig_pointpcapp_runtime} compares sample-level times and paired speedups across all seven datasets against the total reference-plus-distorted point count. The separate dataset panels show variation in runtime and speedup across the observed input sizes; the logarithmic time axes separate the two implementations, while linear speedup axes show their paired ratios.
+We next compare complete PointPCA++ extraction with PointPCA+. The measured complete implementation uses 32 workers and executes PointPCA$^3$ followed sequentially by projection, cropping, Navier-Stokes inpainting, and \gls{DISTS} evaluation. Timing includes point counting, point-cloud loading, and feature extraction after one initialization warm-up, but excludes \gls{CSV} serialization and Extra Trees inference. Figure~\ref{fig_pointpcapp_runtime} compares sample-level times and paired speedups across all seven datasets against the total reference-plus-distorted point count. The separate dataset panels show variation in runtime and speedup across the observed input sizes; the logarithmic time axes separate the two implementations, while linear speedup axes show their paired ratios.
 
 \begin{figure*}[ht!]
     \centering
@@ -1193,7 +1193,7 @@ Table~\ref{tab_pointpcapp_integrated_runtime} shows a double-digit median speedu
 
 \section{Conclusion} \label{sec_conclusions}
 
-We presented PointPCA++, a full-reference \gls{PCQA} method combining point-cloud descriptors with six-view DISTS scores. The controlled projection study and three-dataset model selection support a compact 46-feature representation with Extra Trees regression. The fusion improves on either modality alone on the modelling datasets, while the seven-dataset evaluation shows that their relative influence depends on the assessed population. Complete feature extraction is also 14 to 24 times faster than the PointPCA+ baseline (median paired speedup per dataset).
+We presented PointPCA++, a full-reference \gls{PCQA} method combining point-cloud descriptors with six-view \gls{DISTS} scores. The controlled projection study and three-dataset model selection support a compact 46-feature representation with Extra Trees regression. The fusion improves on either modality alone on the modelling datasets, while the seven-dataset evaluation shows that their relative influence depends on the assessed population. Complete feature extraction is also 14 to 24 times faster than the PointPCA+ baseline (median paired speedup per dataset).
 
 Within-dataset correlations and cross-dataset transfer provide complementary evidence: the fixed design predicts subjective quality well when trained within each dataset, but transferring a fitted model reveals greater variation between datasets. These findings support combining the two modalities without implying dataset-independent generalization. Future work will investigate methods to improve transfer robustness and assess whether saliency-aware descriptors provide additional predictive information.
 
